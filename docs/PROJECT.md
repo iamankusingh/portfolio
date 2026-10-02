@@ -193,4 +193,4 @@ This file owns product intent, positioning, goals, audience, scope, and creative
 
 ## Current Status
 
-**Planning and specification.** Initial scope and demo-content approach are confirmed. Fonts, palette, pnpm, browser/device goals, and the existing hero concept are accepted. Detailed layouts and implementation techniques will be validated during prototyping. See [PROGRESS.md](PROGRESS.md).
+**Foundation implementation.** Phase 0 adds the route/styling baseline; portfolio content and interactions remain future work. Initial scope and demo-content approach are confirmed. Fonts, palette, pnpm, browser/device goals, and the existing hero concept are accepted. Detailed layouts and implementation techniques will be validated during prototyping. See [PROGRESS.md](PROGRESS.md).

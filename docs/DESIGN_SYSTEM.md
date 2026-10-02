@@ -322,7 +322,7 @@ Follow [AGENTS.md](../AGENTS.md#non-negotiable-rules). Additional visual exclusi
 
 Convert approved visual decisions into reusable tokens for color, type, space, radius, layout, and stacking order. Motion values belong in [MOTION.md](MOTION.md).
 
-The CSS names above are draft examples. Final naming remains to be agreed and recorded in [CONVENTIONS.md](CONVENTIONS.md).
+The Phase 0 baseline is wired in `src/index.css` using Tailwind theme namespaces. Palette and type names above are retained; layout maps to `--spacing-page`, `--spacing-section-*`, and `--container-content` / `--container-reading`. See [CONVENTIONS.md](CONVENTIONS.md#token-naming) for utility naming. Type, spacing, and breakpoint choices remain adjustable during composition.
 
 # 18. Status
 

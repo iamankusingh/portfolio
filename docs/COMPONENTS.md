@@ -6,10 +6,7 @@ Map proposed component responsibilities. Names may evolve; create components onl
 
 ## Global / Layout
 
-- **`Header`** — fixed minimal header containing the logo circle and menu circle.
-- **`LogoButton`** — top-left circular brand/home control.
-- **`MenuButton`** — top-right circular hamburger/close control.
-- **`FullscreenMenu`** — fullscreen navigation overlay with large editorial links and optional previews.
+- **`Header`** — one file containing logo/menu controls, fullscreen navigation, destinations, previews, and modal state. Keep trivial controls inline and use Tailwind for ordinary styling.
 - **`CustomCursor`** — desktop-only enhanced cursor states such as `VIEW`, `OPEN`, or `DRAG`.
 - **`PageTransition`** — shared route-transition layer if the final experience requires one.
 

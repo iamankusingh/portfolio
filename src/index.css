@@ -1,7 +1,223 @@
 @import "tailwindcss";
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+@font-face {
+  font-family: "Manrope";
+  src: url("./assets/fonts/Manrope/Manrope-VariableFont_wght.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Instrument Serif";
+  src: url("./assets/fonts/Instrument_Serif/InstrumentSerif-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Instrument Serif";
+  src: url("./assets/fonts/Instrument_Serif/InstrumentSerif-Italic.ttf") format("truetype");
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@theme {
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Instrument Serif", Georgia, serif;
+  --color-bg-dark: #0b0d0e;
+  --color-bg-deep: #07090a;
+  --color-surface-dark: #111416;
+  --color-bg-light: #f1f0ea;
+  --color-surface-light: #e8e6de;
+  --color-text-light: #f4f2ec;
+  --color-text-dark: #111315;
+  --color-text-muted-dark: #9a9d9b;
+  --color-text-muted-light: #666a68;
+  --color-line-dark: rgb(255 255 255 / 14%);
+  --color-line-light: rgb(0 0 0 / 14%);
+  --color-water: #276dff;
+  --color-water-deep: #123b73;
+  --color-sun: #f5c84b;
+  --color-sun-warm: #f39a48;
+  --color-mist: #b7c4c7;
+  --text-display-xl: clamp(4.5rem, 12vw, 11rem);
+  --text-display-lg: clamp(3.5rem, 9vw, 8rem);
+  --text-display-md: clamp(2.8rem, 6vw, 5.5rem);
+  --text-h1: clamp(2.6rem, 5vw, 4.8rem);
+  --text-h2: clamp(2rem, 4vw, 3.5rem);
+  --text-h3: clamp(1.5rem, 2.6vw, 2.2rem);
+  --text-body-lg: clamp(1.1rem, 1.5vw, 1.4rem);
+  --text-body: 1rem;
+  --text-small: 0.875rem;
+  --text-micro: 0.75rem;
+  --spacing-page: clamp(1.25rem, 3vw, 3rem);
+  --spacing-section-xl: clamp(8rem, 16vw, 15rem);
+  --spacing-section-lg: clamp(6rem, 12vw, 11rem);
+  --spacing-section-md: clamp(4rem, 8vw, 7rem);
+  --spacing-section-sm: clamp(2.5rem, 5vw, 4rem);
+  --container-content: 1440px;
+  --container-reading: 760px;
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-full: 999px;
+}
+
+:root {
+  --z-header: 20;
+  --z-menu: 30;
+  --z-skip-link: 50;
+}
+
+@layer base {
+  /* Hide scrollbar chrome without disabling wheel, touch, or keyboard scrolling. */
+  * {
+    scrollbar-width: none;
+  }
+
+  *::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+  html {
+    font-family: var(--font-sans);
+    background: var(--color-bg-dark);
+    color: var(--color-text-light);
+    color-scheme: dark;
+  }
+
+  body {
+    min-width: 320px;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3 {
+    text-wrap: balance;
+    overflow-wrap: anywhere;
+  }
+
+  :focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 5px;
+  }
+
+  ::selection {
+    background: var(--color-sun);
+    color: var(--color-text-dark);
+  }
+}
+
+@layer components {
+  .skip-link {
+    position: fixed;
+    top: 1rem;
+    left: var(--spacing-page);
+    z-index: var(--z-skip-link);
+    padding: 0.75rem 1rem;
+    background: var(--color-bg-light);
+    color: var(--color-text-dark);
+    transform: translateY(calc(-100% - 2rem));
+  }
+
+  .skip-link:focus {
+    transform: translateY(0);
+  }
+}
+
+/* Shared header geometry also offsets route content and anchor scrolling. */
+:root {
+  --navigation-control-size: 48px;
+  --navigation-top: max(1.25rem, env(safe-area-inset-top));
+  --navigation-left: max(var(--spacing-page), env(safe-area-inset-left));
+  --navigation-right: max(var(--spacing-page), env(safe-area-inset-right));
+}
+
+@media (min-width: 48rem) {
+  :root { --navigation-control-size: 56px; }
+}
+
+html {
+  scroll-padding-top: calc(var(--navigation-top) + var(--navigation-control-size) + 1rem);
+}
+
+html:has(#site-navigation[open]),
+body:has(#site-navigation[open]) {
+  overflow: hidden;
+}
+
+/* Native dialog entry/exit and keyframes are clearer here than in utilities. */
+.fullscreen-menu {
+  opacity: 0;
+  transition: opacity 220ms ease;
+  transition: opacity 220ms ease, display 220ms allow-discrete, overlay 220ms allow-discrete;
+}
+
+.fullscreen-menu[open] { opacity: 1; }
+
+.fullscreen-menu::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: var(--color-surface-dark);
+  pointer-events: none;
+}
+
+.fullscreen-menu[open]::before {
+  animation: menu-surface-reveal 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@starting-style {
+  .fullscreen-menu[open] { opacity: 0; }
+}
+
+@keyframes menu-surface-reveal {
+  from { clip-path: circle(0 at calc(100% - var(--navigation-right) - var(--navigation-control-size) / 2) calc(var(--navigation-top) + var(--navigation-control-size) / 2)); }
+  to { clip-path: circle(150% at calc(100% - var(--navigation-right) - var(--navigation-control-size) / 2) calc(var(--navigation-top) + var(--navigation-control-size) / 2)); }
+}
+
+@keyframes menu-content-enter {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes menu-line-top {
+  from { translate: 0 -4px; rotate: 0deg; }
+  to { translate: 0; rotate: 45deg; }
+}
+
+@keyframes menu-line-bottom {
+  from { translate: 0 4px; rotate: 0deg; }
+  to { translate: 0; rotate: -45deg; }
+}
+
+/* Logo ripple on menu toggle */
+@keyframes logo-ripple {
+  0%   { transform: scale(1);   opacity: 0.55; }
+  60%  { transform: scale(2.1); opacity: 0.2; }
+  100% { transform: scale(2.8); opacity: 0; }
+}
+
+.logo-ripple {
+  background: var(--color-sun, #f0c040);
+  opacity: 0;
+}
+
+.logo-ripple-active {
+  animation: logo-ripple 520ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fullscreen-menu,
+  .fullscreen-menu::before {
+    animation: none;
+    transition: none;
+  }
+
+  .logo-ripple-active {
+    animation: none;
+  }
 }

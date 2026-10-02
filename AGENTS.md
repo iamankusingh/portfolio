@@ -55,9 +55,16 @@ Before significant work:
 1. Read this file, [README.md](README.md), and [PROGRESS.md](docs/PROGRESS.md).
 2. Read the specialist documents relevant to the task, using the [documentation map](README.md#documentation-responsibilities).
 3. Inspect the current implementation and reuse its patterns.
-4. Stay within the requested scope. The project is currently planning; do not begin implementation without a request to do so.
+4. Stay within the requested scope. Implement only the phase or work the user has requested; Phase 1 is currently authorized.
 
 The specialist document owns its domain. If documents conflict, surface the conflict and update stale guidance when the evidence or an approved decision resolves it. Do not silently choose a new direction.
+
+## User-Owned Operations
+
+- The user installs, updates, and removes packages. Tell them the exact pnpm command and why a package is needed; do not run package installation commands or change dependency manifests/lockfiles on their behalf.
+- The user manages Git. Do not run Git commands, stage changes, commit, create branches, or otherwise change repository history/index state unless explicitly asked.
+- The user starts/stops servers, runs the application, and performs tests and validation (including lint, build, type checks, and browser checks). Do not run these commands or launch browsers unless explicitly asked.
+- Continue with source/documentation edits and static code review. Provide concise commands and a focused verification checklist for the user. Record validation as pending until the user supplies results; earlier passing checks do not validate later edits.
 
 ## Non-Negotiable Rules
 
@@ -67,6 +74,10 @@ The specialist document owns its domain. If documents conflict, surface the conf
 - Avoid excessive glassmorphism, gradients, glow, or neon.
 - Preserve readability, user-controlled scrolling, and immediate access to content.
 - Apply the identity and content protections above and below.
+
+## Structure and Styling
+
+Keep the structure simple. Keep header controls, fullscreen navigation, and header-specific data together in `Header.tsx`; avoid separate files for trivial buttons. Prefer Tailwind utilities for ordinary styling. Use plain CSS only where global rules, native dialog transitions, or keyframes are clearer.
 
 ## Code Quality Expectations
 
@@ -86,4 +97,4 @@ Keep [PROGRESS.md](docs/PROGRESS.md) current after meaningful planning or implem
 
 ## Current Status
 
-Planning and specification, with a minimal React/Vite scaffold already present. The user has confirmed initial scope, demo content, fonts, palette, package manager, and device goals; detailed implementation choices remain flexible. [PROGRESS.md](docs/PROGRESS.md) is the current status reference.
+Phase 0 foundation and Phase 1 header/navigation are implemented. The user requested a header-only homepage: omit placeholder pages and demo homepage sections; retain not-found/error handling and essential infrastructure. Hide scrollbar chrome globally while preserving scrolling. Phase 1 build/browser checks and Phase 0 browser acceptance await user validation. Substantive portfolio content and scenes remain in later phases. The user has confirmed initial scope, demo content, fonts, palette, package manager, and device goals; detailed implementation choices remain flexible. [PROGRESS.md](docs/PROGRESS.md) is the current status reference.

@@ -54,6 +54,12 @@ Prefer an asymmetric composition with large primary links, optional numbering, a
 
 Hover or focus may reveal project media for Work, a photograph for Photography, Anku's portrait for About, or an experiment for Lab. Previews remain secondary; provide an understandable keyboard equivalent.
 
+## Phase 1 Implementation
+
+The menu uses a full-viewport native modal dialog. Opening focuses Home; Tab/Shift+Tab stay within the modal, and Escape or the top-right close control dismisses it. Closing without navigation returns focus to the menu trigger. Route changes dismiss it and the route shell focuses the destination. The page behind the menu is inert and scroll-locked; short screens scroll inside the menu. The logo and close control remain available at the top.
+
+Numbered editorial links sit left; decorative previews sit right at desktop widths (64rem and above). Hover and keyboard focus select the same preview. About uses the real portrait; Photography reuses it with an explicit demo label. Work and Lab use abstract typography/geometry until their actual media exists. Previews are hidden on smaller viewports; every destination remains directly available without hover or a preview tap. No placeholder contact details are displayed. The homepage is currently header-only; substantive sections will be added in their owning phases.
+
 ## Menu Exit and Page Transition
 
 A selected word, media preview, or circle may become the transition anchor. [MOTION.md](MOTION.md) owns timing and mechanics.

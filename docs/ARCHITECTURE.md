@@ -6,11 +6,11 @@ Define the application stack, folder responsibilities, routing integration, stat
 
 ## Stack
 
-**Present:** React, TypeScript, Vite, and Tailwind CSS (including the Vite plugin).
+**Present:** React, strict TypeScript, Vite, Tailwind CSS (including the Vite plugin), and React Router.
 
-**Planned, not installed:** React Router; Three.js, React Three Fiber, and Drei for selected scenes; GSAP where complex choreography warrants it. Smooth-scroll tooling remains optional.
+**Planned, not installed:** Three.js, React Three Fiber, and Drei for selected scenes; GSAP where complex choreography warrants it. Smooth-scroll tooling remains optional.
 
-**Package manager:** pnpm. The user authorizes necessary dependencies during implementation; choose them using the dependency policy below without reopening the baseline decision. Planned packages remain uninstalled until added.
+**Package manager:** pnpm. Agents may recommend necessary dependencies with an exact pnpm command and rationale; the user performs all installation and dependency changes. Planned packages remain uninstalled until the user adds them. Phase 1 uses the existing packages only.
 
 **Compatibility goal:** modern browsers on mobile and desktop, with responsive tablet support. Maintain visual/functional consistency, high-quality graphics, and reasonable loading and interaction performance. Validate across representative current browser engines and hardware; tune concrete performance targets through profiling.
 
@@ -65,7 +65,6 @@ src/
 │
 ├── components/
 │   ├── layout/
-│   ├── navigation/
 │   ├── sections/
 │   ├── ui/
 │   └── three/
@@ -143,26 +142,13 @@ Types shared across features; keep local types near their feature.
 
 ## Routing
 
-Adopt React Router as the application router when implementation starts. Centralize definitions in `App.tsx` or a small router module. [ROUTES.md](ROUTES.md) owns the route map, including project details and catch-all behavior; [CONVENTIONS.md](CONVENTIONS.md) owns navigation code rules.
+React Router data mode is configured in `App.tsx` with a single `createBrowserRouter` instance and the DOM `RouterProvider`. `AppLayout` owns the semantic main region, skip link, route focus, and `ScrollRestoration`. Keep feature pages inside its outlet. The tiny foundation pages are eagerly loaded; introduce lazy boundaries when substantial page/scene code arrives. [ROUTES.md](ROUTES.md) owns the route map, including project details and catch-all behavior; [CONVENTIONS.md](CONVENTIONS.md) owns navigation code rules.
 
 ## Layout Architecture
 
-The persistent application shell should be conceptually:
+The persistent `AppLayout` renders `Header` outside the route outlet. `src/components/layout/Header.tsx` contains both circular controls, the fullscreen modal, its destination data, preview state, and dialog lifecycle. No separate navigation folder or button components are needed.
 
-```text
-App
-├── Header
-│   ├── LogoButton
-│   └── MenuButton
-│
-├── FullscreenMenu
-│
-├── RouteContent
-│
-└── GlobalInteractionLayer
-```
-
-The header and fullscreen navigation should remain outside individual pages unless a future requirement explicitly changes that behavior.
+The native dialog provides background inertness and focus containment. Normal link activation closes it before routing; location changes also close it for browser history. Controls appear in both the page and modal top layer so they remain available while the background is inert. Tailwind handles layout, responsive sizing, typography, controls, previews, and interaction states. Shared geometry, scroll locking, native dialog transitions, and animation keyframes live in `src/index.css`.
 
 ## Styling
 
@@ -190,7 +176,7 @@ Defer noncritical photography, project media, and 3D assets. [ASSETS.md](ASSETS.
 
 ## Error Boundaries and Fallbacks
 
-Isolate risky interactive modules with error boundaries where useful. Provide static alternatives so an optional effect cannot crash the main content or navigation.
+Root and child route error boundaries render `RouteError` with retry/home recovery links and log the error without exposing a stack trace in the UI. The child boundary preserves the layout; the root boundary covers layout failures. Unknown routes and project slugs use `NotFound`. `index.html` includes a JavaScript-disabled explanation. No WebGL is required by the foundation. Isolate future risky interactive modules with local error boundaries so their static DOM alternatives and navigation survive scene failures. Provide static alternatives so an optional effect cannot crash the main content or navigation.
 
 ## Performance Boundaries
 
@@ -198,8 +184,12 @@ Prioritize initial rendering, stable layout, responsive scroll, controlled JavaS
 
 ## Dependency Rules
 
-Before adding a package, check existing functionality and native browser/React/CSS options. Add only a focused dependency that solves a meaningful problem; avoid overlapping libraries and packages for trivial helpers.
+Before recommending a package, check existing functionality and native browser/React/CSS options. Give the user the exact installation command; do not install it or edit dependency manifests/lockfiles yourself. Recommend only a focused dependency that solves a meaningful problem; avoid overlapping libraries and packages for trivial helpers.
 
 ## Architecture Rules for Agents
 
 Preserve the documented stack and boundaries; create folders and abstractions only when needed. Follow [AGENTS.md](../AGENTS.md) for workflow and [CONVENTIONS.md](CONVENTIONS.md) for implementation practices. Update this document when an approved architecture decision changes.
+
+## Local verification and hosting
+
+The user owns all installation, application execution, and validation. User commands: `pnpm install --frozen-lockfile`, `pnpm lint`, and `pnpm build`. Agents do not run these commands or launch servers/browsers unless explicitly asked. The build includes the strict TypeScript check. Use `pnpm dev` for local development and `pnpm preview` to inspect the production output. On Windows where PowerShell blocks package-manager scripts, use `pnpm.cmd` with the same arguments. Check direct route loads, back/forward history, contact hashes, keyboard focus, font loading, narrow/wide viewports, and error recovery in a browser. Production hosting must rewrite non-asset application URLs to `index.html`; hosting configuration and deployed deep-link checks remain launch work.

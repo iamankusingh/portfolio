@@ -1,11 +1,26 @@
-function App() {
-  return (
-    <>
-      <main>
-        <h1 className="text-5xl">Anku singh</h1>
-      </main>
-    </>
-  );
-}
+﻿import { createBrowserRouter } from "react-router";
+import { RouterProvider } from "react-router/dom";
+import AppLayout from "./components/layout/AppLayout";
+import Home from "./pages/Home";
+import NotFound from "./pages/NotFound";
+import RouteError from "./pages/RouteError";
 
-export default App;
+const router = createBrowserRouter([
+  {
+    element: <AppLayout />,
+    errorElement: <RouteError />,
+    children: [
+      {
+        errorElement: <RouteError />,
+        children: [
+          { index: true, element: <Home /> },
+          { path: "*", element: <NotFound /> },
+        ],
+      },
+    ],
+  },
+]);
+
+export default function App() {
+  return <RouterProvider router={router} />;
+}

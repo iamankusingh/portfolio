@@ -36,7 +36,7 @@ All discussed sections and the About, Work, project-detail, Photography, and Lab
 
 ## Planned Technical Direction
 
-The existing foundation is **React + TypeScript + Vite + Tailwind CSS**. React Router is planned but not installed. Three.js, React Three Fiber, Drei, and motion tooling remain proposed additions.
+The existing foundation is **React + TypeScript + Vite + Tailwind CSS**. React Router provides the Phase 0 route shell. Three.js, React Three Fiber, Drei, and motion tooling remain proposed additions.
 
 [ARCHITECTURE.md](docs/ARCHITECTURE.md) owns the technical plan; [package.json](package.json) records actual dependencies and scripts.
 
@@ -73,11 +73,11 @@ Specialist documents own their domains; summaries link to them instead of repeat
 
 ## Repository Status
 
-**Planning and specification.** A minimal application scaffold, logo, favicon, and portrait are present. Portfolio features are not implemented. Initial scope, demo content, fonts, palette, pnpm, and device goals are confirmed. See [PROGRESS.md](docs/PROGRESS.md) for the preparation checklist and phased roadmap.
+**Foundation implementation.** The application has a route shell, local fonts, base design tokens, and error/not-found handling. The homepage shows only the two-circle header and fullscreen navigation. Placeholder pages and demo homepage sections have been removed; unbuilt destinations show NotFound. Scrollbars are hidden globally without disabling scrolling. 3D scenes and substantive portfolio content remain in later phases; current validation is user-owned and pending. Initial scope, demo content, fonts, palette, pnpm, and device goals are confirmed. See [PROGRESS.md](docs/PROGRESS.md) for the preparation checklist and phased roadmap.
 
 ## Development
 
-Use **pnpm**. Existing package scripts are `pnpm dev`, `pnpm build`, `pnpm lint`, and `pnpm preview`; install dependencies with `pnpm install` when implementation begins. Add necessary packages using the policy in [ARCHITECTURE.md](docs/ARCHITECTURE.md). No installation or code changes are part of this planning update.
+Use **pnpm**. Existing package scripts are `pnpm dev`, `pnpm build`, `pnpm lint`, and `pnpm preview`; install the recorded dependencies with `pnpm install --frozen-lockfile`. The user handles package installation, Git, server/app execution, and all validation; agents edit code/docs and provide any needed commands. See [AGENTS.md](AGENTS.md#user-owned-operations). For user verification, run `pnpm lint` and `pnpm build`; the build also checks strict TypeScript. On Windows, use `pnpm.cmd` if PowerShell execution policy blocks `pnpm.ps1`. See [ARCHITECTURE.md](docs/ARCHITECTURE.md#local-verification-and-hosting) for browser checks and the production SPA rewrite requirement.
 
 ## Asset Preparation
 

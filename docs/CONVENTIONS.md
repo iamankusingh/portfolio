@@ -14,11 +14,11 @@ Use strict TypeScript. Prefer `type` for objects/unions unless interface extensi
 
 ## React
 
-Use functional components and composition. Prefer props/local state; introduce shared state only when needed. Hooks should express reusable React behavior, not hide ordinary functions. Avoid unnecessary memoization and effects for render-derived values. Clean up listeners, observers, animation instances, and resources.
+Use functional components and composition. Keep trivial header controls, its menu, and header-specific data in `Header.tsx` rather than splitting them into single-purpose files. Prefer props/local state; introduce shared state only when needed. Hooks should express reusable React behavior, not hide ordinary functions. Avoid unnecessary memoization and effects for render-derived values. Clean up listeners, observers, animation instances, and resources.
 
 ## Component Naming
 
-Use PascalCase components (`Header`, `FullscreenMenu`), camelCase hooks with a `use` prefix (`useReducedMotion`), and camelCase utilities (`mapRange`). Name data modules after their content (`projects`, `photography`, `navigation`).
+Use PascalCase components (`Header`, `AppLayout`), camelCase hooks with a `use` prefix (`useReducedMotion`), and camelCase utilities (`mapRange`). Name data modules after their content (`projects`, `photography`, `navigation`).
 
 ## File Naming
 
@@ -36,9 +36,13 @@ Order imports: external packages, application modules, local components, assets,
 
 Use Tailwind utilities for layout, type, spacing, responsive behavior, and states. Reuse [design tokens](DESIGN_SYSTEM.md) before arbitrary values; allow one-off art direction where justified. Extract long class strings only when readability improves, and avoid wrapper components solely to hide classes. Keep global CSS global; scoped CSS is acceptable for complex effects.
 
+### Token Naming
+
+Global tokens live in `src/index.css`. Tailwind `@theme` uses `--color-*`, `--font-*`, `--text-*`, `--spacing-*`, `--container-*`, and `--radius-*`; use their generated utilities (`font-display`, `text-h1`, `px-page`, `py-section-md`, `max-w-content`). Stacking values use `--z-*` in `:root`. Retain the default Tailwind breakpoints initially. The type and spacing scales are starting values for later composition.
+
 ## Responsive Design
 
-Validate small, medium, and large viewports intentionally. Follow [DESIGN_SYSTEM.md](DESIGN_SYSTEM.md) for layouts/touch targets, [MOTION.md](MOTION.md) for interaction adaptations, and [THREE_D.md](THREE_D.md) for device quality.
+Prepare responsive behavior for small, medium, and large viewports; the user performs viewport validation. Follow [DESIGN_SYSTEM.md](DESIGN_SYSTEM.md) for layouts/touch targets, [MOTION.md](MOTION.md) for interaction adaptations, and [THREE_D.md](THREE_D.md) for device quality.
 
 ## Navigation
 
@@ -70,7 +74,7 @@ Use semantic HTML, meaningful image alt text, empty alt text for decorative imag
 
 ## Performance
 
-Respect the loading boundaries in [ARCHITECTURE.md](ARCHITECTURE.md). Avoid unnecessary rerenders and idle animation loops. Test production builds and profile before adding complex optimization.
+Respect the loading boundaries in [ARCHITECTURE.md](ARCHITECTURE.md). Avoid unnecessary rerenders and idle animation loops. Ask the user to validate production builds and share profiling results before adding complex optimization.
 
 ## Comments
 
@@ -86,9 +90,13 @@ Apply [ARCHITECTURE.md](ARCHITECTURE.md#dependency-rules). `package.json` record
 
 ## Git / Change Discipline
 
-Keep changes focused and avoid unrelated refactors or broad renaming. Update the owning documentation when behavior or architecture changes and [PROGRESS.md](PROGRESS.md) after meaningful milestones.
+The user manages Git; agents do not run Git commands or change its index/history unless explicitly asked. Keep source edits focused and avoid unrelated refactors or broad renaming. Update the owning documentation when behavior or architecture changes and [PROGRESS.md](PROGRESS.md) after meaningful milestones.
 
 Suggested commit forms: `feat: build fullscreen navigation`, `fix: improve mobile menu interaction`, `docs: update 3D asset rules`.
+
+## Validation Ownership
+
+The user installs dependencies, starts/stops servers, runs the app, and runs lint/build/type/browser checks. Agents perform static source review and provide a concise verification checklist; do not report checks as passing without user-supplied results. See [AGENTS.md](../AGENTS.md#user-owned-operations).
 
 ## Agent Rules
 

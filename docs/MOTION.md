@@ -132,6 +132,10 @@ Suggested perceived duration: **700–1000ms**. Enable interaction before decora
 
 Close faster than open, with immediate feedback. Suggested duration: **500–800ms**.
 
+## Phase 1 Timing Choice
+
+The implemented CSS menu uses a 700ms decorative surface reveal from the top-right control, 420ms content/preview entry, and 220ms controls and exit fade. The shorter exit intentionally keeps navigation immediate; there is no JavaScript timer gating link activation. Native dialog state changes immediately. Discrete display/overlay transitions progressively enhance exit; unsupported browsers close immediately. Reduced motion removes the reveal, transforms, and transitions. Tailwind animation utilities in `components/layout/Header.tsx` use the dialog transitions and keyframes in `src/index.css`; visual validation is pending with the user.
+
 ## 11.3 Menu Hover
 
 A slight type shift, preview reveal, cursor change, or reduced emphasis on other links may indicate focus. Keep all links readable.

@@ -6,11 +6,17 @@ Track planning readiness and implementation milestones. Checkboxes describe actu
 
 ## Current Status
 
-**Phase:** Planning and specification, with a minimal application scaffold present.
+**Phase:** Phase 1 implementation complete; user-run build and browser acceptance remain pending. Phase 0 browser acceptance is also still open.
 
 **Latest decisions recorded:** All four audience goals; all discussed sections and Lab; a separate Contact page later; generated demo content and repeated imagery; `anku.avif` for photography; Manrope and Instrument Serif; the existing palette; pnpm; modern mobile/desktop support; and the established hero concept.
 
-**In progress:** Implementation planning and prototype composition. No portfolio features were implemented in this documentation update.
+**Structure:** Header controls, fullscreen menu, and navigation data are consolidated in `src/components/layout/Header.tsx`. The navigation component folder and standalone navigation data file have been removed. Ordinary styling now uses Tailwind; shared geometry, scroll locking, dialog transitions, and keyframes remain in `src/index.css`. Static review only; user validation remains pending.
+
+**Current scope:** Header/navigation only on the homepage. Placeholder pages, demo homepage sections, and unused page-preview data were removed as requested. Not-found/error handling and the foundation remain. Scrollbars are hidden globally while scrolling remains enabled. Unbuilt menu destinations show NotFound, including `/contact`.
+
+**Completed:** Phase 0 foundation plus the fixed two-circle header, fullscreen modal navigation, structured destinations, hover/focus previews, current-route indicators, route dismissal, responsive layout, and reduced-motion CSS. The interrupted Phase 1 edits were recovered and statically reviewed; no new packages are needed.
+
+**Working agreement:** The user owns package installation, Git, app/server execution, and all validation. Agents edit source/docs and perform static review. Historical Phase 0 check results below do not validate the Phase 1 changes.
 
 # Phase 0 — Foundation
 
@@ -23,24 +29,39 @@ Goal: establish a usable technical baseline after planning decisions are ready.
 - [x] Create and consolidate project documentation
 - [x] Confirm pnpm and authorize necessary implementation dependencies
 - [x] Select Manrope, Instrument Serif, and the existing design-system palette
-- [ ] Add React Router (planned; absent from `package.json`)
-- [ ] Establish approved fonts and base design tokens
-- [ ] Build route shell and global error/fallback strategy
-- [ ] Verify the application baseline with the agreed development checks
+- [x] Add React Router (`react-router` 8.4.0; pnpm lockfile updated)
+- [x] Establish approved fonts and base design tokens
+- [x] Build route shell and global error/fallback strategy
+- [x] Pass `pnpm.cmd lint` and `pnpm.cmd build` (including strict TypeScript)
+- [x] Start development/production-preview servers and verify HTTP delivery of route URLs, JS/CSS, favicon, and all three font files; confirm generated token utilities
+- [ ] Finish browser acceptance: rendered routes, back/forward, contact hash, skip link and focus, font loading, responsive/reduced-motion layouts, and forced error recovery
 
-**Done when:** the app boots cleanly, routing and global styling work, and feature work can begin without restructuring. The existing scaffold was inspected, not run, during this documentation pass.
+**Done when:** the app boots cleanly, routing and global styling work, and feature work can begin without restructuring. The build and local development server pass; Phase 0 remains open until browser acceptance is verified. HTTP delivery does not establish rendered route correctness. The homepage is intentionally empty apart from its header/navigation; unbuilt routes use NotFound.
 
 # Phase 1 — Header & Navigation
 
 Goal: implement the persistent navigation defined in [EXPERIENCE.md](EXPERIENCE.md).
 
-- [ ] Build fixed header with logo and menu controls
-- [ ] Build fullscreen links, previews, and open/close state
-- [ ] Add menu reveal, close, and focus/hover treatments
-- [ ] Integrate route changes and menu dismissal
-- [ ] Validate keyboard, touch, mobile, and reduced-motion behavior
+- [x] Build fixed header with logo and menu controls
+- [x] Build fullscreen links, previews, and open/close state
+- [x] Add menu reveal, close, and focus/hover treatments
+- [x] Integrate route changes and menu dismissal
+- [ ] User: run lint and build for the Phase 1 changes
+- [ ] User: validate keyboard, touch, mobile, and reduced-motion behavior
 
 **Done when:** navigation works across routes and input modes.
+
+**Implementation status:** Ready for user validation. `Header` persists in the route shell and preserves the existing logo. The native dialog handles modal focus/background inertness; Escape and close dismiss it, and navigation remains immediate. The menu includes Home, Work, About, Photography, Lab, and Contact (currently an unbuilt route). Desktop previews respond to both hover and focus; smaller layouts retain every link. See [EXPERIENCE.md](EXPERIENCE.md#phase-1-implementation) and [MOTION.md](MOTION.md#phase-1-timing-choice).
+
+**User verification:** Run `pnpm.cmd lint` and `pnpm.cmd build`, then start the app with `pnpm.cmd dev`. Check:
+
+1. Open/close from each route, the current route, unknown URLs, and project URLs. Verify the logo returns home and unbuilt destinations, including Contact, show NotFound.
+2. Use Tab/Shift+Tab, Enter, and Escape; confirm visible focus, focus containment, trigger focus restoration on dismiss, and destination focus after navigation.
+3. Navigate back/forward while the menu is open; try rapid reopen/close and Ctrl/Cmd-clicking a link.
+4. Check desktop previews with hover and keyboard focus; check 320px-wide and short landscape screens, touch scrolling inside the menu, and no background scrolling while open. Focused links should stay clear of fixed controls.
+5. Enable reduced motion: links and controls remain available without reveal/transform effects. Verify scrolling resumes after close and scrollbars stay hidden, including inside the menu.
+
+No tests, builds, servers, browsers, package operations, or Git commands were run for Phase 1. Keep acceptance unchecked until the user provides results.
 
 # Phase 2 — Hero / 3D Landscape
 
@@ -219,17 +240,16 @@ Goal: prepare a complete public release.
 
 ## Current Priorities
 
-1. Use the confirmed decisions below; missing real content does not block the initial demo build.
-2. Compose the experience with the selected fonts, palette, and available imagery across desktop/mobile.
-3. Once implementation is requested, finish the foundation and navigation using pnpm.
-4. Validate the established hero concept with consistent visuals and adaptive performance.
-5. Build all included content sections/routes; defer the separate Contact page.
+1. User: run the Phase 1 lint/build and focused browser checklist above, including the outstanding Phase 0 route checks.
+2. Address any issues the user reports; keep validation status truthful.
+3. When requested, begin the Phase 2 hero prototype with consistent visuals and adaptive performance.
+4. Build portfolio content in its owning phases; add substantive route content and defer the separate Contact page.
 
-This update records decisions only and does not start implementation.
+This pass completes Phase 1 implementation only. Acceptance and later phases remain open.
 
 ## Blockers
 
-No user-input blocker remains for an initial implementation. Dummy content and repeated images are authorized. Detailed layouts, gallery behavior, technical methods, and performance thresholds can be chosen during prototyping. Font license records remain a production asset-preparation task.
+No package or content blocker remains for Phase 1. Runtime, build, and browser verification await user results under the agreed workflow. Dummy content and repeated images remain authorized. Gallery behavior, hero techniques, and performance thresholds belong to later prototypes. Font license records remain a production asset-preparation task.
 
 ## Known Decisions Still Pending
 
@@ -240,15 +260,18 @@ No user-input blocker remains for an initial implementation. Dummy content and r
 - [x] **Content:** generated personal copy, dummy project/Lab data, and repeated available imagery authorized under [AGENTS.md](../AGENTS.md#content-safety--accuracy).
 - [x] **Photography:** use `src/assets/anku.avif` initially.
 - [x] **Visual system:** Manrope and Instrument Serif from local assets, existing [design-system palette](DESIGN_SYSTEM.md), and the same overall look and feel across devices.
-- [x] **Technical baseline:** pnpm; necessary dependencies may be chosen during implementation; target modern mobile and desktop browsers.
+- [x] **Technical baseline:** pnpm; agents may recommend necessary dependencies, and the user installs them; target modern mobile and desktop browsers.
+- [x] **Workflow:** user owns package operations, Git, server/app execution, and all testing; agents own requested source/docs edits and static review.
 - [x] **Quality goal:** high-quality graphics and experience with decent performance, adapted to hardware without losing the identity.
 - [x] **Hero brief:** follow the established concept in [PROJECT.md](PROJECT.md#core-creative-concept).
 
 **Implementation choices to resolve through design/prototyping:**
 
-- [ ] Detailed compositions, font-role balance, type/spacing scales, breakpoints, and token wiring.
+- [x] Wire local fonts, palette, and initial type/spacing/layout/radius/stacking tokens with default Tailwind breakpoints.
+- [ ] Refine detailed compositions, font-role balance, scales, and breakpoints through feature prototypes.
 - [ ] Number/order of dummy projects and Lab entries; gallery model using repeated imagery.
-- [ ] Menu composition, motion timings, camera path, and hero-to-DOM handoff.
+- [x] Implement numbered fullscreen menu composition and initial CSS motion timings; user visual acceptance pending.
+- [ ] Choose camera path and hero-to-DOM handoff.
 - [ ] Rendering techniques, quality thresholds, and measurable performance budgets.
 - [ ] Optional cursor/smoothing/particles and advanced transitions where they improve the experience.
 - [ ] Final scene assets, source/license records, and optimized exports.
