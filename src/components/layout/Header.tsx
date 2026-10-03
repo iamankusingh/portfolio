@@ -29,26 +29,15 @@ export default function Header() {
   const location = useLocation();
   const dialogRef = useRef<HTMLDialogElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
-  const logoRippleRef = useRef<HTMLSpanElement>(null);
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     dialogRef.current?.close();
   }, [location]);
 
-  function fireLogoRipple() {
-    const el = logoRippleRef.current;
-    if (!el) return;
-    el.classList.remove("logo-ripple-active");
-    // Force reflow so the animation restarts
-    void el.offsetWidth;
-    el.classList.add("logo-ripple-active");
-  }
-
   function openMenu() {
     const dialog = dialogRef.current;
     if (!dialog || dialog.open) return;
-    fireLogoRipple();
     triggerRef.current?.focus({ preventScroll: true });
     dialog.showModal();
     dialog.scrollTop = 0;
@@ -59,7 +48,6 @@ export default function Header() {
   }
 
   function closeMenu() {
-    fireLogoRipple();
     dialogRef.current?.close();
   }
 
@@ -85,30 +73,6 @@ export default function Header() {
   }
 
   const logo = (
-    <span className="relative">
-      <span
-        ref={logoRippleRef}
-        className="logo-ripple pointer-events-none absolute inset-0 rounded-full"
-        aria-hidden="true"
-      />
-      <Link
-        to="/"
-        className={controlClass}
-        aria-label="Anku Singh — Home"
-        onClick={handleLinkClick}
-      >
-        <img
-          src="/logo.svg"
-          alt=""
-          width="56"
-          height="56"
-          className="block size-full"
-        />
-      </Link>
-    </span>
-  );
-
-  const dialogLogo = (
     <Link
       to="/"
       className={controlClass}
@@ -152,10 +116,11 @@ export default function Header() {
           </span>
         </button>
       </header>
+      
       <dialog
         ref={dialogRef}
         id="site-navigation"
-        className="fullscreen-menu fixed inset-0 m-0 h-dvh max-h-none w-full max-w-none overflow-x-hidden overflow-y-auto overscroll-contain scroll-pt-[calc(var(--navigation-top)+var(--navigation-control-size)+1rem)] scroll-pb-8 border-0 bg-bg-deep p-0 text-text-light backdrop:bg-bg-deep/60 [&:not([open])]:pointer-events-none [&:not([open])_a]:pointer-events-none [&:not([open])_button]:pointer-events-none"
+        className="fullscreen-menu fixed inset-0 m-0 h-dvh max-h-none w-full max-w-none overflow-x-hidden overflow-y-auto overscroll-contain scroll-pt-[calc(var(--navigation-top)+var(--navigation-control-size)+1rem)] scroll-pb-8 border-0 bg-bg-deep p-0 text-text-light [&:not([open])]:pointer-events-none [&:not([open])_a]:pointer-events-none [&:not([open])_button]:pointer-events-none"
         aria-labelledby="navigation-title"
         onClose={() => {
           if (!dialogRef.current?.open) setIsOpen(false);
@@ -166,7 +131,7 @@ export default function Header() {
         }}
       >
         <div className={`${topbarClass} z-2`}>
-          {dialogLogo}
+          {logo}
           <button
             type="button"
             className={buttonClass}
@@ -183,7 +148,7 @@ export default function Header() {
             </span>
           </button>
         </div>
-        <div className="relative mx-auto flex min-h-full w-full max-w-content flex-col justify-center pt-[calc(var(--navigation-top)+var(--navigation-control-size)+2rem)] pr-(--navigation-right) pb-[max(2rem,env(safe-area-inset-bottom))] pl-(--navigation-left)">
+        <div className="relative flex min-h-full w-full flex-col justify-center pt-[calc(var(--navigation-top)+var(--navigation-control-size)+2rem)] pr-(--navigation-right) pb-[max(2rem,env(safe-area-inset-bottom))] pl-(--navigation-left)">
           <h2
             id="navigation-title"
             className="mb-6 text-small tracking-widest text-text-muted-dark"
@@ -221,14 +186,14 @@ export default function Header() {
               ))}
             </ol>
           </nav>
-          <footer className="mt-10 border-t border-line-dark pt-6 text-small">
+          <div className="mt-10 border-t border-line-dark pt-6 text-small">
             <p>
               Anku Singh
               <span className="mt-1 block text-text-muted-dark">
                 Technology × Nature × Human Experience.
               </span>
             </p>
-          </footer>
+          </div>
         </div>
       </dialog>
     </>
