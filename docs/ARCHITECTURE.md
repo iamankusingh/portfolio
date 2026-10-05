@@ -1,4 +1,4 @@
-# Architecture
+﻿# Architecture
 
 ## Purpose
 
@@ -8,7 +8,7 @@ Define the application stack, folder responsibilities, routing integration, stat
 
 **Present:** React, strict TypeScript, Vite, Tailwind CSS (including the Vite plugin), and React Router.
 
-**Planned, not installed:** Three.js, React Three Fiber, and Drei for selected scenes; GSAP where complex choreography warrants it. Smooth-scroll tooling remains optional.
+**Recorded scene dependencies:** Three.js, React Three Fiber, and Drei. Phase 2 uses Three.js and Fiber directly; Drei is not needed by this scene. GSAP and scroll smoothing remain optional and unadopted. `@types/three` is now recorded in the user-managed development dependencies.
 
 **Package manager:** pnpm. Agents may recommend necessary dependencies with an exact pnpm command and rationale; the user performs all installation and dependency changes. Planned packages remain uninstalled until the user adds them. Phase 1 uses the existing packages only.
 
@@ -193,3 +193,18 @@ Preserve the documented stack and boundaries; create folders and abstractions on
 ## Local verification and hosting
 
 The user owns all installation, application execution, and validation. User commands: `pnpm install --frozen-lockfile`, `pnpm lint`, and `pnpm build`. Agents do not run these commands or launch servers/browsers unless explicitly asked. The build includes the strict TypeScript check. Use `pnpm dev` for local development and `pnpm preview` to inspect the production output. On Windows where PowerShell blocks package-manager scripts, use `pnpm.cmd` with the same arguments. Check direct route loads, back/forward history, contact hashes, keyboard focus, font loading, narrow/wide viewports, and error recovery in a browser. Production hosting must rewrite non-asset application URLs to `index.html`; hosting configuration and deployed deep-link checks remain launch work.
+
+## Phase 2 hero boundary
+
+`Home` composes `sections/Hero`. The route shell removes its content gutters only for `/`, allowing the landscape to fill the viewport while retaining semantic main/skip-link/focus handling. Header code and unbuilt routes are unchanged.
+
+`Hero` owns screen-reader identity data from `data/hero.ts`, an authored SVG for static preferences or scene failure, native scroll and its Explore cue, visibility/menu observation, and an error boundary. The visible name and manual pause control were removed at the user's request. `HeroScene` is dynamically imported when the hero becomes visible; reduced-motion visitors never mount it. Save-Data and devices reporting two or fewer logical cores retain the fallback. No new animation library or asset pipeline is used.
+
+`three/HeroScene` owns rendering quality, lifecycle, camera motion, sun, lights, and fog; `IslandModel` loads and normalizes the supplied glTF with a private binary-URL resolver; `Water` owns its shader. React Three Fiber owns declarative GPU resource disposal and canvas teardown. Event listeners, observers, low-tier render timers, and CSS handoff properties have explicit cleanup. Runtime disposal and memory behavior still need user profiling. Rendering uses Fiber's [Canvas API](https://r3f.docs.pmnd.rs/api/canvas) and [frame hooks](https://r3f.docs.pmnd.rs/api/hooks).
+
+
+Normal loading shows the dark background, not the SVG. HeroScene reports readiness after a completed frame and reports failure to Hero, which selects the static fallback. The local error boundary also reports import/renderer errors. The DOM intro starts from scene readiness; identity and navigation stay available while loading.
+
+
+The imported model is cached by useLoader. Cloned hierarchies use shared geometry/materials with disposal disabled; procedural resources still use normal Fiber cleanup. The full scene waits inside Suspense so the intro cannot reveal water before the model arrives.
+

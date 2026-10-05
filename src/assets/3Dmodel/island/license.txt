@@ -1,0 +1,8 @@
+Model Information:
+* title:	Low-Poly Floating Island
+* source:	https://sketchfab.com/3d-models/low-poly-floating-island-9700497248364520bd2a9e61272d6b62
+* author:	Ram Surya (https://sketchfab.com/ramsurya)
+
+Model License:
+* license type:	SKETCHFAB Standard (https://sketchfab.com/licenses)
+* requirements:	Under basic restrictions, use worldwide, on all types of media, commercially or not, and in all types of derivative works

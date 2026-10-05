@@ -83,6 +83,7 @@
     width: 0;
     height: 0;
   }
+
   html {
     font-family: var(--font-sans);
     background: var(--color-bg-dark);
@@ -93,6 +94,7 @@
   body {
     min-width: 320px;
     line-height: 1.6;
+    cursor: default;
   }
 
   h1, h2, h3 {
@@ -200,4 +202,16 @@ body:has(#site-navigation[open]) {
     animation: none;
     transition: none;
   }
+}
+
+/* The actual rendered island starts the intro; loading never shows a second island. */
+@media (prefers-reduced-motion: no-preference) {
+  .hero[data-intro="ready"] .hero-controls {
+    animation: hero-controls-enter 700ms 450ms ease-out both;
+  }
+}
+
+@keyframes hero-controls-enter {
+  from { opacity: 0.75; }
+  to { opacity: 1; }
 }

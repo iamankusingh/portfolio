@@ -1,4 +1,4 @@
-# Anku Singh — Personal Portfolio
+﻿# Anku Singh — Personal Portfolio
 
 An interactive portfolio for Anku Singh, combining engineering, editorial design, selective 3D, and personal storytelling.
 
@@ -36,7 +36,7 @@ All discussed sections and the About, Work, project-detail, Photography, and Lab
 
 ## Planned Technical Direction
 
-The existing foundation is **React + TypeScript + Vite + Tailwind CSS**. React Router provides the Phase 0 route shell. Three.js, React Three Fiber, Drei, and motion tooling remain proposed additions.
+The existing foundation is **React + TypeScript + Vite + Tailwind CSS**. React Router provides the Phase 0 route shell. Three.js, React Three Fiber, and Drei are recorded dependencies. Phase 2 uses Three.js and React Three Fiber; additional motion tooling is unnecessary for the prototype.
 
 [ARCHITECTURE.md](docs/ARCHITECTURE.md) owns the technical plan; [package.json](package.json) records actual dependencies and scripts.
 
@@ -73,7 +73,7 @@ Specialist documents own their domains; summaries link to them instead of repeat
 
 ## Repository Status
 
-**Foundation implementation.** The application has a route shell, local fonts, base design tokens, and error/not-found handling. The homepage shows only the two-circle header and fullscreen navigation. Placeholder pages and demo homepage sections have been removed; unbuilt destinations show NotFound. Scrollbars are hidden globally without disabling scrolling. 3D scenes and substantive portfolio content remain in later phases; current validation is user-owned and pending. Initial scope, demo content, fonts, palette, pnpm, and device goals are confirmed. See [PROGRESS.md](docs/PROGRESS.md) for the preparation checklist and phased roadmap.
+Phase 2 hero source implementation is present: a screen-reader identity heading, Explore cue, a lazy imported island model surrounded by animated water, authored SVG fallback, pointer/scroll progression, adaptive rendering, and automatic motion suspension. The visible name and manual pause control were removed at the user's request. The existing header/navigation and route infrastructure remain. Later content and routes are deferred. Build, browser, performance, and lifecycle acceptance are user-owned and pending; see [PROGRESS.md](docs/PROGRESS.md). The scene dependencies and Three.js types are recorded in the user-managed package manifest.
 
 ## Development
 
@@ -86,3 +86,6 @@ Generated personal copy, dummy project/Lab data, and repeated available images a
 ## Guiding Principle
 
 **The website itself should be evidence of Anku's ability to build polished digital experiences.**
+
+
+

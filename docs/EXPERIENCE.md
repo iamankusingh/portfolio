@@ -1,4 +1,4 @@
-# EXPERIENCE.md
+﻿# EXPERIENCE.md
 
 ## Purpose
 
@@ -58,7 +58,7 @@ Hover or focus may reveal project media for Work, a photograph for Photography, 
 
 The menu uses a full-viewport native modal dialog. Opening focuses Home; Tab/Shift+Tab stay within the modal, and Escape or the top-right close control dismisses it. Closing without navigation returns focus to the menu trigger. Route changes dismiss it and the route shell focuses the destination. The page behind the menu is inert and scroll-locked; short screens scroll inside the menu. The logo and close control remain available at the top.
 
-Numbered editorial links sit left; decorative previews sit right at desktop widths (64rem and above). Hover and keyboard focus select the same preview. About uses the real portrait; Photography reuses it with an explicit demo label. Work and Lab use abstract typography/geometry until their actual media exists. Previews are hidden on smaller viewports; every destination remains directly available without hover or a preview tap. No placeholder contact details are displayed. The homepage is currently header-only; substantive sections will be added in their owning phases.
+Numbered editorial links sit left; decorative previews sit right at desktop widths (64rem and above). Hover and keyboard focus select the same preview. About uses the real portrait; Photography reuses it with an explicit demo label. Work and Lab use abstract typography/geometry until their actual media exists. Previews are hidden on smaller viewports; every destination remains directly available without hover or a preview tap. No placeholder contact details are displayed. The homepage now includes the Phase 2 hero; later sections remain in their owning phases.
 
 ## Menu Exit and Page Transition
 
@@ -84,7 +84,7 @@ A possible sequence moves from low light to a visible sun, then landscape and id
 
 ## Hero Content
 
-Introduce **Anku Singh**, generated demo positioning copy, and the disciplines in [PROJECT.md](PROJECT.md). Dummy copy is authorized under the [content policy](../AGENTS.md#content-safety--accuracy); it can later be replaced with final wording.
+The user requested a landscape-led opening without the visible name or a pause-motion control. Retain a screen-reader heading for **Anku Singh** and a small Explore cue. Defer positioning paragraphs and discipline lists to later editorial content. The broader positioning remains in [PROJECT.md](PROJECT.md).
 
 ## Hero Interaction
 
@@ -362,3 +362,11 @@ This file owns the journey, navigation behavior, section purpose/order, major in
 ## Current Status
 
 **Experience specification.** Layouts, menu composition, project order, gallery model, and transition choices remain provisional. All discussed sections are included and demo content is authorized; these layout choices can be made during implementation. Track decisions in [PROGRESS.md](PROGRESS.md).
+
+## Phase 2 implementation
+
+The opening frames a grassy island and rocky mountain surrounded by open water. The visible name and manual pause control are removed at the user's request; identity remains available as a screen-reader heading. The island turns 15 degrees left about its center. The Explore anchor reaches the quiet end of the landscape; there is no extra slogan or placeholder introduction. Native scrolling remains available, with no forced intro. The menu suspends scene animation while open. Reduced-motion and constrained-device visitors receive a matching static island. Portrait framing pulls the camera back to retain the complete shoreline. Browser and visual acceptance remain pending.
+
+
+The normal opening now reveals the actual island directly from a dark background, with rising sunlight and clearing fog. The static island appears only for reduced-motion/low-power preferences or a rendering failure, avoiding a visible switch between different island compositions. Identity and navigation are available throughout loading and the intro.
+

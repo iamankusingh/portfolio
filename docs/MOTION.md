@@ -1,4 +1,4 @@
-# MOTION.md
+﻿# MOTION.md
 
 ## Purpose
 
@@ -78,7 +78,7 @@ The hero is one of the primary narrative sequences.
 
 ## 7.1 Entry
 
-Possible sequence: low light → optional loading state resolves → sun emerges → landscape appears through fog → title → positioning text → scroll cue. Content must become usable quickly; no forced intro.
+Possible sequence: low light → optional loading state resolves → sun emerges → landscape appears through fog → name → scroll cue. Content must become usable quickly; no forced intro.
 
 ## 7.2 Hero Typography
 
@@ -219,3 +219,10 @@ These packages are not all installed. [ARCHITECTURE.md](ARCHITECTURE.md) owns de
 # 24. Status
 
 System direction and timing values are provisional. Validate choreography in the hero/homepage prototype and track decisions in [PROGRESS.md](PROGRESS.md).
+
+## Phase 2 choreography
+
+Normal loading uses the dark hero background with navigation and the Explore cue available immediately. The visible name and its entry animation have been removed at the user's request; a screen-reader heading remains. After a completed WebGL frame, the actual island fades in over 1100ms. Over 1600ms the sun rises slightly, the key light strengthens, and fog recedes. The Explore cue receives a subtle 700ms emphasis after 450ms. No alternate island is shown during loading and no timer blocks interaction. Static preferences and rendering failures use the SVG island without this intro. Menu/tab/offscreen state suspends scene progression; the manual pause control is removed. Native scroll and the dark handoff remain available. User visual and performance acceptance is pending.
+
+The revised orb rises vertically above the island from `y=20` to `y=30`. Water wave time uses the same active state as the camera and freezes for open navigation, hidden tabs, and inactive hero state.
+

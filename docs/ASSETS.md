@@ -1,4 +1,4 @@
-# Assets
+﻿# Assets
 
 ## Purpose
 
@@ -142,9 +142,25 @@ Font paths here are relative to `src/assets/`. File availability does not establ
 | Photography | Reuse `anku.avif` for the initial demo gallery |
 | Project media | Repeated existing imagery approved; dedicated exports not required initially |
 | Fonts | Manrope and Instrument Serif TTF files present; license records/export optimization pending |
-| 3D models | Approach/need undecided |
+| 3D models | User-provided Low-Poly Floating Island glTF integrated; see registry below |
 | Textures / HDRIs | Not selected |
 | Video | Not added |
 | Audio | Not planned |
 
 Update this inventory as selections are finalized; the preparation checklist lives in [PROGRESS.md](PROGRESS.md).
+
+## Phase 2 procedural assets
+
+`components/sections/LandscapeFallback.tsx` is an original code-authored SVG grassy mountain island, not a photograph or generated bitmap. `components/three/Water.tsx` supplies the original animated ocean shader. The procedural terrain has been replaced by the downloaded model below. The SVG remains an illustrative fallback for static preferences/failure, not a preview shown before the model. The logo and real portrait are unchanged. Final asset expansion awaits desktop/mobile profiling.
+
+
+## Imported island
+
+- Asset: **Low-Poly Floating Island** by **Ram Surya**.
+- Supplied source: https://sketchfab.com/3d-models/low-poly-floating-island-9700497248364520bd2a9e61272d6b62
+- Author: https://sketchfab.com/ramsurya
+- License: Sketchfab Standard License, documented in `src/assets/3Dmodel/island/license.txt`.
+- Original files: `scene.gltf` (16,560 bytes) and `scene.bin` (143,024 bytes), preserved in that folder. The nine PBR materials use base-color factors; no image textures or texture references are present in this export.
+- Integration: source materials retained, the composition normalized to 28 world units, the large cyan `Object_2` water plane omitted, and the lowest model point placed 0.12 world units below the animated ocean. Existing lighting/intro remain. Original files are unmodified.
+- Visible attribution and adaptation notice: the hero's **Scene credits** disclosure.
+- Browser framing, shoreline height, load paths, and performance remain pending user validation.

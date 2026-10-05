@@ -1,4 +1,4 @@
-# ROUTES.md
+﻿# ROUTES.md
 
 ## Purpose
 
@@ -19,11 +19,11 @@ Map the confirmed initial pages and the deferred contact page. Dummy content is 
 
 The menu and homepage should link directly to meaningful destinations; projects may open without visiting the index first. Initially, Contact targets the homepage contact section. Point it to `/contact` once that later page exists.
 
-Build included routes in their owning phases; do not add placeholder pages to the current header-only build. [ARCHITECTURE.md](ARCHITECTURE.md) owns routing integration; [CONVENTIONS.md](CONVENTIONS.md) owns navigation code rules.
+Build included routes in their owning phases; do not add placeholder pages to the current phased build. [ARCHITECTURE.md](ARCHITECTURE.md) owns routing integration; [CONVENTIONS.md](CONVENTIONS.md) owns navigation code rules.
 
 ## Current implementation
 
-The user requested a header-only homepage. Placeholder pages and demo homepage sections have been removed. `/` renders the persistent header/navigation and an empty semantic main region. Routing, NotFound, error boundaries, fonts, design tokens, focus handling, and scroll restoration remain. The route map above describes future scope; unbuilt destinations currently use NotFound.
+`/` renders the persistent header/navigation and Phase 2 hero inside the semantic main region. The hero closes at `/#hero-outlook`; later content and pages remain deferred. Routing, NotFound, error boundaries, fonts, design tokens, focus handling, and scroll restoration remain. Unbuilt destinations currently use NotFound.
 
 ## Menu destinations
 

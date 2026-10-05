@@ -1,4 +1,4 @@
-# THREE_D.md
+﻿# THREE_D.md
 
 ## Purpose
 
@@ -85,13 +85,19 @@ Gentle movement, reflected sky/light, and subtle distortion should reinforce the
 
 Options: custom shader plane, adapted Three.js/Drei water, normal-map distortion, or Fresnel approximation. Prefer a lightweight shader if it meets the visual need.
 
+The Phase 2 water displaces a subdivided plane with three low-amplitude directional swells at wavelengths of 80, 55, and 38 world units. Analytic wave slopes calculate continuous fragment normals independently of the triangle grid. Two short ripple layers affect shading only; screen-space derivatives and camera distance fade them before they become subpixel horizon bands. The fragment shader combines a deep/surface color blend, sky and horizon approximation, Fresnel response, sun reflection, restrained crest lightening, and distance haze. This remains an analytic approximation without a reflection render target.
+
 ## 6.3 Performance
 
 Avoid real-time planar reflections unless profiling justifies them. Consider environment/cubemap sampling, screen-space approximation, or simplified reflection color. Reduce water complexity on mobile.
 
+High and medium tiers use a 128×128 water grid (32,768 triangles), three displaced swells, and two fragment ripple layers. Low uses 64×64 (8,192 triangles), omits the two ripple layers, caps rendering at 30fps, and retains Fresnel/lighting. Wave time survives tier changes. These costs require user profiling with the approximately 2.5k-triangle Low-Poly Floating Island model.
+
 # 7. Sun / Orb
 
 Possible implementations: emissive sphere, shader billboard/sprite, directional light plus visual orb, or restrained bloom. The visible sun and light source can be separate; keep the form graphic and controlled.
+
+The prototype places the visible orb above the island at the horizontal center of the composition. It rises from `y=20` to `y=30` during the dawn reveal. The directional key sits above the island, while the water shader uses a matching overhead/back-light direction for its highlight.
 
 # 8. Lighting
 
@@ -123,7 +129,7 @@ Desktop yaw, pitch, or parallax should have approximately **1–3 degrees** maxi
 
 # 12. Hero Composition
 
-Compose the scene with space for DOM title, positioning, supporting metadata, scroll cue, and floating controls. Terrain silhouettes must support text contrast.
+Compose the island with an Explore cue and the floating header controls. The user removed the visible DOM name and manual pause control; retain a screen-reader heading. Keep the landscape dominant; positioning paragraphs and supporting metadata belong after the hero. Terrain silhouettes must support text contrast.
 
 # 13. DOM and WebGL Layering
 
@@ -174,6 +180,8 @@ Use a small reusable texture set with GPU-friendly compression where practical. 
 
 Use React Three Fiber's renderer with deliberate color management and tone mapping. Enable alpha and `powerPreference="high-performance"` only when justified; do not maximize quality by default.
 
+The hero enables native antialiasing while retaining the existing DPR caps, opaque canvas, default power preference, ACES tone mapping, and sRGB output. A 0.5-unit camera near plane improves depth precision without approaching the island. The directional key rises from 0.6 to 2.0, with hemisphere fill at 1.1, to reduce washed-out model colors. Device cost and final material appearance await user validation.
+
 # 22. Device Pixel Ratio
 
 Cap DPR. Suggested starting ranges: **1.0–1.75 desktop**, **1.0–1.5 mobile**. Avoid native DPR 3 on phones; lower quality dynamically if necessary.
@@ -202,7 +210,7 @@ Validate loading, responsive interaction, frame times, and memory on representat
 
 # 25. Loading Strategy
 
-Render DOM first, show a lightweight environmental fallback, progressively load scene assets, then reveal the scene when ready. Any loader should be brief and nonblocking.
+Render DOM first on a dark atmospheric background, progressively load the scene, then reveal the actual rendered island when ready. The user requested no alternate landscape during normal loading; static imagery is reserved for fallback conditions. Any loader should be brief and nonblocking.
 
 # 26. Fallback Strategy
 
@@ -238,8 +246,26 @@ Avoid game controls, free camera travel, giant photorealistic downloads, unneces
 
 # 34. Implementation Direction
 
-Three.js, React Three Fiber, Drei, and GSAP coordination remain proposed additions. [ARCHITECTURE.md](ARCHITECTURE.md) owns adoption decisions; `package.json` records installed versions.
+Three.js, React Three Fiber, and Drei are recorded dependencies. The Phase 2 prototype uses Fiber and Three.js without Drei or GSAP. [ARCHITECTURE.md](ARCHITECTURE.md) owns adoption decisions; `package.json` records installed versions.
 
 # 35. Status
 
 **Hero brief confirmed:** use the concept in [PROJECT.md](PROJECT.md#core-creative-concept). Implementation may choose procedural/assets/shader techniques as needed. Before production implementation, validate terrain, water, sun, fog, camera path, DOM handoff, and desktop/mobile performance in a focused hero prototype. Do not commit to a complex asset pipeline before that validation.
+
+# 36. Phase 2 Prototype Decisions
+
+The hero now loads the user-provided Low-Poly Floating Island glTF from `src/assets/3Dmodel/island/` through `IslandModel`. Its existing materials and island geometry are preserved. The export's large cyan ocean plane is named `Object_2` with the generic `Material`, so the loader explicitly omits it before calculating bounds. World bounds normalize the island to 28 units across, and its lowest point is anchored 0.12 world units below the animated ocean surface. An outer group rotates the centered island 15 degrees left around world Y, retaining its position and waterline. Placement and viewing angle await user visual acceptance.
+
+The source model contains approximately 2,476 triangles before water removal and approximately 160 KB of glTF/binary data. Its nine materials use PBR base-color factors; the export contains no image textures or texture references. Preserve these authored colors rather than inventing missing maps or overriding color space. Geometry remains the same across tiers; high/medium/low adapt DPR (1.75/1.25/1) and water detail, with low capped at 30fps. Existing frame-time downgrade thresholds remain 28ms for high/medium and 55ms for low after warmup. There is no automatic geometry simplification or claim of measured performance.
+
+The scene and its intro share a Suspense boundary: the sun/fog animation and readiness signal wait for the island model. Vite URL imports include both the glTF and its binary sidecar; a private loading manager maps the relative binary path to its emitted URL. The loader caches one model resource set across route visits. Each mount clones the object hierarchy, retaining shared materials/geometry with `dispose={null}`; memory should plateau after the first load, not return to zero on route exit. Event/timer cleanup remains explicit.
+
+The SVG fallback is not mounted during normal scene loading. A dark background leads directly into the actual rendered island; its first completed frame triggers the DOM/canvas reveal. A 1.6-second sun/light/fog progression supplies the dawn intro. Reduced motion, Save-Data, or at most two reported logical cores skip the scene. Import/render errors, shader compilation failure, and context loss preserve the fallback. Context loss ends that scene mount; a later route mount may try again. Hidden tabs, offscreen hero, and open navigation stop continuous rendering. The manual pause control was removed at the user's request. Procedural sun/water resources are disposed by Fiber; imported model resources intentionally remain in the single loader cache; listeners/timers are cleaned up explicitly. Profile actual renderer memory after repeated route entry/exit before claiming cleanup acceptance.
+
+The elevated camera looks toward the island center at `(0, 2, -8)`, revealing surrounding water. Portrait viewports increase camera distance based on aspect ratio to preserve the whole island. Camera travel is limited to 2.5 world units forward and 0.65 down across one viewport of native scroll. Pointer offsets are at most 0.45 horizontally and 0.18 vertically (well under three degrees at the chosen target distance), mouse only. Camera position damps without per-frame React updates. A dark DOM veil takes over as scroll progresses; a quiet, text-free end of the landscape establishes the tone for Phase 3 without adding its content.
+
+Provisional acceptance targets: approximately 60fps on representative desktop, approximately 30fps on the low tier, immediate DOM/fallback availability, no accumulating GPU resources across route changes, and no continuous frames while inactive. These are targets, not measured results. Production acceptance, mobile composition, and frame/memory profiling remain pending with the user; do not expand the asset pipeline yet.
+
+
+
+

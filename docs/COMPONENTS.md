@@ -1,4 +1,4 @@
-# COMPONENTS.md
+﻿# COMPONENTS.md
 
 ## Purpose
 
@@ -61,3 +61,9 @@ Detailed behavior belongs in `THREE_D.md`.
 ## Component Rule
 
 Follow [CONVENTIONS.md](CONVENTIONS.md#react) for component practices. This map assigns responsibilities, not a requirement to build every component. Interaction, visuals, motion, and scene details stay in their specialist documents.
+
+## Phase 2 implemented components
+
+`sections/Hero` owns DOM composition, deferred loading, visibility, pause, and local scene failure containment. `sections/LandscapeFallback` supplies the immediate decorative SVG. `three/HeroScene` owns Canvas, camera, quality sampling, atmosphere, and sun, with dedicated `IslandModel` and `Water` components. `hooks/useMediaQuery` subscribes to live media preferences; `data/hero` keeps the minimal identity content replaceable. Later proposed components remain unimplemented.
+
+

@@ -19,15 +19,14 @@ export default function AppLayout() {
 
   return (
     <>
-      <a className="skip-link" href="#main-content">
-        Skip to content
-      </a>
       <Header />
       <main
         ref={mainRef}
         id="main-content"
         tabIndex={-1}
-        className="pt-[calc(var(--navigation-top)+var(--navigation-control-size)+1.5rem)] mx-auto min-h-svh max-w-content px-page pb-section-sm"
+        className={location.pathname === "/"
+          ? "min-h-svh"
+          : "pt-[calc(var(--navigation-top)+var(--navigation-control-size)+1.5rem)] mx-auto min-h-svh max-w-content px-page pb-section-sm"}
       >
         <Outlet />
       </main>

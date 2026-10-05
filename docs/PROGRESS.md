@@ -1,4 +1,4 @@
-# Progress
+﻿# Progress
 
 ## Purpose
 
@@ -6,17 +6,25 @@ Track planning readiness and implementation milestones. Checkboxes describe actu
 
 ## Current Status
 
-**Phase:** Phase 1 implementation complete; user-run build and browser acceptance remain pending. Phase 0 browser acceptance is also still open.
+**Phase:** Phase 2 hero source is implemented; the reported `Hero.tsx` syntax error has been fixed. User-run build/browser/performance acceptance remains pending. Phase 0 browser and Phase 1 validation are still open.
 
-**Latest decisions recorded:** All four audience goals; all discussed sections and Lab; a separate Contact page later; generated demo content and repeated imagery; `anku.avif` for photography; Manrope and Instrument Serif; the existing palette; pnpm; modern mobile/desktop support; and the established hero concept.
+**Hero simplification:** Removed the visible name, its entry animation, and the manual pause/resume feature at the user's request. A screen-reader heading preserves semantic identity; Explore remains at the bottom of the opening. The imported island is rotated 15 degrees left around its centered world-Y pivot without changing its shoreline height. The current asset folder is `src/assets/3Dmodel/island/`. Reduced-motion fallback and menu/tab/offscreen suspension remain. Static review only; build, mobile framing, rotation, Explore, and automatic suspension checks are pending with the user.
 
-**Structure:** Header controls, fullscreen menu, and navigation data are consolidated in `src/components/layout/Header.tsx`. The navigation component folder and standalone navigation data file have been removed. Ordinary styling now uses Tailwind; shared geometry, scroll locking, dialog transitions, and keyframes remain in `src/index.css`. Static review only; user validation remains pending.
+**Opening correction:** Normal loading starts on a dark background and reveals only the actual 3D island after its first rendered frame. The sun rises, light increases, and fog clears over 1.6 seconds; the Explore cue receives short, coordinated emphasis. The alternate SVG no longer flashes before WebGL. Static/failure paths still use it. Cold-load, throttled-network, reduced-motion, and failure checks remain pending with the user.
 
-**Current scope:** Header/navigation only on the homepage. Placeholder pages, demo homepage sections, and unused page-preview data were removed as requested. Not-found/error handling and the foundation remain. Scrollbars are hidden globally while scrolling remains enabled. Unbuilt menu destinations show NotFound, including `/contact`.
+**Material and line-artifact correction:** The current glTF has nine colored PBR materials and no image textures or texture references; authored materials remain intact. Renderer antialiasing is enabled, camera near distance increased to 0.5 for depth precision, and key/fill lighting reduced to preserve model colors. Water no longer displaces undersampled short waves or derives flat normals from individual triangles: three grid-resolved swells and continuous analytic normals replace them, with two pixel-filtered fragment ripple layers on high/medium. Repeating glint stripes are removed and wave time survives quality changes. Static review only; island colors, line artifacts, shader compilation, desktop/mobile cost, shoreline, and automatic suspension await user validation.
 
-**Completed:** Phase 0 foundation plus the fixed two-circle header, fullscreen modal navigation, structured destinations, hover/focus previews, current-route indicators, route dismissal, responsive layout, and reduced-motion CSS. The interrupted Phase 1 edits were recovered and statically reviewed; no new packages are needed.
+**Model integration:** The user changed the hero asset to Low-Poly Floating Island, now in `src/assets/3Dmodel/island/scene.gltf`. Its large cyan water plane uses the generic `Material`, so it is removed by its `Object_2` node identity before bounds are calculated. The remaining island is normalized independently and lifted so only 0.12 world units of its lowest point sit below the animated ocean. Credits identify Low-Poly Floating Island by Ram Surya. No dependency changes or validation commands were run. User checks: cold reload, production binary URL, shoreline height, mobile framing, reduced motion, and memory plateau across route visits.
 
-**Working agreement:** The user owns package installation, Git, app/server execution, and all validation. Agents edit source/docs and perform static review. Historical Phase 0 check results below do not validate the Phase 1 changes.
+**Earlier composition decision:** Replace the water corridor with a contained grassy mountain island, preserve the faceted mesh style, and reduce hero text to the name and small controls. Responsive camera framing and the static fallback were revised with it. Static review only; prior checks do not validate this revision.
+
+**Current scope:** The user authorized Phase 2, superseding the earlier header-only homepage. The homepage now contains the existing navigation and the hero with its DOM handoff. Phase 3 introduction and later content/routes remain deferred; unbuilt destinations still use NotFound. Native scrolling and hidden scrollbar chrome remain.
+
+**Implemented:** Screen-reader hero identity and visible Explore cue; a faceted grassy mountain island, visible shoreline, sparse grass tufts, and surrounding water; SVG fallback only for static preferences or scene failure; lazy imported island, procedural water, sun, fog, and camera; three quality tiers with measured downgrade logic; restrained pointer/native-scroll progression; reduced-motion/data-saving fallbacks; offscreen/menu/tab suspension; scene failure isolation and resource cleanup paths.
+
+**Dependencies:** Three.js, React Three Fiber, and Drei are already recorded in `package.json`. Scene code uses Three.js/Fiber. `@types/three` is now recorded in the user-managed manifest; no additional package is needed for the island revision. No manifests or lockfiles were edited by the agent.
+
+**Working agreement:** Static source review only. The user owns packages, Git, servers, builds, lint, browsers, and profiling. Earlier passing checks do not validate Phase 2. Do not mark the phase accepted before runtime and performance evidence is supplied.
 
 # Phase 0 — Foundation
 
@@ -36,7 +44,7 @@ Goal: establish a usable technical baseline after planning decisions are ready.
 - [x] Start development/production-preview servers and verify HTTP delivery of route URLs, JS/CSS, favicon, and all three font files; confirm generated token utilities
 - [ ] Finish browser acceptance: rendered routes, back/forward, contact hash, skip link and focus, font loading, responsive/reduced-motion layouts, and forced error recovery
 
-**Done when:** the app boots cleanly, routing and global styling work, and feature work can begin without restructuring. The build and local development server pass; Phase 0 remains open until browser acceptance is verified. HTTP delivery does not establish rendered route correctness. The homepage is intentionally empty apart from its header/navigation; unbuilt routes use NotFound.
+**Done when:** the app boots cleanly, routing and global styling work, and feature work can begin without restructuring. The build and local development server pass; Phase 0 remains open until browser acceptance is verified. HTTP delivery does not establish rendered route correctness. The homepage now includes the Phase 2 hero; unbuilt routes use NotFound.
 
 # Phase 1 — Header & Navigation
 
@@ -67,15 +75,39 @@ No tests, builds, servers, browsers, package operations, or Git commands were ru
 
 Goal: validate and build the signature opening in [THREE_D.md](THREE_D.md).
 
-- [ ] Compose DOM typography with the canvas and static fallback
-- [ ] Prototype terrain, water, sun, atmosphere, and camera
-- [ ] Validate desktop/mobile performance before expanding the asset pipeline
-- [ ] Add restrained pointer and scroll progression
-- [ ] Coordinate entry, typography, and 3D-to-DOM handoff
-- [ ] Implement progressive loading and reduced-motion/low-power behavior
-- [ ] Check frame rate, memory, and cleanup
+- [x] Compose DOM typography with the canvas and static fallback
+- [x] Implement the terrain, water, sun, atmosphere, and camera prototype
+- [ ] User: validate desktop/mobile performance before expanding the asset pipeline
+- [x] Add restrained pointer and scroll progression
+- [x] Coordinate entry, typography, and 3D-to-DOM handoff (Phase 3 content remains deferred)
+- [x] Implement progressive loading and reduced-motion/low-power behavior
+- [x] Add visibility suspension, error/context-loss fallback, and cleanup paths
+- [x] User added `@types/three` (confirmed in package.json)
+- [ ] User: run lint and build for the revised island hero
+- [ ] User: verify frame rate, memory, cleanup, accessibility, and visual behavior
 
-**Done when:** the hero communicates the identity, loads reliably, and hands off to content across quality tiers.
+**Done when:** the hero communicates the identity, loads reliably, and hands off to content across quality tiers. Source implementation is ready for user verification; this acceptance condition is not yet confirmed.
+
+**Prototype decisions:** Imported Low-Poly Floating Island glTF plus an analytic water shader. The source has approximately 2,476 triangles before removing its ocean plane. Geometry is shared across tiers; DPR caps remain 1.75/1.25/1.0. Low rendering is capped at 30fps. Frame-time samples can lower quality and eventually use the static fallback. See [THREE_D.md](THREE_D.md#36-phase-2-prototype-decisions) for thresholds and lifecycle details, and [MOTION.md](MOTION.md#phase-2-choreography) for the handoff.
+
+**User commands:**
+
+```powershell
+pnpm.cmd lint
+pnpm.cmd build
+pnpm.cmd dev
+```
+
+**Focused acceptance checklist:**
+
+1. At 320px, tablet, desktop, and short landscape sizes, check the left-turned island's complete shoreline, grassy slopes, rocky summit, sun, and surrounding water, readable Explore cue, header clearance, and absence of horizontal overflow. Confirm there is no visible name or pause control and the screen-reader heading remains. Confirm the model's sand/grass/rock colors remain visible and water has no triangular grid lines or pixelated horizon bands. Check late font loading and browser zoom.
+2. Follow “Explore” by keyboard and touch; confirm native scroll, reachable end of the landscape, visible focus, and back/forward behavior. Opening the menu or hiding the tab should freeze water and camera, resuming when active. Retest Phase 1 menu focus/scroll locking.
+3. Enable reduced motion before load and toggle it live: preserve the landscape/copy without the canvas or entry transform. Check Save-Data where available. Block the lazy scene chunk or disable WebGL: navigation and fallback must remain usable.
+4. With the scene loaded, use developer tools to simulate `WEBGL_lose_context` on its canvas. Confirm the static landscape survives without route failure. Reload or navigate away/back to try a fresh mount.
+5. Profile a production preview (`pnpm.cmd preview` after build) on real desktop/mobile devices: target about 60fps desktop and 30fps low tier. Inspect `data-scene-quality` on the scene wrapper for tier selection/downgrade. Throttle to exercise fallback; these thresholds are provisional until measured.
+6. Record frames/CPU with the menu open, tab hidden, and hero offscreen (once later content allows scrolling fully past it). Confirm continuous work stops. Repeat Home → unbuilt route → Home at least ten times and check that WebGL contexts, geometry/material memory, listeners, and timers do not accumulate. Report device/browser, timing, and memory observations.
+
+No lint, build, server, browser, test, package, or Git commands were run by the agent. Visual, accessibility, performance, and GPU cleanup acceptance remain pending.
 
 # Phase 3 — Homepage Introduction
 
@@ -240,16 +272,14 @@ Goal: prepare a complete public release.
 
 ## Current Priorities
 
-1. User: run the Phase 1 lint/build and focused browser checklist above, including the outstanding Phase 0 route checks.
-2. Address any issues the user reports; keep validation status truthful.
-3. When requested, begin the Phase 2 hero prototype with consistent visuals and adaptive performance.
-4. Build portfolio content in its owning phases; add substantive route content and defer the separate Contact page.
-
-This pass completes Phase 1 implementation only. Acceptance and later phases remain open.
+1. User: run Phase 2 lint/build and the focused acceptance checklist for the revised island composition.
+2. Resolve reported visual, accessibility, rendering, or performance issues; keep acceptance truthful.
+3. Finish outstanding Phase 0/1 browser checks against the current build.
+4. Validate the supplied glTF on desktop/mobile before adding more assets. Begin Phase 3 only when requested.
 
 ## Blockers
 
-No package or content blocker remains for Phase 1. Runtime, build, and browser verification await user results under the agreed workflow. Dummy content and repeated images remain authorized. Gallery behavior, hero techniques, and performance thresholds belong to later prototypes. Font license records remain a production asset-preparation task.
+Runtime/build/browser/performance evidence is pending under the user-owned validation workflow. No content or external scene-asset blocker exists. Font license records remain a production preparation task.
 
 ## Known Decisions Still Pending
 
@@ -271,8 +301,8 @@ No package or content blocker remains for Phase 1. Runtime, build, and browser v
 - [ ] Refine detailed compositions, font-role balance, scales, and breakpoints through feature prototypes.
 - [ ] Number/order of dummy projects and Lab entries; gallery model using repeated imagery.
 - [x] Implement numbered fullscreen menu composition and initial CSS motion timings; user visual acceptance pending.
-- [ ] Choose camera path and hero-to-DOM handoff.
-- [ ] Rendering techniques, quality thresholds, and measurable performance budgets.
+- [x] Choose a restrained forward/down camera path and dark DOM handoff for the Phase 2 prototype; user visual acceptance pending.
+- [x] Define procedural terrain/water techniques, initial quality thresholds, and provisional performance targets; measurements remain pending.
 - [ ] Optional cursor/smoothing/particles and advanced transitions where they improve the experience.
 - [ ] Final scene assets, source/license records, and optimized exports.
 
@@ -289,3 +319,8 @@ Do not reopen confirmed choices merely because their implementation details rema
 ## Progress Update Rule
 
 After meaningful work, update checkboxes, current phase/priorities, blockers, and open decisions. Add tasks under their owning phase and mark a phase complete only when its **Done when** condition is met. Keep this a current status reference, not a detailed changelog.
+
+
+
+
+

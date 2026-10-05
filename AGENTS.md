@@ -1,4 +1,4 @@
-# AGENTS.md
+﻿# AGENTS.md
 
 ## Project
 
@@ -55,7 +55,7 @@ Before significant work:
 1. Read this file, [README.md](README.md), and [PROGRESS.md](docs/PROGRESS.md).
 2. Read the specialist documents relevant to the task, using the [documentation map](README.md#documentation-responsibilities).
 3. Inspect the current implementation and reuse its patterns.
-4. Stay within the requested scope. Implement only the phase or work the user has requested; Phase 1 is currently authorized.
+4. Stay within the requested scope. Implement only the phase or work the user has requested; Phase 2 is currently authorized; later phases remain deferred.
 
 The specialist document owns its domain. If documents conflict, surface the conflict and update stale guidance when the evidence or an approved decision resolves it. Do not silently choose a new direction.
 
@@ -97,4 +97,5 @@ Keep [PROGRESS.md](docs/PROGRESS.md) current after meaningful planning or implem
 
 ## Current Status
 
-Phase 0 foundation and Phase 1 header/navigation are implemented. The user requested a header-only homepage: omit placeholder pages and demo homepage sections; retain not-found/error handling and essential infrastructure. Hide scrollbar chrome globally while preserving scrolling. Phase 1 build/browser checks and Phase 0 browser acceptance await user validation. Substantive portfolio content and scenes remain in later phases. The user has confirmed initial scope, demo content, fonts, palette, package manager, and device goals; detailed implementation choices remain flexible. [PROGRESS.md](docs/PROGRESS.md) is the current status reference.
+Phase 0 foundation, Phase 1 header/navigation, and Phase 2 hero source implementation are present. The user authorized the Phase 2 landscape, superseding the earlier header-only homepage scope. Keep later homepage sections and unbuilt routes deferred; retain not-found/error handling and hidden scrollbar chrome with native scrolling. Phase 2 build, browser, performance, and cleanup acceptance remain pending with the user, as do earlier outstanding checks. The hero uses procedural React Three Fiber scenery and an authored static fallback. See [PROGRESS.md](docs/PROGRESS.md) for current dependencies and verification requirements.
+

@@ -1,4 +1,4 @@
-# PROJECT.md
+﻿# PROJECT.md
 
 ## Project Name
 
@@ -22,7 +22,7 @@ Mountains, water, sunlight, horizon, fog, and atmosphere provide the narrative l
 
 **Nature represents Anku's world and personality; structured interfaces represent the work.**
 
-**Confirmed hero brief:** follow this established concept with a stylized mountain-and-water landscape, sun, fog/atmosphere, cinematic DOM typography, restrained pointer/scroll response, and a connected transition into editorial content. Preserve the dawn-to-daylight-to-sunset narrative across the experience. [THREE_D.md](THREE_D.md) and [MOTION.md](MOTION.md) define the supporting options; implementation may choose techniques through prototyping.
+**Confirmed hero brief:** follow this established concept with a contained grassy island with a faceted rocky mountain, surrounding water, sun, fog/atmosphere, and minimal DOM typography, restrained pointer/scroll response, and a connected transition into editorial content. The user refined the opening toward an island composition, with very little text so the environment carries the first impression. Use the supplied inspiration image for its calm, contained-world composition; retain the existing faceted mesh style. Preserve the dawn-to-daylight-to-sunset narrative across the experience. [THREE_D.md](THREE_D.md) and [MOTION.md](MOTION.md) define the supporting options; implementation may choose techniques through prototyping.
 
 ## Product Goals
 
@@ -193,4 +193,6 @@ This file owns product intent, positioning, goals, audience, scope, and creative
 
 ## Current Status
 
-**Foundation implementation.** Phase 0 adds the route/styling baseline; portfolio content and interactions remain future work. Initial scope and demo-content approach are confirmed. Fonts, palette, pnpm, browser/device goals, and the existing hero concept are accepted. Detailed layouts and implementation techniques will be validated during prototyping. See [PROGRESS.md](PROGRESS.md).
+**Phase 2 source implementation.** The route/styling baseline, header/navigation, and procedural dawn hero are implemented; user validation remains pending. Later portfolio content remains in its owning phases. Initial scope and demo-content approach are confirmed. Fonts, palette, pnpm, browser/device goals, and the existing hero concept are accepted. Detailed layouts and implementation techniques will be validated during prototyping. See [PROGRESS.md](PROGRESS.md).
+
+

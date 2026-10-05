@@ -327,3 +327,7 @@ The Phase 0 baseline is wired in `src/index.css` using Tailwind theme namespaces
 # 18. Status
 
 **Confirmed foundation:** Manrope, Instrument Serif, the palette above, and a consistent cross-device experience. Spacing, typography scale, font-role composition, breakpoints, and token wiring will be refined during implementation. Font selection and palette selection are no longer pending.
+
+## Phase 2 island composition
+
+The user refined the hero to a grassy mountain island surrounded by water, retaining the faceted mesh style. Muted meadow greens, stone, and sand are local landscape material colors; the global UI palette remains unchanged. The name sits quietly above the island with small controls at the bottom. Keep the shoreline visible, the mountain sculptural, and the water calm. Avoid covering the landscape with large paragraphs or a second hero slogan. The reference informs composition and atmosphere, not copied buildings, boats, branding, or interface elements.
