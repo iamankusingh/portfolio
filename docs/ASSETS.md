@@ -164,3 +164,14 @@ Update this inventory as selections are finalized; the preparation checklist liv
 - Integration: source materials retained, the composition normalized to 28 world units, the large cyan `Object_2` water plane omitted, and the lowest model point placed 0.12 world units below the animated ocean. Existing lighting/intro remain. Original files are unmodified.
 - Visible attribution and adaptation notice: the hero's **Scene credits** disclosure.
 - Browser framing, shoreline height, load paths, and performance remain pending user validation.
+
+## Imported cloud
+
+- Asset: **Cloud Test** by **Andrey Martyanov**; user-supplied in `src/assets/3Dmodel/cloud/`.
+- Source: https://sketchfab.com/3d-models/cloud-test-6d1fff581b3a424d88ee2125f909f3f3
+- Author: https://sketchfab.com/3dartel
+- License: **CC BY 4.0**, documented in `cloud/license.txt`; attribution is in the hero's Scene credits disclosure.
+- Files: `scene.gltf`, `scene.bin` (99,200 bytes), base-color PNG (58,073 bytes), emissive JPEG (37,260 bytes). Original files are preserved.
+- Geometry: 800 triangles per cloud; four copies share cached geometry/materials/textures.
+- Adaptations: centered and normalized to varied widths, repeated at four sky positions/yaws, opacity set to 0.14, emissive intensity to 0.35, transparent depth writes disabled. Authored texture maps and vertex colors are retained. Vite URL imports resolve all sidecars in production.
+- Validation pending: production asset URLs, transparency sorting/overdraw, mobile framing and frame times, and resource plateau on repeated route visits.

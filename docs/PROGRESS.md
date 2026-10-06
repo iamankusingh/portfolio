@@ -6,9 +6,15 @@ Track planning readiness and implementation milestones. Checkboxes describe actu
 
 ## Current Status
 
+**Shared high quality:** The user requested identical graphics on PC, tablet, and smartphone. Removed device/CPU tier selection, frame-time downgrades and slow-frame fallback, mobile 30fps timer, and CPU-based static fallback. All devices use antialiasing, DPR cap 1.75, 256×256 water geometry, and 768×768 reflections. Reduced-motion/Save-Data preferences, rendering failure fallbacks, and menu/tab/offscreen suspension remain. Static review only; lint/build and cross-device appearance, frame-time, and resource checks remain pending.
+
 **Phase:** Phase 2 hero source is implemented; the reported `Hero.tsx` syntax error has been fixed. User-run build/browser/performance acceptance remains pending. Phase 0 browser and Phase 1 validation are still open.
 
-**Hero simplification:** Removed the visible name, its entry animation, and the manual pause/resume feature at the user's request. A screen-reader heading preserves semantic identity; Explore remains at the bottom of the opening. The imported island is rotated 15 degrees left around its centered world-Y pivot without changing its shoreline height. The current asset folder is `src/assets/3Dmodel/island/`. Reduced-motion fallback and menu/tab/offscreen suspension remain. Static review only; build, mobile framing, rotation, Explore, and automatic suspension checks are pending with the user.
+**3D water revision:** The user authorized extra rendering cost for visible wave geometry. Water now uses four Gerstner layers with horizontal/vertical movement, tangent-derived normals, shoreline attenuation, pixel-filtered ripples, and distorted planar reflections of the actual island/clouds/sun through the installed Three.js Reflector. All devices use 131,072 triangles and a 768-square reflection target. Each presented frame adds a scene render. Wave time persists while mounted; geometry/material/render-target cleanup is explicit. No packages, tests, builds, servers, or browsers were run. Static review only; shader compilation, rolling wave appearance, reflection alignment/clipping, waterline, frame time, and GPU resource disposal remain pending user validation.
+
+**Clouds and lighting:** Added four copies of the supplied Cloud Test glTF at different sky positions, widths, and yaw angles. The cloud's binary and both textures use explicit Vite URL mapping. Cached cloud geometry/materials/textures are shared; transparent surfaces disable depth writes. Reduced warm key strength, added a restrained cool fill, and narrowed/dimmed the water highlight. The sun now rises from y=7 to y=10 at z=-36, with its animated position shared by the water reflection, to fit the elevated camera. The visible name and pause control had returned in the current source and are removed again. Scene credits and the Explore destination are restored, including CC BY 4.0 cloud attribution. The user's island yaw is currently +36 degrees and is preserved. Static review only; lint/build, all asset URLs, cloud transparency/framing, lighting, mobile performance, and reduced-motion checks remain pending with the user.
+
+**Hero simplification:** Removed the visible name and the manual pause/resume feature at the user's request. A screen-reader heading preserves semantic identity; Explore remains at the bottom of the opening. The island rotates around its centered world-Y pivot without changing its shoreline height; its current yaw follows the user's source adjustment. The current asset folder is `src/assets/3Dmodel/island/`. Reduced-motion fallback and menu/tab/offscreen suspension remain. Static review only; build, mobile framing, rotation, Explore, and automatic suspension checks are pending with the user.
 
 **Opening correction:** Normal loading starts on a dark background and reveals only the actual 3D island after its first rendered frame. The sun rises, light increases, and fog clears over 1.6 seconds; the Explore cue receives short, coordinated emphasis. The alternate SVG no longer flashes before WebGL. Static/failure paths still use it. Cold-load, throttled-network, reduced-motion, and failure checks remain pending with the user.
 
@@ -20,7 +26,7 @@ Track planning readiness and implementation milestones. Checkboxes describe actu
 
 **Current scope:** The user authorized Phase 2, superseding the earlier header-only homepage. The homepage now contains the existing navigation and the hero with its DOM handoff. Phase 3 introduction and later content/routes remain deferred; unbuilt destinations still use NotFound. Native scrolling and hidden scrollbar chrome remain.
 
-**Implemented:** Screen-reader hero identity and visible Explore cue; a faceted grassy mountain island, visible shoreline, sparse grass tufts, and surrounding water; SVG fallback only for static preferences or scene failure; lazy imported island, procedural water, sun, fog, and camera; three quality tiers with measured downgrade logic; restrained pointer/native-scroll progression; reduced-motion/data-saving fallbacks; offscreen/menu/tab suspension; scene failure isolation and resource cleanup paths.
+**Implemented:** Screen-reader hero identity and visible Explore cue; a faceted grassy mountain island, visible shoreline, sparse grass tufts, and surrounding water; SVG fallback only for static preferences or scene failure; lazy imported island, procedural water, sun, fog, and camera; shared high-quality rendering across devices; restrained pointer/native-scroll progression; reduced-motion/data-saving fallbacks; offscreen/menu/tab suspension; scene failure isolation and resource cleanup paths.
 
 **Dependencies:** Three.js, React Three Fiber, and Drei are already recorded in `package.json`. Scene code uses Three.js/Fiber. `@types/three` is now recorded in the user-managed manifest; no additional package is needed for the island revision. No manifests or lockfiles were edited by the agent.
 
@@ -80,15 +86,15 @@ Goal: validate and build the signature opening in [THREE_D.md](THREE_D.md).
 - [ ] User: validate desktop/mobile performance before expanding the asset pipeline
 - [x] Add restrained pointer and scroll progression
 - [x] Coordinate entry, typography, and 3D-to-DOM handoff (Phase 3 content remains deferred)
-- [x] Implement progressive loading and reduced-motion/low-power behavior
+- [x] Implement progressive loading and reduced-motion/data-saving behavior
 - [x] Add visibility suspension, error/context-loss fallback, and cleanup paths
 - [x] User added `@types/three` (confirmed in package.json)
 - [ ] User: run lint and build for the revised island hero
 - [ ] User: verify frame rate, memory, cleanup, accessibility, and visual behavior
 
-**Done when:** the hero communicates the identity, loads reliably, and hands off to content across quality tiers. Source implementation is ready for user verification; this acceptance condition is not yet confirmed.
+**Done when:** the hero communicates the identity, loads reliably, and hands off to content across devices. Source implementation is ready for user verification; this acceptance condition is not yet confirmed.
 
-**Prototype decisions:** Imported Low-Poly Floating Island glTF plus an analytic water shader. The source has approximately 2,476 triangles before removing its ocean plane. Geometry is shared across tiers; DPR caps remain 1.75/1.25/1.0. Low rendering is capped at 30fps. Frame-time samples can lower quality and eventually use the static fallback. See [THREE_D.md](THREE_D.md#36-phase-2-prototype-decisions) for thresholds and lifecycle details, and [MOTION.md](MOTION.md#phase-2-choreography) for the handoff.
+**Prototype decisions:** Imported Low-Poly Floating Island glTF plus an analytic water shader. The source has approximately 2,476 triangles before removing its ocean plane. All devices use full geometry, DPR cap 1.75, full water detail, and 768-square reflections. There is no mobile frame-rate cap or automatic downgrade. See [THREE_D.md](THREE_D.md#23-shared-high-quality) for rendering policy.
 
 **User commands:**
 
@@ -104,8 +110,10 @@ pnpm.cmd dev
 2. Follow “Explore” by keyboard and touch; confirm native scroll, reachable end of the landscape, visible focus, and back/forward behavior. Opening the menu or hiding the tab should freeze water and camera, resuming when active. Retest Phase 1 menu focus/scroll locking.
 3. Enable reduced motion before load and toggle it live: preserve the landscape/copy without the canvas or entry transform. Check Save-Data where available. Block the lazy scene chunk or disable WebGL: navigation and fallback must remain usable.
 4. With the scene loaded, use developer tools to simulate `WEBGL_lose_context` on its canvas. Confirm the static landscape survives without route failure. Reload or navigate away/back to try a fresh mount.
-5. Profile a production preview (`pnpm.cmd preview` after build) on real desktop/mobile devices: target about 60fps desktop and 30fps low tier. Inspect `data-scene-quality` on the scene wrapper for tier selection/downgrade. Throttle to exercise fallback; these thresholds are provisional until measured.
+5. Profile a production preview (`pnpm.cmd preview` after build) on desktop, tablet, and smartphone using identical high-quality settings. About 60fps is a provisional target, not a measured guarantee. Confirm `data-scene-quality` stays `high` even under CPU throttling, with no automatic downgrade or slow-frame fallback.
 6. Record frames/CPU with the menu open, tab hidden, and hero offscreen (once later content allows scrolling fully past it). Confirm continuous work stops. Repeat Home → unbuilt route → Home at least ten times and check that WebGL contexts, geometry/material memory, listeners, and timers do not accumulate. Report device/browser, timing, and memory observations.
+7. Cold-load development and production preview: confirm the cloud glTF, binary, and both texture URLs load; check four soft clouds at varied sky locations without rectangular edges or dark depth artifacts. Verify the sun is visible below the header, the water highlight is restrained, Scene credits contain the cloud attribution, and the visible name/pause control are absent. Profile transparent cloud overdraw on mobile.
+8. Check the revised ocean from desktop and portrait viewports: visible moving wave ridges, distorted island/cloud reflections, stable shoreline, no mirror seams or triangular bands. Check menu/tab suspension and reduced-motion fallback. Profile production frame times on desktop/tablet/smartphone and verify reflection targets do not accumulate after repeated route visits.
 
 No lint, build, server, browser, test, package, or Git commands were run by the agent. Visual, accessibility, performance, and GPU cleanup acceptance remain pending.
 

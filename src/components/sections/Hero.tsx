@@ -9,7 +9,6 @@ import {
   useState,
 } from "react";
 import type { ErrorInfo, ReactNode } from "react";
-import { hero } from "../../data/hero";
 import useMediaQuery from "../../hooks/useMediaQuery";
 import LandscapeFallback from "./LandscapeFallback";
 
@@ -32,7 +31,7 @@ class SceneBoundary extends Component<
   }
 }
 
-function prefersStaticLandscape() {
+function prefersDataSavingLandscape() {
   const connection =
     "connection" in navigator ? navigator.connection : undefined;
   const saveData =
@@ -40,24 +39,20 @@ function prefersStaticLandscape() {
     typeof connection === "object" &&
     "saveData" in connection &&
     connection.saveData === true;
-  return Boolean(
-    saveData ||
-    (navigator.hardwareConcurrency > 0 && navigator.hardwareConcurrency <= 2),
-  );
+  return Boolean(saveData);
 }
 
 export default function Hero() {
   const section = useRef<HTMLElement>(null);
   const reducedMotion = useMediaQuery("(prefers-reduced-motion: reduce)");
-  const [constrained] = useState(prefersStaticLandscape);
+  const [dataSaving] = useState(prefersDataSavingLandscape);
   const [requested, setRequested] = useState(false);
   const [active, setActive] = useState(false);
-  const [paused, setPaused] = useState(false);
   const [ready, setReady] = useState(false);
   const [failed, setFailed] = useState(false);
   const onReady = useCallback(() => setReady(true), []);
   const onUnavailable = useCallback(() => setFailed(true), []);
-  const staticLandscape = reducedMotion || constrained || failed;
+  const staticLandscape = reducedMotion || dataSaving || failed;
 
   useEffect(() => {
     const element = section.current;
@@ -110,7 +105,7 @@ export default function Hero() {
                 <Suspense fallback={null}>
                   <HeroScene
                     host={section}
-                    active={active && !paused}
+                    active={active}
                     onPresented={onReady}
                     onUnavailable={onUnavailable}
                   />
@@ -124,36 +119,14 @@ export default function Hero() {
       </div>
 
       {/* Main content */}
-      <div className="mx-auto flex min-h-[max(100svh,30rem)] flex-col justify-between px-page pt-[calc(var(--navigation-top)+var(--navigation-control-size)+1.5rem)] pb-6 sm:pb-8">
-        <h1
-          id="hero-title"
-          className="hero-name text-center font-display text-[clamp(2.75rem,5.5vw,5.5rem)] leading-none tracking-tight"
-        >
-          {hero.name}
-        </h1>
-        <div className="hero-controls mt-72 flex items-end justify-between gap-6 text-small">
-          <a
-            href="#hero-outlook"
-            aria-label="Explore the landscape"
-            className="inline-flex min-h-11 items-center gap-3 underline-offset-8 hover:underline"
-          >
-            <span aria-hidden="true">↓</span> Explore
-          </a>
-          {requested && !staticLandscape && (
-            <button
-              type="button"
-              aria-pressed={paused}
-              onClick={() => setPaused(!paused)}
-              className="min-h-11 cursor-pointer underline-offset-8 hover:underline"
-            >
-              {paused ? "Resume motion" : "Pause motion"}
-            </button>
-          )}
-        </div>
+      <div className="mx-auto min-h-[max(100svh,30rem)] flex flex-col justify-end px-page pt-[calc(var(--navigation-top)+var(--navigation-control-size)+1.5rem)] pb-6 sm:pb-8">
+        <h3 className="hero-controls w-fit mx-auto flex items-end text-small">
+          <span aria-hidden="true">↓</span> Explore
+        </h3>
       </div>
 
       {/* 3D model credits */}
-      {/* <div
+      <div
         id="hero-outlook"
         tabIndex={-1}
         aria-label="End of opening landscape"
@@ -182,8 +155,30 @@ export default function Hero() {
             . Adapted scale and placement; embedded water omitted; animated
             water, lighting, and intro added.
           </p>
+          <p className="pb-4">
+            Clouds based on{" "}
+            <a
+              className="underline"
+              href="https://sketchfab.com/3d-models/cloud-test-6d1fff581b3a424d88ee2125f909f3f3"
+            >
+              Cloud Test
+            </a>{" "}
+            by{" "}
+            <a className="underline" href="https://sketchfab.com/3dartel">
+              Andrey Martyanov
+            </a>
+            , licensed under{" "}
+            <a
+              className="underline"
+              href="https://creativecommons.org/licenses/by/4.0/"
+            >
+              CC BY 4.0
+            </a>
+            . Adapted opacity, lighting response, scale, and placement; repeated
+            in the sky.
+          </p>
         </details>
-      </div> */}
+      </div>
     </section>
   );
 }

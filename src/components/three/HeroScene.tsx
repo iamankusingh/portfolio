@@ -1,37 +1,33 @@
 ﻿// Hero scene (water, island, sun, and camera motion)
-import { Suspense, useCallback, useEffect, useRef, useState } from "react";
+import {
+  Suspense,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import type { RefObject } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { ACESFilmicToneMapping, MathUtils, SRGBColorSpace } from "three";
+import {
+  ACESFilmicToneMapping,
+  MathUtils,
+  SRGBColorSpace,
+  Vector3,
+} from "three";
 import type { DirectionalLight, Fog, Mesh } from "three";
 import IslandModel from "./IslandModel";
 import Water from "./Water";
+import Clouds from "./Clouds";
 
-type Quality = "high" | "medium" | "low";
 type SceneProps = { host: RefObject<HTMLElement | null>; active: boolean };
-const qualitySettings = {
-  high: { dpr: 1.75 },
-  medium: { dpr: 1.25 },
-  low: { dpr: 1 },
-};
-
-function initialQuality(): Quality {
-  const coarse = window.matchMedia("(pointer: coarse)").matches;
-  const cores = navigator.hardwareConcurrency || 4;
-  if (coarse || cores <= 4) return "low";
-  return cores >= 8 ? "high" : "medium";
-}
 
 function SceneMotion({
   host,
   active,
-  quality,
-  onSlow,
   onReady,
   onLost,
 }: SceneProps & {
-  quality: Quality;
-  onSlow: () => void;
   onReady: () => void;
   onLost: () => void;
 }) {
@@ -42,9 +38,6 @@ function SceneMotion({
     y: 0,
     scroll: 0,
     shade: -1,
-    frames: 0,
-    elapsed: 0,
-    warmup: 0,
     renderedFrames: 0,
   });
 
@@ -95,23 +88,13 @@ function SceneMotion({
     element.addEventListener("pointerleave", reset);
     window.addEventListener("scroll", scroll, { passive: true });
     window.addEventListener("resize", scroll);
-    motion.current.frames = 0;
-    motion.current.elapsed = 0;
-    motion.current.warmup = 0;
     return () => {
       element.removeEventListener("pointermove", move);
       element.removeEventListener("pointerleave", reset);
       window.removeEventListener("scroll", scroll);
       window.removeEventListener("resize", scroll);
     };
-  }, [host, active, quality]);
-
-  useEffect(() => {
-    if (!active || quality !== "low") return;
-    // The low tier renders at up to 30fps, with no continuous loop while inactive.
-    const timer = window.setInterval(invalidate, 1000 / 30);
-    return () => window.clearInterval(timer);
-  }, [active, quality, invalidate]);
+  }, [host, active]);
 
   useFrame(({ camera }, delta) => {
     const state = motion.current;
@@ -149,21 +132,17 @@ function SceneMotion({
       );
       state.shade = state.scroll;
     }
-    state.warmup += step;
-    if (state.warmup < 2) return;
-    state.frames++;
-    state.elapsed += Math.min(delta, 0.25);
-    if (state.frames >= 120) {
-      if (state.elapsed / state.frames > (quality === "low" ? 0.055 : 0.028))
-        onSlow();
-      state.frames = 0;
-      state.elapsed = 0;
-    }
   });
   return null;
 }
 
-function DawnReveal({ active }: { active: boolean }) {
+function DawnReveal({
+  active,
+  sunPosition,
+}: {
+  active: boolean;
+  sunPosition: Vector3;
+}) {
   const sun = useRef<Mesh>(null);
   const light = useRef<DirectionalLight>(null);
   const fog = useRef<Fog>(null);
@@ -173,8 +152,10 @@ function DawnReveal({ active }: { active: boolean }) {
     elapsed.current = Math.min(1.6, elapsed.current + Math.min(delta, 0.05));
     const progress = elapsed.current / 1.6;
     const eased = 1 - Math.pow(1 - progress, 3);
-    if (sun.current) sun.current.position.y = 20 + eased * 10;
-    if (light.current) light.current.intensity = 0.6 + eased * 1.4;
+    if (sun.current) {
+      sun.current.position.set(sunPosition.x, 7 + eased * 3, sunPosition.z);
+    }
+    if (light.current) light.current.intensity = 0.45 + eased * 0.9;
     if (fog.current) {
       fog.current.near = 25 + eased * 40;
       fog.current.far = 70 + eased * 130;
@@ -182,16 +163,17 @@ function DawnReveal({ active }: { active: boolean }) {
   });
   return (
     <>
-      <fog ref={fog} attach="fog" args={["#748e96", 25, 70]} />
+      <fog ref={fog} attach="fog" args={["#91a6ac", 25, 70]} />
       <directionalLight
         ref={light}
-        position={[0, 25, -8]}
-        color="#ffe0a0"
-        intensity={0.6}
+        position={[-12, 22, 12]}
+        color="#fff0d5"
+        intensity={0.45}
       />
-      <mesh ref={sun} position={[0, 20, -52]}>
-        <sphereGeometry args={[3.8, 32, 16]} />
-        <meshBasicMaterial color="#f5c84b" toneMapped={false} fog={false} />
+      <ambientLight color="#fff0d5" intensity={0.45} />
+      <mesh ref={sun} position={[2, 7, -36]}>
+        <sphereGeometry args={[2.4, 32, 16]} />
+        <meshBasicMaterial color="#f3d8a0" toneMapped={false} fog={false} />
       </mesh>
     </>
   );
@@ -206,29 +188,24 @@ export default function HeroScene({
   onPresented: () => void;
   onUnavailable: () => void;
 }) {
-  const [quality, setQuality] = useState<Quality>(initialQuality);
   const [ready, setReady] = useState(false);
+  const sunPosition = useMemo(() => new Vector3(2, 7, -36), []);
 
   const onReady = useCallback(() => {
     setReady(true);
     onPresented();
   }, [onPresented]);
   const onLost = onUnavailable;
-  const onSlow = useCallback(() => {
-    if (quality === "low") onUnavailable();
-    else setQuality(quality === "high" ? "medium" : "low");
-  }, [quality, onUnavailable]);
-  const settings = qualitySettings[quality];
 
   return (
     <div
       className="absolute inset-0 transition-opacity duration-1100ms motion-reduce:transition-none"
       style={{ opacity: ready ? 1 : 0 }}
-      data-scene-quality={quality}
+      data-scene-quality="high"
     >
       <Canvas
-        dpr={[1, settings.dpr]}
-        frameloop={active && quality !== "low" ? "always" : "demand"}
+        dpr={[1, 1.75]}
+        frameloop={active ? "always" : "demand"}
         camera={{ position: [0, 14, 28], fov: 45, near: 0.5, far: 260 }}
         gl={{
           antialias: true,
@@ -249,19 +226,23 @@ export default function HeroScene({
         }}
       >
         <Suspense fallback={null}>
-          <color attach="background" args={["#748e96"]} />
+          <color attach="background" args={["#91a6ac"]} />
 
-          <hemisphereLight args={["#d6e2d5", "#263e3b", 1.1]} />
-          <DawnReveal active={active} />
+          <hemisphereLight args={["#dce6e5", "#485951", 0.85]} />
+          <directionalLight
+            position={[18, 10, -28]}
+            color="#bdd5e2"
+            intensity={0.35}
+          />
+          <DawnReveal active={active} sunPosition={sunPosition} />
           <IslandModel />
-          <Water active={active} detailed={quality !== "low"} />
+          <Clouds />
+          <Water active={active} sunPosition={sunPosition} />
           <SceneMotion
             host={host}
             active={active}
-            quality={quality}
             onReady={onReady}
             onLost={onLost}
-            onSlow={onSlow}
           />
         </Suspense>
       </Canvas>

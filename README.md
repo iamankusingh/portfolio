@@ -73,7 +73,7 @@ Specialist documents own their domains; summaries link to them instead of repeat
 
 ## Repository Status
 
-Phase 2 hero source implementation is present: a screen-reader identity heading, Explore cue, a lazy imported island model surrounded by animated water, authored SVG fallback, pointer/scroll progression, adaptive rendering, and automatic motion suspension. The visible name and manual pause control were removed at the user's request. The existing header/navigation and route infrastructure remain. Later content and routes are deferred. Build, browser, performance, and lifecycle acceptance are user-owned and pending; see [PROGRESS.md](docs/PROGRESS.md). The scene dependencies and Three.js types are recorded in the user-managed package manifest.
+Phase 2 hero source implementation is present: a screen-reader identity heading, Explore cue, a lazy imported island model surrounded by animated water, authored SVG fallback, pointer/scroll progression, shared high-quality rendering across PCs, tablets, and smartphones, and automatic motion suspension. The visible name and manual pause control were removed at the user's request. The existing header/navigation and route infrastructure remain. Later content and routes are deferred. Build, browser, performance, and lifecycle acceptance are user-owned and pending; see [PROGRESS.md](docs/PROGRESS.md). The scene dependencies and Three.js types are recorded in the user-managed package manifest.
 
 ## Development
 
