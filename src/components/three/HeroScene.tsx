@@ -19,6 +19,7 @@ import type { DirectionalLight, Fog, Mesh } from "three";
 import IslandModel from "./IslandModel";
 import Water from "./Water";
 import Clouds from "./Clouds";
+import MountainRange from "./MountainRange";
 
 type SceneProps = { host: RefObject<HTMLElement | null>; active: boolean };
 
@@ -44,7 +45,7 @@ function SceneMotion({
   const camera = useThree((state) => state.camera);
   useEffect(() => {
     camera.position.set(0, 2 + 12 * framing, -8 + 36 * framing);
-    camera.lookAt(0, 2, -8);
+    camera.lookAt(0, 4, -8);
     invalidate();
   }, [camera, framing, invalidate]);
 
@@ -124,7 +125,7 @@ function SceneMotion({
       3,
       step,
     );
-    camera.lookAt(0, 2 - state.scroll * 0.5, -8);
+    camera.lookAt(0, 4 - state.scroll * 0.5, -8);
     if (state.shade !== state.scroll) {
       host.current?.style.setProperty(
         "--hero-shade",
@@ -153,17 +154,17 @@ function DawnReveal({
     const progress = elapsed.current / 1.6;
     const eased = 1 - Math.pow(1 - progress, 3);
     if (sun.current) {
-      sun.current.position.set(sunPosition.x, 7 + eased * 3, sunPosition.z);
+      sun.current.position.set(sunPosition.x, 16 + eased * 10, sunPosition.z);
     }
     if (light.current) light.current.intensity = 0.45 + eased * 0.9;
     if (fog.current) {
-      fog.current.near = 25 + eased * 40;
-      fog.current.far = 70 + eased * 130;
+      fog.current.near = 25 + eased * 95;
+      fog.current.far = 200 + eased * 1200;
     }
   });
   return (
     <>
-      <fog ref={fog} attach="fog" args={["#91a6ac", 25, 70]} />
+      <fog ref={fog} attach="fog" args={["#91a6ac", 25, 200]} />
       <directionalLight
         ref={light}
         position={[-12, 22, 12]}
@@ -171,8 +172,8 @@ function DawnReveal({
         intensity={0.45}
       />
       <ambientLight color="#fff0d5" intensity={0.45} />
-      <mesh ref={sun} position={[2, 7, -36]}>
-        <sphereGeometry args={[2.4, 32, 16]} />
+      <mesh ref={sun} position={[0, 16, -700]}>
+        <sphereGeometry args={[32, 32, 16]} />
         <meshBasicMaterial color="#f3d8a0" toneMapped={false} fog={false} />
       </mesh>
     </>
@@ -189,7 +190,7 @@ export default function HeroScene({
   onUnavailable: () => void;
 }) {
   const [ready, setReady] = useState(false);
-  const sunPosition = useMemo(() => new Vector3(2, 7, -36), []);
+  const sunPosition = useMemo(() => new Vector3(0, 26, -700), []);
 
   const onReady = useCallback(() => {
     setReady(true);
@@ -206,7 +207,7 @@ export default function HeroScene({
       <Canvas
         dpr={[1, 1.75]}
         frameloop={active ? "always" : "demand"}
-        camera={{ position: [0, 14, 28], fov: 45, near: 0.5, far: 260 }}
+        camera={{ position: [0, 14, 28], fov: 45, near: 0.5, far: 1100 }}
         gl={{
           antialias: true,
           alpha: false,
@@ -216,7 +217,7 @@ export default function HeroScene({
         }}
         fallback={null}
         onCreated={({ camera, gl }) => {
-          camera.lookAt(0, 2, -8);
+          camera.lookAt(0, 4, -8);
           gl.debug.onShaderError = () => {
             console.error(
               "Hero shader compilation failed; retaining the static landscape.",
@@ -236,6 +237,7 @@ export default function HeroScene({
           />
           <DawnReveal active={active} sunPosition={sunPosition} />
           <IslandModel />
+          <MountainRange />
           <Clouds />
           <Water active={active} sunPosition={sunPosition} />
           <SceneMotion

@@ -177,6 +177,24 @@ export default function Hero() {
             . Adapted opacity, lighting response, scale, and placement; repeated
             in the sky.
           </p>
+          <p className="pb-4">
+            Mountains based on{" "}
+            <a
+              className="underline"
+              href="https://sketchfab.com/3d-models/low-poly-mountain-free-dabda46f9be2416c93a4b584be17786b"
+            >
+              Low Poly Mountain Free
+            </a>{" "}
+            by{" "}
+            <a className="underline" href="https://sketchfab.com/lowpolyartwork">
+              Poly Craftsman
+            </a>
+            , licensed under{" "}
+            <a className="underline" href="https://creativecommons.org/licenses/by/4.0/">
+              CC BY 4.0
+            </a>
+            . Adapted scale, rotation, and placement; repeated as a distant range.
+          </p>
         </details>
       </div>
     </section>

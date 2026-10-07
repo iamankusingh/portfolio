@@ -4,8 +4,8 @@ export default function NotFound() {
   return (
     <section className="py-section-md">
       <title>Page not found — Anku Singh</title>
-      <p className="mb-6 text-small text-text-muted-dark">404</p>
-      <h1 className="font-display text-h1">This page isn’t here.</h1>
+      <p className="mb-6 text-6xl text-text-muted-dark">404</p>
+      <h1 className="font-display text-h1">Not Found.</h1>
       <p className="mt-6 max-w-reading">
         The address may be incorrect, or this page may not be available yet.
       </p>

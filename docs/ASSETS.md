@@ -161,9 +161,20 @@ Update this inventory as selections are finalized; the preparation checklist liv
 - Author: https://sketchfab.com/ramsurya
 - License: Sketchfab Standard License, documented in `src/assets/3Dmodel/island/license.txt`.
 - Original files: `scene.gltf` (16,560 bytes) and `scene.bin` (143,024 bytes), preserved in that folder. The nine PBR materials use base-color factors; no image textures or texture references are present in this export.
-- Integration: source materials retained, the composition normalized to 28 world units, the large cyan `Object_2` water plane omitted, and the lowest model point placed 0.12 world units below the animated ocean. Existing lighting/intro remain. Original files are unmodified.
+- Integration: source materials retained, the composition normalized to 28 world units, the large cyan `Object_2` water plane omitted, and the lowest model point placed 1.25 world units below the mean ocean surface. Existing lighting/intro remain. Original files are unmodified.
 - Visible attribution and adaptation notice: the hero's **Scene credits** disclosure.
 - Browser framing, shoreline height, load paths, and performance remain pending user validation.
+
+## Imported mountain
+
+- Asset: **Low Poly Mountain Free** by **Poly Craftsman**, supplied in `src/assets/3Dmodel/mountain/`.
+- Source: https://sketchfab.com/3d-models/low-poly-mountain-free-dabda46f9be2416c93a4b584be17786b
+- Author: https://sketchfab.com/lowpolyartwork
+- License: **CC BY 4.0**, documented in `mountain/license.txt`; attribution and adaptations are in the hero's Scene credits.
+- Files: `scene.gltf` and `scene.bin` (554,796 bytes), preserved unmodified. No image textures; two authored PBR materials supply dark rock and pale snow.
+- Geometry: 5,137 triangles per mountain; eight copies share cached geometry/materials (41,096 triangles total).
+- Integration: eight overlapping copies with uniform widths 135–190 units and varied Y rotations form the far range at z=-420 to -455. Centers are 60 units apart; bases sit beneath the mean waterline at y=-2. Scene fog establishes distance, the sun is behind the range, and ocean reflections include it. A private manager maps the binary to its Vite URL.
+- Validation pending: production URL, waterline/base intersections, desktop/portrait framing, reflections, frame time, and memory plateau across route visits.
 
 ## Imported cloud
 

@@ -21,9 +21,8 @@ const vertexShader = /* glsl */ `
 
   vec3 oceanPoint(vec2 point) {
     float radius = length(point - vec2(0.0, -8.0));
-    // Keep larger waves clear of the island shoreline.
-    float envelope = smoothstep(13.0, 24.0, radius)
-      * (1.0 - smoothstep(100.0, 220.0, radius));
+    // Full-strength waves reach the island; only the distant horizon tapers.
+    float envelope = 1.0 - smoothstep(100.0, 220.0, radius);
     vec3 displacement = gerstner(point, vec2(1.0, 0.32), 21.0, 0.42, 0.9)
       + gerstner(point, vec2(-0.38, 1.0), 13.0, 0.25, 1.15)
       + gerstner(point, vec2(0.72, -1.0), 8.0, 0.14, 1.4)
@@ -34,7 +33,7 @@ const vertexShader = /* glsl */ `
   void main() {
     vec4 rest = modelMatrix * vec4(position, 1.0);
     vec3 world = oceanPoint(rest.xz);
-    // Tangents include horizontal wave travel and shoreline attenuation.
+    // Tangents include horizontal wave travel and distant-wave attenuation.
     vec3 tangentX = oceanPoint(rest.xz + vec2(0.08, 0.0)) - world;
     vec3 tangentZ = oceanPoint(rest.xz + vec2(0.0, 0.08)) - world;
     vNormal = normalize(cross(tangentZ, tangentX));
@@ -108,16 +107,23 @@ export default function Water({
     const group = host.current;
     if (!group) return;
     const segments = 256;
-    const geometry = new PlaneGeometry(600, 600, segments, segments);
+    const geometry = new PlaneGeometry(1800, 1800, segments, segments);
     const positions = geometry.attributes.position;
-    // Concentrate vertices around the island instead of spending them at the horizon.
+    // Retain dense foreground waves while extending the sea under the far range.
+    const oceanCoordinate = (value: number) => {
+      const distance = Math.abs(value);
+      const coordinate = distance <= 0.7
+        ? Math.pow(distance / 0.7, 1.5) * 80
+        : 80 + ((distance - 0.7) / 0.3) * 820;
+      return Math.sign(value) * coordinate;
+    };
     for (let i = 0; i < positions.count; i++) {
-      const x = positions.getX(i) / 300;
-      const y = positions.getY(i) / 300;
+      const x = positions.getX(i) / 900;
+      const y = positions.getY(i) / 900;
       positions.setXY(
         i,
-        Math.sign(x) * Math.pow(Math.abs(x), 1.6) * 300,
-        Math.sign(y) * Math.pow(Math.abs(y), 1.6) * 300,
+        oceanCoordinate(x),
+        oceanCoordinate(y),
       );
     }
     positions.needsUpdate = true;

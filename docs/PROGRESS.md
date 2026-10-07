@@ -6,6 +6,12 @@ Track planning readiness and implementation milestones. Checkboxes describe actu
 
 ## Current Status
 
+**Island waterline:** Lowered the island by 1.13 world units, setting its lowest point 1.25 units beneath the mean ocean surface instead of 0.12. This immerses more of the lower geometry and reduces separation as full-strength waves move through troughs. Scale, rotation, water motion, and surrounding scenery remain unchanged. Static review only; user lint/build and visual checks of the lower rim, rocks, grass, dock clearance, and reflections remain pending.
+
+**Waves around the island:** Removed the 13–24-unit calm-water mask so the same full-strength Gerstner waves and moving normals reach the shoreline. Only distant-horizon attenuation remains; geometry, reflections, and shared device quality are unchanged. Static review only; user lint/build and browser checks of shoreline wave motion, dock/rock intersections, reflections, and reduced-motion/menu suspension remain pending.
+
+**Distant mountain range:** Revised the user's supplied model into eight tightly overlapping copies, 135–190 units wide at z=-420 to -455, with centers spaced 60 units apart and varied yaw. Bases sit at y=-2 under the ocean. The sun is behind the entire range at z=-700, radius 32, rising from y=16 to 26. Extended the camera far plane to 1100 and dawn fog's final range to 120–1400; raised the camera target to y=4 for more sky. Extended the ocean to 1800 units while keeping its 256×256 grid and concentrating vertices in the foreground. All devices retain identical high quality. Eight models share cached geometry/materials (41,096 triangles). Static review only; lint/build, distant silhouettes, peak/sun occlusion, camera framing, reflections, and frame/memory checks remain pending with the user.
+
 **Shared high quality:** The user requested identical graphics on PC, tablet, and smartphone. Removed device/CPU tier selection, frame-time downgrades and slow-frame fallback, mobile 30fps timer, and CPU-based static fallback. All devices use antialiasing, DPR cap 1.75, 256×256 water geometry, and 768×768 reflections. Reduced-motion/Save-Data preferences, rendering failure fallbacks, and menu/tab/offscreen suspension remain. Static review only; lint/build and cross-device appearance, frame-time, and resource checks remain pending.
 
 **Phase:** Phase 2 hero source is implemented; the reported `Hero.tsx` syntax error has been fixed. User-run build/browser/performance acceptance remains pending. Phase 0 browser and Phase 1 validation are still open.
