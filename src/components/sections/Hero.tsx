@@ -195,6 +195,24 @@ export default function Hero() {
             </a>
             . Adapted scale, rotation, and placement; repeated as a distant range.
           </p>
+          <p className="pb-4">
+            Boat based on{" "}
+            <a
+              className="underline"
+              href="https://sketchfab.com/3d-models/fishing-boat-e07c8b9cc38543879a4e2fe145e62df6"
+            >
+              Fishing Boat
+            </a>{" "}
+            by{" "}
+            <a className="underline" href="https://sketchfab.com/JasperTobias">
+              JasperTobias
+            </a>
+            , licensed under{" "}
+            <a className="underline" href="https://creativecommons.org/licenses/by-nc/4.0/">
+              CC BY-NC 4.0
+            </a>
+            . Adapted scale, rotation, and placement beside the island shore.
+          </p>
         </details>
       </div>
     </section>

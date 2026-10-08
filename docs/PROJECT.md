@@ -193,6 +193,4 @@ This file owns product intent, positioning, goals, audience, scope, and creative
 
 ## Current Status
 
-**Phase 2 source implementation.** The route/styling baseline, header/navigation, and procedural dawn hero are implemented; user validation remains pending. Later portfolio content remains in its owning phases. Initial scope and demo-content approach are confirmed. Fonts, palette, pnpm, browser/device goals, and the existing hero concept are accepted. Detailed layouts and implementation techniques will be validated during prototyping. See [PROGRESS.md](PROGRESS.md).
-
-
+**Phase 2 source implementation:** foundation, header/navigation, and the island hero are present. User acceptance is pending; later content and routes remain deferred. See [PROGRESS.md](PROGRESS.md).

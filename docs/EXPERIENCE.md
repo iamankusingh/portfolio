@@ -317,11 +317,11 @@ Maintain the same complete story, typography, palette, navigation identity, and 
 
 # 19. Reduced Motion
 
-Keep the same content order and hierarchy with immediate navigation and static or brief-fade alternatives. The complete adaptation rules live in [MOTION.md](MOTION.md#19-reduced-motion), with scene behavior in [THREE_D.md](THREE_D.md#27-reduced-motion).
+Keep the same content order and hierarchy with immediate navigation and static or brief-fade alternatives. The complete adaptation rules live in [MOTION.md](MOTION.md#19-reduced-motion), with scene behavior in [THREE_D.md](THREE_D.md#reduced-motion).
 
 # 20. WebGL Failure / Fallback Experience
 
-If 3D fails or is reduced, show a lightweight nature-inspired fallback while keeping hero copy, navigation, projects, personal story, photography, and contact available. [THREE_D.md](THREE_D.md#26-fallback-strategy) owns fallback options.
+If 3D fails or is reduced, show a lightweight nature-inspired fallback while keeping hero copy, navigation, projects, personal story, photography, and contact available. [THREE_D.md](THREE_D.md#fallback-strategy) owns fallback options.
 
 # 21. Experience Priorities
 
@@ -365,8 +365,8 @@ This file owns the journey, navigation behavior, section purpose/order, major in
 
 ## Phase 2 implementation
 
-The opening frames a grassy island surrounded by open water, with fourteen clouds at varied higher sky positions and a visible sun behind the island. The visible name and manual pause control are removed at the user's request; identity remains available as a screen-reader heading. The island's centered rotation follows the user's current source adjustment. The Explore anchor reaches the quiet end of the landscape and its collapsed Scene credits; there is no extra slogan or placeholder introduction. Native scrolling remains available, with no forced intro. The menu suspends scene animation while open. Reduced-motion and Save-Data visitors receive the static fallback. Other devices share identical high-quality rendering. Portrait framing pulls the camera back to retain the complete shoreline. Browser and visual acceptance remain pending.
+The opening contains an island, ocean currents and reflections, distant mountains with the sun behind them, moving clouds across the sky, and a parked boat. Keep visible text limited to Explore and Scene credits; no visible name or pause control.
 
+Reveal the scene directly from a dark background with the dawn intro. Preserve native scrolling, responsive framing, and the same graphics quality across devices. Suspend animation while navigation is open. Use the static fallback for reduced motion, Save-Data, or rendering failure.
 
-The normal opening now reveals the actual island directly from a dark background, with rising sunlight and clearing fog. The static island appears only for reduced-motion/Save-Data preferences or a rendering failure, avoiding a visible switch between different island compositions. Identity and navigation are available throughout loading and the intro.
-
+Later sections remain deferred; acceptance is tracked in [PROGRESS.md](PROGRESS.md).

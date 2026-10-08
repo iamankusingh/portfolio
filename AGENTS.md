@@ -93,9 +93,9 @@ For real portfolio content, use supplied facts or explicit TBD/TODO markers. Gen
 
 ## Progress Tracking
 
-Keep [PROGRESS.md](docs/PROGRESS.md) current after meaningful planning or implementation work. Record completed milestones, current priorities, blockers, and open decisions. Preserve truthful checkboxes; do not turn it into a detailed changelog.
+Keep [PROGRESS.md](docs/PROGRESS.md) current after meaningful planning or implementation work. Record completed milestones, current priorities, blockers, and open decisions. Preserve truthful checkboxes; do not turn it into a detailed changelog. Keep all documentation brief and focused on the current state. Replace stale summaries rather than appending every adjustment. Omit minor tuning history, implementation mathematics, coordinates, and duplicated detail; preserve essential requirements, asset licenses, and pending acceptance.
 
 ## Current Status
 
-Phase 0 foundation, Phase 1 header/navigation, and Phase 2 hero source implementation are present. The user authorized the Phase 2 landscape, superseding the earlier header-only homepage scope. Keep later homepage sections and unbuilt routes deferred; retain not-found/error handling and hidden scrollbar chrome with native scrolling. Phase 2 build, browser, performance, and cleanup acceptance remain pending with the user, as do earlier outstanding checks. The hero uses procedural React Three Fiber scenery and an authored static fallback. See [PROGRESS.md](docs/PROGRESS.md) for current dependencies and verification requirements.
+Phase 0 foundation, Phase 1 header/navigation, and Phase 2 hero source implementation are present. The user authorized the Phase 2 landscape, superseding the earlier header-only homepage scope. Keep later homepage sections and unbuilt routes deferred; retain not-found/error handling and hidden scrollbar chrome with native scrolling. Phase 2 build, browser, performance, and cleanup acceptance remain pending with the user, as do earlier outstanding checks. The hero uses imported landscape models, animated ocean water, and an authored static fallback. See [PROGRESS.md](docs/PROGRESS.md) for current dependencies and verification requirements.
 

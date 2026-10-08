@@ -9,7 +9,6 @@ Map the confirmed initial pages and the deferred contact page. Dummy content is 
 | `/` | Complete homepage journey in [EXPERIENCE.md](EXPERIENCE.md), including the contact finale. | Included initially |
 | `/about` | Personal story, portrait, philosophy, and capabilities; generated demo copy permitted. | Included initially |
 | `/work` | Project index populated with dummy projects initially. | Included initially |
-| `/work/:slug` | Case-study template populated with clearly identified demo data. | Included initially |
 | `/photography` | Image-led gallery using `anku.avif` as the initial repeatable image. | Included initially |
 | `/lab` | Experiments and creative exploration, with demo entries allowed. | Included initially |
 | `/contact` | Separate contact page in a later iteration. | Required later; deferred |

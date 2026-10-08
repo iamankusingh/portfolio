@@ -20,6 +20,7 @@ import IslandModel from "./IslandModel";
 import Water from "./Water";
 import Clouds from "./Clouds";
 import MountainRange from "./MountainRange";
+import ShoreBoat from "./ShoreBoat";
 
 type SceneProps = { host: RefObject<HTMLElement | null>; active: boolean };
 
@@ -237,6 +238,7 @@ export default function HeroScene({
           />
           <DawnReveal active={active} sunPosition={sunPosition} />
           <IslandModel />
+          <ShoreBoat />
           <MountainRange />
           <Clouds active={active} />
           <Water active={active} sunPosition={sunPosition} />

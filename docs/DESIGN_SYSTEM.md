@@ -330,4 +330,4 @@ The Phase 0 baseline is wired in `src/index.css` using Tailwind theme namespaces
 
 ## Phase 2 island composition
 
-The user refined the hero to a grassy mountain island surrounded by water, retaining the faceted mesh style. Muted meadow greens, stone, and sand are local landscape material colors; the global UI palette remains unchanged. The name sits quietly above the island with small controls at the bottom. Keep the shoreline visible, the mountain sculptural, and the water calm. Avoid covering the landscape with large paragraphs or a second hero slogan. The reference informs composition and atmosphere, not copied buildings, boats, branding, or interface elements.
+Keep the faceted island and surrounding ocean dominant, with soft sky, distant mountains, and natural material colors. Preserve the global UI palette and floating header. Use only a small Explore cue and Scene credits; no visible name or large hero paragraphs.
