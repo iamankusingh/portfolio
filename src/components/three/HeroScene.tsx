@@ -238,7 +238,7 @@ export default function HeroScene({
           <DawnReveal active={active} sunPosition={sunPosition} />
           <IslandModel />
           <MountainRange />
-          <Clouds />
+          <Clouds active={active} />
           <Water active={active} sunPosition={sunPosition} />
           <SceneMotion
             host={host}

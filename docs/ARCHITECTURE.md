@@ -206,7 +206,7 @@ The user owns all installation, application execution, and validation. User comm
 Normal loading shows the dark background, not the SVG. HeroScene reports readiness after a completed frame and reports failure to Hero, which selects the static fallback. The local error boundary also reports import/renderer errors. The DOM intro starts from scene readiness; identity and navigation stay available while loading.
 
 
-The imported island and cloud models are cached by useLoader. Cloned hierarchies use shared geometry/materials with disposal disabled. `Clouds` maps its binary and two texture sidecars to Vite URLs and places four copies without a new animation loop. The full scene waits inside Suspense so the intro cannot reveal water before either model arrives. DawnReveal and Water share a stable sun-position vector for the orb and its animated reflection.
+The imported island and cloud models are cached by useLoader. Island hierarchies share cached geometry/materials; clouds share geometry/textures but own material copies for independent opacity. Clouds disposes its owned materials on unmount. Its fourteen-object pool drifts and recycles in Fiber's existing frame hook without timers or React state updates; the scene's active flag suspends motion. Binary/texture sidecars use Vite URL mappings. The full scene waits inside Suspense before its intro, and the existing error/fallback paths remain.
 
 `MountainRange` follows the same cached-resource pattern, using a private binary resolver and eight cloned hierarchies with varied scale/rotation beyond the ocean. Its glTF shares the scene Suspense boundary, error handling, and reflection pass. No dependency was added; user-adjusted foreground island, clouds, lights, and controls are preserved.
 

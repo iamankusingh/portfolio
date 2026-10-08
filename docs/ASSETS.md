@@ -183,6 +183,6 @@ Update this inventory as selections are finalized; the preparation checklist liv
 - Author: https://sketchfab.com/3dartel
 - License: **CC BY 4.0**, documented in `cloud/license.txt`; attribution is in the hero's Scene credits disclosure.
 - Files: `scene.gltf`, `scene.bin` (99,200 bytes), base-color PNG (58,073 bytes), emissive JPEG (37,260 bytes). Original files are preserved.
-- Geometry: 800 triangles per cloud; four copies share cached geometry/materials/textures.
-- Adaptations: centered and normalized to varied widths, repeated at four sky positions/yaws, opacity set to 0.14, emissive intensity to 0.35, transparent depth writes disabled. Authored texture maps and vertex colors are retained. Vite URL imports resolve all sidecars in production.
+- Geometry: 800 triangles per cloud; fourteen copies share cached geometry/textures (11,200 triangles total); each owns disposable material copies for independent opacity.
+- Adaptations: centered and normalized to varied widths, repeated at fourteen higher sky positions/yaws (y=15–26, widths 10–32 units, z=-48 to -178), right-to-left drift with fade-out/recycling/fade-in, per-cycle yaw/size variation, base opacity 0.14, emissive intensity to 0.35, transparent depth writes disabled. Authored texture maps and vertex colors are retained. Vite URL imports resolve all sidecars in production.
 - Validation pending: production asset URLs, transparency sorting/overdraw, mobile framing and frame times, and resource plateau on repeated route visits.
