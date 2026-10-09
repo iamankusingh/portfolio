@@ -193,4 +193,4 @@ This file owns product intent, positioning, goals, audience, scope, and creative
 
 ## Current Status
 
-**Phase 2 source implementation:** foundation, header/navigation, and the island hero are present. User acceptance is pending; later content and routes remain deferred. See [PROGRESS.md](PROGRESS.md).
+**Phase 2 complete by user direction; Phase 3 source implemented:** a text-free opening leads into an introduction during a camera approach to the house. Current validation remains pending; Phase 4 onward and unbuilt routes remain deferred. See [PROGRESS.md](PROGRESS.md).

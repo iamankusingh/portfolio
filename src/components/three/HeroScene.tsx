@@ -1,4 +1,4 @@
-﻿// Hero scene (water, island, sun, and camera motion)
+// Hero scene (water, island, sun, and camera motion)
 import {
   Suspense,
   useCallback,
@@ -11,6 +11,7 @@ import type { RefObject } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import {
   ACESFilmicToneMapping,
+  CatmullRomCurve3,
   MathUtils,
   SRGBColorSpace,
   Vector3,
@@ -22,10 +23,13 @@ import Clouds from "./Clouds";
 import MountainRange from "./MountainRange";
 import ShoreBoat from "./ShoreBoat";
 
-type SceneProps = { host: RefObject<HTMLElement | null>; active: boolean };
+type SceneProps = { progress: RefObject<number>; active: boolean };
+
+// Center of the house body (Object_4), after IslandModel's normalization and yaw.
+const HOUSE = new Vector3(2.65, 3.16, -8.8);
 
 function SceneMotion({
-  host,
+  progress,
   active,
   onReady,
   onLost,
@@ -35,20 +39,37 @@ function SceneMotion({
 }) {
   const { gl, invalidate, size } = useThree();
   const framing = Math.max(1, 0.95 / (size.width / size.height));
+  const portrait = size.width < size.height;
   const motion = useRef({
     x: 0,
     y: 0,
-    scroll: 0,
-    shade: -1,
+    pointerX: 0,
+    pointerY: 0,
     renderedFrames: 0,
   });
-
-  const camera = useThree((state) => state.camera);
-  useEffect(() => {
-    camera.position.set(0, 2 + 12 * framing, -8 + 36 * framing);
-    camera.lookAt(0, 4, -8);
-    invalidate();
-  }, [camera, framing, invalidate]);
+  const travel = useMemo(() => {
+    const distance = Math.max(1, Math.min(framing, 1.55));
+    return {
+      path: new CatmullRomCurve3([
+        new Vector3(0, 2 + 12 * framing, -8 + 36 * framing),
+        new Vector3(-3.5, 10 * distance, 15 * distance),
+        new Vector3(
+          HOUSE.x - 7 * distance,
+          HOUSE.y + 3.8 * distance,
+          HOUSE.z + 14 * distance,
+        ),
+      ]),
+      openingTarget: new Vector3(0, 4, -8),
+      // Leave room beside the house on wide screens, below it on portrait screens.
+      closingTarget: new Vector3(
+        HOUSE.x - (portrait ? 0 : 4),
+        HOUSE.y - (portrait ? 2.6 : 0.2),
+        HOUSE.z,
+      ),
+      position: new Vector3(),
+      target: new Vector3(),
+    };
+  }, [framing, portrait]);
 
   useEffect(() => {
     const canvas = gl.domElement;
@@ -56,84 +77,55 @@ function SceneMotion({
       event.preventDefault();
       onLost();
     };
-    const element = host.current;
     canvas.addEventListener("webglcontextlost", lost);
-    return () => {
-      canvas.removeEventListener("webglcontextlost", lost);
-      element?.style.removeProperty("--hero-shade");
-    };
-  }, [gl, host, onLost]);
+    return () => canvas.removeEventListener("webglcontextlost", lost);
+  }, [gl, onLost]);
 
   useEffect(() => {
-    const element = host.current;
-    if (!element || !active) return;
+    const state = motion.current;
+    state.x = 0;
+    state.y = 0;
+    if (!active) return;
     const pointer = window.matchMedia("(hover: hover) and (pointer: fine)");
     const move = (event: PointerEvent) => {
       if (!pointer.matches || event.pointerType !== "mouse") return;
-      motion.current.x = (event.clientX / window.innerWidth - 0.5) * 2;
-      motion.current.y = (event.clientY / window.innerHeight - 0.5) * 2;
+      state.x = (event.clientX / window.innerWidth - 0.5) * 2;
+      state.y = (event.clientY / window.innerHeight - 0.5) * 2;
     };
     const reset = () => {
-      motion.current.x = 0;
-      motion.current.y = 0;
+      state.x = 0;
+      state.y = 0;
     };
-    // Scroll only records input; the renderer applies the camera update once per frame.
-    const scroll = () => {
-      motion.current.scroll = MathUtils.clamp(
-        -element.getBoundingClientRect().top / window.innerHeight,
-        0,
-        1,
-      );
-    };
-    scroll();
-    element.addEventListener("pointermove", move, { passive: true });
-    element.addEventListener("pointerleave", reset);
-    window.addEventListener("scroll", scroll, { passive: true });
-    window.addEventListener("resize", scroll);
+    window.addEventListener("pointermove", move, { passive: true });
+    document.documentElement.addEventListener("pointerleave", reset);
+    window.addEventListener("blur", reset);
     return () => {
-      element.removeEventListener("pointermove", move);
-      element.removeEventListener("pointerleave", reset);
-      window.removeEventListener("scroll", scroll);
-      window.removeEventListener("resize", scroll);
+      window.removeEventListener("pointermove", move);
+      document.documentElement.removeEventListener("pointerleave", reset);
+      window.removeEventListener("blur", reset);
     };
-  }, [host, active]);
+  }, [active]);
 
   useFrame(({ camera }, delta) => {
     const state = motion.current;
-    // useFrame precedes drawing: wait until a previous frame has actually rendered.
     if (state.renderedFrames < 2) {
       state.renderedFrames++;
       if (state.renderedFrames === 2) onReady();
       else invalidate();
     }
     if (!active) return;
+    // Native scroll is the single clock for camera travel and DOM reveal.
+    // Settle before the end so the final portion is a calm reading moment.
+    const journey = MathUtils.smoothstep(progress.current, 0, 0.85);
     const step = Math.min(delta, 0.05);
-    camera.position.x = MathUtils.damp(
-      camera.position.x,
-      state.x * 0.45,
-      3,
-      step,
-    );
-    camera.position.y = MathUtils.damp(
-      camera.position.y,
-      2 + 12 * framing - state.scroll * 0.65 - state.y * 0.18,
-      3,
-      step,
-    );
-    camera.position.z = MathUtils.damp(
-      camera.position.z,
-      -8 + 36 * framing - state.scroll * 2.5,
-      3,
-      step,
-    );
-    camera.lookAt(0, 4 - state.scroll * 0.5, -8);
-    if (state.shade !== state.scroll) {
-      host.current?.style.setProperty(
-        "--hero-shade",
-        String(state.scroll * 0.85),
-      );
-      state.shade = state.scroll;
-    }
+    state.pointerX = MathUtils.damp(state.pointerX, state.x * 0.45, 3, step);
+    state.pointerY = MathUtils.damp(state.pointerY, state.y * 0.18, 3, step);
+    travel.path.getPoint(journey, travel.position);
+    camera.position.copy(travel.position);
+    camera.position.x += state.pointerX * (1 - journey);
+    camera.position.y -= state.pointerY * (1 - journey);
+    travel.target.lerpVectors(travel.openingTarget, travel.closingTarget, journey);
+    camera.lookAt(travel.target);
   });
   return null;
 }
@@ -182,12 +174,10 @@ function DawnReveal({
 }
 
 export default function HeroScene({
-  host,
+  progress,
   active,
-  onPresented,
   onUnavailable,
 }: SceneProps & {
-  onPresented: () => void;
   onUnavailable: () => void;
 }) {
   const [ready, setReady] = useState(false);
@@ -195,8 +185,7 @@ export default function HeroScene({
 
   const onReady = useCallback(() => {
     setReady(true);
-    onPresented();
-  }, [onPresented]);
+  }, []);
   const onLost = onUnavailable;
 
   return (
@@ -243,7 +232,7 @@ export default function HeroScene({
           <Clouds active={active} />
           <Water active={active} sunPosition={sunPosition} />
           <SceneMotion
-            host={host}
+            progress={progress}
             active={active}
             onReady={onReady}
             onLost={onLost}
@@ -253,3 +242,4 @@ export default function HeroScene({
     </div>
   );
 }
+

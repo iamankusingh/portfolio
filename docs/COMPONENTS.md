@@ -9,6 +9,7 @@ Create components when they have a clear responsibility; avoid speculative wrapp
 | `AppLayout` | Persistent shell, main region, route focus, and scroll restoration |
 | `Header` | Both circular controls, fullscreen menu, destinations, previews, and modal lifecycle |
 | `Hero` | DOM composition, deferred scene loading, visibility, scrolling, and failure containment |
+| `Introduction` | Semantic identity and replaceable description revealed over the hero landscape |
 | `LandscapeFallback` | Static SVG used for preferences or scene failure |
 | `HeroScene` | Canvas, camera, sun, lighting, and atmosphere |
 | `IslandModel` | Imported island |
@@ -21,6 +22,6 @@ Create components when they have a clear responsibility; avoid speculative wrapp
 
 ## Deferred
 
-Later phases may add introduction, selected work, project case studies, capabilities, About/portrait, Lab, photography, and contact components. Share media/viewer/transition components only when needed. Do not add device-based graphics downgrades.
+Later phases may add selected work, project case studies, capabilities, About/portrait, Lab, photography, and contact components. Share media/viewer/transition components only when needed. Do not add device-based graphics downgrades.
 
 See [CONVENTIONS.md](CONVENTIONS.md) for component practices and [PROGRESS.md](PROGRESS.md) for scope and acceptance.

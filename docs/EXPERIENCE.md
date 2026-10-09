@@ -58,7 +58,7 @@ Hover or focus may reveal project media for Work, a photograph for Photography, 
 
 The menu uses a full-viewport native modal dialog. Opening focuses Home; Tab/Shift+Tab stay within the modal, and Escape or the top-right close control dismisses it. Closing without navigation returns focus to the menu trigger. Route changes dismiss it and the route shell focuses the destination. The page behind the menu is inert and scroll-locked; short screens scroll inside the menu. The logo and close control remain available at the top.
 
-Numbered editorial links sit left; decorative previews sit right at desktop widths (64rem and above). Hover and keyboard focus select the same preview. About uses the real portrait; Photography reuses it with an explicit demo label. Work and Lab use abstract typography/geometry until their actual media exists. Previews are hidden on smaller viewports; every destination remains directly available without hover or a preview tap. No placeholder contact details are displayed. The homepage now includes the Phase 2 hero; later sections remain in their owning phases.
+Numbered editorial links sit left; decorative previews sit right at desktop widths (64rem and above). Hover and keyboard focus select the same preview. About uses the real portrait; Photography reuses it with an explicit demo label. Work and Lab use abstract typography/geometry until their actual media exists. Previews are hidden on smaller viewports; every destination remains directly available without hover or a preview tap. No placeholder contact details are displayed. The homepage includes the completed Phase 2 hero and Phase 3 introduction; later sections remain in their owning phases.
 
 ## Menu Exit and Page Transition
 
@@ -84,7 +84,7 @@ A possible sequence moves from low light to a visible sun, then landscape and id
 
 ## Hero Content
 
-The user requested a landscape-led opening without the visible name or a pause-motion control. Retain a screen-reader heading for **Anku Singh** and a small Explore cue. Defer positioning paragraphs and discipline lists to later editorial content. The broader positioning remains in [PROJECT.md](PROJECT.md).
+The opening viewport contains the landscape and persistent header controls, without visible hero text, Explore, or scene credits. The following introduction supplies the semantic heading for **Anku Singh**, the role **Creative technologist**, and a short replaceable description. A focus-only skip link gives keyboard visitors immediate access to the introduction.
 
 ## Hero Interaction
 
@@ -98,7 +98,7 @@ Scroll can progress the camera, sun, fog, typography, or horizon toward the next
 
 # 4. Transition from 3D Hero to Editorial Content
 
-Make the scene and editorial page feel spatially connected. Options include water becoming the next background, an expanding horizon, a fog/light mask, or receding geometry. Choose the approach during the hero prototype; choreography belongs in [MOTION.md](MOTION.md).
+Phase 3 keeps the landscape sticky while native scrolling moves the camera toward the island house. The introduction rises naturally over the same scene as a restrained directional shade protects text contrast. Reverse scrolling retraces the journey. Static modes use the landscape followed by a normal-flow introduction, without camera travel or reveal gating. Choreography belongs in [MOTION.md](MOTION.md).
 
 # 5. Introduction / Philosophy
 
@@ -363,10 +363,11 @@ This file owns the journey, navigation behavior, section purpose/order, major in
 
 **Experience specification.** Layouts, menu composition, project order, gallery model, and transition choices remain provisional. All discussed sections are included and demo content is authorized; these layout choices can be made during implementation. Track decisions in [PROGRESS.md](PROGRESS.md).
 
-## Phase 2 implementation
+## Current implementation
 
-The opening contains an island, ocean currents and reflections, distant mountains with the sun behind them, moving clouds across the sky, and a parked boat. Keep visible text limited to Explore and Scene credits; no visible name or pause control.
+Phase 2 is complete by user direction. The opening contains an island, ocean currents and reflections, distant mountains with the sun behind them, moving clouds across the sky, and a parked boat. Phase 3 begins with no visible hero text, then introduces Anku during the camera approach to the house. Visible credits are deferred; records remain in [ASSETS.md](ASSETS.md).
 
 Reveal the scene directly from a dark background with the dawn intro. Preserve native scrolling, responsive framing, and the same graphics quality across devices. Suspend animation while navigation is open. Use the static fallback for reduced motion, Save-Data, or rendering failure.
 
-Later sections remain deferred; acceptance is tracked in [PROGRESS.md](PROGRESS.md).
+Phase 4 onward remain deferred; Phase 3 acceptance is tracked in [PROGRESS.md](PROGRESS.md).
+

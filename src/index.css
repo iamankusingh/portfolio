@@ -204,14 +204,13 @@ body:has(#site-navigation[open]) {
   }
 }
 
-/* The actual rendered island starts the intro; loading never shows a second island. */
-@media (prefers-reduced-motion: no-preference) {
-  .hero[data-intro="ready"] .hero-controls {
-    animation: hero-controls-enter 700ms 450ms ease-out both;
-  }
+/* Static content stays in normal flow; the opening remains a text-free landscape. */
+.hero[data-landscape="static"] #introduction {
+  background: var(--color-bg-dark);
 }
 
-@keyframes hero-controls-enter {
-  from { opacity: 0.75; }
-  to { opacity: 1; }
+.hero #introduction:focus-within > div { opacity: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero #introduction > div { opacity: 1; }
 }

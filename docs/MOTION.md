@@ -78,7 +78,7 @@ The hero is one of the primary narrative sequences.
 
 ## 7.1 Entry
 
-Possible sequence: low light → optional loading state resolves → sun emerges → landscape appears through fog → name → scroll cue. Content must become usable quickly; no forced intro.
+Current sequence: loading resolves → sun emerges → landscape appears through fog. The opening has no visible text; identity appears only in the scroll-driven introduction. Content remains accessible without waiting for the scene.
 
 ## 7.2 Hero Typography
 
@@ -220,9 +220,13 @@ These packages are not all installed. [ARCHITECTURE.md](ARCHITECTURE.md) owns de
 
 System direction and timing values are provisional. Validate choreography in the hero/homepage prototype and track decisions in [PROGRESS.md](PROGRESS.md).
 
-## Phase 2 choreography
+## Hero and introduction choreography
 
-Reveal the actual island from a dark background once ready, with rising sunlight and clearing fog. Keep Explore and navigation available throughout; no alternate scene or forced intro.
+Reveal the actual island from a dark background once ready, with rising sunlight and clearing fog. Keep navigation available throughout; no alternate scene or forced intro. The opening viewport is text-free.
+
+Native scroll drives one shared progress value for a curved camera approach to the house and the introduction's opacity/contrast treatment. The DOM text remains in normal flow. Ease into and out of the camera journey, reduce pointer influence during travel, and settle before the end for reading. Reverse scrolling reverses the sequence; keyboard skipping and restored scroll positions do not wait for an animation timeline. Resize observations keep progress aligned with content and viewport changes.
+
+Reduced motion, Save-Data, and scene failure use a static opening followed by immediately readable introduction content, without the extra camera-travel space. No added motion library or scroll interception is required.
 
 Clouds drift right to left and recycle offscreen. Water and subtle camera motion share automatic suspension when the menu is open, the tab is hidden, or the hero is offscreen. Reduced-motion and Save-Data visitors receive the static landscape. There is no manual pause control.
 

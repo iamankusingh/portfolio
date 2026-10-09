@@ -9,7 +9,7 @@ import bufferUrl from "../../assets/3Dmodel/island/scene.bin?url";
 const OCEAN_HEIGHT = -0.15;
 // Sink the lower geometry beyond the swell height so it meets the moving ocean.
 const SUBMERGED_DEPTH = 1.1;
-const ISLAND_YAW = Math.PI / 5;
+const ISLAND_YAW = Math.PI / 6;
 
 // A private manager resolves the glTF sidecar to Vite's hashed production URL.
 class IslandLoader extends GLTFLoader {

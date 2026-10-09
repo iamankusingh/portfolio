@@ -22,7 +22,7 @@ Build included routes in their owning phases; do not add placeholder pages to th
 
 ## Current implementation
 
-`/` renders the persistent header/navigation and Phase 2 hero inside the semantic main region. The hero closes at `/#hero-outlook`; later content and pages remain deferred. Routing, NotFound, error boundaries, fonts, design tokens, focus handling, and scroll restoration remain. Unbuilt destinations currently use NotFound.
+`/` renders the persistent header/navigation, completed Phase 2 landscape, and Phase 3 introduction inside the semantic main region. `/#introduction` targets the introduction and supports keyboard skipping. Phase 4 onward and unbuilt pages remain deferred. Routing, NotFound, error boundaries, fonts, design tokens, focus handling, and scroll restoration remain. Unbuilt destinations currently use NotFound.
 
 ## Menu destinations
 

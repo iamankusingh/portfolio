@@ -2,13 +2,15 @@
 
 ## Current Status
 
-Phase 2 hero source is implemented; user validation is pending. Only Phase 2 is authorized. Later sections and routes remain deferred.
+Phase 2 is complete at the user's request. Phase 3 introduction source is implemented and awaits user validation. Phase 4 onward and unbuilt routes remain deferred. Completion records the approved milestone, not unreported validation results.
 
 - Existing two-circle header and fullscreen navigation.
 - Imported island and parked shore boat.
 - 3D ocean with currents and reflections throughout.
 - Eight distant mountains, sun, and moving clouds across the sky.
-- Minimal hero text with Explore; no visible name or pause control.
+- Text-free opening; visible Explore and scene credits removed.
+- Native-scroll camera approach to the house and a semantic introduction over the landscape.
+- Replaceable introduction copy with an explicit preview label; keyboard skip link.
 - Dawn intro, responsive framing, and equal graphics quality across devices.
 - Static fallback, reduced-motion support, automatic suspension, and cleanup.
 
@@ -18,8 +20,8 @@ Phase 2 hero source is implemented; user validation is pending. Only Phase 2 is 
 |---|---|---|
 | 0 | Foundation, routing, fonts, design tokens | Implemented; earlier lint/build passed; browser acceptance pending |
 | 1 | Header and fullscreen navigation | Implemented; validation pending |
-| 2 | Hero and 3D landscape | Implemented; validation pending |
-| 3 | Homepage introduction | Deferred |
+| 2 | Hero and 3D landscape | Complete by user direction |
+| 3 | Homepage introduction | Implemented; user validation pending |
 | 4 | Selected work | Deferred |
 | 5 | Project detail pages | Deferred |
 | 6 | Capabilities | Deferred |
@@ -38,6 +40,8 @@ Phase 2 hero source is implemented; user validation is pending. Only Phase 2 is 
 
 - [ ] Run `pnpm.cmd lint` and `pnpm.cmd build` for the current source.
 - [ ] Check navigation, keyboard focus, touch, scrolling, and responsive layouts.
+- [ ] Check the text-free opening, house framing, forward/reverse camera travel, and introduction contrast on wide, portrait, and short screens.
+- [ ] Check `/#introduction`, keyboard skip, reload/back navigation, fast scrolling before scene readiness, and live reduced-motion changes.
 - [ ] Check scene loading, model textures, waterline, reflections, and cloud movement.
 - [ ] Check reduced motion, Save-Data, rendering failure, and inactive-scene suspension.
 - [ ] Profile performance and resource cleanup on desktop, tablet, and smartphone.
@@ -48,7 +52,7 @@ Earlier passing checks do not validate later edits. The user runs commands, serv
 
 Confirmed: pnpm, Manrope + Instrument Serif, existing palette, approved demo content, real portrait/photography, and shared high graphics quality. See [AGENTS.md](../AGENTS.md) for workflow and content rules.
 
-Pending: user acceptance, later-page compositions and gallery behavior, font license records, production asset optimization, metadata, and hosting. No content or asset blocker prevents current Phase 2 work.
+Pending: Phase 3 acceptance, later-page compositions and gallery behavior, public credits placement before launch, font license records, production asset optimization, metadata, and hosting. Original model licenses and attribution/adaptation records remain in place. No content or asset blocker prevents current Phase 3 work.
 
 ## Update Rule
 

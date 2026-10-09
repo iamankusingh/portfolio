@@ -43,7 +43,7 @@ export default function ShoreBoat() {
   }, [model]);
 
   return (
-    <group position={[10, KEEL_HEIGHT, 1]} rotation={[0, 0.8, 0]}>
+    <group position={[9, KEEL_HEIGHT, 2]} rotation={[0, 0.8, 0]}>
       <primitive
         object={boat}
         scale={scale}

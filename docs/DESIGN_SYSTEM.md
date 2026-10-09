@@ -328,6 +328,6 @@ The Phase 0 baseline is wired in `src/index.css` using Tailwind theme namespaces
 
 **Confirmed foundation:** Manrope, Instrument Serif, the palette above, and a consistent cross-device experience. Spacing, typography scale, font-role composition, breakpoints, and token wiring will be refined during implementation. Font selection and palette selection are no longer pending.
 
-## Phase 2 island composition
+## Hero and introduction composition
 
-Keep the faceted island and surrounding ocean dominant, with soft sky, distant mountains, and natural material colors. Preserve the global UI palette and floating header. Use only a small Explore cue and Scene credits; no visible name or large hero paragraphs.
+Keep the faceted island and surrounding ocean dominant, with soft sky, distant mountains, and natural material colors. Preserve the global UI palette and floating header. The opening is text-free. During the house approach, introduce Anku with large Instrument Serif typography, a small Manrope role line, and a short description. Use a restrained dark directional shade for contrast, leaving the house visible beside or above the copy. Visible scene credits are deferred.

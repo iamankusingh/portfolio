@@ -50,7 +50,9 @@ Stored in `src/assets/3Dmodel/cloud/`, licensed **CC BY 4.0**. Repeated across t
 
 ## Preparation Rules
 
-Preserve original model files and each folder's `license.txt`. Scene credits contain model attribution and adaptation notices. Resolve binaries and textures through Vite URLs.
+Preserve original model files and each folder's `license.txt`. Visible scene credits are deferred at the user's request; restore public attribution in the eventual credits placement before launch. Sources and authors remain recorded above. Resolve binaries and textures through Vite URLs.
+
+Preserved adaptation notices: island scale and placement changed, embedded water omitted, custom water/lighting/intro added; cloud opacity, lighting response, scale, and placement changed and clouds repeated; mountain scale, rotation, and placement changed and copies repeated; boat scale, rotation, and shore placement changed.
 
 Use responsive image crops, descriptive alt text, and verified metadata. Clearly identify repeated/demo images; never substitute generated portraits or photographs without approval.
 

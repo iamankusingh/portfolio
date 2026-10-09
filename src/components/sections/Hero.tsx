@@ -1,4 +1,4 @@
-﻿// Hero section
+// Hero section
 import {
   Component,
   lazy,
@@ -9,8 +9,10 @@ import {
   useState,
 } from "react";
 import type { ErrorInfo, ReactNode } from "react";
+import { Link } from "react-router";
 import useMediaQuery from "../../hooks/useMediaQuery";
 import LandscapeFallback from "./LandscapeFallback";
+import Introduction from "./Introduction";
 
 const HeroScene = lazy(() => import("../three/HeroScene"));
 
@@ -48,9 +50,9 @@ export default function Hero() {
   const [dataSaving] = useState(prefersDataSavingLandscape);
   const [requested, setRequested] = useState(false);
   const [active, setActive] = useState(false);
-  const [ready, setReady] = useState(false);
+  const progress = useRef(0);
+  const viewport = useRef<HTMLDivElement>(null);
   const [failed, setFailed] = useState(false);
-  const onReady = useCallback(() => setReady(true), []);
   const onUnavailable = useCallback(() => setFailed(true), []);
   const staticLandscape = reducedMotion || dataSaving || failed;
 
@@ -84,19 +86,63 @@ export default function Hero() {
     };
   }, []);
 
+  useEffect(() => {
+    const element = section.current;
+    const stage = viewport.current;
+    if (!element || !stage) return;
+    if (staticLandscape) {
+      progress.current = 0;
+      element.style.removeProperty("--intro-opacity");
+      element.style.removeProperty("--intro-shade");
+      return;
+    }
+
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const bounds = element.getBoundingClientRect();
+      const distance = Math.max(1, bounds.height - stage.clientHeight);
+      const value = Math.max(0, Math.min(1, -bounds.top / distance));
+      progress.current = value;
+      const reveal = Math.max(0, Math.min(1, (value - 0.5) / 0.35));
+      const opacity = reveal * reveal * (3 - 2 * reveal);
+      element.style.setProperty("--intro-opacity", String(opacity));
+      element.style.setProperty("--intro-shade", String(opacity));
+    };
+    const schedule = () => {
+      if (!frame) frame = window.requestAnimationFrame(update);
+    };
+    const resize = new ResizeObserver(schedule);
+    resize.observe(element);
+    resize.observe(stage);
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
+    update();
+    return () => {
+      window.cancelAnimationFrame(frame);
+      resize.disconnect();
+      window.removeEventListener("scroll", schedule);
+      window.removeEventListener("resize", schedule);
+      element.style.removeProperty("--intro-opacity");
+      element.style.removeProperty("--intro-shade");
+    };
+  }, [staticLandscape]);
+
   return (
     <section
       ref={section}
       aria-labelledby="hero-title"
-      data-intro={staticLandscape ? "static" : ready ? "ready" : "loading"}
+      data-landscape={staticLandscape ? "static" : "animated"}
       className="hero relative isolate bg-bg-dark"
     >
-      {/* 3D scene */}
+      <Link className="skip-link left-1/2 -translate-x-1/2" to="#introduction">
+        Skip to introduction
+      </Link>
       <div
         className="pointer-events-none absolute inset-0 -z-10 overflow-clip"
         aria-hidden="true"
       >
-        <div className="sticky top-0 h-svh min-h-120">
+        <div ref={viewport} className="sticky top-0 h-svh">
           {staticLandscape ? (
             <LandscapeFallback />
           ) : (
@@ -104,117 +150,22 @@ export default function Hero() {
               <SceneBoundary onUnavailable={onUnavailable}>
                 <Suspense fallback={null}>
                   <HeroScene
-                    host={section}
+                    progress={progress}
                     active={active}
-                    onPresented={onReady}
                     onUnavailable={onUnavailable}
                   />
                 </Suspense>
               </SceneBoundary>
             )
           )}
-          <div className="absolute inset-0 bg-[linear-gradient(0deg,#0b0d0e,transparent_24%,transparent_72%,rgba(11,13,14,0.5))]" />
-          <div className="absolute inset-0 bg-bg-dark opacity-(--hero-shade,0)" />
+          <div className="absolute inset-0 bg-[linear-gradient(0deg,rgba(11,13,14,0.35),transparent_28%,transparent_75%,rgba(11,13,14,0.25))]" />
+          <div className="absolute inset-0 bg-[linear-gradient(0deg,rgba(11,13,14,0.96),rgba(11,13,14,0.65)_65%,transparent)] opacity-(--intro-shade,0) md:bg-[linear-gradient(90deg,rgba(11,13,14,0.96),rgba(11,13,14,0.8)_42%,rgba(11,13,14,0.12)_80%)]" />
         </div>
       </div>
 
-      {/* Main content */}
-      <div className="mx-auto min-h-[max(100svh,30rem)] flex flex-col justify-end px-page pt-[calc(var(--navigation-top)+var(--navigation-control-size)+1.5rem)] pb-6 sm:pb-8">
-        <h3 className="hero-controls w-fit mx-auto flex items-end text-small">
-          <span aria-hidden="true">↓</span> Explore
-        </h3>
-      </div>
-
-      {/* 3D model credits */}
-      <div
-        id="hero-outlook"
-        tabIndex={-1}
-        aria-label="End of opening landscape"
-        className="min-h-[20svh] px-page py-6"
-      >
-        <details className="max-w-lg text-micro text-mist">
-          <summary className="flex min-h-11 cursor-pointer items-center underline-offset-4 hover:underline">
-            Scene credits
-          </summary>
-          <p className="pb-4">
-            Based on{" "}
-            <a
-              className="underline"
-              href="https://sketchfab.com/3d-models/low-poly-floating-island-9700497248364520bd2a9e61272d6b62"
-            >
-              Low-Poly Floating Island
-            </a>{" "}
-            by{" "}
-            <a className="underline" href="https://sketchfab.com/ramsurya">
-              Ram Surya
-            </a>
-            , licensed under{" "}
-            <a className="underline" href="https://sketchfab.com/licenses">
-              Sketchfab Standard License
-            </a>
-            . Adapted scale and placement; embedded water omitted; animated
-            water, lighting, and intro added.
-          </p>
-          <p className="pb-4">
-            Clouds based on{" "}
-            <a
-              className="underline"
-              href="https://sketchfab.com/3d-models/cloud-test-6d1fff581b3a424d88ee2125f909f3f3"
-            >
-              Cloud Test
-            </a>{" "}
-            by{" "}
-            <a className="underline" href="https://sketchfab.com/3dartel">
-              Andrey Martyanov
-            </a>
-            , licensed under{" "}
-            <a
-              className="underline"
-              href="https://creativecommons.org/licenses/by/4.0/"
-            >
-              CC BY 4.0
-            </a>
-            . Adapted opacity, lighting response, scale, and placement; repeated
-            in the sky.
-          </p>
-          <p className="pb-4">
-            Mountains based on{" "}
-            <a
-              className="underline"
-              href="https://sketchfab.com/3d-models/low-poly-mountain-free-dabda46f9be2416c93a4b584be17786b"
-            >
-              Low Poly Mountain Free
-            </a>{" "}
-            by{" "}
-            <a className="underline" href="https://sketchfab.com/lowpolyartwork">
-              Poly Craftsman
-            </a>
-            , licensed under{" "}
-            <a className="underline" href="https://creativecommons.org/licenses/by/4.0/">
-              CC BY 4.0
-            </a>
-            . Adapted scale, rotation, and placement; repeated as a distant range.
-          </p>
-          <p className="pb-4">
-            Boat based on{" "}
-            <a
-              className="underline"
-              href="https://sketchfab.com/3d-models/fishing-boat-e07c8b9cc38543879a4e2fe145e62df6"
-            >
-              Fishing Boat
-            </a>{" "}
-            by{" "}
-            <a className="underline" href="https://sketchfab.com/JasperTobias">
-              JasperTobias
-            </a>
-            , licensed under{" "}
-            <a className="underline" href="https://creativecommons.org/licenses/by-nc/4.0/">
-              CC BY-NC 4.0
-            </a>
-            . Adapted scale, rotation, and placement beside the island shore.
-          </p>
-        </details>
-      </div>
+      <div className="h-svh" aria-hidden="true" />
+      {!staticLandscape && <div className="h-[60svh]" aria-hidden="true" />}
+      <Introduction />
     </section>
   );
 }

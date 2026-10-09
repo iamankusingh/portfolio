@@ -4,7 +4,7 @@ An interactive creative-technologist portfolio built around **Technology × Natu
 
 ## Current Status
 
-Foundation, the two-circle header/fullscreen menu, and Phase 2 hero source are implemented. The hero combines an imported island, ocean currents and reflections, distant mountains, sun, moving clouds, and a parked boat. Later sections and routes remain deferred; current validation is pending.
+Phase 2 is complete by user direction. Phase 3 source adds a text-free landscape opening, a native-scroll camera approach to the house, and Anku's introduction over the same scene. The two-circle header, ocean, mountains, clouds, and boat remain. Phase 4 onward and unbuilt routes stay deferred; current validation is pending.
 
 See [PROGRESS.md](docs/PROGRESS.md) for phase status and [AGENTS.md](AGENTS.md) before contributing.
 

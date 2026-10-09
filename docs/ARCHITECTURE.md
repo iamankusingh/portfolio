@@ -43,7 +43,7 @@ Structured data flows through pages and components. Keep demo entries clearly id
 
 ## Hero Boundary
 
-`Hero` owns loading, fallback selection, visibility, scrolling, and scene failure containment. `HeroScene` owns the canvas, camera, lighting, sun, and fog. Separate components handle the island, mountains, clouds, boat, and water.
+`Hero` owns loading, fallback selection, visibility, native-scroll progress, and scene failure containment. One event-scheduled animation frame updates a shared progress ref and DOM reveal properties; resize observations refresh measurements. `Introduction` renders semantic text from `src/data/introduction.ts`. `HeroScene` reads the shared progress and owns the canvas, camera path, lighting, sun, and fog. Separate components handle the island, mountains, clouds, boat, and water.
 
 Load the scene lazily and coordinate its intro with readiness. Imported models share cached resources; clouds own fading material copies. Water owns its reflection resources. Clean up owned resources and event subscriptions. See [THREE_D.md](THREE_D.md) for scene behavior.
 

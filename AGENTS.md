@@ -55,7 +55,7 @@ Before significant work:
 1. Read this file, [README.md](README.md), and [PROGRESS.md](docs/PROGRESS.md).
 2. Read the specialist documents relevant to the task, using the [documentation map](README.md#documentation-responsibilities).
 3. Inspect the current implementation and reuse its patterns.
-4. Stay within the requested scope. Implement only the phase or work the user has requested; Phase 2 is currently authorized; later phases remain deferred.
+4. Stay within the requested scope. Phase 2 is complete by user direction; Phase 3 introduction and its camera transition are authorized. Phase 4 onward remain deferred.
 
 The specialist document owns its domain. If documents conflict, surface the conflict and update stale guidance when the evidence or an approved decision resolves it. Do not silently choose a new direction.
 
@@ -97,5 +97,5 @@ Keep [PROGRESS.md](docs/PROGRESS.md) current after meaningful planning or implem
 
 ## Current Status
 
-Phase 0 foundation, Phase 1 header/navigation, and Phase 2 hero source implementation are present. The user authorized the Phase 2 landscape, superseding the earlier header-only homepage scope. Keep later homepage sections and unbuilt routes deferred; retain not-found/error handling and hidden scrollbar chrome with native scrolling. Phase 2 build, browser, performance, and cleanup acceptance remain pending with the user, as do earlier outstanding checks. The hero uses imported landscape models, animated ocean water, and an authored static fallback. See [PROGRESS.md](docs/PROGRESS.md) for current dependencies and verification requirements.
+Phase 2 is marked complete at the user's request. Phase 3 source adds a text-free opening, native-scroll camera travel toward the house, and an editorial introduction over the landscape. Visible scene credits are deferred; attribution records and model licenses remain preserved. Keep Phase 4 onward and unbuilt routes deferred. Retain native scrolling, not-found/error handling, and static alternatives. Current build, browser, performance, and cleanup checks remain pending with the user; phase completion does not assert unreported test results. See [PROGRESS.md](docs/PROGRESS.md).
 

@@ -12,9 +12,13 @@ Use selective cinematic 3D to express **Technology × Nature × Human Experience
 - Fourteen clouds spread across the sky, moving right to left and recycling offscreen.
 - One boat parked beside the shore.
 - Soft lighting, fog, restrained pointer response, and native-scroll camera progression.
-- Minimal DOM text: Explore, with no visible name or manual pause control.
+- Text-free opening, followed by DOM introduction text during the camera approach to the house.
 
 Model sources and licenses belong in [ASSETS.md](ASSETS.md). Component boundaries belong in [ARCHITECTURE.md](ARCHITECTURE.md).
+
+## Phase 3 Camera
+
+Use a bounded curved approach from the existing opening view toward the house. Frame the house beside the introduction on wide screens and above it on portrait screens. `Hero` owns native-scroll progress; the scene reads that ref without React updates per frame. Camera travel settles before the reading endpoint, and pointer influence falls away during the approach. The house target corresponds to the current imported model placement; revisit it if island transforms or assets change.
 
 ## Loading and Intro
 
