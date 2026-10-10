@@ -8,7 +8,7 @@
 | Favicon | `public/favicon.ico` |
 | Portrait | `src/assets/anku.avif`; use the real image |
 | Photography | Reuse `anku.avif` for clearly marked initial demo entries |
-| Project media | Existing local imagery may be reused as identified placeholders |
+| Project media | `src/assets/work/`; see its README for filenames. Original authored `placeholder.svg` is shared until still images are supplied |
 | Fallback landscape | Authored SVG in `LandscapeFallback.tsx` |
 | Ocean | Code-authored water in `Water.tsx` |
 

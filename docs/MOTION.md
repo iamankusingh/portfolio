@@ -1,4 +1,4 @@
-﻿# MOTION.md
+# MOTION.md
 
 ## Purpose
 
@@ -70,7 +70,9 @@ Avoid random easings per component.
 
 # 6. Scroll System
 
-Smoothing is optional. Preserve native semantics, direction, deep links, history, keyboard access, and assistive technology. If Lenis or equivalent is adopted, keep interpolation subtle and responsive.
+Site-wide wheel and trackpad smoothing uses a velocity-preserving, critically damped spring driven by the GSAP ticker through `useSmoothScroll`. Input updates the destination without restarting the motion. Scrolling accelerates with input and decelerates toward rest; reversing input discards queued travel while retaining velocity for brief, smooth braking. The ticker detaches when settled. No transformed content wrapper, scroll snapping, or additional smoothing library is used.
+
+Touch momentum, keyboard scrolling, focus, anchors, and history restoration remain native. Nested scroll areas and form controls retain their own input; `data-native-scroll` opts a region out. Reduced motion disables smoothing, including live preference changes. Opening the menu, changing routes, focusing content, resizing, hiding the tab, or switching input cancels pending travel. Clean up owned listeners, observers, and ticker callbacks on teardown. Do not enable CSS `scroll-behavior: smooth` alongside ScrollToPlugin.
 
 # 7. Hero Motion
 
@@ -108,7 +110,7 @@ Projects should feel substantial, not like cards in a dashboard.
 
 ## 10.1 Project Entry
 
-Possible order: number/metadata → title → media reveal or subtle scale → supporting text.
+Selected Work uses a fixed viewport-height CSS sticky stage and scroll-scheduled project selection across screen sizes. Cards crossfade in place over 420ms as scroll reaches the next entry; reverse scrolling reverses the order. Viewport and content-fit checks must not disable pinning. Responsive card rows and scrollable details keep short/mobile layouts accessible. The shared velocity-based window scrolling remains the only smoothing system. Listeners, resize observations, and scheduled frames are cleaned up. Reduced motion uses normal-flow cards without fades or added scroll distance.
 
 ## 10.2 Project Hover
 
@@ -212,9 +214,9 @@ Avoid pervasive bounce/floating effects, excessive stagger, forced intros/loader
 
 # 23. Suggested Motion System Architecture
 
-Proposed division of responsibility: CSS transitions for small UI states; GSAP for complex timelines/scroll coordination; React Three Fiber's frame loop for scenes; optional Lenis for smoothing.
+Current division of responsibility: CSS transitions for small UI states; the GSAP ticker for velocity-based wheel smoothing; React Three Fiber's frame loop for scenes. Hero progress continues to read actual window scroll events.
 
-These packages are not all installed. [ARCHITECTURE.md](ARCHITECTURE.md) owns dependency adoption; avoid overlapping systems.
+GSAP is installed by the user. [ARCHITECTURE.md](ARCHITECTURE.md) owns dependency adoption; avoid overlapping systems.
 
 # 24. Status
 
@@ -226,7 +228,9 @@ Reveal the actual island from a dark background once ready, with rising sunlight
 
 Native scroll drives one shared progress value for a curved camera approach to the house and the introduction's opacity/contrast treatment. The DOM text remains in normal flow. Ease into and out of the camera journey, reduce pointer influence during travel, and settle before the end for reading. Reverse scrolling reverses the sequence; keyboard skipping and restored scroll positions do not wait for an animation timeline. Resize observations keep progress aligned with content and viewport changes.
 
-Reduced motion, Save-Data, and scene failure use a static opening followed by immediately readable introduction content, without the extra camera-travel space. No added motion library or scroll interception is required.
+The camera follows scroll through a critically damped velocity response, easing into movement and settling after input stops. Position and look-at share the same smoothed journey. DOM content follows native scroll immediately. Initial scene presentation respects restored scroll positions, and suspension clears residual velocity.
+
+Reduced motion, Save-Data, and scene failure use a static opening followed by immediately readable introduction content, without the extra camera-travel space. Hero choreography needs no scroll interception of its own; shared wheel smoothing is defined in section 6 and is disabled for reduced motion.
 
 Clouds drift right to left and recycle offscreen. Water and subtle camera motion share automatic suspension when the menu is open, the tab is hidden, or the hero is offscreen. Reduced-motion and Save-Data visitors receive the static landscape. There is no manual pause control.
 

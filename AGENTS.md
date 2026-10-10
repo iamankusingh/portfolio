@@ -55,7 +55,7 @@ Before significant work:
 1. Read this file, [README.md](README.md), and [PROGRESS.md](docs/PROGRESS.md).
 2. Read the specialist documents relevant to the task, using the [documentation map](README.md#documentation-responsibilities).
 3. Inspect the current implementation and reuse its patterns.
-4. Stay within the requested scope. Phase 2 is complete by user direction; Phase 3 introduction and its camera transition are authorized. Phase 4 onward remain deferred.
+4. Stay within the requested scope. Phases 2 and 3 are complete by user direction. Phase 4 selected work is authorized and implemented; Phase 5 onward remain deferred.
 
 The specialist document owns its domain. If documents conflict, surface the conflict and update stale guidance when the evidence or an approved decision resolves it. Do not silently choose a new direction.
 
@@ -97,5 +97,4 @@ Keep [PROGRESS.md](docs/PROGRESS.md) current after meaningful planning or implem
 
 ## Current Status
 
-Phase 2 is marked complete at the user's request. Phase 3 source adds a text-free opening, native-scroll camera travel toward the house, and an editorial introduction over the landscape. Visible scene credits are deferred; attribution records and model licenses remain preserved. Keep Phase 4 onward and unbuilt routes deferred. Retain native scrolling, not-found/error handling, and static alternatives. Current build, browser, performance, and cleanup checks remain pending with the user; phase completion does not assert unreported test results. See [PROGRESS.md](docs/PROGRESS.md).
-
+Phases 2 and 3 are marked complete at the user's request. Phase 4 implements sticky selected-work cards with still images, Coming soon data, and a reusable link button. Phase 3 source adds a text-free opening, native-scroll camera travel toward the house, and an editorial introduction over the landscape. Visible scene credits are deferred; attribution records and model licenses remain preserved. Keep Phase 5 onward and unbuilt routes deferred. Retain native scrolling, not-found/error handling, and static alternatives. Current build, browser, performance, and cleanup checks remain pending with the user; phase completion does not assert unreported test results. See [PROGRESS.md](docs/PROGRESS.md).

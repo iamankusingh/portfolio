@@ -27,6 +27,8 @@ type SceneProps = { progress: RefObject<number>; active: boolean };
 
 // Center of the house body (Object_4), after IslandModel's normalization and yaw.
 const HOUSE = new Vector3(2.65, 3.16, -8.8);
+// Critically damped response: accelerates gently and settles without bouncing.
+const CAMERA_RESPONSE = 10;
 
 function SceneMotion({
   progress,
@@ -45,6 +47,9 @@ function SceneMotion({
     y: 0,
     pointerX: 0,
     pointerY: 0,
+    journey: 0,
+    velocity: 0,
+    initialized: false,
     renderedFrames: 0,
   });
   const travel = useMemo(() => {
@@ -85,7 +90,10 @@ function SceneMotion({
     const state = motion.current;
     state.x = 0;
     state.y = 0;
-    if (!active) return;
+    if (!active) {
+      state.velocity = 0;
+      return;
+    }
     const pointer = window.matchMedia("(hover: hover) and (pointer: fine)");
     const move = (event: PointerEvent) => {
       if (!pointer.matches || event.pointerType !== "mouse") return;
@@ -114,10 +122,30 @@ function SceneMotion({
       else invalidate();
     }
     if (!active) return;
-    // Native scroll is the single clock for camera travel and DOM reveal.
-    // Settle before the end so the final portion is a calm reading moment.
-    const journey = MathUtils.smoothstep(progress.current, 0, 0.85);
+    // Scroll sets the destination; position and look-at share one inertial journey.
+    const destination = MathUtils.smoothstep(progress.current, 0, 0.85);
     const step = Math.min(delta, 0.05);
+    if (!state.initialized) {
+      // Start at restored scroll positions without an unwanted opening fly-through.
+      state.journey = destination;
+      state.initialized = true;
+    }
+    // Exact critically damped spring integration keeps the response frame-rate independent.
+    const offset = state.journey - destination;
+    const momentum = state.velocity + CAMERA_RESPONSE * offset;
+    const decay = Math.exp(-CAMERA_RESPONSE * step);
+    const nextJourney = destination + (offset + momentum * step) * decay;
+    state.velocity = (state.velocity - CAMERA_RESPONSE * momentum * step) * decay;
+    state.journey = MathUtils.clamp(nextJourney, 0, 1);
+    if (state.journey !== nextJourney) state.velocity = 0;
+    if (
+      Math.abs(state.journey - destination) < 0.00001 &&
+      Math.abs(state.velocity) < 0.0001
+    ) {
+      state.journey = destination;
+      state.velocity = 0;
+    }
+    const journey = state.journey;
     state.pointerX = MathUtils.damp(state.pointerX, state.x * 0.45, 3, step);
     state.pointerY = MathUtils.damp(state.pointerY, state.y * 0.18, 3, step);
     travel.path.getPoint(journey, travel.position);

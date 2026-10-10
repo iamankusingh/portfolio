@@ -1,4 +1,4 @@
-﻿# EXPERIENCE.md
+# EXPERIENCE.md
 
 ## Purpose
 
@@ -58,7 +58,7 @@ Hover or focus may reveal project media for Work, a photograph for Photography, 
 
 The menu uses a full-viewport native modal dialog. Opening focuses Home; Tab/Shift+Tab stay within the modal, and Escape or the top-right close control dismisses it. Closing without navigation returns focus to the menu trigger. Route changes dismiss it and the route shell focuses the destination. The page behind the menu is inert and scroll-locked; short screens scroll inside the menu. The logo and close control remain available at the top.
 
-Numbered editorial links sit left; decorative previews sit right at desktop widths (64rem and above). Hover and keyboard focus select the same preview. About uses the real portrait; Photography reuses it with an explicit demo label. Work and Lab use abstract typography/geometry until their actual media exists. Previews are hidden on smaller viewports; every destination remains directly available without hover or a preview tap. No placeholder contact details are displayed. The homepage includes the completed Phase 2 hero and Phase 3 introduction; later sections remain in their owning phases.
+Numbered editorial links sit left; decorative previews sit right at desktop widths (64rem and above). Hover and keyboard focus select the same preview. About uses the real portrait; Photography reuses it with an explicit demo label. Work and Lab use abstract typography/geometry until their actual media exists. Previews are hidden on smaller viewports; every destination remains directly available without hover or a preview tap. No placeholder contact details are displayed. The homepage includes the completed Phase 2 hero, Phase 3 introduction, and Phase 4 selected work; later sections remain in their owning phases.
 
 ## Menu Exit and Page Transition
 
@@ -140,7 +140,9 @@ Avoid reducing all projects to a dense grid of small cards unless a secondary in
 
 ## Project Presentation
 
-Give featured projects large titles, numbers, media, role/discipline metadata, useful technology details, and a clear case-study link. A project may occupy most of a viewport. Use dummy projects and repeated available imagery initially, following [PROJECT.md](PROJECT.md#projects).
+Phase 4 uses a viewport-height sticky Selected Work stage across screen sizes. Each project has a card in the same position, with a still image on the left (60%) and Coming soon title, description, role, and technology text on the right (40%) on desktop. Mobile stacks image above text within the pinned card. Scrolling fades between cards; reverse scrolling revisits earlier entries. The stage releases after the final card. Overflowing details are independently scrollable and keyboard-focusable. Only reduced motion shows every card in normal flow. Inactive overlapping cards are inert and hidden from assistive technology.
+
+“View all work” remains in the section header and targets `/work` through `LinkButton`. The index remains deferred to Phase 10 and currently uses NotFound. Case-study links await Phase 5. Images are named directly in `src/data/projects.ts` and stored in `src/assets/work`; no videos are used.
 
 ## Project Interactions
 
@@ -369,5 +371,5 @@ Phase 2 is complete by user direction. The opening contains an island, ocean cur
 
 Reveal the scene directly from a dark background with the dawn intro. Preserve native scrolling, responsive framing, and the same graphics quality across devices. Suspend animation while navigation is open. Use the static fallback for reduced motion, Save-Data, or rendering failure.
 
-Phase 4 onward remain deferred; Phase 3 acceptance is tracked in [PROGRESS.md](PROGRESS.md).
+Phase 4 selected work is implemented. Phase 5 onward remain deferred; current validation is tracked in [PROGRESS.md](PROGRESS.md).
 

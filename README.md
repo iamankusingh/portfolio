@@ -4,7 +4,7 @@ An interactive creative-technologist portfolio built around **Technology × Natu
 
 ## Current Status
 
-Phase 2 is complete by user direction. Phase 3 source adds a text-free landscape opening, a native-scroll camera approach to the house, and Anku's introduction over the same scene. The two-circle header, ocean, mountains, clouds, and boat remain. Phase 4 onward and unbuilt routes stay deferred; current validation is pending.
+Phases 2 and 3 are complete by user direction. Phase 4 adds sticky selected-work cards with still images and Coming soon data. Phase 3 source adds a text-free landscape opening, a native-scroll camera approach to the house, and Anku's introduction over the same scene. The two-circle header, ocean, mountains, clouds, and boat remain. Phase 5 onward and unbuilt routes stay deferred; current validation is pending.
 
 See [PROGRESS.md](docs/PROGRESS.md) for phase status and [AGENTS.md](AGENTS.md) before contributing.
 

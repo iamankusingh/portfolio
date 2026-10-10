@@ -1,8 +1,8 @@
-﻿# Architecture
+# Architecture
 
 ## Stack
 
-Client-rendered React, strict TypeScript, Vite, Tailwind CSS, and React Router. Three.js and React Three Fiber power the hero; Drei is recorded but unused by this scene. No backend, server rendering, or additional motion library is required.
+Client-rendered React, strict TypeScript, Vite, Tailwind CSS, and React Router. Three.js and React Three Fiber power the hero; Drei is recorded but unused by this scene. User-installed GSAP drives velocity-based wheel smoothing; ScrollToPlugin supplies document scroll limits. No backend or server rendering is required.
 
 Use pnpm. [package.json](../package.json) owns actual dependencies and scripts; the user manages packages and lockfiles.
 
@@ -28,6 +28,8 @@ Create other folders and abstractions only when needed.
 React Router data mode provides the route shell. `AppLayout` owns the header, semantic main region, skip link, focus handling, and scroll restoration. Unknown or unbuilt destinations use NotFound; error boundaries provide recovery.
 
 Keep both circular controls, fullscreen dialog, destinations, previews, and menu state together in `Header.tsx`. Native dialog behavior handles modal focus and background inertness.
+
+`AppLayout` mounts `useSmoothScroll` across routes. A critically damped spring on the GSAP ticker eases wheel input while preserving velocity and updating the real window scroll position, preserving sticky positioning and hero measurements without transformed wrappers. Route changes and unmounts remove the owned ticker callback and listeners; React Router still owns restoration. Touch, keyboard, nested scroll areas, and reduced motion use native behavior. Do not combine this with CSS smooth scrolling or another smoothing system.
 
 ## Styling
 

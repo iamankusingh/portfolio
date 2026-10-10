@@ -16,9 +16,7 @@ Internal positioning: **A creative technologist working across design, engineeri
 
 ## Core Creative Concept
 
-**Technology × Nature × Human Experience.**
-
-Mountains, water, sunlight, horizon, fog, and atmosphere provide the narrative language. Dawn, daylight, and sunset suggest progression. Organic environments contrast with structured interfaces, typography, project media, and technical diagrams.
+**Technology × Nature × Human Experience.** Mountains, water, sunlight, horizon, fog, and atmosphere provide the narrative language. Dawn, daylight, and sunset suggest progression. Organic environments contrast with structured interfaces, typography, project media, and technical diagrams.
 
 **Nature represents Anku's world and personality; structured interfaces represent the work.**
 
@@ -193,4 +191,4 @@ This file owns product intent, positioning, goals, audience, scope, and creative
 
 ## Current Status
 
-**Phase 2 complete by user direction; Phase 3 source implemented:** a text-free opening leads into an introduction during a camera approach to the house. Current validation remains pending; Phase 4 onward and unbuilt routes remain deferred. See [PROGRESS.md](PROGRESS.md).
+**Phases 2 and 3 complete by user direction; Phase 4 source implemented:** selected work follows the introduction with sticky, image-only Coming soon cards; a text-free opening leads into an introduction during a camera approach to the house. Current validation remains pending; Phase 5 onward and unbuilt routes remain deferred. See [PROGRESS.md](PROGRESS.md).
