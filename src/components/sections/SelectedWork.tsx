@@ -61,15 +61,16 @@ export default function SelectedWork() {
         ref={stage}
         className={`mx-auto max-w-content px-page pt-[calc(var(--navigation-top)+var(--navigation-control-size)+1rem)] pb-5 ${pinned ? "sticky top-0 flex h-svh flex-col" : ""}`}
       >
-        <header className="mb-5 flex shrink-0 flex-wrap items-end justify-between gap-x-6 gap-y-2">
+        <div className="mb-5 flex shrink-0 flex-wrap items-end justify-between gap-x-6 gap-y-2">
           <h2
             id="selected-work-title"
             className="font-display text-h2 leading-none tracking-tight"
           >
             Selected <span className="italic">work.</span>
           </h2>
-          <LinkButton to="/work">View all work</LinkButton>
-        </header>
+          <LinkButton to="/work">View All Works</LinkButton>
+        </div>
+
         <div className={pinned ? "grid min-h-0 flex-1" : "grid gap-10"}>
           {works.map((work, index) => {
             const active = !pinned || index === activeworks;
@@ -103,7 +104,11 @@ export default function SelectedWork() {
                     height="1000"
                     loading="lazy"
                     decoding="async"
-                    className={pinned ? "h-full w-full object-contain" : "aspect-8/5 w-full object-contain lg:h-full lg:aspect-auto"}
+                    className={
+                      pinned
+                        ? "h-full w-full object-contain"
+                        : "aspect-8/5 w-full object-contain lg:h-full lg:aspect-auto"
+                    }
                   />
                 </div>
                 <div
@@ -144,6 +149,7 @@ export default function SelectedWork() {
             );
           })}
         </div>
+
         {pinned && (
           <p className="mt-3 shrink-0 text-micro text-text-muted-light">
             Scroll to explore · {String(activeworks + 1).padStart(2, "0")} /{" "}

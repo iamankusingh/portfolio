@@ -5,6 +5,7 @@
 Phases 2 and 3 are complete at the user's request. Phase 4 selected work is implemented with three Coming soon cards, a sticky scroll-driven crossfade, still images, and a reusable link button. Phase 5 onward and unbuilt routes remain deferred. Completion records the approved milestone, not unreported validation results.
 
 - Existing two-circle header and fullscreen navigation.
+- Shared link button uses the approved rounded primary surface, circular up-right arrow, and primary/secondary theme colors; visual and keyboard validation remain pending.
 - Site-wide GSAP wheel/trackpad smoothing carries velocity between inputs for smooth acceleration, braking, and settling; it preserves real window scrolling and the sticky hero. Touch, keyboard, nested scrolling, anchors/history, and reduced motion remain native.
 - Imported island and parked shore boat.
 - 3D ocean with currents and reflections throughout.

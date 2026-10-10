@@ -2,7 +2,8 @@
 
 @font-face {
   font-family: "Manrope";
-  src: url("./assets/fonts/Manrope/Manrope-VariableFont_wght.ttf") format("truetype");
+  src: url("./assets/fonts/Manrope/Manrope-VariableFont_wght.ttf")
+    format("truetype");
   font-style: normal;
   font-weight: 200 800;
   font-display: swap;
@@ -10,7 +11,8 @@
 
 @font-face {
   font-family: "Instrument Serif";
-  src: url("./assets/fonts/Instrument_Serif/InstrumentSerif-Regular.ttf") format("truetype");
+  src: url("./assets/fonts/Instrument_Serif/InstrumentSerif-Regular.ttf")
+    format("truetype");
   font-style: normal;
   font-weight: 400;
   font-display: swap;
@@ -18,7 +20,8 @@
 
 @font-face {
   font-family: "Instrument Serif";
-  src: url("./assets/fonts/Instrument_Serif/InstrumentSerif-Italic.ttf") format("truetype");
+  src: url("./assets/fonts/Instrument_Serif/InstrumentSerif-Italic.ttf")
+    format("truetype");
   font-style: italic;
   font-weight: 400;
   font-display: swap;
@@ -43,6 +46,8 @@
   --color-sun: #f5c84b;
   --color-sun-warm: #f39a48;
   --color-mist: #b7c4c7;
+  --color-primary: #feb05d;
+  --color-secondary: #667ffd;
   --text-display-xl: clamp(4.5rem, 12vw, 11rem);
   --text-display-lg: clamp(3.5rem, 9vw, 8rem);
   --text-display-md: clamp(2.8rem, 6vw, 5.5rem);
@@ -97,7 +102,9 @@
     cursor: default;
   }
 
-  h1, h2, h3 {
+  h1,
+  h2,
+  h3 {
     text-wrap: balance;
     overflow-wrap: anywhere;
   }
@@ -139,11 +146,15 @@
 }
 
 @media (min-width: 48rem) {
-  :root { --navigation-control-size: 56px; }
+  :root {
+    --navigation-control-size: 56px;
+  }
 }
 
 html {
-  scroll-padding-top: calc(var(--navigation-top) + var(--navigation-control-size) + 1rem);
+  scroll-padding-top: calc(
+    var(--navigation-top) + var(--navigation-control-size) + 1rem
+  );
 }
 
 html:has(#site-navigation[open]),
@@ -155,13 +166,18 @@ body:has(#site-navigation[open]) {
 .fullscreen-menu {
   opacity: 0;
   transition: opacity 220ms ease;
-  transition: opacity 220ms ease, display 220ms allow-discrete, overlay 220ms allow-discrete;
+  transition:
+    opacity 220ms ease,
+    display 220ms allow-discrete,
+    overlay 220ms allow-discrete;
 }
 
-.fullscreen-menu[open] { opacity: 1; }
+.fullscreen-menu[open] {
+  opacity: 1;
+}
 
 .fullscreen-menu::before {
-  content: '';
+  content: "";
   position: fixed;
   inset: 0;
   background: var(--color-surface-dark);
@@ -173,27 +189,63 @@ body:has(#site-navigation[open]) {
 }
 
 @starting-style {
-  .fullscreen-menu[open] { opacity: 0; }
+  .fullscreen-menu[open] {
+    opacity: 0;
+  }
 }
 
 @keyframes menu-surface-reveal {
-  from { clip-path: circle(0 at calc(100% - var(--navigation-right) - var(--navigation-control-size) / 2) calc(var(--navigation-top) + var(--navigation-control-size) / 2)); }
-  to { clip-path: circle(150% at calc(100% - var(--navigation-right) - var(--navigation-control-size) / 2) calc(var(--navigation-top) + var(--navigation-control-size) / 2)); }
+  from {
+    clip-path: circle(
+      0 at
+        calc(
+          100% - var(--navigation-right) - var(--navigation-control-size) / 2
+        )
+        calc(var(--navigation-top) + var(--navigation-control-size) / 2)
+    );
+  }
+  to {
+    clip-path: circle(
+      150% at
+        calc(
+          100% - var(--navigation-right) - var(--navigation-control-size) / 2
+        )
+        calc(var(--navigation-top) + var(--navigation-control-size) / 2)
+    );
+  }
 }
 
 @keyframes menu-content-enter {
-  from { opacity: 0; transform: translateY(16px); }
-  to { opacity: 1; transform: none; }
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 @keyframes menu-line-top {
-  from { translate: 0 -4px; rotate: 0deg; }
-  to { translate: 0; rotate: 45deg; }
+  from {
+    translate: 0 -4px;
+    rotate: 0deg;
+  }
+  to {
+    translate: 0;
+    rotate: 45deg;
+  }
 }
 
 @keyframes menu-line-bottom {
-  from { translate: 0 4px; rotate: 0deg; }
-  to { translate: 0; rotate: -45deg; }
+  from {
+    translate: 0 4px;
+    rotate: 0deg;
+  }
+  to {
+    translate: 0;
+    rotate: -45deg;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -209,8 +261,12 @@ body:has(#site-navigation[open]) {
   background: var(--color-bg-dark);
 }
 
-.hero #introduction:focus-within > div { opacity: 1; }
+.hero #introduction:focus-within > div {
+  opacity: 1;
+}
 
 @media (prefers-reduced-motion: reduce) {
-  .hero #introduction > div { opacity: 1; }
+  .hero #introduction > div {
+    opacity: 1;
+  }
 }

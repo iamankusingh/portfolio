@@ -240,7 +240,7 @@ A deep neutral, soft nature gradient, subtle shader, or media preview can suppor
 
 # 8. Buttons and Links
 
-Prefer editorial text links with directional indicators, minimal circles, and restrained underline/reveal treatments. Use buttons for actions and links for navigation. Avoid a generic pill-button system. Sample CTA wording remains provisional.
+Use buttons for actions and links for navigation. The user-approved `LinkButton` is fully rounded with left-aligned text and a circular trailing arrow pointing 45 degrees up-right. Its background uses `--color-primary: #feb05d`; `--color-secondary: #667ffd` supports hover/focus accents. Both tokens live in the Tailwind theme. Keep other links editorial and preserve visible keyboard focus and reduced-motion behavior.
 
 # 9. Project Presentation
 
