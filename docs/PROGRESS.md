@@ -2,7 +2,9 @@
 
 ## Current Status
 
-Phases 2 and 3 are complete at the user's request. Phase 4 selected work is implemented with three Coming soon cards, a sticky scroll-driven crossfade, still images, and a reusable link button. Phase 5 onward and unbuilt routes remain deferred. Completion records the approved milestone, not unreported validation results.
+Phase 5 adds the homepage About section after Selected Work, with the real portrait, basic details, and labeled draft personal copy stored in `src/data/anku.ts`. Validation remains pending; the standalone About route remains deferred.
+
+Phases 2, 3, and 4 are complete at the user's request. Phase 4 selected work is implemented with three Coming soon cards, a sticky scroll-driven crossfade, still images, and a reusable link button. Phase 6 onward and unbuilt routes remain deferred. Completion records the approved milestone, not unreported validation results.
 
 - Existing two-circle header and fullscreen navigation.
 - Shared link button uses the approved rounded primary surface, circular up-right arrow, and primary/secondary theme colors; visual and keyboard validation remain pending.
@@ -26,22 +28,22 @@ Phases 2 and 3 are complete at the user's request. Phase 4 selected work is impl
 | 1 | Header and fullscreen navigation | Implemented; validation pending |
 | 2 | Hero and 3D landscape | Complete by user direction |
 | 3 | Homepage introduction | Complete by user direction |
-| 4 | Selected work | Implemented; user validation pending |
-| 5 | Project detail pages | Deferred |
+| 4 | Selected work | Complete by user direction |
+| 5 | About and portrait | Implemented; user validation pending |
 | 6 | Capabilities | Deferred |
-| 7 | About and portrait | Deferred |
-| 8 | Photography | Deferred |
-| 9 | Lab and experiments | Deferred |
-| 10 | Work index | Deferred |
-| 11 | Contact and closing scene | Deferred; standalone Contact page comes later |
-| 12 | Route transitions | Deferred |
-| 13 | Responsive and accessibility review | Deferred |
-| 14 | Performance review | Deferred |
-| 15 | SEO and metadata | Deferred |
-| 16 | Final QA and launch | Deferred |
+| 7 | Photography | Deferred |
+| 8 | Lab and experiments | Deferred |
+| 9 | Work index | Deferred |
+| 10 | Contact and closing scene | Deferred; standalone Contact page comes later |
+| 11 | Route transitions | Deferred |
+| 12 | Responsive and accessibility review | Deferred |
+| 13 | Performance review | Deferred |
+| 14 | SEO and metadata | Deferred |
+| 15 | Final QA and launch | Deferred |
 
 ## Pending Acceptance
 
+- [ ] Review the Phase 5 About section after Selected Work: portrait crop, draft personal copy, desktop/mobile layout, zoom, and `/#about` navigation. Content lives in `src/data/anku.ts`; the real portrait is `src/assets/anku.avif`.
 - [ ] Run `pnpm.cmd lint` and `pnpm.cmd build` for the current source.
 - [ ] Check navigation, keyboard focus, touch, scrolling, and responsive layouts.
 - [ ] Check velocity-based GSAP acceleration and settling with wheel ticks, trackpad momentum, quick reversals, page boundaries, menu opening during travel, route/back navigation, and live reduced-motion changes. Confirm touch/keyboard and nested scrolling stay native, with no duplicate listeners under StrictMode.
@@ -60,7 +62,7 @@ Earlier passing checks do not validate later edits. The user runs commands, serv
 
 Confirmed: pnpm, Manrope + Instrument Serif, existing palette, approved demo content, real portrait/photography, and shared high graphics quality. See [AGENTS.md](../AGENTS.md) for workflow and content rules.
 
-Pending: current validation, real project images/content, later-page compositions and gallery behavior, public credits placement before launch, font license records, production asset optimization, metadata, and hosting. Original model licenses and attribution/adaptation records remain in place. Placeholder images allow Phase 4 review without final assets; case-study links await Phase 5 and the Work index awaits Phase 10.
+Pending: current validation, real project images/content, later-page compositions and gallery behavior, public credits placement before launch, font license records, production asset optimization, metadata, and hosting. Original model licenses and attribution/adaptation records remain in place. Placeholder images allow Phase 4 review without final assets; case-study links remain deferred and the Work index awaits Phase 9.
 
 ## Update Rule
 

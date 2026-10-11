@@ -1,10 +1,12 @@
-﻿# Anku Singh — Personal Portfolio
+# Anku Singh — Personal Portfolio
 
 An interactive creative-technologist portfolio built around **Technology × Nature × Human Experience**: selective cinematic 3D with accessible editorial content.
 
 ## Current Status
 
-Phases 2 and 3 are complete by user direction. Phase 4 adds sticky selected-work cards with still images and Coming soon data. Phase 3 source adds a text-free landscape opening, a native-scroll camera approach to the house, and Anku's introduction over the same scene. The two-circle header, ocean, mountains, clouds, and boat remain. Phase 5 onward and unbuilt routes stay deferred; current validation is pending.
+Phase 5 adds the homepage About section after Selected Work, with the real portrait, basic details, and labeled draft personal copy stored in `src/data/anku.ts`. Validation remains pending; the standalone About route remains deferred.
+
+Phases 2, 3, and 4 are complete by user direction. Phase 4 adds sticky selected-work cards with still images and Coming soon data. Phase 3 source adds a text-free landscape opening, a native-scroll camera approach to the house, and Anku's introduction over the same scene. The two-circle header, ocean, mountains, clouds, and boat remain. Phase 6 onward and unbuilt routes stay deferred; current validation is pending.
 
 See [PROGRESS.md](docs/PROGRESS.md) for phase status and [AGENTS.md](AGENTS.md) before contributing.
 

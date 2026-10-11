@@ -142,7 +142,7 @@ Avoid reducing all projects to a dense grid of small cards unless a secondary in
 
 Phase 4 uses a viewport-height sticky Selected Work stage across screen sizes. Each project has a card in the same position, with a still image on the left (60%) and Coming soon title, description, role, and technology text on the right (40%) on desktop. Mobile stacks image above text within the pinned card. Scrolling fades between cards; reverse scrolling revisits earlier entries. The stage releases after the final card. Overflowing details are independently scrollable and keyboard-focusable. Only reduced motion shows every card in normal flow. Inactive overlapping cards are inert and hidden from assistive technology.
 
-“View all work” remains in the section header and targets `/work` through `LinkButton`. The index remains deferred to Phase 10 and currently uses NotFound. Case-study links await Phase 5. Images are named directly in `src/data/projects.ts` and stored in `src/assets/work`; no videos are used.
+“View all work” remains in the section header and targets `/work` through `LinkButton`. The index remains deferred to Phase 9 and currently uses NotFound. Case-study links remain deferred. Images are named directly in `src/data/works.ts` and stored in `src/assets/work`; no videos are used.
 
 ## Project Interactions
 
@@ -176,6 +176,8 @@ The exact labels can change.
 Use large typographic groups, expandable categories, clusters, or subtle spatial organization. Avoid ratings and progress bars; category names in [PROJECT.md](PROJECT.md#capabilities-to-showcase) remain provisional.
 
 # 9. Personal Portrait / About Moment
+
+Phase 5 implements this moment directly after Selected Work. A light editorial surface pairs oversized name typography with a large real portrait and personal copy; two columns stack on mobile. Content comes from `src/data/anku.ts`, with generated personal copy explicitly marked as a draft preview. The section uses normal document flow without reveal gating and supports `/#about`. The standalone `/about` page remains deferred.
 
 ## Role
 
@@ -371,5 +373,5 @@ Phase 2 is complete by user direction. The opening contains an island, ocean cur
 
 Reveal the scene directly from a dark background with the dawn intro. Preserve native scrolling, responsive framing, and the same graphics quality across devices. Suspend animation while navigation is open. Use the static fallback for reduced motion, Save-Data, or rendering failure.
 
-Phase 4 selected work is implemented. Phase 5 onward remain deferred; current validation is tracked in [PROGRESS.md](PROGRESS.md).
+Phase 4 selected work is complete by user direction. Phase 5 About/portrait is implemented after Selected Work. Phase 6 onward remain deferred; current validation is tracked in [PROGRESS.md](PROGRESS.md).
 

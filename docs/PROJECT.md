@@ -1,4 +1,4 @@
-﻿# PROJECT.md
+# PROJECT.md
 
 ## Project Name
 
@@ -191,4 +191,6 @@ This file owns product intent, positioning, goals, audience, scope, and creative
 
 ## Current Status
 
-**Phases 2 and 3 complete by user direction; Phase 4 source implemented:** selected work follows the introduction with sticky, image-only Coming soon cards; a text-free opening leads into an introduction during a camera approach to the house. Current validation remains pending; Phase 5 onward and unbuilt routes remain deferred. See [PROGRESS.md](PROGRESS.md).
+Phase 5 adds the homepage About section after Selected Work, with the real portrait, basic details, and labeled draft personal copy stored in `src/data/anku.ts`. Validation remains pending; the standalone About route remains deferred.
+
+**Phases 2, 3, and 4 complete by user direction; Phase 5 source implemented:** selected work follows the introduction with sticky, image-only Coming soon cards; a text-free opening leads into an introduction during a camera approach to the house. Current validation remains pending; Phase 6 onward and unbuilt routes remain deferred. See [PROGRESS.md](PROGRESS.md).
