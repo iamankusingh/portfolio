@@ -32,6 +32,8 @@ A circular blue mark with a yellow **A** connects water/sky, sun/light, and circ
 
 Circles can connect the logo, menu, sun, cursor, masks, and small accents. Do not make every container circular.
 
+The approved Phase 6 interlude uses pure black circles with soft surrounding dark shadows on the light editorial background, following the supplied three-orbit-circle reference. Its expanding center finishes on a black surface; the existing logo remains unchanged.
+
 # 3. Color System
 
 The existing neutral and accent palette below is the user-confirmed implementation baseline. Use these values; do not restart palette selection. Check contrast in actual compositions.

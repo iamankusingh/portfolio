@@ -120,6 +120,10 @@ Optional desktop effects: **1.01–1.04** media scale, mild perspective, `VIEW` 
 
 Selected media or a title may anchor the route transition as the current page recedes. Shared-layout techniques are optional; do not delay navigation solely for animation.
 
+# Phase 6 circle interlude
+
+After About, a CSS sticky viewport holds a scroll-controlled circle sequence: center reveal, staggered satellite appearance during one revolution, inward merge, then center expansion to cover every viewport corner. Actual document scroll drives reversible transforms and opacity through scheduled animation frames, without an independent timer or input interception. Resize observers refresh framing; listeners and scheduled frames are cleaned up on teardown. The expanding center also drives a circular clip on one stationary white capabilities paragraph, with no text translation or stagger. Reduced motion removes pinning and extra scroll distance, showing the complete paragraph immediately on black. Keyboard focus also reveals the paragraph immediately. The final statement remains in the same viewport until subsequent content is added.
+
 # 11. Fullscreen Menu Motion
 
 The fullscreen navigation should feel like a major interface state change.

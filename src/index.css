@@ -265,6 +265,12 @@ body:has(#site-navigation[open]) {
   opacity: 1;
 }
 
+/* Keyboard readers can reach the statement without scrubbing the interlude. */
+.capabilities-copy:focus-within {
+  clip-path: none !important;
+  background: black;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hero #introduction > div {
     opacity: 1;

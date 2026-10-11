@@ -2,9 +2,9 @@
 
 ## Current Status
 
-Phase 5 adds the homepage About section after Selected Work, with the real portrait, basic details, and labeled draft personal copy stored in `src/data/anku.ts`. Validation remains pending; the standalone About route remains deferred.
+Phase 5 is complete by user direction. It adds the homepage About section after Selected Work, with the real portrait, basic details, and labeled draft personal copy stored in `src/data/anku.ts`. Phase 6 now adds a sticky, scroll-driven black-circle interlude after About, revealing one white capabilities paragraph arranged as large, staggered lines across the viewport as the center expands. Reduced motion shows the paragraph immediately on black. Validation remains pending; the standalone About route remains deferred.
 
-Phases 2, 3, and 4 are complete at the user's request. Phase 4 selected work is implemented with three Coming soon cards, a sticky scroll-driven crossfade, still images, and a reusable link button. Phase 6 onward and unbuilt routes remain deferred. Completion records the approved milestone, not unreported validation results.
+Phases 2, 3, and 4 are complete at the user's request. Phase 4 selected work is implemented with three Coming soon cards, a sticky scroll-driven crossfade, still images, and a reusable link button. Phase 7 onward and unbuilt routes remain deferred. Completion records the approved milestone, not unreported validation results.
 
 - Existing two-circle header and fullscreen navigation.
 - Shared link button uses the approved rounded primary surface, circular up-right arrow, and primary/secondary theme colors; visual and keyboard validation remain pending.
@@ -29,8 +29,8 @@ Phases 2, 3, and 4 are complete at the user's request. Phase 4 selected work is 
 | 2 | Hero and 3D landscape | Complete by user direction |
 | 3 | Homepage introduction | Complete by user direction |
 | 4 | Selected work | Complete by user direction |
-| 5 | About and portrait | Implemented; user validation pending |
-| 6 | Capabilities | Deferred |
+| 5 | About and portrait | Complete by user direction |
+| 6 | Capabilities circle interlude | Implemented with a single-paragraph reveal; user validation pending |
 | 7 | Photography | Deferred |
 | 8 | Lab and experiments | Deferred |
 | 9 | Work index | Deferred |
@@ -43,6 +43,7 @@ Phases 2, 3, and 4 are complete at the user's request. Phase 4 selected work is 
 
 ## Pending Acceptance
 
+- [ ] Review Phase 6 after About: center appearance, gradual three-circle orbit, merge, and edge-to-edge black expansion. Check reverse/fast scrolling, reload within the section, mobile/short screens, orientation changes, header/menu access, and live reduced motion (immediately readable paragraph without pinning). Check the white paragraph reveal, one-screen fit, keyboard access, and zoom overflow. Capability copy and line placement live in `src/components/sections/Capabilities.tsx`; check the staggered line layout across screen sizes.
 - [ ] Review the Phase 5 About section after Selected Work: portrait crop, draft personal copy, desktop/mobile layout, zoom, and `/#about` navigation. Content lives in `src/data/anku.ts`; the real portrait is `src/assets/anku.avif`.
 - [ ] Run `pnpm.cmd lint` and `pnpm.cmd build` for the current source.
 - [ ] Check navigation, keyboard focus, touch, scrolling, and responsive layouts.

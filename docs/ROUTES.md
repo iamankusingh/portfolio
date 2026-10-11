@@ -22,9 +22,9 @@ Build included routes in their owning phases; do not add placeholder pages to th
 
 ## Current implementation
 
-Phase 5 adds the homepage About section after Selected Work, with the real portrait, basic details, and labeled draft personal copy stored in `src/data/anku.ts`. Validation remains pending; the standalone About route remains deferred.
+Phase 5 is complete by user direction. It adds the homepage About section after Selected Work, with the real portrait, basic details, and labeled draft personal copy stored in `src/data/anku.ts`. Phase 6 now adds a sticky, scroll-driven black-circle interlude after About, revealing one large white capabilities paragraph as the center expands. Reduced motion shows the paragraph immediately on black. Validation remains pending; the standalone About route remains deferred.
 
-`/` renders the persistent header/navigation, completed Phase 2 landscape, Phase 3 introduction, and Phase 4 selected work inside the semantic main region. `/#selected-work` targets the work section. `/#introduction` targets the introduction and supports keyboard skipping. Phase 6 onward and unbuilt pages remain deferred. Routing, NotFound, error boundaries, fonts, design tokens, focus handling, and scroll restoration remain. Unbuilt destinations currently use NotFound.
+`/` renders the persistent header/navigation, completed Phase 2 landscape, Phase 3 introduction, and Phase 4 selected work inside the semantic main region. `/#selected-work` targets the work section. `/#introduction` targets the introduction and supports keyboard skipping. Phase 7 onward and unbuilt pages remain deferred. Routing, NotFound, error boundaries, fonts, design tokens, focus handling, and scroll restoration remain. Unbuilt destinations currently use NotFound.
 
 ## Menu destinations
 

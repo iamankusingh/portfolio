@@ -173,6 +173,8 @@ The exact labels can change.
 
 ## Interaction Direction
 
+Phase 6 currently implements the user-requested, Sharingan-inspired circle interlude directly after About. A light viewport stays sticky while a small black center appears, three larger black circles gradually orbit it, then merge into the center before it expands to fill the screen. Soft dark shadows surround the circles; a thin orbit ring echoes the supplied reference. The header remains available. One large white paragraph stays in place and is revealed by a circular mask matching the expanding black center. It occupies the same viewport as six spacious, staggered lines, alternating left alignment with modest insets. Copy and line placement live together in `src/components/sections/Capabilities.tsx`; mobile reduces the insets and allows natural wrapping. Reduced motion shows the paragraph immediately on black in normal flow. Keyboard focus reveals it immediately; zoom or unusually short screens can scroll the text to preserve access.
+
 Use large typographic groups, expandable categories, clusters, or subtle spatial organization. Avoid ratings and progress bars; category names in [PROJECT.md](PROJECT.md#capabilities-to-showcase) remain provisional.
 
 # 9. Personal Portrait / About Moment
@@ -373,5 +375,5 @@ Phase 2 is complete by user direction. The opening contains an island, ocean cur
 
 Reveal the scene directly from a dark background with the dawn intro. Preserve native scrolling, responsive framing, and the same graphics quality across devices. Suspend animation while navigation is open. Use the static fallback for reduced motion, Save-Data, or rendering failure.
 
-Phase 4 selected work is complete by user direction. Phase 5 About/portrait is implemented after Selected Work. Phase 6 onward remain deferred; current validation is tracked in [PROGRESS.md](PROGRESS.md).
+Phase 4 selected work is complete by user direction. Phase 5 About/portrait is complete by user direction and follows Selected Work. Phase 6 adds the scroll-driven circle interlude after About. Phase 7 onward remain deferred; current validation is tracked in [PROGRESS.md](PROGRESS.md).
 

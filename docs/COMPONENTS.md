@@ -1,4 +1,4 @@
-﻿# Components
+# Components
 
 Create components when they have a clear responsibility; avoid speculative wrappers. [ARCHITECTURE.md](ARCHITECTURE.md) owns folder boundaries.
 
@@ -11,6 +11,7 @@ Create components when they have a clear responsibility; avoid speculative wrapp
 | `Hero` | DOM composition, deferred scene loading, visibility, scrolling, and failure containment |
 | `Introduction` | Semantic identity and replaceable description revealed over the hero landscape |
 | `About` | Normal-flow editorial portrait, basic details, and labeled draft personal copy from `src/data/anku.ts` |
+| `Capabilities` | Phase 6 sticky circle choreography and masked single-paragraph capabilities reveal with staggered lines and local copy; immediate reduced-motion and keyboard access |
 | `SelectedWork` | Sticky cards with scroll-triggered crossfades, 60/40 image/text layout, and normal-flow responsive/reduced-motion alternatives |
 | `LinkButton` | Reusable editorial navigation control rendered as a React Router Link/anchor |
 | `LandscapeFallback` | Static SVG used for preferences or scene failure |

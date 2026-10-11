@@ -191,6 +191,6 @@ This file owns product intent, positioning, goals, audience, scope, and creative
 
 ## Current Status
 
-Phase 5 adds the homepage About section after Selected Work, with the real portrait, basic details, and labeled draft personal copy stored in `src/data/anku.ts`. Validation remains pending; the standalone About route remains deferred.
+Phase 5 is complete by user direction. It adds the homepage About section after Selected Work, with the real portrait, basic details, and labeled draft personal copy stored in `src/data/anku.ts`. Phase 6 now adds a sticky, scroll-driven black-circle interlude after About, revealing one large white capabilities paragraph as the center expands. Reduced motion shows the paragraph immediately on black. Validation remains pending; the standalone About route remains deferred.
 
-**Phases 2, 3, and 4 complete by user direction; Phase 5 source implemented:** selected work follows the introduction with sticky, image-only Coming soon cards; a text-free opening leads into an introduction during a camera approach to the house. Current validation remains pending; Phase 6 onward and unbuilt routes remain deferred. See [PROGRESS.md](PROGRESS.md).
+**Phases 2 through 5 complete by user direction; Phase 6 circle interlude implemented:** selected work follows the introduction with sticky, image-only Coming soon cards; a text-free opening leads into an introduction during a camera approach to the house. Current validation remains pending; Phase 7 onward and unbuilt routes remain deferred. See [PROGRESS.md](PROGRESS.md).
