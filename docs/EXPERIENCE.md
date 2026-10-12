@@ -237,17 +237,9 @@ The homepage should make it clear that photography is a meaningful part of Anku'
 
 ## Preferred Treatment
 
-The photography teaser may intentionally reduce motion and UI complexity.
+Phase 7 follows Capabilities directly. The black capabilities viewport scrolls upward as a light photography section enters, already showing one centered photograph. Once the section fills the screen, a sticky stage holds while further native scrolling spreads photographs from the center into an asymmetric, edge-cropped collage around a large Photography heading. The first photo moves with the spread. After the spread, the photographs travel upward through additional staggered rows while the Photography heading stays centered in the sticky viewport. The section releases at the end; reverse scrolling retraces both stages. Mobile uses a portrait composition; reduced motion shows all teaser images in a normal-flow grid.
 
-Possible behavior:
-
-- One or several large photographs
-- Slower pacing
-- Minimal text
-- Strong crop / composition
-- Clear route into the full photography page
-
-The transition into photography should feel like moving into a quieter chapter.
+The homepage displays all ordered entries from `src/data/photographs.ts`, currently 26 portrait placeholders. Additional entries extend the scrolling composition automatically. Supplied photographs will replace the placeholders, which remain identified in data and alt text; there is no visible preview caption, by user direction. The standalone photography route and full-gallery interactions remain deferred.
 
 # 12. Photography Experience
 
@@ -358,7 +350,7 @@ The preferred order may change if the narrative improves:
 5. Capabilities — range of work.
 6. About / Portrait — the person behind the work.
 7. Lab — experiments.
-8. Photography — quieter teaser leading to the gallery.
+8. Photography — homepage collage; currently follows Capabilities, before deferred Lab and closing sections.
 9. Finale / Contact — sunset and next action.
 
 # Source-of-Truth Rules
@@ -375,5 +367,5 @@ Phase 2 is complete by user direction. The opening contains an island, ocean cur
 
 Reveal the scene directly from a dark background with the dawn intro. Preserve native scrolling, responsive framing, and the same graphics quality across devices. Suspend animation while navigation is open. Use the static fallback for reduced motion, Save-Data, or rendering failure.
 
-Phase 4 selected work is complete by user direction. Phase 5 About/portrait is complete by user direction and follows Selected Work. Phase 6 adds the scroll-driven circle interlude after About. Phase 7 onward remain deferred; current validation is tracked in [PROGRESS.md](PROGRESS.md).
+Phase 4 selected work is complete by user direction. Phase 5 About/portrait is complete by user direction and follows Selected Work. Phase 6 is complete by user direction. Phase 7 adds the photography collage after Capabilities. Phase 8 onward remain deferred; current validation is tracked in [PROGRESS.md](PROGRESS.md).
 

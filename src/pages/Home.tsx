@@ -1,6 +1,7 @@
 import About from "../components/sections/About";
 import Capabilities from "../components/sections/Capabilities";
 import Hero from "../components/sections/Hero";
+import Photography from "../components/sections/Photography";
 import SelectedWork from "../components/sections/SelectedWork";
 
 export default function Home() {
@@ -11,6 +12,7 @@ export default function Home() {
       <SelectedWork />
       <About />
       <Capabilities />
+      <Photography />
     </>
   );
 }

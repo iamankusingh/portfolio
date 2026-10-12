@@ -2,9 +2,9 @@
 
 ## Current Status
 
-Phase 5 is complete by user direction. It adds the homepage About section after Selected Work, with the real portrait, basic details, and labeled draft personal copy stored in `src/data/anku.ts`. Phase 6 now adds a sticky, scroll-driven black-circle interlude after About, revealing one white capabilities paragraph arranged as large, staggered lines across the viewport as the center expands. Reduced motion shows the paragraph immediately on black. Validation remains pending; the standalone About route remains deferred.
+Phase 6 is complete by user direction. Its sticky black-circle interlude follows About and reveals the capabilities paragraph. Phase 7 now adds photography immediately afterward: a centered photograph enters with the light section, then a GSAP/ScrollTrigger timeline spreads the collage and moves the photographs upward while Photography stays centered in the sticky viewport. Reduced motion shows a normal-flow image grid. Replaceable entries live in `src/data/photographs.ts`; approved portrait placeholders remain until photographs are supplied. Validation remains pending; standalone routes and Phase 8 onward remain deferred.
 
-Phases 2, 3, and 4 are complete at the user's request. Phase 4 selected work is implemented with three Coming soon cards, a sticky scroll-driven crossfade, still images, and a reusable link button. Phase 7 onward and unbuilt routes remain deferred. Completion records the approved milestone, not unreported validation results.
+Phases 2, 3, and 4 are complete at the user's request. Phase 4 selected work is implemented with three Coming soon cards, a sticky scroll-driven crossfade, still images, and a reusable link button. Phase 8 onward and unbuilt routes remain deferred. Completion records the approved milestone, not unreported validation results.
 
 - Existing two-circle header and fullscreen navigation.
 - Shared link button uses the approved rounded primary surface, circular up-right arrow, and primary/secondary theme colors; visual and keyboard validation remain pending.
@@ -30,8 +30,8 @@ Phases 2, 3, and 4 are complete at the user's request. Phase 4 selected work is 
 | 3 | Homepage introduction | Complete by user direction |
 | 4 | Selected work | Complete by user direction |
 | 5 | About and portrait | Complete by user direction |
-| 6 | Capabilities circle interlude | Implemented with a single-paragraph reveal; user validation pending |
-| 7 | Photography | Deferred |
+| 6 | Capabilities circle interlude | Complete by user direction |
+| 7 | Photography | Homepage collage implemented; assets and user validation pending |
 | 8 | Lab and experiments | Deferred |
 | 9 | Work index | Deferred |
 | 10 | Contact and closing scene | Deferred; standalone Contact page comes later |
@@ -42,6 +42,10 @@ Phases 2, 3, and 4 are complete at the user's request. Phase 4 selected work is 
 | 15 | Final QA and launch | Deferred |
 
 ## Pending Acceptance
+
+The user approved the initial Phase 7 visual output. The revised GSAP spread, extended scrolling collection, and caption removal await validation.
+
+- [ ] Review Phase 7: black capabilities exit, centered photo during entry, spread starting only at full-screen coverage, upward photo travel with a stationary heading, all 26 entries, reverse/fast scrolling, reload mid-section, mobile/short screens, orientation changes, header access, and live reduced motion. Add photographs using `src/assets/photography/README.md`; verify crops, alt text, missing-image fallback, and `/#photography`.
 
 - [ ] Review Phase 6 after About: center appearance, gradual three-circle orbit, merge, and edge-to-edge black expansion. Check reverse/fast scrolling, reload within the section, mobile/short screens, orientation changes, header/menu access, and live reduced motion (immediately readable paragraph without pinning). Check the white paragraph reveal, one-screen fit, keyboard access, and zoom overflow. Capability copy and line placement live in `src/components/sections/Capabilities.tsx`; check the staggered line layout across screen sizes.
 - [ ] Review the Phase 5 About section after Selected Work: portrait crop, draft personal copy, desktop/mobile layout, zoom, and `/#about` navigation. Content lives in `src/data/anku.ts`; the real portrait is `src/assets/anku.avif`.

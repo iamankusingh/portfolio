@@ -122,7 +122,7 @@ Selected media or a title may anchor the route transition as the current page re
 
 # Phase 6 circle interlude
 
-After About, a CSS sticky viewport holds a scroll-controlled circle sequence: center reveal, staggered satellite appearance during one revolution, inward merge, then center expansion to cover every viewport corner. Actual document scroll drives reversible transforms and opacity through scheduled animation frames, without an independent timer or input interception. Resize observers refresh framing; listeners and scheduled frames are cleaned up on teardown. The expanding center also drives a circular clip on one stationary white capabilities paragraph, with no text translation or stagger. Reduced motion removes pinning and extra scroll distance, showing the complete paragraph immediately on black. Keyboard focus also reveals the paragraph immediately. The final statement remains in the same viewport until subsequent content is added.
+After About, a CSS sticky viewport holds a scroll-controlled circle sequence: center reveal, staggered satellite appearance during one revolution, inward merge, then center expansion to cover every viewport corner. Actual document scroll drives reversible transforms and opacity through scheduled animation frames, without an independent timer or input interception. Resize observers refresh framing; listeners and scheduled frames are cleaned up on teardown. The expanding center also drives a circular clip on one stationary white capabilities paragraph, with no text translation or stagger. Reduced motion removes pinning and extra scroll distance, showing the complete paragraph immediately on black. Keyboard focus also reveals the paragraph immediately. The final black statement scrolls out naturally as Photography enters.
 
 # 11. Fullscreen Menu Motion
 
@@ -164,7 +164,7 @@ Optional mask/fog reveal, gentle portrait/type parallax, or subtle depth. Keep t
 
 # 16. Photography Motion
 
-Favor gentle drag momentum, image transitions, brief metadata reveals, and fullscreen fades/scales. Avoid heavy 3D transforms.
+The Phase 7 homepage holds a centered photo during entry. A GSAP timeline scrubbed by ScrollTrigger starts when the section reaches the viewport top: the opening images spread outward, then the whole photo field travels upward through additional rows while the heading stays centered in a CSS sticky stage. Actual window scroll controls both phases with no autoplay or additional smoothing. All data entries appear, and the scroll distance follows the collection size. Responsive placements adapt the collage for portrait screens. Resize observations rebuild framing and refresh trigger measurements; GSAP context cleanup reverts owned transforms and kills the timeline/trigger. Live reduced motion removes the timeline, pinning, and extra scroll distance, presenting an immediate normal-flow grid. Dedicated-gallery motion remains deferred.
 
 # 17. Lab Motion
 
