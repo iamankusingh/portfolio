@@ -14,6 +14,7 @@ Create components when they have a clear responsibility; avoid speculative wrapp
 | `Capabilities` | Phase 6 sticky circle choreography and masked single-paragraph capabilities reveal with staggered lines and local copy; immediate reduced-motion and keyboard access |
 | `Photography` | GSAP scroll-driven spread and upward photo field, centered sticky heading, responsive placements, structured image data, and a normal-flow reduced-motion grid |
 | `SelectedWork` | Sticky cards with scroll-triggered crossfades, 60/40 image/text layout, and normal-flow responsive/reduced-motion alternatives |
+| `Contact` | Full-viewport editorial form with underline focus styling; presentation-only pending message delivery |
 | `LinkButton` | Reusable editorial navigation control rendered as a React Router Link/anchor |
 | `LandscapeFallback` | Static SVG used for preferences or scene failure |
 | `HeroScene` | Canvas, camera, sun, lighting, and atmosphere |
@@ -27,6 +28,6 @@ Create components when they have a clear responsibility; avoid speculative wrapp
 
 ## Deferred
 
-Later phases may add project case studies, Lab, a dedicated photography gallery, and contact components. Share media/viewer/transition components only when needed. Do not add device-based graphics downgrades.
+Later phases may add project case studies, Lab, a dedicated photography gallery, and a standalone contact page. Share media/viewer/transition components only when needed. Do not add device-based graphics downgrades.
 
 See [CONVENTIONS.md](CONVENTIONS.md) for component practices and [PROGRESS.md](PROGRESS.md) for scope and acceptance.

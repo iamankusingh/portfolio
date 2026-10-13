@@ -22,12 +22,8 @@ Build included routes in their owning phases; do not add placeholder pages to th
 
 ## Current implementation
 
-Phase 5 is complete by user direction. It adds the homepage About section after Selected Work, with the real portrait, basic details, and labeled draft personal copy stored in `src/data/anku.ts`. Phase 6 now adds a sticky, scroll-driven black-circle interlude after About, revealing one large white capabilities paragraph as the center expands. Reduced motion shows the paragraph immediately on black. Validation remains pending; the standalone About route remains deferred.
-
-`/` renders the persistent header/navigation, completed Phase 2 landscape, Phase 3 introduction, and Phase 4 selected work inside the semantic main region. `/#selected-work` targets the work section. `/#introduction` targets the introduction and supports keyboard skipping. Phase 7 onward and unbuilt pages remain deferred. Routing, NotFound, error boundaries, fonts, design tokens, focus handling, and scroll restoration remain. Unbuilt destinations currently use NotFound.
+The homepage renders Hero/Introduction, Selected Work, About, Capabilities, Photography, and Contact. Phases 2 through 7 are complete by user direction; Phase 8 contact UI is implemented with delivery and validation pending. Homepage anchors include `/#introduction`, `/#selected-work`, `/#about`, `/#photography`, and `/#contact`. Phase 9 onward and standalone pages remain deferred; unbuilt destinations use NotFound. Route focus, scroll restoration, and error boundaries remain.
 
 ## Menu destinations
 
-Phase 4 “View all work” links target `/work`; the index remains deferred to Phase 9 and currently uses NotFound. Project detail navigation remains deferred; Phase 5 covers the homepage About section.
-
-The menu retains Home, Work, About, Photography, Lab, and Contact. Contact temporarily targets `/contact` (not found) because the homepage contact placeholder was removed. When the real homepage finale is implemented, use `/#contact` until the standalone page is built. Normal links dismiss the menu; modified clicks retain native behavior. The logo returns to `/`.
+The menu retains Home, Work, About, Photography, Lab, and Contact. Contact targets `/#contact` until the standalone page is built. Normal links dismiss the menu; modified clicks retain native behavior. The logo returns to `/`. Selected Work links to `/work`, which remains deferred.

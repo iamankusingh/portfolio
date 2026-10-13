@@ -4,11 +4,8 @@ An interactive creative-technologist portfolio built around **Technology × Natu
 
 ## Current Status
 
-Phase 6 is complete by user direction. Its sticky black-circle interlude follows About and reveals the capabilities paragraph. Phase 7 now adds photography immediately afterward: a centered photograph enters with the light section, then a GSAP/ScrollTrigger timeline spreads the collage and moves the photographs upward while Photography stays centered in the sticky viewport. Reduced motion shows a normal-flow image grid. Replaceable entries live in `src/data/photographs.ts`; approved portrait placeholders remain until photographs are supplied. Validation remains pending; standalone routes and Phase 8 onward remain deferred.
+Phases 2 through 7 are complete by user direction. Phase 8 adds a full-viewport homepage contact form after Photography, using the existing light palette, editorial typography, and rounded accent control. Name, email, and message are required; company is optional. The Contact menu links to `/#contact`. The form is presentation-only: submission handling and feedback are removed by user direction; message delivery remains unconfigured. Validation remains pending with the user. Phase 9 onward and standalone routes remain deferred.
 
-Phases 2, 3, and 4 are complete by user direction. Phase 4 adds sticky selected-work cards with still images and Coming soon data. Phase 3 source adds a text-free landscape opening, a native-scroll camera approach to the house, and Anku's introduction over the same scene. The two-circle header, ocean, mountains, clouds, and boat remain. Phase 8 onward and unbuilt routes stay deferred; current validation is pending.
-
-See [PROGRESS.md](docs/PROGRESS.md) for phase status and [AGENTS.md](AGENTS.md) before contributing.
 
 ## Stack and Development
 

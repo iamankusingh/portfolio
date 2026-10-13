@@ -142,7 +142,7 @@ Avoid reducing all projects to a dense grid of small cards unless a secondary in
 
 Phase 4 uses a viewport-height sticky Selected Work stage across screen sizes. Each project has a card in the same position, with a still image on the left (60%) and Coming soon title, description, role, and technology text on the right (40%) on desktop. Mobile stacks image above text within the pinned card. Scrolling fades between cards; reverse scrolling revisits earlier entries. The stage releases after the final card. Overflowing details are independently scrollable and keyboard-focusable. Only reduced motion shows every card in normal flow. Inactive overlapping cards are inert and hidden from assistive technology.
 
-“View all work” remains in the section header and targets `/work` through `LinkButton`. The index remains deferred to Phase 9 and currently uses NotFound. Case-study links remain deferred. Images are named directly in `src/data/works.ts` and stored in `src/assets/work`; no videos are used.
+“View all work” remains in the section header and targets `/work` through `LinkButton`. The index remains deferred to its own phase and currently uses NotFound. Case-study links remain deferred. Images are named directly in `src/data/works.ts` and stored in `src/assets/work`; no videos are used.
 
 ## Project Interactions
 
@@ -285,13 +285,11 @@ The final part of the homepage should feel like a conclusion to the journey rath
 
 The nature environment can return here.
 
-## Visual Direction
+## Phase 8 contact form
 
-A quieter sunset landscape can return for the finale; the scene state is defined in [THREE_D.md](THREE_D.md).
+A simple, full-viewport light editorial section follows Photography. Large Instrument Serif typography sits beside the form on desktop; mobile stacks the heading and fields. Use normal flow with a minimum viewport height so short screens, zoom, and a resized message box can extend the section. The form includes name, email, optional company, and message, visible labels, required/email field semantics, autocomplete, and keyboard focus indicated by a dark underline; idle underlines are faded and fields have no rectangular focus outline. The rounded accent action matches the existing controls.
 
-## Contact Content
-
-Make email and relevant social profiles easy to access, with a path back to work. **Let's build something worth remembering.** is conceptual copy only.
+The form is presentation-only by user direction, with no submission handler, state, or feedback. The Send message control uses a non-submit button until delivery is implemented. The navigation Contact link targets `/#contact`; the separate contact page and any sunset closing scene remain deferred.
 
 # 14. Cursor and Pointer Behavior
 
@@ -350,7 +348,7 @@ The preferred order may change if the narrative improves:
 5. Capabilities — range of work.
 6. About / Portrait — the person behind the work.
 7. Lab — experiments.
-8. Photography — homepage collage; currently follows Capabilities, before deferred Lab and closing sections.
+8. Photography — homepage collage; currently follows Capabilities, before Contact; Lab remains deferred.
 9. Finale / Contact — sunset and next action.
 
 # Source-of-Truth Rules
@@ -367,5 +365,5 @@ Phase 2 is complete by user direction. The opening contains an island, ocean cur
 
 Reveal the scene directly from a dark background with the dawn intro. Preserve native scrolling, responsive framing, and the same graphics quality across devices. Suspend animation while navigation is open. Use the static fallback for reduced motion, Save-Data, or rendering failure.
 
-Phase 4 selected work is complete by user direction. Phase 5 About/portrait is complete by user direction and follows Selected Work. Phase 6 is complete by user direction. Phase 7 adds the photography collage after Capabilities. Phase 8 onward remain deferred; current validation is tracked in [PROGRESS.md](PROGRESS.md).
+Phase 4 selected work is complete by user direction. Phase 5 About/portrait is complete by user direction and follows Selected Work. Phase 6 is complete by user direction. Phase 7 adds the photography collage after Capabilities. Phase 7 is complete by user direction. Phase 8 adds the homepage contact form; Phase 9 onward remain deferred; current validation is tracked in [PROGRESS.md](PROGRESS.md).
 

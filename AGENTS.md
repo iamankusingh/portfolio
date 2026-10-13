@@ -55,7 +55,7 @@ Before significant work:
 1. Read this file, [README.md](README.md), and [PROGRESS.md](docs/PROGRESS.md).
 2. Read the specialist documents relevant to the task, using the [documentation map](README.md#documentation-responsibilities).
 3. Inspect the current implementation and reuse its patterns.
-4. Stay within the requested scope. Phases 2, 3, and 4 are complete by user direction. Phase 5 About/portrait is complete by user direction. Phase 6 is complete by user direction. Phase 7 is authorized for the homepage photography collage; Phase 8 onward remain deferred.
+4. Stay within the requested scope. Phases 2, 3, and 4 are complete by user direction. Phase 5 About/portrait is complete by user direction. Phase 6 is complete by user direction. Phase 7 is complete by user direction. Phase 8 is authorized for the homepage contact form; Phase 9 onward remain deferred.
 
 The specialist document owns its domain. If documents conflict, surface the conflict and update stale guidance when the evidence or an approved decision resolves it. Do not silently choose a new direction.
 
@@ -97,6 +97,5 @@ Keep [PROGRESS.md](docs/PROGRESS.md) current after meaningful planning or implem
 
 ## Current Status
 
-Phase 6 is complete by user direction. Its sticky black-circle interlude follows About and reveals the capabilities paragraph. Phase 7 now adds photography immediately afterward: a centered photograph enters with the light section, then a GSAP/ScrollTrigger timeline spreads the collage and moves the photographs upward while Photography stays centered in the sticky viewport. Reduced motion shows a normal-flow image grid. Replaceable entries live in `src/data/photographs.ts`; approved portrait placeholders remain until photographs are supplied. Validation remains pending; standalone routes and Phase 8 onward remain deferred.
+Phases 2 through 7 are complete by user direction. Phase 8 adds a full-viewport homepage contact form after Photography, using the existing light palette, editorial typography, and rounded accent control. Name, email, and message are required; company is optional. The Contact menu links to `/#contact`. The form is presentation-only: submission handling and feedback are removed by user direction; message delivery remains unconfigured. Validation remains pending with the user. Phase 9 onward and standalone routes remain deferred.
 
-Phases 2, 3, and 4 are marked complete at the user's request. Phase 4 implements sticky selected-work cards with still images, Coming soon data, and a reusable link button. Phase 3 source adds a text-free opening, native-scroll camera travel toward the house, and an editorial introduction over the landscape. Visible scene credits are deferred; attribution records and model licenses remain preserved. Keep Phase 8 onward and unbuilt routes deferred. Retain native scrolling, not-found/error handling, and static alternatives. Current build, browser, performance, and cleanup checks remain pending with the user; phase completion does not assert unreported test results. See [PROGRESS.md](docs/PROGRESS.md).
