@@ -100,6 +100,10 @@ Warm whites, soft grey, clear blue accents, and strong contrast.
 
 Navy/charcoal, amber, soft orange, and muted blue. Apply the day cycle mainly to atmosphere; avoid constantly recoloring DOM content.
 
+### Night footer
+
+The approved Phase 9 finale uses the deep background token, warm-white editorial text, cool muted water, and a restrained silver moon reflection. Keep text on clear dark areas and allow the water to occupy the lower composition.
+
 ## 3.4 Contrast Rules
 
 - Body copy must remain highly legible.

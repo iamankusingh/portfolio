@@ -2,11 +2,11 @@
 
 ## Current Status
 
-Phases 2 through 7 are complete by user direction. Phase 8 adds a full-viewport homepage contact form after Photography, using the existing light palette, editorial typography, and rounded accent control. Name, email, and message are required; company is optional. The Contact menu links to `/#contact`. The form is presentation-only: submission handling and feedback are removed by user direction; message delivery remains unconfigured. Validation remains pending with the user. Phase 9 onward and standalone routes remain deferred.
+Phases 2 through 8 are complete by user direction. The Phase 8 contact form remains presentation-only; message delivery is unconfigured. Phase 9 implements a full-viewport dark night footer after Contact, with moonlit 3D water, identity, homepage links, authorship, and an explicit last-updated date. Footer content, rendering, and static fallback live in `Footer.tsx`. Validation remains pending with the user. Phase 10 onward and standalone routes remain deferred.
 
 Photography retains its scroll-driven collage and normal-flow reduced-motion grid. Approved portrait placeholders remain until photographs are supplied. Completion records approved milestones, not unreported validation results.
 
-Contact field underlines smoothly darken on focus and fade on blur, with immediate changes for reduced motion. Browser acceptance remains pending.
+The footer uses the hero water approach: four Gerstner wave layers, displaced-surface normals, fine ripples, planar moon reflections, Fresnel shading, and subtle crest foam, with denser geometry and a higher-resolution reflection target. The manual pause control is removed by user direction. It loads on visibility, suspends offscreen or behind the menu/hidden tab, and provides a static night scene for reduced motion, Save-Data or rendering failure. The scene reveals only after its first rendered frame; the SVG is reserved for static preferences or failure, never loading. The moon has a soft atmospheric halo that also participates in the water reflection; the static fallback includes a matching gentle glow. Thirteen irregularly scattered stars vary in size, brightness, and gentle twinkle timing; they share scene suspension and remain static in the fallback. Desktop/mobile appearance and current lint/build remain pending. No new dependencies or assets are required.
 
 ## Phase Checklist
 
@@ -20,8 +20,8 @@ Contact field underlines smoothly darken on focus and fade on blur, with immedia
 | 5 | About and portrait | Complete by user direction |
 | 6 | Capabilities circle interlude | Complete by user direction |
 | 7 | Photography | Complete by user direction |
-| 8 | Contact form | UI implemented; delivery configuration and user validation pending |
-| 9 | Footer |
+| 8 | Contact form | Complete by user direction; delivery remains unconfigured |
+| 9 | Footer | Implemented; user validation pending |
 | 10 | Work Page |
 | 11 | About Page |
 | 12 | Photography Page |
@@ -36,6 +36,8 @@ Contact field underlines smoothly darken on focus and fade on blur, with immedia
 | 21 | Final QA and launch |
 
 ## Pending Acceptance
+
+- [ ] Review Phase 9 after Contact: moon and reflection framing, ripple appearance, desktop/mobile and short-screen layouts, zoom, footer links and back-to-top focus, last-updated date, live reduced motion, Save-Data, WebGL failure, menu/tab/offscreen suspension, and resource cleanup.
 
 Phase 7 is complete by user direction. Technical checks and replacement photography remain pending.
 

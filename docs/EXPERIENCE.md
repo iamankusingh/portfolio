@@ -289,7 +289,11 @@ The nature environment can return here.
 
 A simple, full-viewport light editorial section follows Photography. Large Instrument Serif typography sits beside the form on desktop; mobile stacks the heading and fields. Use normal flow with a minimum viewport height so short screens, zoom, and a resized message box can extend the section. The form includes name, email, optional company, and message, visible labels, required/email field semantics, autocomplete, and keyboard focus indicated by a dark underline; idle underlines are faded and fields have no rectangular focus outline. The rounded accent action matches the existing controls.
 
-The form is presentation-only by user direction, with no submission handler, state, or feedback. The Send message control uses a non-submit button until delivery is implemented. The navigation Contact link targets `/#contact`; the separate contact page and any sunset closing scene remain deferred.
+The form is presentation-only by user direction, with no submission handler, state, or feedback. The Send message control uses a non-submit button until delivery is implemented. The navigation Contact link targets `/#contact`; the separate contact page remains deferred. The Phase 9 night footer follows the form.
+
+## Phase 9 night footer
+
+A full-viewport dark footer closes the homepage after Contact. Oversized Anku Singh typography, homepage section links, a back-to-top link, authorship, copyright, and an explicit last-updated date remain semantic HTML above and below a moonlit water scene. The lower scene contains gently rippling 3D water and a silver moon reflection. Normal flow allows short screens and zoom to extend the footer. There is no manual pause control by user direction; reduced motion, Save-Data, and rendering failure use a static night fallback. This approved night direction replaces the earlier sunset finale proposal.
 
 # 14. Cursor and Pointer Behavior
 
@@ -349,7 +353,8 @@ The preferred order may change if the narrative improves:
 6. About / Portrait — the person behind the work.
 7. Lab — experiments.
 8. Photography — homepage collage; currently follows Capabilities, before Contact; Lab remains deferred.
-9. Finale / Contact — sunset and next action.
+9. Contact: light editorial form.
+10. Footer: night sky and moonlit water.
 
 # Source-of-Truth Rules
 
@@ -365,5 +370,5 @@ Phase 2 is complete by user direction. The opening contains an island, ocean cur
 
 Reveal the scene directly from a dark background with the dawn intro. Preserve native scrolling, responsive framing, and the same graphics quality across devices. Suspend animation while navigation is open. Use the static fallback for reduced motion, Save-Data, or rendering failure.
 
-Phase 4 selected work is complete by user direction. Phase 5 About/portrait is complete by user direction and follows Selected Work. Phase 6 is complete by user direction. Phase 7 adds the photography collage after Capabilities. Phase 7 is complete by user direction. Phase 8 adds the homepage contact form; Phase 9 onward remain deferred; current validation is tracked in [PROGRESS.md](PROGRESS.md).
+Phase 4 selected work is complete by user direction. Phase 5 About/portrait is complete by user direction and follows Selected Work. Phase 6 is complete by user direction. Phase 7 adds the photography collage after Capabilities. Phase 7 is complete by user direction. Phase 8 is complete by user direction. Phase 9 adds the night footer; Phase 10 onward remain deferred; current validation is tracked in [PROGRESS.md](PROGRESS.md).
 

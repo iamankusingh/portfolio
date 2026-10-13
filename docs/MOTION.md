@@ -239,3 +239,7 @@ Reduced motion, Save-Data, and scene failure use a static opening followed by im
 Clouds drift right to left and recycle offscreen. Water and subtle camera motion share automatic suspension when the menu is open, the tab is hidden, or the hero is offscreen. Reduced-motion and Save-Data visitors receive the static landscape. There is no manual pause control.
 
 User acceptance remains pending in [PROGRESS.md](PROGRESS.md).
+
+## Footer motion
+
+Phase 9 uses gentle continuous water ripples in a fixed camera composition. Its local Three.js animation loop runs only while the water is visible, the tab is active, and the menu is closed. Reduced motion and Save-Data show a static night scene. There is no manual pause control by user direction. Footer text and links never depend on animation.

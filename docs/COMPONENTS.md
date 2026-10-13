@@ -7,6 +7,7 @@ Create components when they have a clear responsibility; avoid speculative wrapp
 | Component | Responsibility |
 |---|---|
 | `AppLayout` | Persistent shell, main region, route focus, and scroll restoration |
+| `Footer` | Homepage night closing scene, DOM identity/links/metadata, self-contained moonlit water, suspension, and static fallback |
 | `Header` | Both circular controls, fullscreen menu, destinations, previews, and modal lifecycle |
 | `Hero` | DOM composition, deferred scene loading, visibility, scrolling, and failure containment |
 | `Introduction` | Semantic identity and replaceable description revealed over the hero landscape |

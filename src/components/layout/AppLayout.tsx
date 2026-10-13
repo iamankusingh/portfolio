@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { Outlet, ScrollRestoration, useLocation } from "react-router";
 import useSmoothScroll from "../../hooks/useSmoothScroll";
 import Header from "./Header";
+import Footer from "./Footer";
 
 export default function AppLayout() {
   const location = useLocation();
@@ -35,6 +36,7 @@ export default function AppLayout() {
       >
         <Outlet />
       </main>
+      {location.pathname === "/" && <Footer />}
       <ScrollRestoration />
     </>
   );

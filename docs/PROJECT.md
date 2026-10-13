@@ -16,11 +16,11 @@ Internal positioning: **A creative technologist working across design, engineeri
 
 ## Core Creative Concept
 
-**Technology × Nature × Human Experience.** Mountains, water, sunlight, horizon, fog, and atmosphere provide the narrative language. Dawn, daylight, and sunset suggest progression. Organic environments contrast with structured interfaces, typography, project media, and technical diagrams.
+**Technology × Nature × Human Experience.** Mountains, water, sunlight, horizon, fog, and atmosphere provide the narrative language. Dawn, daylight, and night suggest progression. Organic environments contrast with structured interfaces, typography, project media, and technical diagrams.
 
 **Nature represents Anku's world and personality; structured interfaces represent the work.**
 
-**Confirmed hero brief:** follow this established concept with a contained grassy island with a faceted rocky mountain, surrounding water, sun, fog/atmosphere, and minimal DOM typography, restrained pointer/scroll response, and a connected transition into editorial content. The user refined the opening toward an island composition, with very little text so the environment carries the first impression. Use the supplied inspiration image for its calm, contained-world composition; retain the existing faceted mesh style. Preserve the dawn-to-daylight-to-sunset narrative across the experience. [THREE_D.md](THREE_D.md) and [MOTION.md](MOTION.md) define the supporting options; implementation may choose techniques through prototyping.
+**Confirmed hero brief:** follow this established concept with a contained grassy island with a faceted rocky mountain, surrounding water, sun, fog/atmosphere, and minimal DOM typography, restrained pointer/scroll response, and a connected transition into editorial content. The user refined the opening toward an island composition, with very little text so the environment carries the first impression. Use the supplied inspiration image for its calm, contained-world composition; retain the existing faceted mesh style. The approved closing footer completes the dawn-to-daylight journey with moonlit water at night. [THREE_D.md](THREE_D.md) and [MOTION.md](MOTION.md) define the supporting options; implementation may choose techniques through prototyping.
 
 ## Product Goals
 
@@ -191,5 +191,5 @@ This file owns product intent, positioning, goals, audience, scope, and creative
 
 ## Current Status
 
-Phases 2 through 7 are complete by user direction. Phase 8 adds a full-viewport homepage contact form after Photography, using the existing light palette, editorial typography, and rounded accent control. Name, email, and message are required; company is optional. The Contact menu links to `/#contact`. The form is presentation-only: submission handling and feedback are removed by user direction; message delivery remains unconfigured. Validation remains pending with the user. Phase 9 onward and standalone routes remain deferred.
+Phases 2 through 8 are complete by user direction. Phase 9 implements the full-viewport night footer with moonlit water. Contact delivery remains unconfigured; validation is pending with the user. Phase 10 onward and standalone routes remain deferred.
 

@@ -4,7 +4,7 @@ An interactive creative-technologist portfolio built around **Technology × Natu
 
 ## Current Status
 
-Phases 2 through 7 are complete by user direction. Phase 8 adds a full-viewport homepage contact form after Photography, using the existing light palette, editorial typography, and rounded accent control. Name, email, and message are required; company is optional. The Contact menu links to `/#contact`. The form is presentation-only: submission handling and feedback are removed by user direction; message delivery remains unconfigured. Validation remains pending with the user. Phase 9 onward and standalone routes remain deferred.
+Phases 2 through 8 are complete by user direction. The Phase 8 contact form remains presentation-only; message delivery is unconfigured. Phase 9 implements a full-viewport dark night footer after Contact, with moonlit 3D water, identity, homepage links, authorship, and an explicit last-updated date. Footer content, rendering, and static fallback live in `Footer.tsx`. Validation remains pending with the user. Phase 10 onward and standalone routes remain deferred.
 
 
 ## Stack and Development

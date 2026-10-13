@@ -49,6 +49,10 @@ Structured data flows through pages and components. Keep demo entries clearly id
 
 Load the scene lazily and coordinate its intro with readiness. Imported models share cached resources; clouds own fading material copies. Water owns its reflection resources. Clean up owned resources and event subscriptions. See [THREE_D.md](THREE_D.md) for scene behavior.
 
+## Footer Boundary
+
+By explicit user direction, `Footer.tsx` contains all footer content, metadata, shaders, scene lifecycle, and static fallback. `AppLayout` mounts it after the semantic main region on the homepage only. It dynamically imports the existing Three.js dependency on visibility; the hero retains React Three Fiber. No dependency changes are needed.
+
 ## Dependency Rules
 
 Reuse existing packages and native capabilities before recommending dependencies. Give an exact pnpm command and reason when a package is needed; the user installs it. Do not change manifests or lockfiles on their behalf.
