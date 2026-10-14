@@ -370,5 +370,5 @@ Phase 2 is complete by user direction. The opening contains an island, ocean cur
 
 Reveal the scene directly from a dark background with the dawn intro. Preserve native scrolling, responsive framing, and the same graphics quality across devices. Suspend animation while navigation is open. Use the static fallback for reduced motion, Save-Data, or rendering failure.
 
-Phase 4 selected work is complete by user direction. Phase 5 About/portrait is complete by user direction and follows Selected Work. Phase 6 is complete by user direction. Phase 7 adds the photography collage after Capabilities. Phase 7 is complete by user direction. Phase 8 is complete by user direction. Phase 9 adds the night footer; Phase 10 onward remain deferred; current validation is tracked in [PROGRESS.md](PROGRESS.md).
+Phase 4 selected work is complete by user direction. Phase 5 About/portrait is complete by user direction and follows Selected Work. Phase 6 is complete by user direction. Phase 7 adds the photography collage after Capabilities. Phase 7 is complete by user direction. Phase 8 is complete by user direction. Phase 9 night footer is complete by user direction; Phase 10 onward remain deferred; current validation is tracked in [PROGRESS.md](PROGRESS.md).
 

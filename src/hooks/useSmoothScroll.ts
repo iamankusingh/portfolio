@@ -5,7 +5,9 @@ import useMediaQuery from "./useMediaQuery";
 
 gsap.registerPlugin(ScrollToPlugin);
 
-const SCROLL_RESPONSE = 18;
+const SCROLL_RESPONSE = 10;
+const BRAKING_RESPONSE = 22;
+const MAX_PENDING_VIEWPORTS = 1.5;
 
 // Animate the real scroll position so sticky content, hero measurements, and
 // React Router restoration all retain the same coordinate system.
@@ -44,29 +46,44 @@ export default function useSmoothScroll(locationKey: string) {
       destination = gsap.utils.clamp(0, maximum, destination);
       const step = Math.min(deltaMilliseconds / 1000, 0.05);
       const offset = position - destination;
-      const momentum = velocity + SCROLL_RESPONSE * offset;
-      const decay = Math.exp(-SCROLL_RESPONSE * step);
+      // A softer response gives released input a longer coast. Brake faster
+      // when the destination moves behind us so reversals remain responsive.
+      const response =
+        velocity * offset > 0 ? BRAKING_RESPONSE : SCROLL_RESPONSE;
+      const momentum = velocity + response * offset;
+      const decay = Math.exp(-response * step);
 
       // Exact critically damped spring: preserve velocity between input events
       // and ease acceleration/deceleration without a fresh tween for each tick.
       const nextPosition = destination + (offset + momentum * step) * decay;
-      velocity = (velocity - SCROLL_RESPONSE * momentum * step) * decay;
+      velocity = (velocity - response * momentum * step) * decay;
       position = gsap.utils.clamp(0, maximum, nextPosition);
       if (position !== nextPosition) velocity = 0;
 
-      const settled = Math.abs(destination - position) < 0.5 && Math.abs(velocity) < 5;
+      const settled =
+        Math.abs(destination - position) < 0.5 && Math.abs(velocity) < 5;
       if (settled) position = destination;
-      window.scrollTo({ top: position, left: window.scrollX, behavior: "instant" });
+      window.scrollTo({
+        top: position,
+        left: window.scrollX,
+        behavior: "instant",
+      });
       lastWrittenPosition = window.scrollY;
       if (settled) stop();
     }
 
     function onWheel(event: WheelEvent) {
       if (
-        event.defaultPrevented || !event.cancelable ||
-        event.ctrlKey || event.metaKey || event.altKey || event.shiftKey ||
-        !event.deltaY || Math.abs(event.deltaX) > Math.abs(event.deltaY) ||
-        document.hidden || menu?.hasAttribute("open") ||
+        event.defaultPrevented ||
+        !event.cancelable ||
+        event.ctrlKey ||
+        event.metaKey ||
+        event.altKey ||
+        event.shiftKey ||
+        !event.deltaY ||
+        Math.abs(event.deltaX) > Math.abs(event.deltaY) ||
+        document.hidden ||
+        menu?.hasAttribute("open") ||
         window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
         usesLocalScrolling(event.target)
       ) {
@@ -80,11 +97,12 @@ export default function useSmoothScroll(locationKey: string) {
         return;
       }
 
-      const unit = event.deltaMode === WheelEvent.DOM_DELTA_PAGE
-        ? window.innerHeight
-        : event.deltaMode === WheelEvent.DOM_DELTA_LINE
-          ? parseFloat(rootStyle.lineHeight) || 24
-          : 1;
+      const unit =
+        event.deltaMode === WheelEvent.DOM_DELTA_PAGE
+          ? window.innerHeight
+          : event.deltaMode === WheelEvent.DOM_DELTA_LINE
+            ? parseFloat(rootStyle.lineHeight) || 24
+            : 1;
       const delta = event.deltaY * unit;
       const nextDirection = Math.sign(delta);
 
@@ -96,7 +114,15 @@ export default function useSmoothScroll(locationKey: string) {
       // Discard queued travel on reversal while retaining velocity for braking.
       if (direction !== nextDirection) destination = position;
       direction = nextDirection;
-      destination = gsap.utils.clamp(0, ScrollToPlugin.max(window), destination + delta);
+      // Bound the backlog during rapid wheel bursts; do not multiply trackpad
+      // deltas, which already include the device's own momentum.
+      const maximum = ScrollToPlugin.max(window);
+      const pendingLimit = window.innerHeight * MAX_PENDING_VIEWPORTS;
+      destination = gsap.utils.clamp(
+        Math.max(0, position - pendingLimit),
+        Math.min(maximum, position + pendingLimit),
+        destination + delta,
+      );
 
       if (Math.abs(destination - position) < 0.5 && Math.abs(velocity) < 5) {
         stop();
@@ -111,7 +137,11 @@ export default function useSmoothScroll(locationKey: string) {
     }
 
     const menuObserver = new MutationObserver(stop);
-    if (menu) menuObserver.observe(menu, { attributes: true, attributeFilter: ["open"] });
+    if (menu)
+      menuObserver.observe(menu, {
+        attributes: true,
+        attributeFilter: ["open"],
+      });
 
     window.addEventListener("wheel", onWheel, { passive: false });
     window.addEventListener("keydown", stop, true);
@@ -143,11 +173,24 @@ export default function useSmoothScroll(locationKey: string) {
 
 function usesLocalScrolling(target: EventTarget | null) {
   if (!(target instanceof Element)) return false;
-  if (target.closest("input, textarea, select, [contenteditable]:not([contenteditable='false']), dialog, [data-native-scroll]")) return true;
+  if (
+    target.closest(
+      "input, textarea, select, [contenteditable]:not([contenteditable='false']), dialog, [data-native-scroll]",
+    )
+  )
+    return true;
 
-  for (let element: Element | null = target; element && element !== document.body; element = element.parentElement) {
+  for (
+    let element: Element | null = target;
+    element && element !== document.body;
+    element = element.parentElement
+  ) {
     const style = getComputedStyle(element);
-    if (/(auto|scroll)/.test(style.overflowY) && element.scrollHeight > element.clientHeight) return true;
+    if (
+      /(auto|scroll)/.test(style.overflowY) &&
+      element.scrollHeight > element.clientHeight
+    )
+      return true;
   }
   return false;
 }

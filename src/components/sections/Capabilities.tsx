@@ -1,5 +1,9 @@
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import useMediaQuery from "../../hooks/useMediaQuery";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const ORBITS = [0, 1, 2];
 const capabilities = {
@@ -33,25 +37,24 @@ export default function Capabilities() {
   const satellites = useRef<(HTMLDivElement | null)[]>([]);
   const reducedMotion = useMediaQuery("(prefers-reduced-motion: reduce)");
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const element = section.current;
     const viewport = stage.current;
     const core = center.current;
     const orbit = ring.current;
     if (!element || !viewport || !core || !orbit) return;
 
+    const orbitingCircles = satellites.current.slice();
     let frame = 0;
-    const update = () => {
-      frame = 0;
-      const bounds = element.getBoundingClientRect();
+    const update = (scrollProgress: number) => {
+      // Keep the opening beats together and reserve more scroll for expansion.
+      const progress = scrollProgress * 1.25;
       const width = viewport.clientWidth;
       const height = viewport.clientHeight;
-      const distance = Math.max(1, element.offsetHeight - height);
-      const progress = reducedMotion ? 1 : clamp(-bounds.top / distance);
       const size = Math.min(width * 0.72, height * 0.64);
       const merge = beat(progress, 0.6, 0.78);
-      const expand = beat(progress, 0.8, 0.97);
-      const reveal = beat(progress, 0.03, 0.13);
+      const expand = beat(progress, 0.8, 1.2);
+      const reveal = beat(progress, 0, 0.04);
       const orbitDiameter = size * 0.74;
       const radius = (orbitDiameter / 2) * (1 - merge);
       // End at the reference's top / lower-right / lower-left arrangement.
@@ -60,12 +63,21 @@ export default function Capabilities() {
       // The diagonal covers all four corners, including wide and short screens.
       const coverDiameter = Math.hypot(width, height) + 4;
       const diameter = coreDiameter + (coverDiameter - coreDiameter) * expand;
+      const textReveal = beat(progress, 0.84, 1.18);
+      const textShade = Math.round(255 * textReveal);
+      const glow = beat(progress, 1.1, 1.2);
 
-      // The paragraph stays still; only its mask follows the black circle.
+      // The circle contains the copy; its color, rather than a separate growing
+      // text mask, makes the words emerge gradually from black into white.
       viewport.style.setProperty(
         "--capabilities-reveal",
-        `circle(${expand > 0 ? diameter / 2 : 0}px at 50% 50%)`,
+        `circle(${textReveal > 0 ? diameter / 2 : 0}px at 50% 50%)`,
       );
+      // Black text is still visible against the light surface while the core
+      // is scaling in. Keep the entire layer transparent until its reveal beat.
+      viewport.style.setProperty("--capabilities-copy-opacity", textReveal > 0 ? "1" : "0");
+      viewport.style.setProperty("--capabilities-text", `rgb(${textShade}, ${textShade}, ${textShade})`);
+      viewport.style.setProperty("--capabilities-glow", `0 0 ${12 * glow}px rgb(255 255 255 / ${0.22 * glow})`);
 
       core.style.opacity = String(reveal);
       core.style.transform = `translate(-50%, -50%) scale(${(diameter / 100) * reveal})`;
@@ -74,7 +86,7 @@ export default function Capabilities() {
       orbit.style.opacity = String(beat(progress, 0.13, 0.25) * (1 - merge));
       orbit.style.transform = `translate(-50%, -50%) scale(${1 - merge})`;
 
-      satellites.current.forEach((satellite, index) => {
+      orbitingCircles.forEach((satellite, index) => {
         if (!satellite) return;
         const appear = beat(progress, 0.14 + index * 0.07, 0.29 + index * 0.07);
         const angle = rotation - Math.PI / 2 + (index * Math.PI * 2) / 3;
@@ -87,24 +99,47 @@ export default function Capabilities() {
         satellite.style.transform = `translate(-50%, -50%) translate(${x}px, ${y}px) scale(${scale})`;
       });
     };
+    // Measure the center inside the first viewport, not the tall section's
+    // midpoint. Entry starts before the stage reaches its sticky position.
+    const trigger = reducedMotion ? undefined : ScrollTrigger.create({
+      trigger: element,
+      start: () => `top+=${viewport.clientHeight / 2} bottom`,
+      end: "bottom bottom",
+      onUpdate: (self) => update(self.progress),
+      onRefresh: (self) => update(self.progress),
+    });
+    update(reducedMotion ? 1 : trigger?.progress ?? 0);
+    const refresh = () => {
+      frame = 0;
+      if (trigger) trigger.refresh();
+      else update(1);
+    };
     const schedule = () => {
-      if (!frame) frame = requestAnimationFrame(update);
+      if (!frame) frame = requestAnimationFrame(refresh);
     };
     const resize = new ResizeObserver(schedule);
     resize.observe(element);
     resize.observe(viewport);
     if (element.parentElement) resize.observe(element.parentElement);
-    if (!reducedMotion) {
-      window.addEventListener("scroll", schedule, { passive: true });
-    }
-    window.addEventListener("resize", schedule);
-    schedule();
 
     return () => {
       cancelAnimationFrame(frame);
       resize.disconnect();
-      window.removeEventListener("scroll", schedule);
-      window.removeEventListener("resize", schedule);
+      trigger?.kill();
+      viewport.style.removeProperty("--capabilities-reveal");
+      viewport.style.removeProperty("--capabilities-copy-opacity");
+      viewport.style.removeProperty("--capabilities-text");
+      viewport.style.removeProperty("--capabilities-glow");
+      core.style.removeProperty("opacity");
+      core.style.removeProperty("transform");
+      orbit.style.removeProperty("width");
+      orbit.style.removeProperty("height");
+      orbit.style.removeProperty("opacity");
+      orbit.style.removeProperty("transform");
+      orbitingCircles.forEach((satellite) => {
+        satellite?.style.removeProperty("opacity");
+        satellite?.style.removeProperty("transform");
+      });
     };
   }, [reducedMotion]);
 
@@ -114,7 +149,7 @@ export default function Capabilities() {
       id="capabilities"
       aria-label="Capabilities"
       tabIndex={-1}
-      className={`relative bg-bg-light ${reducedMotion ? "" : "h-[500svh]"}`}
+      className={`relative bg-bg-light ${reducedMotion ? "" : "h-[600svh]"}`}
     >
       <div
         ref={stage}
@@ -141,22 +176,24 @@ export default function Capabilities() {
           className={`${circleClass} h-25 w-25 opacity-0`}
         />
         <div
-          className="capabilities-copy absolute inset-0 text-white"
+          className="capabilities-copy absolute inset-0"
           style={{
+            opacity: reducedMotion ? 1 : "var(--capabilities-copy-opacity, 0)",
+            color: reducedMotion ? "white" : "var(--capabilities-text, black)",
+            textShadow: reducedMotion ? "none" : "var(--capabilities-glow, none)",
             clipPath: reducedMotion
               ? "none"
               : "var(--capabilities-reveal, circle(0px at 50% 50%))",
           }}
         >
           <div
-            data-native-scroll
             tabIndex={0}
             role="region"
             aria-label="Capabilities statement"
             className="flex h-full overflow-y-auto px-page pt-[calc(var(--navigation-top)+var(--navigation-control-size)+1.5rem)] pb-8"
           >
             <p className="my-auto flex w-full flex-col gap-[clamp(0.5rem,1.6dvh,1.25rem)] font-display text-[clamp(1.25rem,min(3.7vw,5.2dvh),4rem)] leading-[1.15] tracking-[-0.02em]">
-              <span className="mb-2 block font-sans text-micro leading-normal tracking-[0.08em] text-white/60 uppercase">
+              <span className="mb-2 block font-sans text-micro leading-normal tracking-[0.08em] opacity-60 uppercase">
                 {capabilities.label}
               </span>
               {capabilities.lines.map((line) => (

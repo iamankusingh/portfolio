@@ -2,11 +2,11 @@
 
 ## Current Status
 
-Phases 2 through 8 are complete by user direction. The Phase 8 contact form remains presentation-only; message delivery is unconfigured. Phase 9 implements a full-viewport dark night footer after Contact, with moonlit 3D water, identity, homepage links, authorship, and an explicit last-updated date. Footer content, rendering, and static fallback live in `Footer.tsx`. Validation remains pending with the user. Phase 10 onward and standalone routes remain deferred.
+Phases 2 through 9 are complete by user direction. The Phase 8 contact form remains presentation-only; message delivery is unconfigured. Phase 9 implements a full-viewport dark night footer after Contact, with moonlit 3D water, identity, homepage links, authorship, and an explicit last-updated date. Footer content, rendering, and static fallback live in `Footer.tsx`. Validation remains pending with the user. Phase 10 onward and standalone routes remain deferred.
 
 Photography retains its scroll-driven collage and normal-flow reduced-motion grid. Approved portrait placeholders remain until photographs are supplied. Completion records approved milestones, not unreported validation results.
 
-The footer uses the hero water approach: four Gerstner wave layers, displaced-surface normals, fine ripples, planar moon reflections, Fresnel shading, and subtle crest foam, with denser geometry and a higher-resolution reflection target. The manual pause control is removed by user direction. It loads on visibility, suspends offscreen or behind the menu/hidden tab, and provides a static night scene for reduced motion, Save-Data or rendering failure. The scene reveals only after its first rendered frame; the SVG is reserved for static preferences or failure, never loading. The moon has a soft atmospheric halo that also participates in the water reflection; the static fallback includes a matching gentle glow. Thirteen irregularly scattered stars vary in size, brightness, and gentle twinkle timing; they share scene suspension and remain static in the fallback. Desktop/mobile appearance and current lint/build remain pending. No new dependencies or assets are required.
+Current focus: Capabilities uses GSAP ScrollTrigger for early center entry and an extended post-merge expansion. Its text emerges from black to white as the circle expands, with a subtle glow near the end; pointer focus does not bypass the reveal. Visual acceptance of this color reveal remains pending. Keyboard access and reduced motion remain immediate. Selected Work advances with shorter scroll intervals. Site-wide GSAP wheel smoothing has a longer deceleration, faster braking on reversal, and bounded queued travel during rapid input. Touch, keyboard, nested scrolling, and reduced motion retain native behavior. Static source review is complete; current lint/build and browser acceptance remain pending with the user. No dependency changes are required.
 
 ## Phase Checklist
 
@@ -21,7 +21,7 @@ The footer uses the hero water approach: four Gerstner wave layers, displaced-su
 | 6 | Capabilities circle interlude | Complete by user direction |
 | 7 | Photography | Complete by user direction |
 | 8 | Contact form | Complete by user direction; delivery remains unconfigured |
-| 9 | Footer | Implemented; user validation pending |
+| 9 | Footer | Complete by user direction |
 | 10 | Work Page |
 | 11 | About Page |
 | 12 | Photography Page |
@@ -37,6 +37,20 @@ The footer uses the hero water approach: four Gerstner wave layers, displaced-su
 
 ## Pending Acceptance
 
+- [ ] Check LinkButton compass arrows: pointer entry, rapid direction changes, movement across the pivot, exit/return, keyboard activation, touch, and live reduced motion. Current lint/build and browser validation remain pending.
+
+- [ ] Check About portrait parallax in both scroll directions, crop and frame coverage on desktop/mobile, resize, and live reduced motion. Current lint/build and browser validation remain pending.
+
+- [ ] Check Selected Work GSAP image crossfades and staggered text fades, including rapid forward/reverse scrolling and live reduced-motion changes. Short scroll intervals are preserved. Current lint/build and browser validation remain pending.
+
+- [ ] Check Capabilities entry and reverse scrolling: copy is fully transparent and clipped until the post-merge text reveal, then retains the black-to-white transition and end glow. Keyboard focus and reduced motion keep immediate text access. Visual validation is pending.
+
+- [ ] Check the new 300 ms wheel/trackpad hold when the animated hero introduction reaches its reading position: continuous input, reversal, menu interruption, repeat entry, and no jump after release. Touch/keyboard and static modes remain native. Current lint/build and browser validation are pending.
+
+- [ ] Check smooth wheel/trackpad scrolling over the Capabilities center and revealed text. The unconditional native-scroll opt-out is removed; overflowing text retains native scrolling on short screens or at zoom. Browser validation remains pending.
+
+- [ ] Check the shorter Selected Work pacing: projects advance with less than half the previous scroll distance; verify forward/reverse fades and final-card release on desktop and mobile. Validation remains pending.
+
 - [ ] Review Phase 9 after Contact: moon and reflection framing, ripple appearance, desktop/mobile and short-screen layouts, zoom, footer links and back-to-top focus, last-updated date, live reduced motion, Save-Data, WebGL failure, menu/tab/offscreen suspension, and resource cleanup.
 
 Phase 7 is complete by user direction. Technical checks and replacement photography remain pending.
@@ -45,7 +59,7 @@ Phase 7 is complete by user direction. Technical checks and replacement photogra
 
 - [ ] Review Phase 7: black capabilities exit, centered photo during entry, spread starting only at full-screen coverage, upward photo travel with a stationary heading, all 26 entries, reverse/fast scrolling, reload mid-section, mobile/short screens, orientation changes, header access, and live reduced motion. Add photographs using `src/assets/photography/README.md`; verify crops, alt text, missing-image fallback, and `/#photography`.
 
-- [ ] Review Phase 6 after About: center appearance, gradual three-circle orbit, merge, and edge-to-edge black expansion. Check reverse/fast scrolling, reload within the section, mobile/short screens, orientation changes, header/menu access, and live reduced motion (immediately readable paragraph without pinning). Check the white paragraph reveal, one-screen fit, keyboard access, and zoom overflow. Capability copy and line placement live in `src/components/sections/Capabilities.tsx`; check the staggered line layout across screen sizes.
+- [ ] Review Phase 6 after About: early center appearance as it enters the viewport, GSAP forward/reverse progress and refresh cleanup, gradual three-circle orbit, merge, and edge-to-edge black expansion. Check reverse/fast scrolling, reload within the section, mobile/short screens, orientation changes, header/menu access, and live reduced motion (immediately readable paragraph without pinning). Check the white paragraph reveal, one-screen fit, keyboard access, and zoom overflow. Capability copy and line placement live in `src/components/sections/Capabilities.tsx`; check the staggered line layout across screen sizes.
 - [ ] Review the Phase 5 About section after Selected Work: portrait crop, draft personal copy, desktop/mobile layout, zoom, and `/#about` navigation. Content lives in `src/data/anku.ts`; the real portrait is `src/assets/anku.avif`.
 - [ ] Run `pnpm.cmd lint` and `pnpm.cmd build` for the current source.
 - [ ] Check navigation, keyboard focus, touch, scrolling, and responsive layouts.

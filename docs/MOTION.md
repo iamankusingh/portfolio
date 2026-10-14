@@ -70,7 +70,7 @@ Avoid random easings per component.
 
 # 6. Scroll System
 
-Site-wide wheel and trackpad smoothing uses a velocity-preserving, critically damped spring driven by the GSAP ticker through `useSmoothScroll`. Input updates the destination without restarting the motion. Scrolling accelerates with input and decelerates toward rest; reversing input discards queued travel while retaining velocity for brief, smooth braking. The ticker detaches when settled. No transformed content wrapper, scroll snapping, or additional smoothing library is used.
+Site-wide wheel and trackpad smoothing uses a velocity-preserving, critically damped spring driven by the GSAP ticker through `useSmoothScroll`. Input updates the destination without restarting the motion. Scrolling accelerates with input and coasts into a longer, soft deceleration toward rest; reversing input discards queued travel while retaining velocity with a faster braking response. Queued travel is bounded during rapid wheel bursts, and trackpad deltas are not amplified. The ticker detaches when settled. By user direction, forward wheel/trackpad arrival at the animated introduction reading position pauses document travel for 300 ms. Input during the hold is discarded, and reverse input or normal cancellation releases it. It rearms only after scrolling back well above the introduction. Touch, keyboard, anchors, restored positions, and static landscape modes do not receive this timed hold. No transformed content wrapper, scroll snapping, or additional smoothing library is used.
 
 Touch momentum, keyboard scrolling, focus, anchors, and history restoration remain native. Nested scroll areas and form controls retain their own input; `data-native-scroll` opts a region out. Reduced motion disables smoothing, including live preference changes. Opening the menu, changing routes, focusing content, resizing, hiding the tab, or switching input cancels pending travel. Clean up owned listeners, observers, and ticker callbacks on teardown. Do not enable CSS `scroll-behavior: smooth` alongside ScrollToPlugin.
 
@@ -110,7 +110,9 @@ Projects should feel substantial, not like cards in a dashboard.
 
 ## 10.1 Project Entry
 
-Selected Work uses a fixed viewport-height CSS sticky stage and scroll-scheduled project selection across screen sizes. Cards crossfade in place over 420ms as scroll reaches the next entry; reverse scrolling reverses the order. Viewport and content-fit checks must not disable pinning. Responsive card rows and scrollable details keep short/mobile layouts accessible. The shared velocity-based window scrolling remains the only smoothing system. Listeners, resize observations, and scheduled frames are cleaned up. Reduced motion uses normal-flow cards without fades or added scroll distance.
+Selected Work uses a fixed viewport-height CSS sticky stage and scroll-scheduled project selection across screen sizes. GSAP crossfades cards and images with softly staggered text fades and a small vertical settle as scroll reaches the next entry. Interrupted transitions continue from current visual values; reverse scrolling reverses the order. Viewport and content-fit checks must not disable pinning. Responsive card rows and scrollable details keep short/mobile layouts accessible. The shared velocity-based window scrolling remains the only smoothing system. Listeners, resize observations, and scheduled frames are cleaned up. Reduced motion uses normal-flow cards without fades or added scroll distance.
+
+Selected Work uses a short scroll interval per project so the next entry is reached quickly, while retaining the viewport-height stage and a final reading interval before release.
 
 ## 10.2 Project Hover
 
@@ -122,7 +124,7 @@ Selected media or a title may anchor the route transition as the current page re
 
 # Phase 6 circle interlude
 
-After About, a CSS sticky viewport holds a scroll-controlled circle sequence: center reveal, staggered satellite appearance during one revolution, inward merge, then center expansion to cover every viewport corner. Actual document scroll drives reversible transforms and opacity through scheduled animation frames, without an independent timer or input interception. Resize observers refresh framing; listeners and scheduled frames are cleaned up on teardown. The expanding center also drives a circular clip on one stationary white capabilities paragraph, with no text translation or stagger. Reduced motion removes pinning and extra scroll distance, showing the complete paragraph immediately on black. Keyboard focus also reveals the paragraph immediately. The final black statement scrolls out naturally as Photography enters.
+After About, a CSS sticky viewport holds a scroll-controlled circle sequence: center reveal, staggered satellite appearance during one revolution, inward merge, then center expansion to cover every viewport corner. GSAP ScrollTrigger drives reversible transforms and opacity from actual document scroll, starting when the center of the entering stage reaches the viewport bottom. The center reveal begins immediately during entry, before the stage sticks. There is no independent timer, extra smoothing, or input interception. Resize observers refresh framing and trigger measurements; triggers, owned styles, observers, and scheduled refresh frames are cleaned up on teardown. After the merge, an extended scroll interval expands the black center while the stationary paragraph gradually changes from black to white. A subtle white text glow develops near the end. The circle clips the copy to its black surface; color drives the reveal, without text translation or stagger. Reduced motion removes pinning and extra scroll distance, showing the complete paragraph immediately on black. Visible keyboard focus also reveals the paragraph immediately; pointer focus does not bypass the scroll reveal. The final black statement scrolls out naturally as Photography enters.
 
 # 11. Fullscreen Menu Motion
 
@@ -154,13 +156,15 @@ Controls may reduce prominence during downward scrolling and return on upward sc
 
 Optional for circular controls and selected CTAs: approximately **2–8px** maximum translation, smooth following, and quick return. Disable for touch and disable or greatly reduce for reduced motion.
 
+LinkButton arrows act as a compass for mouse/pen input inside the link. A GSAP ticker spring preserves angular velocity, chooses the shortest turn, and smoothly returns to the resting diagonal on exit. The ticker stops at rest; touch and reduced motion keep the static arrow. Native link behavior and keyboard focus remain intact.
+
 # 14. Cursor Motion
 
 Use the contextual states in [EXPERIENCE.md](EXPERIENCE.md). Changes should be fast, size expansion soft, labels legible, and lag minimal. Keep the native fallback.
 
 # 15. Portrait Motion
 
-Optional mask/fog reveal, gentle portrait/type parallax, or subtle depth. Keep the treatment composed and avoid playful facial distortion.
+The About portrait uses GSAP ScrollTrigger for gentle vertical parallax inside its fixed, clipped frame: downward scrolling moves the photo upward, and reverse scrolling moves it downward. A small overscan keeps the frame filled; a short scrub smooths direction changes. Caption and copy stay in normal flow. Live reduced motion restores the untransformed portrait. Owned animations, triggers, observers, and scheduled refreshes are cleaned up.
 
 # 16. Photography Motion
 

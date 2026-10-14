@@ -55,7 +55,7 @@ Before significant work:
 1. Read this file, [README.md](README.md), and [PROGRESS.md](docs/PROGRESS.md).
 2. Read the specialist documents relevant to the task, using the [documentation map](README.md#documentation-responsibilities).
 3. Inspect the current implementation and reuse its patterns.
-4. Stay within the requested scope. Phases 2, 3, and 4 are complete by user direction. Phase 5 About/portrait is complete by user direction. Phase 6 is complete by user direction. Phase 7 is complete by user direction. Phase 8 is complete by user direction. Phase 9 is authorized for the night footer; Phase 10 onward remain deferred.
+4. Stay within the requested scope. Phases 2, 3, and 4 are complete by user direction. Phase 5 About/portrait is complete by user direction. Phase 6 is complete by user direction. Phase 7 is complete by user direction. Phase 8 is complete by user direction. Phase 9 is complete by user direction; Phase 10 onward remain deferred.
 
 The specialist document owns its domain. If documents conflict, surface the conflict and update stale guidance when the evidence or an approved decision resolves it. Do not silently choose a new direction.
 
@@ -97,5 +97,5 @@ Keep [PROGRESS.md](docs/PROGRESS.md) current after meaningful planning or implem
 
 ## Current Status
 
-Phases 2 through 8 are complete by user direction. The Phase 8 contact form remains presentation-only; message delivery is unconfigured. Phase 9 implements a full-viewport dark night footer after Contact, with moonlit 3D water, identity, homepage links, authorship, and an explicit last-updated date. Footer content, rendering, and static fallback live in `Footer.tsx`. Validation remains pending with the user. Phase 10 onward and standalone routes remain deferred.
+Phases 2 through 9 are complete by user direction. The Phase 8 contact form remains presentation-only; message delivery is unconfigured. Phase 9 implements a full-viewport dark night footer after Contact, with moonlit 3D water, identity, homepage links, authorship, and an explicit last-updated date. Footer content, rendering, and static fallback live in `Footer.tsx`. Validation remains pending with the user. Phase 10 onward and standalone routes remain deferred.
 

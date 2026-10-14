@@ -266,9 +266,12 @@ body:has(#site-navigation[open]) {
 }
 
 /* Keyboard readers can reach the statement without scrubbing the interlude. */
-.capabilities-copy:focus-within {
+.capabilities-copy:has(:focus-visible) {
+  opacity: 1 !important;
   clip-path: none !important;
   background: black;
+  color: white !important;
+  text-shadow: none !important;
 }
 
 @media (prefers-reduced-motion: reduce) {

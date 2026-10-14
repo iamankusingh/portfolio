@@ -2,7 +2,7 @@
 
 ## Stack
 
-Client-rendered React, strict TypeScript, Vite, Tailwind CSS, and React Router. Three.js and React Three Fiber power the hero; Drei is recorded but unused by this scene. User-installed GSAP drives velocity-based wheel smoothing; ScrollToPlugin supplies document scroll limits. Photography uses the installed GSAP ScrollTrigger plugin to scrub its spread and upward image travel against native window scrolling; CSS owns its sticky stage. No backend or server rendering is required.
+Client-rendered React, strict TypeScript, Vite, Tailwind CSS, and React Router. Three.js and React Three Fiber power the hero; Drei is recorded but unused by this scene. User-installed GSAP drives velocity-based wheel smoothing; ScrollToPlugin supplies document scroll limits. Capabilities uses GSAP ScrollTrigger for its early-entry circle sequence. Photography uses the installed GSAP ScrollTrigger plugin to scrub its spread and upward image travel against native window scrolling; CSS owns its sticky stage. No backend or server rendering is required.
 
 Use pnpm. [package.json](../package.json) owns actual dependencies and scripts; the user manages packages and lockfiles.
 

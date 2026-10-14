@@ -1,10 +1,62 @@
+import { useLayoutEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { anku } from "../../data/anku";
+import useMediaQuery from "../../hooks/useMediaQuery";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function About() {
   const { about } = anku;
+  const section = useRef<HTMLElement>(null);
+  const portraitFrame = useRef<HTMLDivElement>(null);
+  const portrait = useRef<HTMLImageElement>(null);
+  const reducedMotion = useMediaQuery("(prefers-reduced-motion: reduce)");
+
+  useLayoutEffect(() => {
+    const element = section.current;
+    const frame = portraitFrame.current;
+    const image = portrait.current;
+    if (!element || !frame || !image || reducedMotion) return;
+
+    let animation: gsap.core.Tween | undefined;
+    const context = gsap.context(() => {
+      // Overscan keeps the fixed frame filled throughout the vertical travel.
+      animation = gsap.fromTo(image,
+        { yPercent: 6, scale: 1.14 },
+        {
+          yPercent: -6,
+          scale: 1.14,
+          ease: "none",
+          scrollTrigger: {
+            trigger: frame,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 0.35,
+          },
+        },
+      );
+    }, element);
+    let refreshFrame = 0;
+    const resize = new ResizeObserver(() => {
+      if (refreshFrame) return;
+      refreshFrame = requestAnimationFrame(() => {
+        refreshFrame = 0;
+        animation?.scrollTrigger?.refresh();
+      });
+    });
+    resize.observe(element);
+    if (element.parentElement) resize.observe(element.parentElement);
+    return () => {
+      cancelAnimationFrame(refreshFrame);
+      resize.disconnect();
+      context.revert();
+    };
+  }, [reducedMotion]);
 
   return (
     <section
+      ref={section}
       id="about"
       aria-labelledby="about-title"
       tabIndex={-1}
@@ -25,8 +77,9 @@ export default function About() {
 
         <div className="grid items-start gap-12 md:grid-cols-2 md:gap-10 lg:gap-24">
           <figure className="min-w-0">
-            <div className="bg-surface-light">
+            <div ref={portraitFrame} className="overflow-hidden bg-surface-light">
               <img
+                ref={portrait}
                 src={about.portrait.src}
                 alt={about.portrait.alt}
                 loading="lazy"
