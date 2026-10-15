@@ -205,20 +205,25 @@ export default function HeroScene({
   progress,
   active,
   onUnavailable,
+  preparing,
+  onReady: reportReady,
 }: SceneProps & {
   onUnavailable: () => void;
+  preparing: boolean;
+  onReady: () => void;
 }) {
   const [ready, setReady] = useState(false);
   const sunPosition = useMemo(() => new Vector3(0, 26, -700), []);
 
   const onReady = useCallback(() => {
     setReady(true);
-  }, []);
+    reportReady();
+  }, [reportReady]);
   const onLost = onUnavailable;
 
   return (
     <div
-      className="absolute inset-0 transition-opacity duration-1100ms motion-reduce:transition-none"
+      className={`absolute inset-0 ${preparing ? "" : "transition-opacity duration-1100ms motion-reduce:transition-none"}`}
       style={{ opacity: ready ? 1 : 0 }}
       data-scene-quality="high"
     >

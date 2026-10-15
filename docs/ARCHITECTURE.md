@@ -49,6 +49,12 @@ Structured data flows through pages and components. Keep demo entries clearly id
 
 Load the scene lazily and coordinate its intro with readiness. Imported models share cached resources; clouds own fading material copies. Water owns its reflection resources. Clean up owned resources and event subscriptions. See [THREE_D.md](THREE_D.md) for scene behavior.
 
+## Homepage Loading
+
+`Home` coordinates `useHomepageLoading`, the reusable GSAP `PageLoader`, and hero readiness. The hook tracks the three local font faces, decoded header logo, four model groups (including their buffers/textures through the existing private loading managers), and the first rendered scene frame. `heroLoading.ts` shares resource completion with the hook without eagerly importing Three.js. Progress represents completed resource groups, not downloaded bytes; no simulated progress timer is used. Lazy photographs, below-fold images, footer rendering, and other routes are excluded.
+
+The native modal loader makes background controls inert and locks document scrolling while the hero initializes underneath. The loader appears on every homepage document load or reload. A module-memory flag prevents replay during client-side navigation, including interrupted loading and navigation to Home from another initial route. No browser storage is used. Resource errors settle with existing fallbacks; a 15-second deadline or Escape selects the static landscape and releases pending resource waits. Unmount removes modal state, animations, listeners, subscriptions, and timers. No dependencies are added.
+
 ## Footer Boundary
 
 By explicit user direction, `Footer.tsx` contains all footer content, metadata, shaders, scene lifecycle, and static fallback. `AppLayout` mounts it after the semantic main region on the homepage only. It dynamically imports the existing Three.js dependency on visibility; the hero retains React Three Fiber. No dependency changes are needed.

@@ -2,6 +2,7 @@ import { useMemo } from "react";
 import { useLoader } from "@react-three/fiber";
 import { Box3, LoadingManager, Vector3 } from "three";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+import { trackHeroLoading } from "./heroLoading";
 import modelUrl from "../../assets/3Dmodel/boat/scene.gltf?url";
 import bufferUrl from "../../assets/3Dmodel/boat/scene.bin?url";
 import hullTextureUrl from "../../assets/3Dmodel/boat/textures/Boat_2_baseColor.png?url";
@@ -13,6 +14,7 @@ const KEEL_HEIGHT = -0.8;
 class BoatLoader extends GLTFLoader {
   constructor() {
     const manager = new LoadingManager();
+    trackHeroLoading(manager, "boat");
     manager.setURLModifier((url) => {
       const path = url.split("?")[0];
       if (path.endsWith("scene.bin")) return bufferUrl;

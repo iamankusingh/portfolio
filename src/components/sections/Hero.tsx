@@ -11,6 +11,7 @@ import {
 import type { ErrorInfo, ReactNode } from "react";
 import { Link } from "react-router";
 import useMediaQuery from "../../hooks/useMediaQuery";
+import type { HeroReadiness } from "../three/heroLoading";
 import LandscapeFallback from "./LandscapeFallback";
 import Introduction from "./Introduction";
 
@@ -44,7 +45,13 @@ function prefersDataSavingLandscape() {
   return Boolean(saveData);
 }
 
-export default function Hero() {
+type HeroProps = {
+  preparing: boolean;
+  forceStatic: boolean;
+  onReady: (readiness: HeroReadiness) => void;
+};
+
+export default function Hero({ preparing, forceStatic, onReady }: HeroProps) {
   const section = useRef<HTMLElement>(null);
   const reducedMotion = useMediaQuery("(prefers-reduced-motion: reduce)");
   const [dataSaving] = useState(prefersDataSavingLandscape);
@@ -54,7 +61,12 @@ export default function Hero() {
   const viewport = useRef<HTMLDivElement>(null);
   const [failed, setFailed] = useState(false);
   const onUnavailable = useCallback(() => setFailed(true), []);
-  const staticLandscape = reducedMotion || dataSaving || failed;
+  const onSceneReady = useCallback(() => onReady("ready"), [onReady]);
+  const staticLandscape = reducedMotion || dataSaving || failed || forceStatic;
+
+  useEffect(() => {
+    onReady(staticLandscape ? "fallback" : "pending");
+  }, [staticLandscape, onReady]);
 
   useEffect(() => {
     const element = section.current;
@@ -63,7 +75,7 @@ export default function Hero() {
     const menu = document.getElementById("site-navigation");
     const sync = () => {
       const canRender =
-        visible && !document.hidden && !menu?.hasAttribute("open");
+        (visible || preparing) && !document.hidden && !menu?.hasAttribute("open");
       setActive(canRender);
       if (canRender) setRequested(true);
     };
@@ -84,7 +96,7 @@ export default function Hero() {
       menuObserver.disconnect();
       document.removeEventListener("visibilitychange", sync);
     };
-  }, []);
+  }, [preparing]);
 
   useEffect(() => {
     const element = section.current;
@@ -146,12 +158,14 @@ export default function Hero() {
           {staticLandscape ? (
             <LandscapeFallback />
           ) : (
-            requested && (
+            (requested || preparing) && (
               <SceneBoundary onUnavailable={onUnavailable}>
                 <Suspense fallback={null}>
                   <HeroScene
                     progress={progress}
                     active={active}
+                    preparing={preparing}
+                    onReady={onSceneReady}
                     onUnavailable={onUnavailable}
                   />
                 </Suspense>

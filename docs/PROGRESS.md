@@ -6,7 +6,7 @@ Phases 2 through 9 are complete by user direction. The Phase 8 contact form rema
 
 Photography retains its scroll-driven collage and normal-flow reduced-motion grid. Approved portrait placeholders remain until photographs are supplied. Completion records approved milestones, not unreported validation results.
 
-Current focus: Capabilities uses GSAP ScrollTrigger for early center entry and an extended post-merge expansion. Its text emerges from black to white as the circle expands, with a subtle glow near the end; pointer focus does not bypass the reveal. Visual acceptance of this color reveal remains pending. Keyboard access and reduced motion remain immediate. Selected Work advances with shorter scroll intervals. Site-wide GSAP wheel smoothing has a longer deceleration, faster braking on reversal, and bounded queued travel during rapid input. Touch, keyboard, nested scrolling, and reduced motion retain native behavior. Static source review is complete; current lint/build and browser acceptance remain pending with the user. No dependency changes are required.
+Current focus: the homepage document-load loader is implemented with GSAP. A centered circle brightens uniformly from black to white with real resource-group completion, then expands and fades into the initialized hero. Loading covers local fonts, the header logo, hero models/buffers/textures, and scene readiness; lazy media and other routes are excluded. Document-load-only display, modal scroll/focus locking, reduced motion, resource-error fallbacks, and a bounded wait are implemented. Source review is complete; lint/build and browser acceptance remain pending with the user. No dependency changes are required.
 
 ## Phase Checklist
 
@@ -36,6 +36,11 @@ Current focus: Capabilities uses GSAP ScrollTrigger for early center entry and a
 | 21 | Final QA and launch |
 
 ## Pending Acceptance
+
+- [ ] Recheck Clouds after the reported `react-hooks/immutability` lint failure: a layout effect owns cloud instances/materials, and a module-level Three.js helper updates clone opacity from frame callbacks. Cleanup removes instances and disposes owned materials, including effect replay. Current lint/build and cloud-animation validation remain pending with the user.
+
+- [ ] Check the homepage loader in a fresh tab: black opening, centered uniform brightness, smooth percentage, white pause, corner-covering expansion, and fade into an already-rendered hero. Check mobile rotation/resize during expansion, keyboard focus and scroll locking, touch, replay on every reload, and no replay on client-side route changes (including entering Home from another initial route). Reload to replay; browser storage is no longer used.
+- [ ] Check loader recovery with throttled/failed models, textures, fonts, and logo requests; a stalled load must reveal the static landscape after the 15-second resource deadline plus exit animation. Check Escape, WebGL failure, Save-Data, reduced motion before/during loading, hidden-tab return, and StrictMode cleanup. Confirm lazy photographs, footer rendering, and other-page assets do not gate completion. Validation remains pending.
 
 - [ ] Header social icons are implemented for GitHub, Instagram, LinkedIn, and X, with staggered menu-open entry and reduced-motion support. Supply profile URLs to enable destinations; check repeated opening, mobile wrapping, keyboard access, and reduced motion. Current lint/build and browser validation remain pending with the user.
 

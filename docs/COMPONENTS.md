@@ -10,6 +10,7 @@ Create components when they have a clear responsibility; avoid speculative wrapp
 | `Footer` | Homepage night closing scene, DOM identity/links/metadata, self-contained moonlit water, suspension, and static fallback |
 | `Header` | Both circular controls, fullscreen menu, destinations, previews, and modal lifecycle |
 | `Hero` | DOM composition, deferred scene loading, visibility, scrolling, and failure containment |
+| `PageLoader` | Fullscreen modal progress circle, GSAP brightness/expansion/fade, scroll lock, and reduced-motion alternative; homepage resource coordination lives in `useHomepageLoading` |
 | `Introduction` | Semantic identity and replaceable description revealed over the hero landscape |
 | `About` | Normal-flow editorial portrait, basic details, and labeled draft personal copy from `src/data/anku.ts` |
 | `Capabilities` | Phase 6 sticky circle choreography and masked single-paragraph capabilities reveal with staggered lines and local copy; immediate reduced-motion and keyboard access |

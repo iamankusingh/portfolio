@@ -3,6 +3,7 @@ import { useMemo } from "react";
 import { useLoader } from "@react-three/fiber";
 import { Box3, LoadingManager, Mesh, Vector3 } from "three";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+import { trackHeroLoading } from "./heroLoading";
 import modelUrl from "../../assets/3Dmodel/island/scene.gltf?url";
 import bufferUrl from "../../assets/3Dmodel/island/scene.bin?url";
 
@@ -15,6 +16,7 @@ const ISLAND_YAW = Math.PI / 6;
 class IslandLoader extends GLTFLoader {
   constructor() {
     const manager = new LoadingManager();
+    trackHeroLoading(manager, "island");
     manager.setURLModifier((url) =>
       url.endsWith("/scene.bin") || url === "scene.bin" ? bufferUrl : url,
     );

@@ -80,7 +80,7 @@ Use the stylized landscape defined in [THREE_D.md](THREE_D.md), composed togethe
 
 ## Opening Moment
 
-A possible sequence moves from low light to a visible sun, then landscape and identity. Keep it concise and never trap visitors in an unskippable intro; see [MOTION.md](MOTION.md).
+Every homepage document load or reload begins with the approved black fullscreen loader: a centered circle brightens uniformly with actual resource progress, becomes white, expands, and fades into the prepared hero. A monospaced percentage sits beneath it. Background controls and scrolling are temporarily locked. Escape or a 15-second loading deadline reveals the static landscape; reduced motion uses a short fade without expansion. Client-side route changes use the direct dawn entry. See [MOTION.md](MOTION.md) for choreography and [ARCHITECTURE.md](ARCHITECTURE.md#homepage-loading) for resource scope.
 
 ## Hero Content
 
@@ -339,7 +339,7 @@ When spectacle conflicts with the first five priorities, simplify the spectacle.
 
 # 22. Experience Anti-Patterns
 
-Follow [AGENTS.md](../AGENTS.md#non-negotiable-rules). In particular, avoid tiny cards as the primary project presentation, photography confined to thumbnails, hidden navigation, scroll-jacking, forced intros, and simultaneous motion that competes with reading.
+Follow [AGENTS.md](../AGENTS.md#non-negotiable-rules). In particular, avoid tiny cards as the primary project presentation, photography confined to thumbnails, hidden navigation, scroll-jacking, and simultaneous motion that competes with reading. The approved document-load loader is bounded and supports Escape; do not add further entry gates.
 
 # 23. Indicative Homepage Sequence
 
@@ -368,7 +368,7 @@ This file owns the journey, navigation behavior, section purpose/order, major in
 
 Phase 2 is complete by user direction. The opening contains an island, ocean currents and reflections, distant mountains with the sun behind them, moving clouds across the sky, and a parked boat. Phase 3 begins with no visible hero text, then introduces Anku during the camera approach to the house. Visible credits are deferred; records remain in [ASSETS.md](ASSETS.md).
 
-Reveal the scene directly from a dark background with the dawn intro. Preserve native scrolling, responsive framing, and the same graphics quality across devices. Suspend animation while navigation is open. Use the static fallback for reduced motion, Save-Data, or rendering failure.
+The document-load loader reveals the prepared hero; client-side return visits retain the direct dark-background dawn intro. Preserve native scrolling after loading, responsive framing, and the same graphics quality across devices. Suspend animation while navigation is open. Use the static fallback for reduced motion, Save-Data, or rendering failure.
 
 Phase 4 selected work is complete by user direction. Phase 5 About/portrait is complete by user direction and follows Selected Work. Phase 6 is complete by user direction. Phase 7 adds the photography collage after Capabilities. Phase 7 is complete by user direction. Phase 8 is complete by user direction. Phase 9 night footer is complete by user direction; Phase 10 onward remain deferred; current validation is tracked in [PROGRESS.md](PROGRESS.md).
 

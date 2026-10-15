@@ -158,7 +158,9 @@ html {
 }
 
 html:has(#site-navigation[open]),
-body:has(#site-navigation[open]) {
+body:has(#site-navigation[open]),
+html:has(#homepage-loader[open]),
+body:has(#homepage-loader[open]) {
   overflow: hidden;
 }
 

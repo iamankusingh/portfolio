@@ -32,6 +32,8 @@ A circular blue mark with a yellow **A** connects water/sky, sun/light, and circ
 
 Circles can connect the logo, menu, sun, cursor, masks, and small accents. Do not make every container circular.
 
+The approved homepage loader uses a separate unbranded circle on pure `#000000`. The whole circle changes uniformly from black to `#FFFFFF`, with a small system-monospaced percentage below it. Its center stays at the viewport center; no ring, fill, gradient, or extra font asset is used. This loader-specific black/white treatment does not change the logo or global palette.
+
 The approved Phase 6 interlude uses pure black circles with soft surrounding dark shadows on the light editorial background, following the supplied three-orbit-circle reference. Its expanding center finishes on a black surface; the existing logo remains unchanged.
 
 # 3. Color System

@@ -1,4 +1,4 @@
-﻿# 3D Scenes
+# 3D Scenes
 
 ## Direction
 
@@ -22,7 +22,9 @@ Use a bounded curved approach from the existing opening view toward the house. F
 
 ## Loading and Intro
 
-Show the dark hero background while loading. Reveal the actual scene once rendered, then introduce rising sunlight and clearing fog. Do not show a different island before the main scene. Navigation and scrolling remain available throughout.
+On every homepage document load or reload, initialize the hero behind the fullscreen loader, including when the restored scroll position is outside the hero. Private model managers report glTF, buffer, and texture completion; scene readiness requires a completed render. The dawn sequence runs behind the loader, whose white expansion fades into the prepared landscape. Do not show a different island during normal loading.
+
+On subsequent client-side navigation, retain the direct dark-background scene entry with rising sunlight and clearing fog. Reduced motion, Save-Data, resource/rendering failure, the loader's 15-second deadline, or Escape use the authored static landscape. Navigation and scrolling unlock when the loader closes. Loading orchestration belongs in [ARCHITECTURE.md](ARCHITECTURE.md#homepage-loading).
 
 ## Shared High Quality
 

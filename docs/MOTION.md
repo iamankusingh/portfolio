@@ -80,7 +80,9 @@ The hero is one of the primary narrative sequences.
 
 ## 7.1 Entry
 
-Current sequence: loading resolves → sun emerges → landscape appears through fog. The opening has no visible text; identity appears only in the scroll-driven introduction. Content remains accessible without waiting for the scene.
+Every homepage document load or reload: real resource completion uniformly brightens a centered circle from black to white on pure black, with a small monospaced percentage underneath. GSAP smooths progress changes. At 100%, pause briefly, expand the white circle to cover every viewport corner, then fade the overlay into the initialized hero. There is no fill, gradient, ring, or simulated progress. Scrolling and background interaction stay locked until reveal; Escape or a loading deadline selects the static landscape. Reduced motion removes expansion and uses a short fade, including live preference changes.
+
+Subsequent client-side visits retain the direct dawn entry. The hero opening has no visible text; identity appears in the scroll-driven introduction.
 
 ## 7.2 Hero Typography
 
@@ -218,7 +220,7 @@ Guidelines:
 
 # 22. Motion Anti-Patterns
 
-Avoid pervasive bounce/floating effects, excessive stagger, forced intros/loaders, click-blocking animation, repeated large text reveals, and competing parallax systems. Scrolling and touch rules are defined above.
+Avoid pervasive bounce/floating effects, excessive stagger, repeated large text reveals, and competing parallax systems. The explicitly approved homepage document-load loader is the only loading gate; it has an Escape exit and bounded resource wait. Scrolling and touch rules are defined above.
 
 # 23. Suggested Motion System Architecture
 
@@ -232,7 +234,7 @@ System direction and timing values are provisional. Validate choreography in the
 
 ## Hero and introduction choreography
 
-Reveal the actual island from a dark background once ready, with rising sunlight and clearing fog. Keep navigation available throughout; no alternate scene or forced intro. The opening viewport is text-free.
+The document-load loader reveals the initialized island after its white expansion. Otherwise reveal the actual island from a dark background once ready, with rising sunlight and clearing fog. Navigation is available after the loader closes. The opening viewport is text-free.
 
 Native scroll drives one shared progress value for a curved camera approach to the house and the introduction's opacity/contrast treatment. The DOM text remains in normal flow. Ease into and out of the camera journey, reduce pointer influence during travel, and settle before the end for reading. Reverse scrolling reverses the sequence; keyboard skipping and restored scroll positions do not wait for an animation timeline. Resize observations keep progress aligned with content and viewport changes.
 

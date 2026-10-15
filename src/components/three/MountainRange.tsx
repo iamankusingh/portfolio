@@ -2,6 +2,7 @@ import { useMemo } from "react";
 import { useLoader } from "@react-three/fiber";
 import { Box3, LoadingManager, Vector3 } from "three";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+import { trackHeroLoading } from "./heroLoading";
 import modelUrl from "../../assets/3Dmodel/mountain/scene.gltf?url";
 import bufferUrl from "../../assets/3Dmodel/mountain/scene.bin?url";
 
@@ -26,6 +27,7 @@ const placements: MountainPlacement[] = [
 class MountainLoader extends GLTFLoader {
   constructor() {
     const manager = new LoadingManager();
+    trackHeroLoading(manager, "mountain");
     manager.setURLModifier((url) =>
       url.endsWith("/scene.bin") || url === "scene.bin" ? bufferUrl : url,
     );

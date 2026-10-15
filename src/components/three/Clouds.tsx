@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import { useFrame, useLoader } from "@react-three/fiber";
 import {
   Box3,
@@ -11,6 +11,7 @@ import {
 } from "three";
 import type { Group, Material } from "three";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+import { trackHeroLoading } from "./heroLoading";
 import modelUrl from "../../assets/3Dmodel/cloud/scene.gltf?url";
 import bufferUrl from "../../assets/3Dmodel/cloud/scene.bin?url";
 import colorUrl from "../../assets/3Dmodel/cloud/textures/08_-_Default_baseColor.png?url";
@@ -44,6 +45,7 @@ const horizontalSlots = [-0.94, -0.65, -0.3, 0, 0.35, 0.72, 0.96,
 class CloudLoader extends GLTFLoader {
   constructor() {
     const manager = new LoadingManager();
+    trackHeroLoading(manager, "cloud");
     manager.setURLModifier((url) => {
       // Resolve every sidecar through Vite, including both texture maps.
       const path = url.split("?")[0];
@@ -59,11 +61,17 @@ class CloudLoader extends GLTFLoader {
 export default function Clouds({ active }: { active: boolean }) {
   const model = useLoader(CloudLoader, modelUrl);
   const groups = useRef<(Group | null)[]>([]);
+  const animatedMaterials = useRef<Material[][]>([]);
   const elapsed = useRef(0);
-  const viewDirection = useMemo(() => new Vector3(), []);
-  const { clouds, cloudMaterials, center, width } = useMemo(() => {
-    model.scene.updateMatrixWorld(true);
+  const viewDirection = useRef(new Vector3());
+  useLayoutEffect(() => {
+    // Own mutable scene instances after commit, outside React's render values.
+    // Recreate them on effect replay; cached geometry and textures stay shared.
     const clouds = placements.map(() => model.scene.clone(true));
+    const bounds = new Box3().setFromObject(clouds[0]);
+    const center = bounds.getCenter(new Vector3());
+    const size = bounds.getSize(new Vector3());
+    const width = Math.max(size.x, size.z, 0.001);
     const cloudMaterials = clouds.map((cloud) => {
       const owned: Material[] = [];
       cloud.traverse((object) => {
@@ -85,35 +93,35 @@ export default function Clouds({ active }: { active: boolean }) {
       });
       return owned;
     });
-    const bounds = new Box3().setFromObject(model.scene);
-    const center = bounds.getCenter(new Vector3());
-    const size = bounds.getSize(new Vector3());
-    return {
-      clouds,
-      cloudMaterials,
-      center,
-      width: Math.max(size.x, size.z, 0.001),
+    clouds.forEach((cloud, index) => {
+      const scale = placements[index].width / width;
+      cloud.scale.setScalar(scale);
+      cloud.position.set(-center.x * scale, -center.y * scale, -center.z * scale);
+      groups.current[index]?.add(cloud);
+    });
+    animatedMaterials.current = cloudMaterials;
+    return () => {
+      animatedMaterials.current = [];
+      for (const cloud of clouds) cloud.removeFromParent();
+      for (const materials of cloudMaterials)
+        for (const material of materials) material.dispose();
     };
   }, [model]);
-
-  useEffect(() => () => {
-    for (const materials of cloudMaterials)
-      for (const material of materials) material.dispose();
-  }, [cloudMaterials]);
 
   useFrame(({ camera, size }, delta) => {
     if (!(camera instanceof PerspectiveCamera)) return;
     if (active) elapsed.current += Math.min(delta, 0.05);
-    camera.getWorldDirection(viewDirection);
+    const direction = viewDirection.current;
+    camera.getWorldDirection(direction);
     const halfFov = Math.tan(MathUtils.degToRad(camera.getEffectiveFOV()) / 2);
     const aspect = size.width / Math.max(size.height, 1);
     for (let index = 0; index < placements.length; index++) {
       const group = groups.current[index];
       if (!group) continue;
       const placement = placements[index];
-      const depth = -camera.position.x * viewDirection.x
-        + (placement.position[1] - camera.position.y) * viewDirection.y
-        + (placement.position[2] - camera.position.z) * viewDirection.z;
+      const depth = -camera.position.x * direction.x
+        + (placement.position[1] - camera.position.y) * direction.y
+        + (placement.position[2] - camera.position.z) * direction.z;
       const halfWidth = Math.max(depth, 1) * halfFov * aspect;
       // Keep the fade/recycling zone beyond the viewport, including the cloud's width.
       const limit = halfWidth + placement.width * 0.75 + 20;
@@ -127,26 +135,24 @@ export default function Clouds({ active }: { active: boolean }) {
       group.rotation.y = placement.yaw + cycle * 0.63;
       group.scale.setScalar(cycle === 0 ? 1 : 1 + Math.sin(cycle * 2.3 + index) * 0.12);
       const fade = MathUtils.smoothstep(limit - Math.abs(x), 0, 20);
-      for (const material of cloudMaterials[index]) material.opacity = 0.14 * fade;
+      setCloudOpacity(animatedMaterials.current[index], 0.14 * fade);
     }
   });
 
-  return placements.map((placement, index) => {
-    const scale = placement.width / width;
-    return (
+  return placements.map((placement, index) => (
       <group
         key={index}
         ref={(group) => { groups.current[index] = group; }}
         position={placement.position}
         rotation={[0, placement.yaw, 0]}
-      >
-        <primitive
-          object={clouds[index]}
-          scale={scale}
-          position={[-center.x * scale, -center.y * scale, -center.z * scale]}
-          dispose={null}
-        />
-      </group>
-    );
-  });
+        dispose={null}
+      />
+  ));
+}
+
+// Imperative Three.js updates operate only on the effect-owned material clones.
+// Keep material iteration outside React's component immutability analysis.
+function setCloudOpacity(materials: Material[] | undefined, opacity: number) {
+  if (!materials) return;
+  for (const material of materials) material.opacity = opacity;
 }
