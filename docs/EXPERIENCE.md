@@ -58,7 +58,7 @@ Hover or focus may reveal project media for Work, a photograph for Photography, 
 
 The menu uses a full-viewport native modal dialog. Opening focuses Home; Tab/Shift+Tab stay within the modal, and Escape or the top-right close control dismisses it. Closing without navigation returns focus to the menu trigger. Route changes dismiss it and the route shell focuses the destination. The page behind the menu is inert and scroll-locked; short screens scroll inside the menu. The logo and close control remain available at the top.
 
-Numbered editorial links sit left; decorative previews sit right at desktop widths (64rem and above). Hover and keyboard focus select the same preview. About uses the real portrait; Photography reuses it with an explicit demo label. Work and Lab use abstract typography/geometry until their actual media exists. Previews are hidden on smaller viewports; every destination remains directly available without hover or a preview tap. No placeholder contact details are displayed. The homepage includes the completed Phase 2 hero, Phase 3 introduction, and Phase 4 selected work; later sections remain in their owning phases.
+Numbered editorial links use two columns on desktop and one on smaller screens, without hover previews. GitHub, Instagram, LinkedIn, and X SVG icons sit alongside the menu's identity text, wrapping on small screens. They enter with a brief stagger each time the menu opens and appear immediately with reduced motion. Profile destinations remain disabled and labeled as pending until Anku supplies verified URLs.
 
 ## Menu Exit and Page Transition
 

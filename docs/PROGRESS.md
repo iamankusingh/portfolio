@@ -37,6 +37,8 @@ Current focus: Capabilities uses GSAP ScrollTrigger for early center entry and a
 
 ## Pending Acceptance
 
+- [ ] Header social icons are implemented for GitHub, Instagram, LinkedIn, and X, with staggered menu-open entry and reduced-motion support. Supply profile URLs to enable destinations; check repeated opening, mobile wrapping, keyboard access, and reduced motion. Current lint/build and browser validation remain pending with the user.
+
 - [ ] Check LinkButton compass arrows: pointer entry, rapid direction changes, movement across the pivot, exit/return, keyboard activation, touch, and live reduced motion. Current lint/build and browser validation remain pending.
 
 - [ ] Check About portrait parallax in both scroll directions, crop and frame coverage on desktop/mobile, resize, and live reduced motion. Current lint/build and browser validation remain pending.
