@@ -1,4 +1,4 @@
-import portrait from "../assets/anku.avif";
+import portrait from "../assets/anku.webp";
 
 type PersonalProfile = {
   name: string;

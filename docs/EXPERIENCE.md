@@ -237,9 +237,9 @@ The homepage should make it clear that photography is a meaningful part of Anku'
 
 ## Preferred Treatment
 
-Phase 7 follows Capabilities directly. The black capabilities viewport scrolls upward as a light photography section enters, already showing one centered photograph. Once the section fills the screen, a sticky stage holds while further native scrolling spreads photographs from the center into an asymmetric, edge-cropped collage around a large Photography heading. The first photo moves with the spread. After the spread, the photographs travel upward through additional staggered rows while the Photography heading stays centered in the sticky viewport. The section releases at the end; reverse scrolling retraces both stages. Mobile uses a portrait composition; reduced motion shows all teaser images in a normal-flow grid.
+Phase 7 follows Capabilities directly. The black capabilities viewport scrolls upward as a light photography section enters, already showing one centered photograph. Once the section fills the screen, a sticky stage holds while further native scrolling spreads photographs from the center into a spacious collage around a large Photography heading. The first photo moves with the spread. After the spread, the photographs travel upward through additional staggered rows while the Photography heading stays centered in the sticky viewport. The section releases at the end; reverse scrolling retraces both stages. Mobile uses a portrait composition; reduced motion shows all teaser images in a normal-flow grid.
 
-The homepage displays all ordered entries from `src/data/photographs.ts`, currently 26 portrait placeholders. Additional entries extend the scrolling composition automatically. Supplied photographs will replace the placeholders, which remain identified in data and alt text; there is no visible preview caption, by user direction. The standalone photography route and full-gallery interactions remain deferred.
+The homepage displays only entries with `displayInHome: true` from `src/data/photograph.ts`, which catalogs all 140 supplied WebP photographs. A one-time random selection enables 25 until final curation. Source dimensions preserve the original aspect ratio in both the GSAP collage and reduced-motion grid, without image cropping or stretching; the original collage positions and staggered scrolling rows are restored by user direction. Outer photographs may meet or extend beyond viewport edges as in the original composition; later rows enter from below and pass upward during scrolling. No visible preview caption is shown. The standalone photography route and full-gallery interactions remain deferred.
 
 # 12. Photography Experience
 
@@ -259,7 +259,7 @@ The photographs themselves should provide most of the visual impact.
 
 ## Gallery Interaction
 
-Choose a gallery model during composition using repeated `anku.avif` entries. A curated image collection is not a prerequisite; the models below remain available.
+Choose a dedicated-gallery model during composition using the supplied WebP collection. A curated image collection is not a prerequisite; the models below remain available.
 
 ### Horizontal Exploration
 
@@ -275,7 +275,7 @@ A curated sequence leads into a simpler index.
 
 ## Image Viewing
 
-A photograph may open large or fullscreen with a clear close/back control. For the repeated initial image, follow [ASSETS.md](ASSETS.md) for accurate alt text and clearly identified demo metadata.
+A photograph may open large or fullscreen with a clear close/back control. Follow [ASSETS.md](ASSETS.md) for accurate alt text and verified metadata.
 
 # 13. Contact / Closing Scene
 

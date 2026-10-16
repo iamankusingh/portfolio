@@ -1,19 +1,19 @@
 import { useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { photographs } from "../../data/photographs";
+import { photographs } from "../../data/photograph";
 import useMediaQuery from "../../hooks/useMediaQuery";
-import placeholder from "../../assets/anku.avif";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const images = import.meta.glob<string>(
-  "../../assets/photography/*.{avif,webp,jpg,jpeg,png,AVIF,WEBP,JPG,JPEG,PNG}",
-  { eager: true, query: "?url", import: "default" },
-);
+const images = import.meta.glob<string>("../../assets/photographs/*.webp", {
+  eager: true,
+  query: "?url",
+  import: "default",
+});
 
-// Centers relative to the viewport; outer frames intentionally meet its edges.
-// [horizontal position, vertical position, width, height], in viewport fractions.
+// Original collage composition, including frames at the viewport edges.
+// [horizontal center, vertical center, maximum width, maximum height].
 const desktop = [
   [0, -0.19, 0.19, 0.29],
   [-0.23, -0.37, 0.19, 0.29],
@@ -40,18 +40,12 @@ const mobile = [
   [0.44, 0.47, 0.26, 0.24],
   [0, -0.51, 0.24, 0.16],
 ] as const;
-const collection = photographs.map((photo) => {
-  const source = images[`../../assets/photography/${photo.image}`];
-  return {
+const collection = photographs
+  .filter((photo) => photo.displayInHome)
+  .map((photo) => ({
     ...photo,
-    source: source ?? placeholder,
-    alt:
-      source && !photo.isPlaceholder
-        ? photo.alt
-        : "Portrait of Anku Singh (placeholder)",
-    isPlaceholder: photo.isPlaceholder || !source,
-  };
-});
+    source: images[`../../assets/photographs/${photo.image}`],
+  }));
 
 export default function Photography() {
   const section = useRef<HTMLElement>(null);
@@ -88,7 +82,7 @@ export default function Photography() {
       context?.revert();
       context = gsap.context(() => {
         const layout = getPlacements(portraitLayout);
-        const openingWidth = Math.min(width * 0.56, height * 0.48, 360);
+        const openingWidth = Math.min(width * 0.72, height * 0.8, 640);
         timeline = gsap.timeline({
           scrollTrigger: {
             trigger: element,
@@ -102,15 +96,23 @@ export default function Photography() {
           const placement = layout[index];
           if (!photo || !placement) return;
           const [x, y, w, h] = placement;
-          const opening = index < desktop.length;
+          const entry = collection[index];
+          if (!entry) return;
+          const ratio = entry.width / entry.height;
+          // Fit inside each composition slot without cropping or stretching.
+          const photoWidth = Math.min(width * w, height * h * ratio);
+          const initialWidth = Math.min(openingWidth, height * 0.64 * ratio);
+          const opening =
+            index < (portraitLayout ? mobile.length : desktop.length);
+          const targetX = x * width;
           gsap.set(photo, {
-            width: width * w,
-            height: height * h,
+            width: photoWidth,
+            height: photoWidth / ratio,
             xPercent: -50,
             yPercent: -50,
-            x: opening ? 0 : x * width,
+            x: opening ? 0 : targetX,
             y: opening ? 0 : y * height,
-            scale: opening ? openingWidth / (width * w) : 1,
+            scale: opening ? initialWidth / photoWidth : 1,
             opacity: index === 0 || !opening ? 1 : 0,
           });
           if (!opening) return;
@@ -118,7 +120,7 @@ export default function Photography() {
           timeline?.to(
             photo,
             {
-              x: x * width,
+              x: targetX,
               y: y * height,
               scale: 1,
               duration: 1,
@@ -206,26 +208,21 @@ export default function Photography() {
               className={
                 reducedMotion
                   ? "overflow-hidden bg-surface-light"
-                  : `absolute top-1/2 left-1/2 h-[min(40dvh,27rem)] w-[min(56vw,22.5rem)] overflow-hidden bg-surface-light ${index === 0 ? "z-10" : "opacity-0"}`
+                  : `absolute top-1/2 left-1/2 w-[min(56vw,22.5rem)] overflow-hidden bg-surface-light ${index === 0 ? "z-10" : "opacity-0"}`
               }
             >
               <img
                 src={photo.source}
                 alt={photo.alt}
-                loading="lazy"
+                // loading="lazy"
                 decoding="async"
-                onError={(event) => {
-                  const image = event.currentTarget;
-                  if (image.getAttribute("src") === placeholder) return;
-                  image.src = placeholder;
-                  image.alt = "Portrait of Anku Singh (image unavailable)";
-                }}
+                width={photo.width}
+                height={photo.height}
                 className={
                   reducedMotion
-                    ? "aspect-4/5 w-full object-cover"
-                    : "h-full w-full object-cover"
+                    ? "h-auto w-full"
+                    : "h-full w-full object-contain"
                 }
-                style={{ objectPosition: photo.objectPosition ?? "50% 50%" }}
               />
             </li>
           ))}
@@ -235,7 +232,7 @@ export default function Photography() {
   );
 }
 
-// Extend the opening composition with staggered rows; every data entry is shown.
+// Continue the original opening collage with its staggered scrolling rows.
 function getPlacements(
   portrait: boolean,
 ): (readonly [number, number, number, number])[] {
