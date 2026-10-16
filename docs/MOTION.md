@@ -172,6 +172,8 @@ The About portrait uses GSAP ScrollTrigger for gentle vertical parallax inside i
 
 The Phase 7 homepage holds a centered photo during entry. A GSAP timeline scrubbed by ScrollTrigger starts when the section reaches the viewport top: the opening images spread outward, then the whole photo field travels upward through additional rows while the heading stays centered in a CSS sticky stage. Actual window scroll controls both phases with no autoplay or additional smoothing. Only entries enabled with `displayInHome` appear, and the scroll distance follows that selection. Each photograph fits its composition slot at its original aspect ratio; uniform scaling preserves proportions throughout the spread. Responsive placements adapt the collage for portrait screens. Resize observations rebuild framing and refresh trigger measurements; GSAP context cleanup reverts owned transforms and kills the timeline/trigger. Live reduced motion removes the timeline, pinning, and extra scroll distance, presenting an immediate normal-flow grid. Dedicated-gallery motion remains deferred.
 
+The photo viewer waits for its image to decode before hiding the source and starting its GSAP transform animation. A fixed subtle blur layer fades in through opacity alongside the photo; blur strength is not interpolated per frame. Closing animates back to the source and fades the backdrop out. Pending decode work is cancelled on close/unmount, and reduced motion skips travel. Browser confirmation of smoothness remains pending.
+
 # 17. Lab Motion
 
 Experiments may have distinct motion while retaining site navigation conventions. Keep experimental behavior isolated from other sections.

@@ -4,6 +4,7 @@ export type Photograph = {
   alt: string;
   width: number;
   height: number;
+  location: string;
   displayInHome: boolean;
 };
 
@@ -18,6 +19,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 1 by Anku Singh",
     width: 2322,
     height: 4128,
+    location: "Anjar, Gujarat",
     displayInHome: false,
   },
   {
@@ -26,6 +28,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 2 by Anku Singh",
     width: 4128,
     height: 2322,
+    location: "Anjar, Gujarat",
     displayInHome: false,
   },
   {
@@ -34,6 +37,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 3 by Anku Singh",
     width: 3088,
     height: 3088,
+    location: "Anjar, Gujarat",
     displayInHome: false,
   },
   {
@@ -42,6 +46,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 4 by Anku Singh",
     width: 3088,
     height: 2726,
+    location: "Anjar, Gujarat",
     displayInHome: false,
   },
   {
@@ -50,6 +55,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 5 by Anku Singh",
     width: 3088,
     height: 2749,
+    location: "Anjar, Gujarat",
     displayInHome: false,
   },
   {
@@ -58,6 +64,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 6 by Anku Singh",
     width: 3096,
     height: 4128,
+    location: "Anjar, Gujarat",
     displayInHome: false,
   },
   {
@@ -66,6 +73,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 7 by Anku Singh",
     width: 3096,
     height: 4128,
+    location: "Anjar, Gujarat",
     displayInHome: false,
   },
   {
@@ -74,6 +82,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 8 by Anku Singh",
     width: 1908,
     height: 4128,
+    location: "Anjar, Gujarat",
     displayInHome: false,
   },
   {
@@ -82,6 +91,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 9 by Anku Singh",
     width: 3096,
     height: 4128,
+    location: "Anjar, Gujarat",
     displayInHome: false,
   },
   {
@@ -90,6 +100,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 10 by Anku Singh",
     width: 3096,
     height: 4128,
+    location: "Anjar, Gujarat",
     displayInHome: true,
   },
   {
@@ -98,6 +109,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 11 by Anku Singh",
     width: 2732,
     height: 2704,
+    location: "Anjar, Gujarat",
     displayInHome: false,
   },
   {
@@ -106,6 +118,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 12 by Anku Singh",
     width: 3096,
     height: 4128,
+    location: "Anjar, Gujarat",
     displayInHome: true,
   },
   {
@@ -114,6 +127,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 13 by Anku Singh",
     width: 1908,
     height: 4128,
+    location: "Anjar, Gujarat",
     displayInHome: false,
   },
   {
@@ -122,6 +136,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 14 by Anku Singh",
     width: 4128,
     height: 2322,
+    location: "Anjar, Gujarat",
     displayInHome: true,
   },
   {
@@ -130,6 +145,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 15 by Anku Singh",
     width: 2322,
     height: 4128,
+    location: "Anjar, Gujarat",
     displayInHome: false,
   },
   {
@@ -138,6 +154,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 16 by Anku Singh",
     width: 4128,
     height: 3096,
+    location: "Anjar, Gujarat",
     displayInHome: true,
   },
   {
@@ -146,6 +163,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 17 by Anku Singh",
     width: 4128,
     height: 1908,
+    location: "Anjar, Gujarat",
     displayInHome: false,
   },
   {
@@ -154,6 +172,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 18 by Anku Singh",
     width: 4128,
     height: 1908,
+    location: "Anjar, Gujarat",
     displayInHome: false,
   },
   {
@@ -162,6 +181,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 19 by Anku Singh",
     width: 4128,
     height: 1699,
+    location: "Anjar, Gujarat",
     displayInHome: false,
   },
   {
@@ -170,6 +190,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 20 by Anku Singh",
     width: 1908,
     height: 4128,
+    location: "Anjar, Gujarat",
     displayInHome: false,
   },
   {
@@ -178,6 +199,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 21 by Anku Singh",
     width: 4128,
     height: 1908,
+    location: "Anjar, Gujarat",
     displayInHome: false,
   },
   {
@@ -186,6 +208,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 22 by Anku Singh",
     width: 4128,
     height: 1908,
+    location: "Anjar, Gujarat",
     displayInHome: false,
   },
   {
@@ -194,6 +217,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 23 by Anku Singh",
     width: 4128,
     height: 2322,
+    location: "Junagadh, Gujarat",
     displayInHome: false,
   },
   {
@@ -202,6 +226,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 24 by Anku Singh",
     width: 4128,
     height: 2322,
+    location: "Dwarka, Gujarat",
     displayInHome: false,
   },
   {
@@ -210,6 +235,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 25 by Anku Singh",
     width: 1908,
     height: 4128,
+    location: "Anjar, Gujarat",
     displayInHome: false,
   },
   {
@@ -218,6 +244,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 26 by Anku Singh",
     width: 4128,
     height: 3096,
+    location: "Anjar, Gujarat",
     displayInHome: false,
   },
   {
@@ -226,6 +253,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 27 by Anku Singh",
     width: 1908,
     height: 4128,
+    location: "Anjar, Gujarat",
     displayInHome: false,
   },
   {
@@ -234,6 +262,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 28 by Anku Singh",
     width: 1908,
     height: 4128,
+    location: "Anjar, Gujarat",
     displayInHome: false,
   },
   {
@@ -242,6 +271,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 29 by Anku Singh",
     width: 3096,
     height: 4128,
+    location: "Anjar, Gujarat",
     displayInHome: false,
   },
   {
@@ -250,6 +280,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 30 by Anku Singh",
     width: 3096,
     height: 4128,
+    location: "Anjar, Gujarat",
     displayInHome: true,
   },
   {
@@ -258,6 +289,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 31 by Anku Singh",
     width: 3096,
     height: 4128,
+    location: "Anjar, Gujarat",
     displayInHome: true,
   },
   {
@@ -266,6 +298,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 32 by Anku Singh",
     width: 3096,
     height: 4128,
+    location: "Anjar, Gujarat",
     displayInHome: true,
   },
   {
@@ -274,6 +307,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 33 by Anku Singh",
     width: 3096,
     height: 4128,
+    location: "Anjar, Gujarat",
     displayInHome: false,
   },
   {
@@ -282,6 +316,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 34 by Anku Singh",
     width: 3096,
     height: 4128,
+    location: "Anjar, Gujarat",
     displayInHome: true,
   },
   {
@@ -290,6 +325,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 35 by Anku Singh",
     width: 3096,
     height: 4128,
+    location: "Buxar, Bihar",
     displayInHome: false,
   },
   {
@@ -298,6 +334,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 36 by Anku Singh",
     width: 3096,
     height: 4128,
+    location: "Buxar, Bihar",
     displayInHome: true,
   },
   {
@@ -306,6 +343,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 37 by Anku Singh",
     width: 4128,
     height: 1908,
+    location: "Buxar, Bihar",
     displayInHome: false,
   },
   {
@@ -314,6 +352,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 38 by Anku Singh",
     width: 3096,
     height: 4128,
+    location: "Buxar, Bihar",
     displayInHome: true,
   },
   {
@@ -322,6 +361,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 39 by Anku Singh",
     width: 3096,
     height: 4128,
+    location: "Buxar, Bihar",
     displayInHome: false,
   },
   {
@@ -330,6 +370,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 40 by Anku Singh",
     width: 3096,
     height: 4128,
+    location: "Ahmedabad, Gujarat",
     displayInHome: true,
   },
   {
@@ -338,6 +379,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 41 by Anku Singh",
     width: 3096,
     height: 4128,
+    location: "Anjar, Gujarat",
     displayInHome: false,
   },
   {
@@ -346,6 +388,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 42 by Anku Singh",
     width: 3096,
     height: 4128,
+    location: "Anjar, Gujarat",
     displayInHome: false,
   },
   {
@@ -354,6 +397,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 43 by Anku Singh",
     width: 4128,
     height: 3096,
+    location: "Bhuj, Gujarat",
     displayInHome: false,
   },
   {
@@ -362,6 +406,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 44 by Anku Singh",
     width: 3096,
     height: 4128,
+    location: "Bhuj, Gujarat",
     displayInHome: true,
   },
   {
@@ -370,6 +415,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 45 by Anku Singh",
     width: 4128,
     height: 3096,
+    location: "Anjar, Gujarat",
     displayInHome: false,
   },
   {
@@ -378,6 +424,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 46 by Anku Singh",
     width: 3096,
     height: 4128,
+    location: "Bhuj, Gujarat",
     displayInHome: false,
   },
   {
@@ -386,6 +433,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 47 by Anku Singh",
     width: 4128,
     height: 3096,
+    location: "Bhuj, Gujarat",
     displayInHome: false,
   },
   {
@@ -394,6 +442,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 48 by Anku Singh",
     width: 4128,
     height: 3096,
+    location: "Anjar, Gujarat",
     displayInHome: false,
   },
   {
@@ -402,6 +451,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 49 by Anku Singh",
     width: 2322,
     height: 4128,
+    location: "Anjar, Gujarat",
     displayInHome: false,
   },
   {
@@ -410,6 +460,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 50 by Anku Singh",
     width: 3096,
     height: 4128,
+    location: "Khavda, Gujarat",
     displayInHome: false,
   },
   {
@@ -418,6 +469,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 51 by Anku Singh",
     width: 4128,
     height: 3096,
+    location: "Khavda, Gujarat",
     displayInHome: false,
   },
   {
@@ -426,6 +478,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 52 by Anku Singh",
     width: 3096,
     height: 4128,
+    location: "Anjar, Gujarat",
     displayInHome: true,
   },
   {
@@ -434,6 +487,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 53 by Anku Singh",
     width: 4128,
     height: 2322,
+    location: "Anjar, Gujarat",
     displayInHome: false,
   },
   {
@@ -442,6 +496,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 54 by Anku Singh",
     width: 4128,
     height: 3096,
+    location: "Bhuj, Gujarat",
     displayInHome: false,
   },
   {
@@ -450,6 +505,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 55 by Anku Singh",
     width: 4128,
     height: 3096,
+    location: "Bhuj, Gujarat",
     displayInHome: false,
   },
   {
@@ -458,6 +514,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 56 by Anku Singh",
     width: 4128,
     height: 2322,
+    location: "Anjar, Gujarat",
     displayInHome: true,
   },
   {
@@ -466,6 +523,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 57 by Anku Singh",
     width: 4128,
     height: 3096,
+    location: "Anjar, Gujarat",
     displayInHome: false,
   },
   {
@@ -474,6 +532,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 58 by Anku Singh",
     width: 3096,
     height: 4128,
+    location: "Bhuj, Gujarat",
     displayInHome: false,
   },
   {
@@ -482,6 +541,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 59 by Anku Singh",
     width: 3096,
     height: 4128,
+    location: "Bhuj, Gujarat",
     displayInHome: true,
   },
   {
@@ -490,6 +550,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 60 by Anku Singh",
     width: 3096,
     height: 4128,
+    location: "Bhuj, Gujarat",
     displayInHome: false,
   },
   {
@@ -498,6 +559,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 61 by Anku Singh",
     width: 4160,
     height: 3120,
+    location: "Prayagraj, Uttar Pradesh",
     displayInHome: false,
   },
   {
@@ -506,6 +568,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 62 by Anku Singh",
     width: 4160,
     height: 3120,
+    location: "Prayagraj, Uttar Pradesh",
     displayInHome: false,
   },
   {
@@ -514,6 +577,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 63 by Anku Singh",
     width: 3120,
     height: 4160,
+    location: "Ujjain, Madhya Pradesh",
     displayInHome: false,
   },
   {
@@ -522,6 +586,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 64 by Anku Singh",
     width: 3120,
     height: 4160,
+    location: "Omkareshwar, Madhya Pradesh",
     displayInHome: true,
   },
   {
@@ -530,6 +595,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 65 by Anku Singh",
     width: 3120,
     height: 4160,
+    location: "Omkareshwar, Madhya Pradesh",
     displayInHome: false,
   },
   {
@@ -538,6 +604,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 66 by Anku Singh",
     width: 3096,
     height: 4128,
+    location: "Bhuj, Gujarat",
     displayInHome: false,
   },
   {
@@ -546,6 +613,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 67 by Anku Singh",
     width: 3096,
     height: 4128,
+    location: "Bhuj, Gujarat",
     displayInHome: false,
   },
   {
@@ -554,6 +622,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 68 by Anku Singh",
     width: 2322,
     height: 4128,
+    location: "Unknown",
     displayInHome: true,
   },
   {
@@ -562,6 +631,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 69 by Anku Singh",
     width: 4128,
     height: 2322,
+    location: "Anjar, Gujarat",
     displayInHome: true,
   },
   {
@@ -570,6 +640,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 70 by Anku Singh",
     width: 4128,
     height: 2322,
+    location: "Bhuj, Gujarat",
     displayInHome: false,
   },
   {
@@ -578,6 +649,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 71 by Anku Singh",
     width: 1908,
     height: 4128,
+    location: "Bhuj, Gujarat",
     displayInHome: false,
   },
   {
@@ -586,6 +658,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 72 by Anku Singh",
     width: 4128,
     height: 2322,
+    location: "Bhuj, Gujarat",
     displayInHome: false,
   },
   {
@@ -594,6 +667,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 73 by Anku Singh",
     width: 2576,
     height: 1932,
+    location: "Bhuj, Gujarat",
     displayInHome: true,
   },
   {
@@ -602,6 +676,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 74 by Anku Singh",
     width: 3096,
     height: 4128,
+    location: "Anjar, Gujarat",
     displayInHome: false,
   },
   {
@@ -610,6 +685,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 75 by Anku Singh",
     width: 3096,
     height: 4128,
+    location: "Anjar, Gujarat",
     displayInHome: true,
   },
   {
@@ -618,6 +694,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 76 by Anku Singh",
     width: 4128,
     height: 3096,
+    location: "Anjar, Gujarat",
     displayInHome: false,
   },
   {
@@ -626,6 +703,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 77 by Anku Singh",
     width: 3096,
     height: 4128,
+    location: "Buxar, Bihar",
     displayInHome: false,
   },
   {
@@ -634,6 +712,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 78 by Anku Singh",
     width: 3096,
     height: 4128,
+    location: "Buxar, Bihar",
     displayInHome: false,
   },
   {
@@ -642,6 +721,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 79 by Anku Singh",
     width: 3096,
     height: 4128,
+    location: "Buxar, Bihar",
     displayInHome: false,
   },
   {
@@ -650,6 +730,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 80 by Anku Singh",
     width: 3096,
     height: 4128,
+    location: "Buxar, Bihar",
     displayInHome: false,
   },
   {
@@ -658,6 +739,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 81 by Anku Singh",
     width: 3096,
     height: 4128,
+    location: "Buxar, Bihar",
     displayInHome: false,
   },
   {
@@ -666,6 +748,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 82 by Anku Singh",
     width: 3096,
     height: 4128,
+    location: "Patna, Bihar",
     displayInHome: true,
   },
   {
@@ -674,6 +757,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 83 by Anku Singh",
     width: 4128,
     height: 3096,
+    location: "Patna, Bihar",
     displayInHome: false,
   },
   {
@@ -682,6 +766,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 84 by Anku Singh",
     width: 3096,
     height: 4128,
+    location: "Buxar, Bihar",
     displayInHome: false,
   },
   {
@@ -690,6 +775,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 85 by Anku Singh",
     width: 3096,
     height: 4128,
+    location: "Anjar, Gujarat",
     displayInHome: false,
   },
   {
@@ -698,6 +784,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 86 by Anku Singh",
     width: 3096,
     height: 4128,
+    location: "Anjar, Gujarat",
     displayInHome: false,
   },
   {
@@ -706,6 +793,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 87 by Anku Singh",
     width: 3096,
     height: 4128,
+    location: "Bhuj, Gujarat",
     displayInHome: true,
   },
   {
@@ -714,6 +802,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 88 by Anku Singh",
     width: 3096,
     height: 4128,
+    location: "Anjar, Gujarat",
     displayInHome: false,
   },
   {
@@ -722,6 +811,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 89 by Anku Singh",
     width: 3096,
     height: 4128,
+    location: "Anjar, Gujarat",
     displayInHome: true,
   },
   {
@@ -730,6 +820,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 90 by Anku Singh",
     width: 4128,
     height: 2322,
+    location: "Haridwar, Uttrakhand",
     displayInHome: false,
   },
   {
@@ -738,6 +829,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 91 by Anku Singh",
     width: 4128,
     height: 2322,
+    location: "Tehri Garhwal, Uttrakhand",
     displayInHome: true,
   },
   {
@@ -746,6 +838,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 92 by Anku Singh",
     width: 4128,
     height: 3096,
+    location: "Tehri Garhwal, Uttrakhand",
     displayInHome: false,
   },
   {
@@ -754,6 +847,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 93 by Anku Singh",
     width: 3096,
     height: 4128,
+    location: "Rudraprayag, Uttrakhand",
     displayInHome: false,
   },
   {
@@ -762,6 +856,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 94 by Anku Singh",
     width: 4128,
     height: 3096,
+    location: "Kedarnath, Uttrakhand",
     displayInHome: true,
   },
   {
@@ -770,6 +865,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 95 by Anku Singh",
     width: 4128,
     height: 3096,
+    location: "Kedarnath, Uttrakhand",
     displayInHome: false,
   },
   {
@@ -778,6 +874,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 96 by Anku Singh",
     width: 4128,
     height: 3096,
+    location: "Kedarnath, Uttrakhand",
     displayInHome: false,
   },
   {
@@ -786,6 +883,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 97 by Anku Singh",
     width: 3096,
     height: 4128,
+    location: "Kedarnath, Uttrakhand",
     displayInHome: false,
   },
   {
@@ -794,6 +892,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 98 by Anku Singh",
     width: 4128,
     height: 3096,
+    location: "Kedarnath, Uttrakhand",
     displayInHome: false,
   },
   {
@@ -802,6 +901,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 99 by Anku Singh",
     width: 4128,
     height: 2787,
+    location: "Kedarnath, Uttrakhand",
     displayInHome: true,
   },
   {
@@ -810,6 +910,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 100 by Anku Singh",
     width: 4128,
     height: 3096,
+    location: "Kedarnath, Uttrakhand",
     displayInHome: false,
   },
   {
@@ -818,6 +919,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 101 by Anku Singh",
     width: 4128,
     height: 3096,
+    location: "Kedarnath, Uttrakhand",
     displayInHome: false,
   },
   {
@@ -826,6 +928,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 102 by Anku Singh",
     width: 4128,
     height: 3096,
+    location: "Kedarnath, Uttrakhand",
     displayInHome: true,
   },
   {
@@ -834,6 +937,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 103 by Anku Singh",
     width: 2576,
     height: 1932,
+    location: "Kedarnath, Uttrakhand",
     displayInHome: false,
   },
   {
@@ -842,6 +946,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 104 by Anku Singh",
     width: 4128,
     height: 3096,
+    location: "Kedarnath, Uttrakhand",
     displayInHome: false,
   },
   {
@@ -850,6 +955,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 105 by Anku Singh",
     width: 4128,
     height: 3096,
+    location: "Kedarnath, Uttrakhand",
     displayInHome: false,
   },
   {
@@ -858,6 +964,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 106 by Anku Singh",
     width: 4128,
     height: 3096,
+    location: "Kedarnath, Uttrakhand",
     displayInHome: false,
   },
   {
@@ -866,6 +973,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 107 by Anku Singh",
     width: 3096,
     height: 4128,
+    location: "Kedarnath, Uttrakhand",
     displayInHome: false,
   },
   {
@@ -874,6 +982,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 108 by Anku Singh",
     width: 4128,
     height: 3096,
+    location: "Kedarnath, Uttrakhand",
     displayInHome: false,
   },
   {
@@ -882,6 +991,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 109 by Anku Singh",
     width: 4128,
     height: 3096,
+    location: "Kedarnath, Uttrakhand",
     displayInHome: true,
   },
   {
@@ -890,6 +1000,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 110 by Anku Singh",
     width: 4128,
     height: 3096,
+    location: "Kedarnath, Uttrakhand",
     displayInHome: false,
   },
   {
@@ -898,6 +1009,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 111 by Anku Singh",
     width: 4128,
     height: 3096,
+    location: "Kedarnath, Uttrakhand",
     displayInHome: true,
   },
   {
@@ -906,6 +1018,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 112 by Anku Singh",
     width: 4128,
     height: 3096,
+    location: "Kedarnath, Uttrakhand",
     displayInHome: false,
   },
   {
@@ -914,6 +1027,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 113 by Anku Singh",
     width: 3096,
     height: 4128,
+    location: "Kedarnath, Uttrakhand",
     displayInHome: false,
   },
   {
@@ -922,6 +1036,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 114 by Anku Singh",
     width: 3096,
     height: 4128,
+    location: "Kedarnath, Uttrakhand",
     displayInHome: false,
   },
   {
@@ -930,6 +1045,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 115 by Anku Singh",
     width: 4128,
     height: 3096,
+    location: "Kedarnath, Uttrakhand",
     displayInHome: false,
   },
   {
@@ -938,6 +1054,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 116 by Anku Singh",
     width: 3096,
     height: 4128,
+    location: "Kedarnath, Uttrakhand",
     displayInHome: false,
   },
   {
@@ -946,6 +1063,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 117 by Anku Singh",
     width: 3096,
     height: 4128,
+    location: "Kedarnath, Uttrakhand",
     displayInHome: false,
   },
   {
@@ -954,6 +1072,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 118 by Anku Singh",
     width: 4128,
     height: 3096,
+    location: "Kedarnath, Uttrakhand",
     displayInHome: false,
   },
   {
@@ -962,6 +1081,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 119 by Anku Singh",
     width: 4128,
     height: 3096,
+    location: "Tungnath, Uttrakhand",
     displayInHome: false,
   },
   {
@@ -970,6 +1090,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 120 by Anku Singh",
     width: 4128,
     height: 3096,
+    location: "Tungnath, UttrakhandTungnath, Uttrakhand",
     displayInHome: false,
   },
   {
@@ -978,6 +1099,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 121 by Anku Singh",
     width: 4128,
     height: 3096,
+    location: "Tungnath, Uttrakhand",
     displayInHome: false,
   },
   {
@@ -986,6 +1108,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 122 by Anku Singh",
     width: 4128,
     height: 3096,
+    location: "Tungnath, Uttrakhand",
     displayInHome: false,
   },
   {
@@ -994,6 +1117,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 123 by Anku Singh",
     width: 4128,
     height: 3096,
+    location: "Tungnath, Uttrakhand",
     displayInHome: false,
   },
   {
@@ -1002,6 +1126,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 124 by Anku Singh",
     width: 4128,
     height: 3096,
+    location: "Tungnath, Uttrakhand",
     displayInHome: false,
   },
   {
@@ -1010,6 +1135,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 125 by Anku Singh",
     width: 4128,
     height: 3096,
+    location: "Tungnath, Uttrakhand",
     displayInHome: true,
   },
   {
@@ -1018,6 +1144,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 126 by Anku Singh",
     width: 3096,
     height: 4128,
+    location: "Tungnath, Uttrakhand",
     displayInHome: false,
   },
   {
@@ -1026,6 +1153,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 127 by Anku Singh",
     width: 3096,
     height: 4128,
+    location: "Tungnath, Uttrakhand",
     displayInHome: false,
   },
   {
@@ -1034,6 +1162,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 128 by Anku Singh",
     width: 4128,
     height: 3096,
+    location: "Tungnath, Uttrakhand",
     displayInHome: true,
   },
   {
@@ -1042,6 +1171,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 129 by Anku Singh",
     width: 3096,
     height: 4128,
+    location: "Tungnath, Uttrakhand",
     displayInHome: false,
   },
   {
@@ -1050,6 +1180,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 130 by Anku Singh",
     width: 3096,
     height: 4128,
+    location: "Rudraprayag, Uttrakhand",
     displayInHome: false,
   },
   {
@@ -1058,6 +1189,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 131 by Anku Singh",
     width: 4128,
     height: 3096,
+    location: "Rishikesh, Uttrakhand",
     displayInHome: false,
   },
   {
@@ -1066,6 +1198,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 132 by Anku Singh",
     width: 3096,
     height: 4128,
+    location: "Ahmedabad, Gujarat",
     displayInHome: false,
   },
   {
@@ -1074,6 +1207,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 133 by Anku Singh",
     width: 4128,
     height: 3096,
+    location: "Vadodara, Gujarat",
     displayInHome: false,
   },
   {
@@ -1082,6 +1216,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 134 by Anku Singh",
     width: 4128,
     height: 3096,
+    location: "Vadodara, Gujarat",
     displayInHome: false,
   },
   {
@@ -1090,6 +1225,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 135 by Anku Singh",
     width: 3096,
     height: 4128,
+    location: "Vadodara, Gujarat",
     displayInHome: false,
   },
   {
@@ -1098,6 +1234,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 136 by Anku Singh",
     width: 4128,
     height: 3096,
+    location: "Vadodara, Gujarat",
     displayInHome: false,
   },
   {
@@ -1106,6 +1243,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 137 by Anku Singh",
     width: 3096,
     height: 4128,
+    location: "Anjar, Gujarat",
     displayInHome: false,
   },
   {
@@ -1114,6 +1252,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 138 by Anku Singh",
     width: 4128,
     height: 3096,
+    location: "Anjar, Gujarat",
     displayInHome: false,
   },
   {
@@ -1122,6 +1261,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 139 by Anku Singh",
     width: 4128,
     height: 3096,
+    location: "Bhuj, Gujarat",
     displayInHome: false,
   },
   {
@@ -1130,6 +1270,7 @@ export const photographs: Photograph[] = [
     alt: "Photograph 140 by Anku Singh",
     width: 4128,
     height: 3096,
+    location: "Anjar, Gujarat",
     displayInHome: false,
   },
 ];

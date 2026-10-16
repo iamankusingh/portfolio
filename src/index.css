@@ -160,9 +160,13 @@ html {
 html:has(#site-navigation[open]),
 body:has(#site-navigation[open]),
 html:has(#homepage-loader[open]),
-body:has(#homepage-loader[open]) {
+body:has(#homepage-loader[open]),
+html:has(#photography-viewer[open]) {
   overflow: hidden;
 }
+
+/* Lock the root only for the photo viewer. Overflow on body would make it
+   the sticky collage's scrolling ancestor and displace the background photos. */
 
 /* Native dialog entry/exit and keyframes are clearer here than in utilities. */
 .fullscreen-menu {

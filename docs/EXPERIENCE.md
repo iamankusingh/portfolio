@@ -275,7 +275,7 @@ A curated sequence leads into a simpler index.
 
 ## Image Viewing
 
-A photograph may open large or fullscreen with a clear close/back control. Follow [ASSETS.md](ASSETS.md) for accurate alt text and verified metadata.
+Homepage photographs open in a native fullscreen modal dialog with an uncropped image and a close button. GSAP moves the clicked photograph smoothly into the center while a subtle backdrop blur develops; closing reverses the movement and blur. Reduced motion presents the viewer immediately. Escape also closes it; focus returns to the triggering photo. Background content is inert and scrolling is locked while open. Follow [ASSETS.md](ASSETS.md) for accurate alt text and verified metadata.
 
 # 13. Contact / Closing Scene
 
