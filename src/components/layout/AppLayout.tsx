@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { Outlet, ScrollRestoration, useLocation } from "react-router";
 import useSmoothScroll from "../../hooks/useSmoothScroll";
+import CustomCursor from "../ui/CustomCursor";
 import Header from "./Header";
 import Footer from "./Footer";
 
@@ -23,6 +24,7 @@ export default function AppLayout() {
 
   return (
     <>
+      <CustomCursor />
       <Header />
       <main
         ref={mainRef}

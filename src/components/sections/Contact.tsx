@@ -97,7 +97,7 @@ export default function Contact() {
           aria-labelledby="contact-title"
           aria-busy={isSending}
           onSubmit={handleSubmit}
-          className="min-w-0 p-4 space-y-7 border border border-line-light rounded-lg"
+          className="min-w-0 p-4 space-y-7 border border-line-light rounded-lg"
         >
           <div className="grid gap-7 sm:grid-cols-2">
             <div>

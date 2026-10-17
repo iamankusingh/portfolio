@@ -274,7 +274,7 @@ Use a small, consistent set of geometric icons with matching stroke weights. Com
 
 # 12. Cursor
 
-An optional desktop cursor may use a dot/ring and the contextual labels in [EXPERIENCE.md](EXPERIENCE.md). It must stay legible, avoid obscuring content, and fall back to the native cursor. Motion belongs in [MOTION.md](MOTION.md).
+The desktop cursor is a small black dot with a soft white shadow alongside the native pointer, including over links. Only homepage photography triggers hide the native pointer and expand the dot into a larger black circle with white `View` text. The label stays centered and legible during expansion. Native cursors remain available for touch, reduced motion, forced colors, and form controls. Motion belongs in [MOTION.md](MOTION.md).
 
 # 13. Borders, Radius, and Surfaces
 

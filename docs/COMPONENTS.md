@@ -18,6 +18,7 @@ Create components when they have a clear responsibility; avoid speculative wrapp
 | `SelectedWork` | Sticky cards with scroll-triggered crossfades, 60/40 image/text layout, and normal-flow responsive/reduced-motion alternatives |
 | `Contact` | Full-viewport editorial form with underline focus styling; Google Apps Script submission with pending/success/error feedback and preserved values on unconfirmed delivery |
 | `LinkButton` | Reusable editorial navigation control rendered as a React Router Link/anchor |
+| `CustomCursor` | Shared GSAP dot and contextual labels, native dialog layering, pointer tracking, and native-cursor fallbacks |
 | `LandscapeFallback` | Static SVG used for preferences or scene failure |
 | `HeroScene` | Canvas, camera, sun, lighting, and atmosphere |
 | `IslandModel` | Imported island |

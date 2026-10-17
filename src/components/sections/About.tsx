@@ -71,7 +71,7 @@ export default function About() {
             id="about-title"
             className="mt-5 font-display text-display-lg leading-none tracking-[-0.035em]"
           >
-            {anku.name}
+            {anku.proffesion}
           </h2>
         </div>
 

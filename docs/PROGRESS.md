@@ -6,7 +6,9 @@ Phases 2 through 9 are complete by user direction. The Phase 8 contact form subm
 
 Photography uses the 140 supplied WebP assets in `src/assets/photographs/`, cataloged in `src/data/photograph.ts`. A stable random selection of 25 entries has `displayInHome: true`; final curation remains with the user. The GSAP collage and reduced-motion grid preserve original aspect ratios. The original opening collage positions and staggered scrolling rows are restored by user direction, including edge-framed photographs. Collage images are enlarged uniformly while preserving their centers and original aspect ratios. Clicking a photograph opens a native fullscreen dialog with a GSAP transition from the clicked image to the center, a simultaneous subtle backdrop blur, and a reverse close transition. The uncropped image, close button, Escape support, and restored trigger focus remain; reduced motion opens immediately. Viewer smoothing now waits for image decode before handing off from the source, uses GSAP transforms for travel, and fades a fixed blur layer instead of tweening blur strength. The viewer locks only root scrolling so the sticky collage retains its position behind the blurred backdrop. The reported stutter and background-visibility fixes await browser validation. Numbered alt labels await descriptive curation. Completion records approved milestones, not unreported validation results.
 
-Current focus: the homepage document-load loader is implemented with GSAP. A centered circle brightens uniformly from black to white with real resource-group completion, then expands and fades into the initialized hero. Loading covers local fonts, the header logo, hero models/buffers/textures, and scene readiness; lazy media and other routes are excluded. Document-load-only display, modal scroll/focus locking, reduced motion, resource-error fallbacks, and a bounded wait are implemented. Source review is complete; lint/build and browser acceptance remain pending with the user. No dependency changes are required.
+The homepage document-load loader is implemented with GSAP, resource-based progress, modal scroll/focus locking, reduced motion, resource-error fallbacks, and a bounded wait. Loader acceptance remains pending below.
+
+Current focus: the shared custom cursor uses existing GSAP. A black dot with a white shadow follows the native pointer, including over links. Only homepage photograph hover expands it into a larger `View` circle and hides the native pointer. Native dialogs and fallbacks for touch, reduced motion, forced colors, and form controls remain supported. Source review is complete; current lint/build and browser acceptance remain pending with the user. No dependency changes are required.
 
 ## Phase Checklist
 
@@ -36,6 +38,8 @@ Current focus: the homepage document-load loader is implemented with GSAP. A cen
 | 21 | Final QA and launch |
 
 ## Pending Acceptance
+
+- [ ] Check the custom cursor on light/dark sections, all links (including fullscreen navigation), photography triggers and viewer, rapid hover changes, scrolling beneath a stationary pointer, route changes, viewport exit/return, and tab switching. Confirm native form-field cursors, keyboard focus, touch behavior, live reduced motion/forced colors, and StrictMode cleanup. Run current lint/build; browser validation remains pending with the user.
 
 - [ ] Check the photography viewer: click/tap and keyboard activation, full-image fit, blurred backdrop, close button, Escape, focus return, background scroll locking, mobile rotation, and reduced motion. Current lint/build and browser checks remain pending.
 

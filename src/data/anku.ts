@@ -3,6 +3,7 @@ import portrait from "../assets/anku.webp";
 type PersonalProfile = {
   name: string;
   role: string;
+  proffesion: string;
   description: string;
   about: {
     label: string;
@@ -17,12 +18,13 @@ type PersonalProfile = {
 export const anku: PersonalProfile = {
   name: "Anku Singh",
   role: "Creative technologist",
+  proffesion: "Software Developer",
   description:
     "Exploring the space between design, engineering, and the natural world. Turning curiosity into thoughtful digital experiences.",
   about: {
     label: "Behind the work",
     heading: "A curious mind. A human perspective.",
-    previewLabel: "Draft personal copy · Preview",
+    previewLabel: "About me",
     paragraphs: [
       "I’m drawn to the place where thoughtful design meets the possibilities of code. From the first sketch to the smallest interaction, I like exploring how an idea can become something useful, intuitive, and full of character.",
       "Nature offers a different way of looking: slower rhythms, unexpected details, and room to notice. That sense of curiosity shapes the digital experiences I want to create — considered in how they work, personal in how they feel.",

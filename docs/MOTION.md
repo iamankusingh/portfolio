@@ -162,7 +162,7 @@ LinkButton arrows act as a compass for mouse/pen input inside the link. A GSAP t
 
 # 14. Cursor Motion
 
-Use the contextual states in [EXPERIENCE.md](EXPERIENCE.md). Changes should be fast, size expansion soft, labels legible, and lag minimal. Keep the native fallback.
+Use the contextual states in [EXPERIENCE.md](EXPERIENCE.md). The cursor follows the pointer tip directly; GSAP eases circle expansion/contraction and label fades with overwrite behavior for rapid hover changes. Scroll and dialog changes refresh the hovered target even without pointer movement. There is no idle animation loop. Live reduced motion restores the native cursor; listeners, scheduled frames, observers, and tweens are removed on teardown.
 
 # 15. Portrait Motion
 

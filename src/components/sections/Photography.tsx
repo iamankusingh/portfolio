@@ -342,6 +342,7 @@ export default function Photography() {
                 type="button"
                 aria-label={`View ${photo.alt} fullscreen`}
                 aria-haspopup="dialog"
+                data-cursor="view"
                 tabIndex={reducedMotion || index === 0 ? 0 : -1}
                 className={`block w-full cursor-zoom-in focus-visible:outline-3 focus-visible:-outline-offset-4 focus-visible:outline-sun ${reducedMotion ? "" : "h-full"}`}
                 onClick={(event) => {

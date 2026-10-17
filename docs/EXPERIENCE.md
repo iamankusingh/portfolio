@@ -297,7 +297,7 @@ A full-viewport dark footer closes the homepage after Contact. Oversized Anku Si
 
 # 14. Cursor and Pointer Behavior
 
-An optional cursor can signal `VIEW`, `OPEN`, `DRAG`, or `PLAY` on pointer devices. It must supplement native interaction cues and be disabled where inappropriate. [DESIGN_SYSTEM.md](DESIGN_SYSTEM.md) owns appearance; [MOTION.md](MOTION.md) owns response.
+A custom mouse cursor expands to show `View` over homepage photograph buttons, hiding the native pointer only during photograph hover. Links and other surfaces show the small dot alongside the native pointer without expansion. It remains visible in the fullscreen menu and photo viewer without intercepting input. Touch, keyboard navigation, reduced motion, forced colors, and form controls retain native interaction. [DESIGN_SYSTEM.md](DESIGN_SYSTEM.md) owns appearance; [MOTION.md](MOTION.md) owns response.
 
 # 15. Microinteractions
 
