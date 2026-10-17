@@ -2,7 +2,7 @@
 
 ## Current Status
 
-Phases 2 through 9 are complete by user direction. The Phase 8 contact form remains presentation-only; message delivery is unconfigured. Phase 9 implements a full-viewport dark night footer after Contact, with moonlit 3D water, identity, homepage links, authorship, and an explicit last-updated date. Footer content, rendering, and static fallback live in `Footer.tsx`. Validation remains pending with the user. Phase 10 onward and standalone routes remain deferred.
+Phases 2 through 9 are complete by user direction. The Phase 8 contact form submits to the configured Google Apps Script web app; deployed script compatibility and spreadsheet delivery await user validation. See [contact delivery](CONTACT_DELIVERY.md). Phase 9 implements a full-viewport dark night footer after Contact, with moonlit 3D water, identity, homepage links, authorship, and an explicit last-updated date. Footer content, rendering, and static fallback live in `Footer.tsx`. Validation remains pending with the user. Phase 10 onward and standalone routes remain deferred.
 
 Photography uses the 140 supplied WebP assets in `src/assets/photographs/`, cataloged in `src/data/photograph.ts`. A stable random selection of 25 entries has `displayInHome: true`; final curation remains with the user. The GSAP collage and reduced-motion grid preserve original aspect ratios. The original opening collage positions and staggered scrolling rows are restored by user direction, including edge-framed photographs. Collage images are enlarged uniformly while preserving their centers and original aspect ratios. Clicking a photograph opens a native fullscreen dialog with a GSAP transition from the clicked image to the center, a simultaneous subtle backdrop blur, and a reverse close transition. The uncropped image, close button, Escape support, and restored trigger focus remain; reduced motion opens immediately. Viewer smoothing now waits for image decode before handing off from the source, uses GSAP transforms for travel, and fades a fixed blur layer instead of tweening blur strength. The viewer locks only root scrolling so the sticky collage retains its position behind the blurred backdrop. The reported stutter and background-visibility fixes await browser validation. Numbered alt labels await descriptive curation. Completion records approved milestones, not unreported validation results.
 
@@ -20,7 +20,7 @@ Current focus: the homepage document-load loader is implemented with GSAP. A cen
 | 5 | About and portrait | Complete by user direction |
 | 6 | Capabilities circle interlude | Complete by user direction |
 | 7 | Photography | Complete by user direction |
-| 8 | Contact form | Complete by user direction; delivery remains unconfigured |
+| 8 | Contact form | Complete by user direction; submission implemented, delivery validation pending |
 | 9 | Footer | Complete by user direction |
 | 10 | Work Page |
 | 11 | About Page |
@@ -64,7 +64,7 @@ Current focus: the homepage document-load loader is implemented with GSAP. A cen
 
 Phase 7 is complete by user direction. Technical checks, final homepage selection, and descriptive alt text remain pending.
 
-- [ ] Review Phase 8 after Photography: desktop/mobile and short-screen layouts, zoom, keyboard focus, faded field underlines that turn dark on focus without rectangular outlines, optional company, resizable message box, and Contact menu/`/#contact` navigation. Supply a receiving endpoint/service before enabling delivery.
+- [ ] Review Phase 8 after Photography: desktop/mobile and short-screen layouts, zoom, keyboard focus, faded field underlines that turn dark on focus without rectangular outlines, optional company, resizable message box, and Contact menu/`/#contact` navigation. Verify the deployed Apps Script contract and spreadsheet row creation using [CONTACT_DELIVERY.md](CONTACT_DELIVERY.md), including success, failure, timeout, and repeat-click behavior.
 
 - [ ] Review Phase 7: black capabilities exit, centered photo during entry, spread starting only at full-screen coverage, upward photo travel with a stationary heading, the 25 selected WebP photographs, reverse/fast scrolling, reload mid-section, mobile/short screens, orientation changes, header access, and live reduced motion. Curate `displayInHome` using `src/data/photograph.ts`; check original aspect ratios, image loading, spacing, alt text, and `/#photography`. Current lint/build and browser checks remain pending.
 

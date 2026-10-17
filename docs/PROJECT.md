@@ -191,5 +191,5 @@ This file owns product intent, positioning, goals, audience, scope, and creative
 
 ## Current Status
 
-Phases 2 through 8 are complete by user direction. Phase 9 implements the full-viewport night footer with moonlit water. Contact delivery remains unconfigured; validation is pending with the user. Phase 10 onward and standalone routes remain deferred.
+Phases 2 through 8 are complete by user direction. Phase 9 implements the full-viewport night footer with moonlit water. Contact submits to Google Apps Script; delivery verification remains pending; validation is pending with the user. Phase 10 onward and standalone routes remain deferred.
 

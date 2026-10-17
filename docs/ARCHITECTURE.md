@@ -59,6 +59,10 @@ The native modal loader makes background controls inert and locks document scrol
 
 By explicit user direction, `Footer.tsx` contains all footer content, metadata, shaders, scene lifecycle, and static fallback. `AppLayout` mounts it after the semantic main region on the homepage only. It dynamically imports the existing Three.js dependency on visibility; the hero retains React Three Fiber. No dependency changes are needed.
 
+## Contact Delivery
+
+`Contact.tsx` posts URL-encoded fields directly to Google Apps Script using fetch, follows redirects, and requires explicit JSON success. Vite resolves `Web_app` or `Deployment_ID` from the existing environment and exposes only the public endpoint. No packages or app server are added. Pending state prevents concurrent requests; timeout and unmount abort the browser request. The deployed script contract and user verification are documented in [CONTACT_DELIVERY.md](CONTACT_DELIVERY.md).
+
 ## Dependency Rules
 
 Reuse existing packages and native capabilities before recommending dependencies. Give an exact pnpm command and reason when a package is needed; the user installs it. Do not change manifests or lockfiles on their behalf.

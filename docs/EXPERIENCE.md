@@ -289,7 +289,7 @@ The nature environment can return here.
 
 A simple, full-viewport light editorial section follows Photography. Large Instrument Serif typography sits beside the form on desktop; mobile stacks the heading and fields. Use normal flow with a minimum viewport height so short screens, zoom, and a resized message box can extend the section. The form includes name, email, optional company, and message, visible labels, required/email field semantics, autocomplete, and keyboard focus indicated by a dark underline; idle underlines are faded and fields have no rectangular focus outline. The rounded accent action matches the existing controls.
 
-The form is presentation-only by user direction, with no submission handler, state, or feedback. The Send message control uses a non-submit button until delivery is implemented. The navigation Contact link targets `/#contact`; the separate contact page remains deferred. The Phase 9 night footer follows the form.
+The form submits name, email, optional company, and message to the configured Google Apps Script web app. Native validation precedes sending; repeated submissions are blocked while pending. Confirmed success clears the fields and announces delivery. Errors or timeouts preserve the message and report that delivery could not be confirmed. See [CONTACT_DELIVERY.md](CONTACT_DELIVERY.md) for the deployment contract and pending verification. The navigation Contact link targets `/#contact`; the separate contact page remains deferred. The Phase 9 night footer follows the form.
 
 ## Phase 9 night footer
 
