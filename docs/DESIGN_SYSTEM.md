@@ -272,6 +272,8 @@ Use dark or neutral surroundings, large images, minimal captions, and generous n
 
 Use a small, consistent set of geometric icons with matching stroke weights. Communicate technology mainly through project context and typography, not a skills-logo cloud.
 
+The user-requested Phase 10 About constellation uses text skill labels, small circular nodes, and fine connection lines on the dark neutral surface. Related skills sit nearby. Warm yellow marks selection; rings, lines, and written relationships also communicate state. Preserve readable text and touch targets through a distinct mobile arrangement. Logos may replace labels later at the user's direction.
+
 # 12. Cursor
 
 The desktop cursor is a small black dot with a soft white shadow alongside the native pointer, including over links. Only homepage photography triggers hide the native pointer and expand the dot into a larger black circle with white `View` text. The label stays centered and legible during expansion. Native cursors remain available for touch, reduced motion, forced colors, and form controls. Motion belongs in [MOTION.md](MOTION.md).

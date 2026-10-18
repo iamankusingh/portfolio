@@ -3,6 +3,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { anku } from "../../data/anku";
 import useMediaQuery from "../../hooks/useMediaQuery";
+import LinkButton from "../ui/LinkButton";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -118,6 +119,9 @@ export default function About() {
                 </div>
               ))}
             </dl>
+            <div className="mt-8">
+              <LinkButton to="/about">More about me</LinkButton>
+            </div>
           </div>
         </div>
       </div>

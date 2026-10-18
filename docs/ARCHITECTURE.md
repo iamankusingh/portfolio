@@ -31,6 +31,8 @@ Keep both circular controls, fullscreen dialog, destinations, previews, and menu
 
 `AppLayout` mounts `useSmoothScroll` across routes. A critically damped spring on the GSAP ticker eases wheel input while preserving velocity and updating the real window scroll position, preserving sticky positioning and hero measurements without transformed wrappers. Route changes and unmounts remove the owned ticker callback and listeners; React Router still owns restoration. Touch, keyboard, nested scroll areas, and reduced motion use native behavior. Do not combine this with CSS smooth scrolling or another smoothing system.
 
+`AboutPage` composes the Phase 10 `/about` route with full-width profile and skills sections. `AppLayout` allows that route to own its gutters and top spacing. Profile data stays in `anku.ts`; `skills.ts` owns labels, descriptions, relationships, and responsive positions. `SkillsConstellation` uses semantic DOM buttons, decorative SVG lines, and local selection state; it adds no rendering library or animation loop.
+
 ## Styling
 
 Use Tailwind for ordinary styling. Keep fonts, design tokens, global rules, dialog transitions, and keyframes in `src/index.css`. See [DESIGN_SYSTEM.md](DESIGN_SYSTEM.md) and [CONVENTIONS.md](CONVENTIONS.md).

@@ -31,7 +31,7 @@ export default function AppLayout() {
         id="main-content"
         tabIndex={-1}
         className={
-          location.pathname === "/"
+          location.pathname === "/" || location.pathname === "/about"
             ? "min-h-screen"
             : "pt-[calc(var(--navigation-top)+var(--navigation-control-size)+1.5rem)] mx-auto min-h-svh max-w-content px-page pb-section-sm"
         }

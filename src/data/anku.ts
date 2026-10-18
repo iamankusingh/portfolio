@@ -5,6 +5,14 @@ type PersonalProfile = {
   role: string;
   proffesion: string;
   description: string;
+  profile: {
+    heading: string;
+    introduction: string;
+    paragraphs: string[];
+    location: string;
+    focus: string;
+    copyNote: string;
+  };
   about: {
     label: string;
     heading: string;
@@ -21,6 +29,19 @@ export const anku: PersonalProfile = {
   proffesion: "Software Developer",
   description:
     "Exploring the space between design, engineering, and the natural world. Turning curiosity into thoughtful digital experiences.",
+  profile: {
+    heading: "Software developer. Database designer. System architect.",
+    introduction:
+      "I build web applications and design the systems behind them — connecting thoughtful interfaces, application logic, and well-structured data.",
+    paragraphs: [
+      "My work spans the journey from wireframes and prototypes to responsive interfaces, backend services, and database design. I like understanding how the pieces fit together, then making those connections clear and useful.",
+      "I care about the details people feel and the structure they don’t see: how an interface responds, how information flows, and how a system can stay understandable as it grows.",
+    ],
+    location: "TBD",
+    focus: "Web experiences, data & application architecture",
+    copyNote:
+      "Draft introduction based on my stated disciplines; final wording in progress.",
+  },
   about: {
     label: "Behind the work",
     heading: "A curious mind. A human perspective.",

@@ -179,7 +179,13 @@ Use large typographic groups, expandable categories, clusters, or subtle spatial
 
 # 9. Personal Portrait / About Moment
 
-Phase 5 implements this moment directly after Selected Work. A light editorial surface pairs oversized name typography with a large real portrait and personal copy; two columns stack on mobile. Content comes from `src/data/anku.ts`, with generated personal copy explicitly marked as a draft preview. The section uses normal document flow without reveal gating and supports `/#about`. The standalone `/about` page remains deferred.
+Phase 5 implements this moment directly after Selected Work. A light editorial surface pairs oversized typography with a large real portrait and personal copy; two columns stack on mobile. Content comes from `src/data/anku.ts`. The section uses normal document flow without reveal gating, supports `/#about`, and links to the standalone `/about` page.
+
+## Phase 10 About page
+
+`/about` contains exactly two sections. The first pairs the real portrait with Anku's name, location, and the user-supplied disciplines software developer, database designer, and system architect. Generated introductory copy is labeled as draft; location remains TBD until supplied.
+
+The second presents all ten supplied skills as a constellation of text nodes on a dark surface. Figma/HTML/CSS sit together, JavaScript connects to Next.js/Three.js/MERN, and PHP/Laravel/MySQL form a backend and relational-data group. Spatial proximity and lines represent relationships, never proficiency. Each native button selects a description and connected-skill list, highlighting its links without hiding other labels. Touch and keyboard have the same selection behavior; details are announced politely. Mobile repositions nodes instead of scaling down text. All content uses DOM with decorative SVG connections; no WebGL, pinning, or continuous motion is needed.
 
 ## Role
 
@@ -370,5 +376,5 @@ Phase 2 is complete by user direction. The opening contains an island, ocean cur
 
 The document-load loader reveals the prepared hero; client-side return visits retain the direct dark-background dawn intro. Preserve native scrolling after loading, responsive framing, and the same graphics quality across devices. Suspend animation while navigation is open. Use the static fallback for reduced motion, Save-Data, or rendering failure.
 
-Phase 4 selected work is complete by user direction. Phase 5 About/portrait is complete by user direction and follows Selected Work. Phase 6 is complete by user direction. Phase 7 adds the photography collage after Capabilities. Phase 7 is complete by user direction. Phase 8 is complete by user direction. Phase 9 night footer is complete by user direction; Phase 10 onward remain deferred; current validation is tracked in [PROGRESS.md](PROGRESS.md).
+Phase 4 selected work is complete by user direction. Phase 5 About/portrait is complete by user direction and follows Selected Work. Phase 6 is complete by user direction. Phase 7 adds the photography collage after Capabilities. Phase 7 is complete by user direction. Phase 8 is complete by user direction. Phase 9 night footer is complete by user direction; Phase 10 About page is active; Phase 11 onward remain deferred; current validation is tracked in [PROGRESS.md](PROGRESS.md).
 

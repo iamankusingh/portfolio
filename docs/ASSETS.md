@@ -1,4 +1,4 @@
-﻿# Assets
+# Assets
 
 ## Core Assets
 
@@ -6,7 +6,7 @@
 |---|---|
 | Logo | `public/logo.svg`; preserve the blue circle and yellow A |
 | Favicon | `public/favicon.ico` |
-| Portrait | `src/assets/anku.avif`; use the real image |
+| Portrait | `src/assets/anku.webp`; use the real image |
 | Photography | 140 supplied WebP photographs, `src/assets/photographs/1.webp` through `140.webp`; dimensions, alt text, and `displayInHome` flags in `src/data/photograph.ts`. WebP is the photography standard; preserve original aspect ratios |
 | Project media | `src/assets/work/`; see its README for filenames. Original authored `placeholder.svg` is shared until still images are supplied |
 | Fallback landscape | Authored SVG in `LandscapeFallback.tsx` |

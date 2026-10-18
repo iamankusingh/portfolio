@@ -7,9 +7,9 @@ Map the confirmed initial pages and the deferred contact page. Dummy content is 
 | Route | Purpose | Planning status |
 |---|---|---|
 | `/` | Complete homepage journey in [EXPERIENCE.md](EXPERIENCE.md), including the contact finale. | Included initially |
-| `/about` | Personal story, portrait, philosophy, and capabilities; generated demo copy permitted. | Included initially |
+| `/about` | Two sections: personal profile with real portrait, name, location and disciplines; connected skills constellation. | Phase 10 implemented; validation pending |
 | `/work` | Project index populated with dummy projects initially. | Included initially |
-| `/photography` | Image-led gallery using `anku.avif` as the initial repeatable image. | Included initially |
+| `/photography` | Image-led gallery using `anku.webp` as the initial repeatable image. | Included initially |
 | `/lab` | Experiments and creative exploration, with demo entries allowed. | Included initially |
 | `/contact` | Separate contact page in a later iteration. | Required later; deferred |
 | `*` | Not-found handling, including unknown project slugs. | Included with routing |
@@ -22,7 +22,7 @@ Build included routes in their owning phases; do not add placeholder pages to th
 
 ## Current implementation
 
-The homepage renders Hero/Introduction, Selected Work, About, Capabilities, Photography, and Contact. Phases 2 through 7 are complete by user direction; Phase 8 contact UI is implemented with delivery and validation pending. Homepage anchors include `/#introduction`, `/#selected-work`, `/#about`, `/#photography`, and `/#contact`. Phase 9 onward and standalone pages remain deferred; unbuilt destinations use NotFound. Route focus, scroll restoration, and error boundaries remain.
+The homepage renders Hero/Introduction, Selected Work, About, Capabilities, Photography, and Contact, followed by the night footer. Phases 2 through 9 are complete by user direction; technical validation and contact delivery remain pending. Homepage anchors include `/#introduction`, `/#selected-work`, `/#about`, `/#photography`, and `/#contact`. Phase 10 adds `/about`, reachable through the menu and homepage About link. Phase 11 onward remain deferred; other unbuilt destinations use NotFound. Route focus, scroll restoration, and error boundaries remain.
 
 ## Menu destinations
 

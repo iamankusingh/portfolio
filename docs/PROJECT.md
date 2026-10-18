@@ -122,7 +122,7 @@ Include a real photograph of Anku as part of the story. [EXPERIENCE.md](EXPERIEN
 
 ## Photography
 
-Use `src/assets/anku.avif` for the initial photography experience, repeating it where needed to exercise the layout. A curated collection is not required to start. Treat repeated items as demo imagery rather than distinct real photographs or shoots. Browsing options live in [EXPERIENCE.md](EXPERIENCE.md).
+Use `src/assets/anku.webp` for the initial photography experience, repeating it where needed to exercise the layout. A curated collection is not required to start. Treat repeated items as demo imagery rather than distinct real photographs or shoots. Browsing options live in [EXPERIENCE.md](EXPERIENCE.md).
 
 ## Projects
 
@@ -191,5 +191,5 @@ This file owns product intent, positioning, goals, audience, scope, and creative
 
 ## Current Status
 
-Phases 2 through 8 are complete by user direction. Phase 9 implements the full-viewport night footer with moonlit water. Contact submits to Google Apps Script; delivery verification remains pending; validation is pending with the user. Phase 10 onward and standalone routes remain deferred.
+Phases 2 through 9 are complete by user direction. Contact delivery verification and technical validation remain pending with the user. Phase 10 is active: `/about` has two sections, a personal profile and a semantic constellation of text-based skills. The user supplied the disciplines software developer, database designer, and system architect, plus HTML, CSS, JavaScript, Figma, MERN stack, Three.js, Next.js, PHP, Laravel, and MySQL. Introductory copy is a labeled draft and location remains TBD. Phase 11 onward remain deferred.
 

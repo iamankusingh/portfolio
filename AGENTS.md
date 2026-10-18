@@ -55,7 +55,7 @@ Before significant work:
 1. Read this file, [README.md](README.md), and [PROGRESS.md](docs/PROGRESS.md).
 2. Read the specialist documents relevant to the task, using the [documentation map](README.md#documentation-responsibilities).
 3. Inspect the current implementation and reuse its patterns.
-4. Stay within the requested scope. Phases 2, 3, and 4 are complete by user direction. Phase 5 About/portrait is complete by user direction. Phase 6 is complete by user direction. Phase 7 is complete by user direction. Phase 8 is complete by user direction. Phase 9 is complete by user direction; Phase 10 onward remain deferred.
+4. Stay within the requested scope. Phases 2, 3, and 4 are complete by user direction. Phase 5 About/portrait is complete by user direction. Phase 6 is complete by user direction. Phase 7 is complete by user direction. Phase 8 is complete by user direction. Phase 9 is complete by user direction; Phase 10 About page is active; Phase 11 onward remain deferred.
 
 The specialist document owns its domain. If documents conflict, surface the conflict and update stale guidance when the evidence or an approved decision resolves it. Do not silently choose a new direction.
 
@@ -85,7 +85,7 @@ Follow [CONVENTIONS.md](docs/CONVENTIONS.md) for strict TypeScript, component bo
 
 ## Content Safety / Accuracy
 
-**Approved demo-content exception:** Anku has authorized generated personal copy, fictional projects/case studies, and dummy data for the initial build. Existing imagery may be reused across entries; `src/assets/anku.avif` is approved for the photography placeholder.
+**Approved demo-content exception:** Anku has authorized generated personal copy, fictional projects/case studies, and dummy data for the initial build. Existing imagery may be reused across entries; `src/assets/anku.webp` is approved for the photography placeholder.
 
 Make demo content clearly identifiable and keep it replaceable through structured data. Fictional biography, employers, clients, dates, outcomes, or metrics must not be represented as verified facts about Anku. Use placeholder contact details rather than inventing reachable personal accounts.
 
@@ -97,5 +97,5 @@ Keep [PROGRESS.md](docs/PROGRESS.md) current after meaningful planning or implem
 
 ## Current Status
 
-Phases 2 through 9 are complete by user direction. The Phase 8 contact form submits to the configured Google Apps Script web app; deployed script compatibility and spreadsheet delivery await user validation. See [contact delivery](docs/CONTACT_DELIVERY.md). Phase 9 implements a full-viewport dark night footer after Contact, with moonlit 3D water, identity, homepage links, authorship, and an explicit last-updated date. Footer content, rendering, and static fallback live in `Footer.tsx`. Validation remains pending with the user. Phase 10 onward and standalone routes remain deferred.
+Phases 2 through 9 are complete by user direction. The Phase 8 contact form submits to the configured Google Apps Script web app; deployed script compatibility and spreadsheet delivery await user validation. See [contact delivery](docs/CONTACT_DELIVERY.md). Phase 9 implements a full-viewport dark night footer after Contact, with moonlit 3D water, identity, homepage links, authorship, and an explicit last-updated date. Footer content, rendering, and static fallback live in `Footer.tsx`. Validation remains pending with the user. Phase 10 is active: `/about` implements the profile and connected skills constellation; user validation and final profile copy/location remain pending. Phase 11 onward remain deferred.
 

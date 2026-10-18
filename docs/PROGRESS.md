@@ -2,13 +2,13 @@
 
 ## Current Status
 
-Phases 2 through 9 are complete by user direction. The Phase 8 contact form submits to the configured Google Apps Script web app; deployed script compatibility and spreadsheet delivery await user validation. See [contact delivery](CONTACT_DELIVERY.md). Phase 9 implements a full-viewport dark night footer after Contact, with moonlit 3D water, identity, homepage links, authorship, and an explicit last-updated date. Footer content, rendering, and static fallback live in `Footer.tsx`. Validation remains pending with the user. Phase 10 onward and standalone routes remain deferred.
+Phases 2 through 9 are complete by user direction. The Phase 8 contact form submits to the configured Google Apps Script web app; deployed script compatibility and spreadsheet delivery await user validation. See [contact delivery](CONTACT_DELIVERY.md). Phase 9 implements a full-viewport dark night footer after Contact, with moonlit 3D water, identity, homepage links, authorship, and an explicit last-updated date. Footer content, rendering, and static fallback live in `Footer.tsx`. Validation remains pending with the user. Phase 10 is active: `/about` implements the profile and connected skills constellation; user validation and final profile copy/location remain pending. Phase 11 onward remain deferred.
 
 Photography uses the 140 supplied WebP assets in `src/assets/photographs/`, cataloged in `src/data/photograph.ts`. A stable random selection of 25 entries has `displayInHome: true`; final curation remains with the user. The GSAP collage and reduced-motion grid preserve original aspect ratios. The original opening collage positions and staggered scrolling rows are restored by user direction, including edge-framed photographs. Collage images are enlarged uniformly while preserving their centers and original aspect ratios. Clicking a photograph opens a native fullscreen dialog with a GSAP transition from the clicked image to the center, a simultaneous subtle backdrop blur, and a reverse close transition. The uncropped image, close button, Escape support, and restored trigger focus remain; reduced motion opens immediately. Viewer smoothing now waits for image decode before handing off from the source, uses GSAP transforms for travel, and fades a fixed blur layer instead of tweening blur strength. The viewer locks only root scrolling so the sticky collage retains its position behind the blurred backdrop. The reported stutter and background-visibility fixes await browser validation. Numbered alt labels await descriptive curation. Completion records approved milestones, not unreported validation results.
 
 The homepage document-load loader is implemented with GSAP, resource-based progress, modal scroll/focus locking, reduced motion, resource-error fallbacks, and a bounded wait. Loader acceptance remains pending below.
 
-Current focus: the shared custom cursor uses existing GSAP. A black dot with a white shadow follows the native pointer, including over links. Only homepage photograph hover expands it into a larger `View` circle and hides the native pointer. Native dialogs and fallbacks for touch, reduced motion, forced colors, and form controls remain supported. Source review is complete; current lint/build and browser acceptance remain pending with the user. No dependency changes are required.
+Current focus: Phase 10 implements `/about` with exactly two sections: a real editorial portrait and basic profile, followed by a text-node skills constellation. Related skills share spatial groups and connections; buttons support mouse, touch, and keyboard selection with a description and connected-skill list. Mobile uses its own constellation layout. Profile copy lives in `src/data/anku.ts`; skills and connections live in `src/data/skills.ts`. Location is TBD pending user input; generated introductory copy is labeled as draft. The existing menu and a homepage About link reach the page. Source review is complete; lint/build and browser acceptance remain pending. No dependencies changed.
 
 ## Phase Checklist
 
@@ -24,8 +24,8 @@ Current focus: the shared custom cursor uses existing GSAP. A black dot with a w
 | 7 | Photography | Complete by user direction |
 | 8 | Contact form | Complete by user direction; submission implemented, delivery validation pending |
 | 9 | Footer | Complete by user direction |
-| 10 | Work Page |
-| 11 | About Page |
+| 10 | About Page | Implemented; active, user validation and final copy/location pending |
+| 11 | Work Page |
 | 12 | Photography Page |
 | 13 | Lab and experiments Page |
 | 14 | Contact Page |
@@ -38,6 +38,8 @@ Current focus: the shared custom cursor uses existing GSAP. A black dot with a w
 | 21 | Final QA and launch |
 
 ## Pending Acceptance
+
+- [ ] Review `/about` through the menu, homepage link, direct load, and browser back/forward. Check portrait crop, two-section composition, mobile/desktop layouts, zoom, keyboard node activation and focus, touch selection, connection highlighting, screen-reader announcements, and reduced motion. Confirm location and draft biography. Run current lint/build; validation remains with the user.
 
 - [ ] Check the custom cursor on light/dark sections, all links (including fullscreen navigation), photography triggers and viewer, rapid hover changes, scrolling beneath a stationary pointer, route changes, viewport exit/return, and tab switching. Confirm native form-field cursors, keyboard focus, touch behavior, live reduced motion/forced colors, and StrictMode cleanup. Run current lint/build; browser validation remains pending with the user.
 
@@ -73,7 +75,7 @@ Phase 7 is complete by user direction. Technical checks, final homepage selectio
 - [ ] Review Phase 7: black capabilities exit, centered photo during entry, spread starting only at full-screen coverage, upward photo travel with a stationary heading, the 25 selected WebP photographs, reverse/fast scrolling, reload mid-section, mobile/short screens, orientation changes, header access, and live reduced motion. Curate `displayInHome` using `src/data/photograph.ts`; check original aspect ratios, image loading, spacing, alt text, and `/#photography`. Current lint/build and browser checks remain pending.
 
 - [ ] Review Phase 6 after About: early center appearance as it enters the viewport, GSAP forward/reverse progress and refresh cleanup, gradual three-circle orbit, merge, and edge-to-edge black expansion. Check reverse/fast scrolling, reload within the section, mobile/short screens, orientation changes, header/menu access, and live reduced motion (immediately readable paragraph without pinning). Check the white paragraph reveal, one-screen fit, keyboard access, and zoom overflow. Capability copy and line placement live in `src/components/sections/Capabilities.tsx`; check the staggered line layout across screen sizes.
-- [ ] Review the Phase 5 About section after Selected Work: portrait crop, draft personal copy, desktop/mobile layout, zoom, and `/#about` navigation. Content lives in `src/data/anku.ts`; the real portrait is `src/assets/anku.avif`.
+- [ ] Review the Phase 5 About section after Selected Work: portrait crop, draft personal copy, desktop/mobile layout, zoom, and `/#about` navigation. Content lives in `src/data/anku.ts`; the real portrait is `src/assets/anku.webp`.
 - [ ] Run `pnpm.cmd lint` and `pnpm.cmd build` for the current source.
 - [ ] Check navigation, keyboard focus, touch, scrolling, and responsive layouts.
 - [ ] Check velocity-based GSAP acceleration and settling with wheel ticks, trackpad momentum, quick reversals, page boundaries, menu opening during travel, route/back navigation, and live reduced-motion changes. Confirm touch/keyboard and nested scrolling stay native, with no duplicate listeners under StrictMode.
