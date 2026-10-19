@@ -48,7 +48,7 @@ export default function SkillsConstellation() {
           </div>
         </div>
 
-        <div className="relative mt-8 h-208 md:h-152">
+        <div className="relative mt-8 h-304 md:h-192">
           {/* Two coordinate sets keep labels readable without shrinking the graph on mobile. */}
           {(["mobilePosition", "position"] as const).map((layout) => (
             <svg
@@ -106,18 +106,29 @@ export default function SkillsConstellation() {
                     aria-pressed={active}
                     aria-controls="skill-detail"
                     onClick={() => setSelectedId(skill.id)}
-                    className="group relative flex h-20 w-24 cursor-pointer items-center justify-center rounded-sm focus-visible:outline-sun md:w-32"
+                    className="group relative flex h-32 w-28 cursor-pointer items-center justify-center rounded-sm focus-visible:outline-sun md:w-24"
                   >
                     <span
                       aria-hidden="true"
-                      className={`grid size-9 place-items-center rounded-full border bg-bg-dark transition-colors duration-200 motion-reduce:transition-none ${active ? "border-sun" : connected ? "border-mist/70" : "border-transparent group-hover:border-mist/70"}`}
+                      className="pointer-events-none absolute size-14 rounded-sm bg-water/40 opacity-0 shadow-[0_0_24px_8px_rgb(39_109_255_/_0.55),0_0_64px_24px_rgb(39_109_255_/_0.28)] transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100 motion-reduce:transition-none forced-colors:hidden"
+                    />
+                    <span
+                      aria-hidden="true"
+                      className={`relative grid size-14 place-items-center rounded-sm bg-bg-light ring-2 ring-offset-4 ring-offset-bg-dark transition-shadow duration-200 motion-reduce:transition-none ${active ? "ring-sun" : connected ? "ring-mist/70" : "ring-transparent group-hover:ring-mist/70"}`}
                     >
-                      <span
-                        className={`size-2 rounded-full ${active ? "bg-sun" : "bg-text-light"}`}
+                      <img
+                        src={skill.logo}
+                        alt=""
+                        width={44}
+                        height={44}
+                        loading="lazy"
+                        decoding="async"
+                        draggable={false}
+                        className="size-11 object-contain"
                       />
                     </span>
                     <span
-                      className={`absolute top-[calc(50%+1.25rem)] bg-bg-dark px-1 text-small whitespace-nowrap md:text-base ${active ? "text-sun" : "text-text-light"}`}
+                      className={`absolute top-[calc(50%+2.25rem)] bg-bg-dark px-1 text-small whitespace-nowrap md:text-base ${active ? "text-sun" : "text-text-light"}`}
                     >
                       {skill.label}
                     </span>

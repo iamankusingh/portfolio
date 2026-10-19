@@ -272,7 +272,7 @@ Use dark or neutral surroundings, large images, minimal captions, and generous n
 
 Use a small, consistent set of geometric icons with matching stroke weights. Communicate technology mainly through project context and typography, not a skills-logo cloud.
 
-The user-requested Phase 10 About constellation uses text skill labels, small circular nodes, and fine connection lines on the dark neutral surface. Related skills sit nearby. Warm yellow marks selection; rings, lines, and written relationships also communicate state. Preserve readable text and touch targets through a distinct mobile arrangement. Logos may replace labels later at the user's direction.
+The user-requested Phase 10 About constellation uses supplied WebP technology logos with visible names and fine connection lines on the dark neutral surface. Logos replace the circular dots and retain their colors and proportions on small light backgrounds. Related skills sit nearby; MERN appears as MongoDB, Express, React, and Node.js nodes, and Tailwind CSS sits near CSS. Warm yellow outlines and names mark selection; lines and written relationships also communicate state. By user direction, hover and keyboard focus illuminate the area behind each logo with a soft blue glow while the logo and name remain clear. Preserve readable text and touch targets through a distinct mobile arrangement.
 
 # 12. Cursor
 

@@ -168,7 +168,7 @@ Use the contextual states in [EXPERIENCE.md](EXPERIENCE.md). The cursor follows 
 
 The About portrait uses GSAP ScrollTrigger for gentle vertical parallax inside its fixed, clipped frame: downward scrolling moves the photo upward, and reverse scrolling moves it downward. A small overscan keeps the frame filled; a short scrub smooths direction changes. Caption and copy stay in normal flow. Live reduced motion restores the untransformed portrait. Owned animations, triggers, observers, and scheduled refreshes are cleaned up.
 
-The standalone Phase 10 About portrait is static. Its skills constellation uses brief color transitions for selection; reduced motion removes transitions. Nodes remain in place, with no continuous animation, scroll pinning, or reveal gating.
+The standalone Phase 10 About portrait is static. Its skills constellation uses brief color transitions for selection. Hover or keyboard focus fades in a blue glow behind the technology logo over 300ms; only the glow layer's opacity animates. Reduced motion removes transitions, and forced colors hides the decorative glow. Nodes remain in place, with no continuous animation, scroll pinning, or reveal gating.
 
 # 16. Photography Motion
 

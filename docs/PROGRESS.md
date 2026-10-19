@@ -8,7 +8,7 @@ Photography uses the 140 supplied WebP assets in `src/assets/photographs/`, cata
 
 The homepage document-load loader is implemented with GSAP, resource-based progress, modal scroll/focus locking, reduced motion, resource-error fallbacks, and a bounded wait. Loader acceptance remains pending below.
 
-Current focus: Phase 10 implements `/about` with exactly two sections: a real editorial portrait and basic profile, followed by a text-node skills constellation. Related skills share spatial groups and connections; buttons support mouse, touch, and keyboard selection with a description and connected-skill list. Mobile uses its own constellation layout. Profile copy lives in `src/data/anku.ts`; skills and connections live in `src/data/skills.ts`. Location is TBD pending user input; generated introductory copy is labeled as draft. The existing menu and a homepage About link reach the page. Source review is complete; lint/build and browser acceptance remain pending. No dependencies changed.
+Current focus: Phase 10 implements `/about` with exactly two sections: a real editorial portrait and basic profile, followed by a constellation of 14 supplied WebP technology logos with visible names. MERN expands into MongoDB, Express, React, and Node.js; Tailwind CSS joins the styling group. Small light backgrounds preserve logo contrast and responsive positions leave space for the images. Hover and keyboard focus fade in a blue glow behind each logo; reduced motion removes the fade and forced colors hides the decorative glow. Related skills share spatial groups and connections; buttons support mouse, touch, and keyboard selection with a description and connected-skill list. Mobile uses its own constellation layout. Profile copy lives in `src/data/anku.ts`; skills and connections live in `src/data/skills.ts`. Location is TBD pending user input; generated introductory copy is labeled as draft. The existing menu and a homepage About link reach the page. Source review is complete; lint/build and browser acceptance remain pending. No dependencies changed.
 
 ## Phase Checklist
 
@@ -39,7 +39,7 @@ Current focus: Phase 10 implements `/about` with exactly two sections: a real ed
 
 ## Pending Acceptance
 
-- [ ] Review `/about` through the menu, homepage link, direct load, and browser back/forward. Check portrait crop, two-section composition, mobile/desktop layouts, zoom, keyboard node activation and focus, touch selection, connection highlighting, screen-reader announcements, and reduced motion. Confirm location and draft biography. Run current lint/build; validation remains with the user.
+- [ ] Review `/about` through the menu, homepage link, direct load, and browser back/forward. Check portrait crop, two-section composition, all 14 logos and retained labels, blue hover/focus glow and its fade-out, mobile/desktop node spacing, zoom, keyboard node activation and focus, touch selection, connection highlighting, screen-reader announcements, and reduced motion. Confirm location and draft biography. Run current lint/build; validation remains with the user.
 
 - [ ] Check the custom cursor on light/dark sections, all links (including fullscreen navigation), photography triggers and viewer, rapid hover changes, scrolling beneath a stationary pointer, route changes, viewport exit/return, and tab switching. Confirm native form-field cursors, keyboard focus, touch behavior, live reduced motion/forced colors, and StrictMode cleanup. Run current lint/build; browser validation remains pending with the user.
 

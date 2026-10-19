@@ -7,6 +7,7 @@
 | Logo | `public/logo.svg`; preserve the blue circle and yellow A |
 | Favicon | `public/favicon.ico` |
 | Portrait | `src/assets/anku.webp`; use the real image |
+| Technology logos | 14 user-supplied WebP files in `src/assets/tech/`, imported by `src/data/skills.ts`; preserve proportions and colors, keep visible names, and use light backing for contrast. Source/license records remain to be supplied |
 | Photography | 140 supplied WebP photographs, `src/assets/photographs/1.webp` through `140.webp`; dimensions, alt text, and `displayInHome` flags in `src/data/photograph.ts`. WebP is the photography standard; preserve original aspect ratios |
 | Project media | `src/assets/work/`; see its README for filenames. Original authored `placeholder.svg` is shared until still images are supplied |
 | Fallback landscape | Authored SVG in `LandscapeFallback.tsx` |
