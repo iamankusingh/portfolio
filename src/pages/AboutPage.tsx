@@ -13,13 +13,13 @@ export default function AboutPage() {
       >
         <div className="mx-auto max-w-content">
           <p className="border-t border-line-light pt-5 text-small tracking-[0.16em] text-text-muted-light uppercase">
-            01 / About me
+            About me
           </p>
           <h1
             id="profile-title"
             className="mt-6 mb-10 font-display text-display-xl leading-[0.95] tracking-[-0.04em] sm:mb-16"
           >
-            {anku.name}
+            I’m {anku.name}
             <span className="text-water">.</span>
           </h1>
 
@@ -34,13 +34,13 @@ export default function AboutPage() {
               />
               <figcaption className="mt-4 flex flex-wrap justify-between gap-2 text-small text-text-muted-light">
                 <span>{anku.name}</span>
-                <span>Technology × Nature × Human Experience</span>
+                <span>{anku.slogan}</span>
               </figcaption>
             </figure>
 
             <div className="min-w-0 md:pt-3">
               <p className="text-small tracking-[0.12em] text-text-muted-light uppercase">
-                The person behind the work
+                {profile.label}
               </p>
               <h2 className="mt-5 font-display text-h2 leading-[1.12] tracking-[-0.02em]">
                 {profile.heading}
@@ -63,9 +63,6 @@ export default function AboutPage() {
                   <dd>{profile.focus}</dd>
                 </div>
               </dl>
-              <p className="mt-5 text-micro text-text-muted-light">
-                {profile.copyNote}
-              </p>
             </div>
           </div>
         </div>

@@ -75,7 +75,7 @@ export default function Contact() {
       tabIndex={-1}
       className="relative flex min-h-svh items-center bg-bg-light px-page pt-28 pb-16 text-text-dark scheme-light md:py-28"
     >
-      <div className="mx-auto grid w-full max-w-content gap-12 border-t border-line-light pt-6 lg:grid-cols-2 lg:items-center lg:gap-24 lg:pt-12">
+      <div className="w-full grid gap-12 border-t border-line-light pt-6 lg:grid-cols-2 lg:items-center lg:gap-24 lg:pt-12">
         <div>
           <p className="text-small tracking-[0.16em] uppercase">Contact</p>
           <h2

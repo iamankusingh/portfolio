@@ -99,7 +99,7 @@ export default function SelectedWork() {
     >
       <div
         ref={stage}
-        className={`mx-auto max-w-content px-page pt-[calc(var(--navigation-top)+var(--navigation-control-size)+1rem)] pb-5 ${pinned ? "sticky top-0 flex h-svh flex-col" : ""}`}
+        className={`px-page pt-[calc(var(--navigation-top)+var(--navigation-control-size)+1rem)] pb-5 ${pinned ? "sticky top-0 flex h-svh flex-col" : ""}`}
       >
         <div className="mb-5 flex shrink-0 flex-wrap items-end justify-between gap-x-6 gap-y-2">
           <h2

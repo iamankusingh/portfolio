@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router";
 import useMediaQuery from "../../hooks/useMediaQuery";
+import { anku } from "../../data/anku";
 
 // An editorial update date, rather than the date of the visitor's session.
 const lastUpdated = { date: "2026-10-13", label: "October 2026" };
@@ -429,7 +430,7 @@ export default function Footer() {
       className="relative isolate flex min-h-svh flex-col overflow-hidden bg-bg-deep px-page pt-section-sm text-text-light"
     >
       <div className="relative z-10 flex flex-wrap items-center justify-between gap-x-8 gap-y-2 border-b border-line-dark pb-5 text-xs tracking-[0.12em] uppercase">
-        <p>Technology × Nature × Human Experience</p>
+        <p>{anku.slogan}</p>
         <Link to="/#main-content" className={linkClass}>
           Back to top <span aria-hidden="true">↑</span>
         </Link>
@@ -443,7 +444,7 @@ export default function Footer() {
             id="footer-name"
             className="font-display text-[clamp(4.5rem,12vw,12rem)] leading-[0.95] tracking-[-0.045em]"
           >
-            Anku Singh<span className="text-mist">.</span>
+            {anku.name}<span className="text-mist">.</span>
           </h2>
         </div>
         <nav
@@ -507,8 +508,10 @@ export default function Footer() {
       </div>
 
       <div className="relative z-10 -mx-page flex flex-wrap items-center justify-between gap-x-8 gap-y-3 bg-bg-deep px-page py-5 text-xs text-mist">
-        <p>© {new Date().getFullYear()} Anku Singh</p>
-        <p>Designed & built by me, <Link to="/about">Anku Singh</Link>.</p>
+        <p>© {new Date().getFullYear()} {anku.name}</p>
+        <p>
+          Designed & built by me, <Link to="/about">{anku.name}</Link>.
+        </p>
         <p>
           Last updated{" "}
           <time dateTime={lastUpdated.date}>{lastUpdated.label}</time>

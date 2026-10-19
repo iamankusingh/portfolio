@@ -23,7 +23,8 @@ export default function About() {
     let animation: gsap.core.Tween | undefined;
     const context = gsap.context(() => {
       // Overscan keeps the fixed frame filled throughout the vertical travel.
-      animation = gsap.fromTo(image,
+      animation = gsap.fromTo(
+        image,
         { yPercent: 6, scale: 1.14 },
         {
           yPercent: -6,
@@ -63,7 +64,7 @@ export default function About() {
       tabIndex={-1}
       className="bg-bg-light px-page py-section-lg text-text-dark"
     >
-      <div className="mx-auto max-w-content">
+      <div>
         <div className="mb-10 border-t border-line-light pt-5 sm:mb-16">
           <p className="text-small tracking-[0.16em] uppercase">
             {about.label}
@@ -78,7 +79,10 @@ export default function About() {
 
         <div className="grid items-start gap-12 md:grid-cols-2 md:gap-10 lg:gap-24">
           <figure className="min-w-0">
-            <div ref={portraitFrame} className="overflow-hidden bg-surface-light">
+            <div
+              ref={portraitFrame}
+              className="overflow-hidden bg-surface-light"
+            >
               <img
                 ref={portrait}
                 src={about.portrait.src}
@@ -94,31 +98,28 @@ export default function About() {
             </figcaption>
           </figure>
 
-          <div className="min-w-0 md:pt-8">
+          <div className="md:pt-8">
             <p className="mb-5 text-micro tracking-[0.08em] text-text-muted-light uppercase">
               {about.previewLabel}
             </p>
-            <h3 className="max-w-lg font-display text-h2 leading-[1.1] tracking-[-0.02em]">
+            <h3 className="font-display text-h2 leading-[1.1] tracking-[-0.02em]">
               {about.heading}
             </h3>
             <div className="mt-8 max-w-lg space-y-5 text-body-lg leading-relaxed">
-              {about.paragraphs.map((paragraph) => (
-                <p key={paragraph}>{paragraph}</p>
+              {about.paragraphs.map((paragraph, index) => (
+                <p key={index}>{paragraph}</p>
               ))}
             </div>
-            <dl className="mt-10 border-t border-line-light">
-              {about.details.map((detail) => (
-                <div
-                  key={detail.label}
-                  className="border-b border-line-light py-5"
+            <ul className="mt-8 flex flex-wrap items-center gap-4">
+              {about.domain.map((domain, index) => (
+                <li
+                  key={index}
+                  className="rounded-full border border-line-light px-3 py-1 text-small text-text-muted-light hover:text-text-dark hover:border-primary transition-colors duration-200"
                 >
-                  <dt className="text-micro tracking-[0.12em] text-text-muted-light uppercase">
-                    {detail.label}
-                  </dt>
-                  <dd className="mt-2 text-small">{detail.value}</dd>
-                </div>
+                  {domain}
+                </li>
               ))}
-            </dl>
+            </ul>
             <div className="mt-8">
               <LinkButton to="/about">More about me</LinkButton>
             </div>

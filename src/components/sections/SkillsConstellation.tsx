@@ -27,7 +27,7 @@ export default function SkillsConstellation() {
       <div className="mx-auto max-w-content">
         <div className="border-t border-line-dark pt-5">
           <p className="text-small tracking-[0.16em] text-text-muted-dark uppercase">
-            02 / My skills
+            My skills
           </p>
           <div className="mt-6 flex flex-col justify-between gap-6 md:flex-row md:items-end">
             <h2
@@ -110,7 +110,7 @@ export default function SkillsConstellation() {
                   >
                     <span
                       aria-hidden="true"
-                      className="pointer-events-none absolute size-14 rounded-sm bg-water/40 opacity-0 shadow-[0_0_24px_8px_rgb(39_109_255_/_0.55),0_0_64px_24px_rgb(39_109_255_/_0.28)] transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100 motion-reduce:transition-none forced-colors:hidden"
+                      className="pointer-events-none absolute size-14 rounded-sm bg-water/40 opacity-0 shadow-[0_0_24px_8px_rgb(39_109_255/0.55),0_0_64px_24px_rgb(39_109_255/0.28)] transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100 motion-reduce:transition-none forced-colors:hidden"
                     />
                     <span
                       aria-hidden="true"
