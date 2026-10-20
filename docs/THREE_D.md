@@ -12,6 +12,7 @@ Use selective cinematic 3D to express **Technology × Nature × Human Experience
 - Fourteen clouds spread across the sky, moving right to left and recycling offscreen.
 - One boat parked beside the shore.
 - Soft lighting, fog, restrained pointer response, and native-scroll camera progression.
+- Full-height scene coverage as mobile browser controls hide or return.
 - Text-free opening, followed by DOM introduction text during the camera approach to the house.
 
 Model sources and licenses belong in [ASSETS.md](ASSETS.md). Component boundaries belong in [ARCHITECTURE.md](ARCHITECTURE.md).

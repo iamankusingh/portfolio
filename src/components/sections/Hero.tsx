@@ -75,7 +75,9 @@ export default function Hero({ preparing, forceStatic, onReady }: HeroProps) {
     const menu = document.getElementById("site-navigation");
     const sync = () => {
       const canRender =
-        (visible || preparing) && !document.hidden && !menu?.hasAttribute("open");
+        (visible || preparing) &&
+        !document.hidden &&
+        !menu?.hasAttribute("open");
       setActive(canRender);
       if (canRender) setRequested(true);
     };
@@ -145,7 +147,7 @@ export default function Hero({ preparing, forceStatic, onReady }: HeroProps) {
       ref={section}
       aria-labelledby="hero-title"
       data-landscape={staticLandscape ? "static" : "animated"}
-      className="hero relative isolate bg-bg-dark"
+      className="hero min-h-screen relative isolate bg-bg-dark"
     >
       <Link className="skip-link left-1/2 -translate-x-1/2" to="#introduction">
         Skip to introduction
@@ -154,7 +156,8 @@ export default function Hero({ preparing, forceStatic, onReady }: HeroProps) {
         className="pointer-events-none absolute inset-0 -z-10 overflow-clip"
         aria-hidden="true"
       >
-        <div ref={viewport} className="sticky top-0 h-svh">
+        {/* Fill the visible viewport as mobile browser controls hide or return. */}
+        <div ref={viewport} className="sticky top-0 h-dvh">
           {staticLandscape ? (
             <LandscapeFallback />
           ) : (

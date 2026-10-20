@@ -11,7 +11,7 @@ export default function RouteError() {
   return (
     <section
       role="alert"
-      className="mx-auto max-w-reading px-page py-section-md"
+      className="min-h-screen py-section-md flex flex-col items-center justify-center px-page text-center"
     >
       <title>Something went wrong — Anku Singh</title>
       <h1 className="font-display text-h1">Something didn’t load.</h1>

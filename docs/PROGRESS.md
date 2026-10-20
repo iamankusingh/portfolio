@@ -83,7 +83,7 @@ Phase 7 is complete by user direction. Technical checks, final homepage selectio
 - [ ] Check velocity-based GSAP acceleration and settling with wheel ticks, trackpad momentum, quick reversals, page boundaries, menu opening during travel, route/back navigation, and live reduced-motion changes. Confirm touch/keyboard and nested scrolling stay native, with no duplicate listeners under StrictMode.
 - [ ] Check pinning on desktop, mobile, and short screens; forward/reverse fades, fast scrolling, reload mid-section, final-card release, overflowing details, and the normal-flow reduced-motion alternative.
 - [ ] Add project images using `src/assets/work/README.md`; check replacements and `/#selected-work` navigation.
-- [ ] Check the text-free opening, house framing, forward/reverse camera travel, and introduction contrast on wide, portrait, and short screens.
+- [ ] Check the text-free opening, house framing, camera travel, and introduction contrast across screen sizes, including gap-free hero coverage when mobile browser controls hide or return.
 - [ ] Check camera acceleration and settling with wheel ticks, touch scrolling, abrupt stops/reversals, and menu/tab suspension.
 - [ ] Check `/#introduction`, keyboard skip, reload/back navigation, fast scrolling before scene readiness, and live reduced-motion changes.
 - [ ] Check scene loading, model textures, waterline, reflections, and cloud movement.
