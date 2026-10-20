@@ -3,6 +3,7 @@ import { gsap } from "gsap";
 import { works } from "../../data/works";
 import useMediaQuery from "../../hooks/useMediaQuery";
 import LinkButton from "../ui/LinkButton";
+import WorkContent from "./WorkContent";
 
 const SCROLL_PER_WORK_SVH = 45;
 
@@ -37,17 +38,24 @@ export default function SelectedWork() {
       }
       // Interrupted transitions continue from their current visual values.
       timeline.to(card, { opacity: active ? 1 : 0, duration: 0.65 }, 0);
-      if (image) timeline.to(image, { opacity: active ? 1 : 0, duration: 0.8 }, 0);
-      timeline.to(copy, {
-        opacity: active ? 1 : 0,
-        y: active ? 0 : 12,
-        duration: active ? 0.65 : 0.35,
-        stagger: active ? 0.045 : 0,
-        ease: active ? "power2.out" : "power2.inOut",
-      }, active ? 0.08 : 0);
+      if (image)
+        timeline.to(image, { opacity: active ? 1 : 0, duration: 0.8 }, 0);
+      timeline.to(
+        copy,
+        {
+          opacity: active ? 1 : 0,
+          y: active ? 0 : 12,
+          duration: active ? 0.65 : 0.35,
+          stagger: active ? 0.045 : 0,
+          ease: active ? "power2.out" : "power2.inOut",
+        },
+        active ? 0.08 : 0,
+      );
     });
     transitionReady.current = pinned;
-    return () => { timeline.kill(); };
+    return () => {
+      timeline.kill();
+    };
   }, [activeworks, pinned]);
 
   useEffect(() => {
@@ -95,7 +103,11 @@ export default function SelectedWork() {
       tabIndex={-1}
       aria-labelledby="selected-work-title"
       className="relative bg-bg-light text-text-dark"
-      style={pinned ? { height: `${100 + works.length * SCROLL_PER_WORK_SVH}svh` } : undefined}
+      style={
+        pinned
+          ? { height: `${100 + works.length * SCROLL_PER_WORK_SVH}svh` }
+          : undefined
+      }
     >
       <div
         ref={stage}
@@ -117,7 +129,9 @@ export default function SelectedWork() {
             return (
               <article
                 key={work.slug}
-                ref={(element) => { cards.current[index] = element; }}
+                ref={(element) => {
+                  cards.current[index] = element;
+                }}
                 aria-labelledby={`${work.slug}-title`}
                 aria-hidden={!active}
                 inert={!active}
@@ -131,60 +145,13 @@ export default function SelectedWork() {
                 }
                 className={`grid min-h-0 min-w-0 overflow-hidden rounded-md border border-line-light bg-surface-light lg:grid-cols-[3fr_2fr] ${pinned ? "grid-rows-[minmax(0,2fr)_minmax(0,3fr)] lg:grid-rows-[minmax(0,1fr)]" : ""} ${active ? "" : "pointer-events-none"}`}
               >
-                <div className="min-h-0 min-w-0 bg-surface-light">
-                  <img
-                    src={
-                      new URL(
-                        `../../assets/work/${work.image}`,
-                        import.meta.url,
-                      ).href
-                    }
-                    alt={work.imageAlt}
-                    width="1600"
-                    height="1000"
-                    loading="lazy"
-                    decoding="async"
-                    className={
-                      pinned
-                        ? "h-full w-full object-contain"
-                        : "aspect-8/5 w-full object-contain lg:h-full lg:aspect-auto"
-                    }
-                  />
-                </div>
-                <div
-                  tabIndex={pinned && active ? 0 : undefined}
-                  role="region"
-                  aria-label={`Work ${index + 1} details`}
-                  className={`min-h-0 min-w-0 bg-bg-light p-5 sm:p-6 xl:p-8 ${pinned ? "overflow-y-auto" : ""}`}
-                >
-                  <p className="mb-4 text-micro tracking-[0.14em] uppercase">
-                    Work {String(index + 1).padStart(2, "0")} /{" "}
-                    {String(works.length).padStart(2, "0")}
-                  </p>
-                  <h3
-                    id={`${work.slug}-title`}
-                    className="font-display text-h1 leading-none tracking-tight"
-                  >
-                    {work.title}
-                  </h3>
-                  <p className="mt-5 max-w-sm text-small leading-relaxed text-text-muted-light">
-                    {work.description}
-                  </p>
-                  <dl className="mt-6 grid grid-cols-2 gap-5 border-t border-line-light pt-5 text-small">
-                    <div>
-                      <dt className="mb-1 text-micro text-text-muted-light">
-                        Role
-                      </dt>
-                      <dd>{work.role}</dd>
-                    </div>
-                    <div>
-                      <dt className="mb-1 text-micro text-text-muted-light">
-                        Built with
-                      </dt>
-                      <dd>{work.technologies}</dd>
-                    </div>
-                  </dl>
-                </div>
+                <WorkContent
+                  work={work}
+                  index={index}
+                  total={works.length}
+                  constrained={pinned}
+                  active={active}
+                />
               </article>
             );
           })}

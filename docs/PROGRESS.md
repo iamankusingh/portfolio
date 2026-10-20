@@ -2,13 +2,13 @@
 
 ## Current Status
 
-Phases 2 through 9 are complete by user direction. The Phase 8 contact form submits to the configured Google Apps Script web app; deployed script compatibility and spreadsheet delivery await user validation. See [contact delivery](CONTACT_DELIVERY.md). Phase 9 implements a full-viewport dark night footer after Contact, with moonlit 3D water, identity, homepage links, authorship, and an explicit last-updated date. Footer content, rendering, and static fallback live in `Footer.tsx`. Validation remains pending with the user. Phase 10 is active: `/about` implements the profile and connected skills constellation; user validation and final profile copy/location remain pending. Phase 11 onward remain deferred.
+Phases 2 through 10 are complete by user direction. The Phase 8 contact form submits to the configured Google Apps Script web app; deployed script compatibility and spreadsheet delivery await user validation. See [contact delivery](CONTACT_DELIVERY.md). Phase 9 implements a full-viewport dark night footer after Contact, with moonlit 3D water, identity, homepage links, authorship, and an explicit last-updated date. Footer content, rendering, and static fallback live in `Footer.tsx`. Validation remains pending with the user. Phase 10 About is complete by user direction; technical validation and final profile copy/location remain pending. Phase 11 is active: `/work` shares the homepage work layout and data, with overlapping sticky cards and GSAP scroll-driven depth. User validation remains pending. Phase 12 onward remain deferred.
 
 Photography uses the 140 supplied WebP assets in `src/assets/photographs/`, cataloged in `src/data/photograph.ts`. A stable random selection of 25 entries has `displayInHome: true`; final curation remains with the user. The GSAP collage and reduced-motion grid preserve original aspect ratios. The original opening collage positions and staggered scrolling rows are restored by user direction, including edge-framed photographs. Collage images are enlarged uniformly while preserving their centers and original aspect ratios. Clicking a photograph opens a native fullscreen dialog with a GSAP transition from the clicked image to the center, a simultaneous subtle backdrop blur, and a reverse close transition. The uncropped image, close button, Escape support, and restored trigger focus remain; reduced motion opens immediately. Viewer smoothing now waits for image decode before handing off from the source, uses GSAP transforms for travel, and fades a fixed blur layer instead of tweening blur strength. The viewer locks only root scrolling so the sticky collage retains its position behind the blurred backdrop. The reported stutter and background-visibility fixes await browser validation. Numbered alt labels await descriptive curation. Completion records approved milestones, not unreported validation results.
 
 The homepage document-load loader is implemented with GSAP, resource-based progress, modal scroll/focus locking, reduced motion, resource-error fallbacks, and a bounded wait. Loader acceptance remains pending below.
 
-Current focus: Phase 10 implements `/about` with exactly two sections: a real editorial portrait and basic profile, followed by a constellation of 14 supplied WebP technology logos with visible names. MERN expands into MongoDB, Express, React, and Node.js; Tailwind CSS joins the styling group. Small light backgrounds preserve logo contrast and responsive positions leave space for the images. Hover and keyboard focus fade in a blue glow behind each logo; reduced motion removes the fade and forced colors hides the decorative glow. Related skills share spatial groups and connections; buttons support mouse, touch, and keyboard selection with a description and connected-skill list. Mobile uses its own constellation layout. Profile copy lives in `src/data/anku.ts`; skills and connections live in `src/data/skills.ts`. Location is TBD pending user input; generated introductory copy is labeled as draft. The existing menu and a homepage About link reach the page. Source review is complete; lint/build and browser acceptance remain pending. No dependencies changed.
+Current focus: Phase 11 implements `/work` using the same Coming soon entries, images, and shared `WorkContent` layout as homepage Selected Work. Cards stack over preceding cards during scrolling; GSAP ScrollTrigger gently scales the covered card. Desktop retains the 60/40 image/details layout, and mobile stacks image above details. Keyboard focus restores the focused card to view; reduced motion and short viewports use normal flow. Menu and homepage links reach the route. Source review is complete; lint/build and browser acceptance remain pending. No dependencies changed.
 
 ## Phase Checklist
 
@@ -24,8 +24,8 @@ Current focus: Phase 10 implements `/about` with exactly two sections: a real ed
 | 7 | Photography | Complete by user direction |
 | 8 | Contact form | Complete by user direction; submission implemented, delivery validation pending |
 | 9 | Footer | Complete by user direction |
-| 10 | About Page | Implemented; active, user validation and final copy/location pending |
-| 11 | Work Page |
+| 10 | About Page | Complete by user direction; technical validation and final copy/location pending |
+| 11 | Work Page | Implemented; active, user validation pending |
 | 12 | Photography Page |
 | 13 | Lab and experiments Page |
 | 14 | Contact Page |
@@ -38,6 +38,8 @@ Current focus: Phase 10 implements `/about` with exactly two sections: a real ed
 | 21 | Final QA and launch |
 
 ## Pending Acceptance
+
+- [ ] Review `/work` through the menu, homepage link, direct load, and browser back/forward. Check forward/reverse and rapid stacking, final-card release, mobile layout, short screens, resize, zoom, keyboard focus into covered cards, scrollable details, and live reduced motion. Recheck homepage Selected Work after shared markup extraction. Run current lint/build; validation remains with the user.
 
 - [ ] Review `/about` through the menu, homepage link, direct load, and browser back/forward. Check portrait crop, two-section composition, all 14 logos and retained labels, blue hover/focus glow and its fade-out, mobile/desktop node spacing, zoom, keyboard node activation and focus, touch selection, connection highlighting, screen-reader announcements, and reduced motion. Confirm location and draft biography. Run current lint/build; validation remains with the user.
 
@@ -94,7 +96,7 @@ Earlier passing checks do not validate later edits. The user runs commands, serv
 
 Confirmed: pnpm, Manrope + Instrument Serif, existing palette, approved demo content, real portrait/photography, and shared high graphics quality. See [AGENTS.md](../AGENTS.md) for workflow and content rules.
 
-Pending: current validation, real project images/content, later-page compositions and gallery behavior, public credits placement before launch, font license records, production asset optimization, metadata, and hosting. Original model licenses and attribution/adaptation records remain in place. Placeholder images support review without final assets; case-study links and the Work index remain deferred.
+Pending: current validation, real project images/content, later-page compositions and gallery behavior, public credits placement before launch, font license records, production asset optimization, metadata, and hosting. Original model licenses and attribution/adaptation records remain in place. Placeholder images support review without final assets; case-study links and Phase 12 onward remain deferred.
 
 ## Update Rule
 

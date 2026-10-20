@@ -4,7 +4,7 @@ An interactive creative-technologist portfolio built around **Technology × Natu
 
 ## Current Status
 
-Phases 2 through 9 are complete by user direction. The Phase 8 contact form submits to the configured Google Apps Script web app; deployed script compatibility and spreadsheet delivery await user validation. See [contact delivery](docs/CONTACT_DELIVERY.md). Phase 9 implements a full-viewport dark night footer after Contact, with moonlit 3D water, identity, homepage links, authorship, and an explicit last-updated date. Footer content, rendering, and static fallback live in `Footer.tsx`. Validation remains pending with the user. Phase 10 is active: `/about` implements the profile and connected skills constellation; user validation and final profile copy/location remain pending. Phase 11 onward remain deferred.
+Phases 2 through 10 are complete by user direction. The Phase 8 contact form submits to the configured Google Apps Script web app; deployed script compatibility and spreadsheet delivery await user validation. See [contact delivery](docs/CONTACT_DELIVERY.md). Phase 9 implements a full-viewport dark night footer after Contact, with moonlit 3D water, identity, homepage links, authorship, and an explicit last-updated date. Footer content, rendering, and static fallback live in `Footer.tsx`. Validation remains pending with the user. Phase 10 About is complete by user direction; technical validation and final profile copy/location remain pending. Phase 11 is active: `/work` shares the homepage work layout and data, with overlapping sticky cards and GSAP scroll-driven depth. User validation remains pending. Phase 12 onward remain deferred.
 
 
 ## Stack and Development

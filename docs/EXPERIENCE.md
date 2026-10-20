@@ -142,7 +142,11 @@ Avoid reducing all projects to a dense grid of small cards unless a secondary in
 
 Phase 4 uses a viewport-height sticky Selected Work stage across screen sizes. Each project has a card in the same position, with a still image on the left (60%) and Coming soon title, description, role, and technology text on the right (40%) on desktop. Mobile stacks image above text within the pinned card. Scrolling fades between cards; reverse scrolling revisits earlier entries. The stage releases after the final card. Overflowing details are independently scrollable and keyboard-focusable. Only reduced motion shows every card in normal flow. Inactive overlapping cards are inert and hidden from assistive technology.
 
-“View all work” remains in the section header and targets `/work` through `LinkButton`. The index remains deferred to its own phase and currently uses NotFound. Case-study links remain deferred. Images are named directly in `src/data/works.ts` and stored in `src/assets/work`; no videos are used.
+“View all work” remains in the section header and targets `/work` through `LinkButton`. Case-study links remain deferred. Images are named directly in `src/data/works.ts` and stored in `src/assets/work`; no videos are used.
+
+## Phase 11 Work page
+
+`/work` is a simple full-width list using the same project data and image/details layout as homepage Selected Work. Each card stays beneath the header controls as the next scrolls over it; a subtle GSAP depth transition reinforces the stack. Desktop keeps the 60/40 split and mobile places the image above the details. Content stays in document order, keyboard focus brings a covered card back into view, and overflowing details can scroll independently. Reduced motion and short viewports show the complete list in normal flow. The existing Coming soon copy and placeholder images remain until real work is supplied.
 
 ## Project Interactions
 
@@ -376,5 +380,5 @@ Phase 2 is complete by user direction. The opening contains an island, ocean cur
 
 The document-load loader reveals the prepared hero; client-side return visits retain the direct dark-background dawn intro. Preserve native scrolling after loading, responsive framing, and the same graphics quality across devices. Suspend animation while navigation is open. Use the static fallback for reduced motion, Save-Data, or rendering failure.
 
-Phase 4 selected work is complete by user direction. Phase 5 About/portrait is complete by user direction and follows Selected Work. Phase 6 is complete by user direction. Phase 7 adds the photography collage after Capabilities. Phase 7 is complete by user direction. Phase 8 is complete by user direction. Phase 9 night footer is complete by user direction; Phase 10 About page is active; Phase 11 onward remain deferred; current validation is tracked in [PROGRESS.md](PROGRESS.md).
+Phases 2 through 10 are complete by user direction. Phase 11 Work page is implemented and active; Phase 12 onward remain deferred. Current validation is tracked in [PROGRESS.md](PROGRESS.md).
 

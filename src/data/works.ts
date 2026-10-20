@@ -1,4 +1,4 @@
-﻿type work = {
+export type Work = {
   slug: string;
   title: string;
   description: string;
@@ -8,7 +8,7 @@
   imageAlt: string;
 };
 
-export const works: work[] = [
+export const works: Work[] = [
   {
     slug: "work-01",
     title: "Coming soon",

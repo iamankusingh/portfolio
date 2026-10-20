@@ -8,6 +8,8 @@ Create components when they have a clear responsibility; avoid speculative wrapp
 |---|---|
 | `AppLayout` | Persistent shell, main region, route focus, and scroll restoration |
 | `AboutPage` | Standalone `/about` route with a profile section and skills constellation; profile data from `src/data/anku.ts` |
+| `WorkPage` | Standalone `/work` route with sticky overlapping cards, GSAP depth transitions, keyboard focus recovery, and normal-flow fallbacks |
+| `WorkContent` | Shared project image and semantic details for homepage Selected Work and the Work page, using `src/data/works.ts` |
 | `SkillsConstellation` | Responsive DOM skill nodes, decorative SVG connections, native button selection, and announced descriptions from `src/data/skills.ts` |
 | `Footer` | Homepage night closing scene, DOM identity/links/metadata, self-contained moonlit water, suspension, and static fallback |
 | `Header` | Both circular controls, fullscreen menu, destinations, previews, and modal lifecycle |

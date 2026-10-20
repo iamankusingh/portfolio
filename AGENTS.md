@@ -55,7 +55,7 @@ Before significant work:
 1. Read this file, [README.md](README.md), and [PROGRESS.md](docs/PROGRESS.md).
 2. Read the specialist documents relevant to the task, using the [documentation map](README.md#documentation-responsibilities).
 3. Inspect the current implementation and reuse its patterns.
-4. Stay within the requested scope. Phases 2, 3, and 4 are complete by user direction. Phase 5 About/portrait is complete by user direction. Phase 6 is complete by user direction. Phase 7 is complete by user direction. Phase 8 is complete by user direction. Phase 9 is complete by user direction; Phase 10 About page is active; Phase 11 onward remain deferred.
+4. Stay within the requested scope. Phases 2, 3, and 4 are complete by user direction. Phase 5 About/portrait is complete by user direction. Phase 6 is complete by user direction. Phase 7 is complete by user direction. Phase 8 is complete by user direction. Phases 9 and 10 are complete by user direction. Phase 11 Work page is active; Phase 12 onward remain deferred.
 
 The specialist document owns its domain. If documents conflict, surface the conflict and update stale guidance when the evidence or an approved decision resolves it. Do not silently choose a new direction.
 
@@ -97,5 +97,5 @@ Keep [PROGRESS.md](docs/PROGRESS.md) current after meaningful planning or implem
 
 ## Current Status
 
-Phases 2 through 9 are complete by user direction. The Phase 8 contact form submits to the configured Google Apps Script web app; deployed script compatibility and spreadsheet delivery await user validation. See [contact delivery](docs/CONTACT_DELIVERY.md). Phase 9 implements a full-viewport dark night footer after Contact, with moonlit 3D water, identity, homepage links, authorship, and an explicit last-updated date. Footer content, rendering, and static fallback live in `Footer.tsx`. Validation remains pending with the user. Phase 10 is active: `/about` implements the profile and connected skills constellation; user validation and final profile copy/location remain pending. Phase 11 onward remain deferred.
+Phases 2 through 10 are complete by user direction. The Phase 8 contact form submits to the configured Google Apps Script web app; deployed script compatibility and spreadsheet delivery await user validation. See [contact delivery](docs/CONTACT_DELIVERY.md). Phase 9 implements a full-viewport dark night footer after Contact, with moonlit 3D water, identity, homepage links, authorship, and an explicit last-updated date. Footer content, rendering, and static fallback live in `Footer.tsx`. Validation remains pending with the user. Phase 10 About is complete by user direction; technical validation and final profile copy/location remain pending. Phase 11 is active: `/work` shares the homepage work layout and data, with overlapping sticky cards and GSAP scroll-driven depth. User validation remains pending. Phase 12 onward remain deferred.
 

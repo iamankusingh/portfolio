@@ -116,6 +116,8 @@ Selected Work uses a fixed viewport-height CSS sticky stage and scroll-scheduled
 
 Selected Work uses a short scroll interval per project so the next entry is reached quickly, while retaining the viewport-height stage and a final reading interval before release.
 
+The Phase 11 `/work` page uses native sticky cards that scroll over their predecessors. GSAP ScrollTrigger scrubs a restrained scale reduction on the card being covered, reversing naturally with scroll. The shared window smoothing remains the only input smoothing system. Trigger measurements refresh on resize; owned transforms, triggers, observers, and scheduled frames are removed on cleanup. Keyboard focus scrolls to a card's original position so it is visible. Reduced motion and short viewports remove stacking and transforms, leaving every card in normal flow.
+
 ## 10.2 Project Hover
 
 Optional desktop effects: **1.01–1.04** media scale, mild perspective, `VIEW` cursor, or a small title/underline response. Avoid aggressive tilt.

@@ -191,5 +191,5 @@ This file owns product intent, positioning, goals, audience, scope, and creative
 
 ## Current Status
 
-Phases 2 through 9 are complete by user direction. Contact delivery verification and technical validation remain pending with the user. Phase 10 is active: `/about` has two sections, a personal profile and a semantic constellation of supplied technology logos with visible names. MERN is represented by its four technologies; the supplied Tailwind CSS logo is also included. The user supplied the disciplines software developer, database designer, and system architect, plus HTML, CSS, JavaScript, Figma, MERN stack, Three.js, Next.js, PHP, Laravel, and MySQL. Introductory copy is a labeled draft and location remains TBD. Phase 11 onward remain deferred.
+Phases 2 through 10 are complete by user direction. Contact delivery verification and technical validation remain pending with the user. The About profile and connected skills constellation are implemented; introductory copy is a labeled draft and location remains TBD. Phase 11 is active: a simple `/work` page reuses the homepage work layout and data with GSAP-assisted stacking on scroll. Phase 12 onward remain deferred.
 

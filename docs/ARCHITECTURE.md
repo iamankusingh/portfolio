@@ -33,6 +33,8 @@ Keep both circular controls, fullscreen dialog, destinations, previews, and menu
 
 `AboutPage` composes the Phase 10 `/about` route with full-width profile and skills sections. `AppLayout` allows that route to own its gutters and top spacing. Profile data stays in `anku.ts`; `skills.ts` owns labels, descriptions, relationships, and responsive positions. `SkillsConstellation` uses semantic DOM buttons, decorative SVG lines, and local selection state; it adds no rendering library or animation loop.
 
+`WorkPage` owns the Phase 11 `/work` route, its gutters, sticky card layout, and GSAP ScrollTrigger depth transitions. `WorkContent` shares image and semantic details markup with homepage `SelectedWork`; both consume `works.ts`. CSS owns sticky positioning and GSAP owns the inner surface scale. Normal-flow fallbacks, keyboard focus recovery, and animation cleanup stay in the page. No dependencies are added.
+
 ## Styling
 
 Use Tailwind for ordinary styling. Keep fonts, design tokens, global rules, dialog transitions, and keyframes in `src/index.css`. See [DESIGN_SYSTEM.md](DESIGN_SYSTEM.md) and [CONVENTIONS.md](CONVENTIONS.md).
