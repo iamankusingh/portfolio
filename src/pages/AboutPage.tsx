@@ -8,20 +8,23 @@ export default function AboutPage() {
     <>
       <title>About — Anku Singh</title>
       <section
-        aria-labelledby="profile-title"
-        className="bg-bg-light px-page pt-[calc(var(--navigation-top)+var(--navigation-control-size)+3rem)] pb-section-md text-text-dark"
+        aria-labelledby="about-page-title"
+        className="bg-bg-light px-page pt-[calc(var(--navigation-top)+var(--navigation-control-size)+1rem)] pb-section-md text-text-dark"
       >
         <div className="mx-auto max-w-content">
-          <p className="border-t border-line-light pt-5 text-small tracking-[0.16em] text-text-muted-light uppercase">
-            About me
-          </p>
           <h1
+            id="about-page-title"
+            className="mb-8 border-b border-line-light pb-6 text-center font-display text-h2 leading-none tracking-tight"
+          >
+            About
+          </h1>
+          <h2
             id="profile-title"
             className="mt-6 mb-10 font-display text-display-xl leading-[0.95] tracking-[-0.04em] sm:mb-16"
           >
             I’m {anku.name}
             <span className="text-water">.</span>
-          </h1>
+          </h2>
 
           <div className="grid items-start gap-10 md:grid-cols-[0.9fr_1.1fr] lg:gap-24">
             <figure className="min-w-0">

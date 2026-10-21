@@ -249,7 +249,7 @@ The homepage should make it clear that photography is a meaningful part of Anku'
 
 Phase 7 follows Capabilities directly. The black capabilities viewport scrolls upward as a light photography section enters, already showing one centered photograph. Once the section fills the screen, a sticky stage holds while further native scrolling spreads photographs from the center into a spacious collage around a large Photography heading. The first photo moves with the spread. After the spread, the photographs travel upward through additional staggered rows while the Photography heading stays centered in the sticky viewport. The section releases at the end; reverse scrolling retraces both stages. Mobile uses a portrait composition; reduced motion shows all teaser images in a normal-flow grid.
 
-The homepage displays only entries with `displayInHome: true` from `src/data/photograph.ts`, which catalogs all 140 supplied WebP photographs. A one-time random selection enables 25 until final curation. Source dimensions preserve the original aspect ratio in both the GSAP collage and reduced-motion grid, without image cropping or stretching; the original collage positions and staggered scrolling rows are restored by user direction. Outer photographs may meet or extend beyond viewport edges as in the original composition; later rows enter from below and pass upward during scrolling. No visible preview caption is shown. The standalone photography route and full-gallery interactions remain deferred.
+The homepage displays only entries with `displayInHome: true` from `src/data/photograph.ts`, which catalogs all 140 supplied WebP photographs. A one-time random selection enables 25 until final curation. Source dimensions preserve the original aspect ratio in both the GSAP collage and reduced-motion grid, without image cropping or stretching; the original collage positions and staggered scrolling rows are restored by user direction. Outer photographs may meet or extend beyond viewport edges as in the original composition; later rows enter from below and pass upward during scrolling. No visible preview caption is shown. A centered View all photographs button follows the homepage collage in normal flow and links to `/photography`, before Contact. It also follows the reduced-motion grid. The standalone photography route shows the full catalog with the same viewer.
 
 # 12. Photography Experience
 
@@ -267,25 +267,13 @@ Desired qualities:
 
 The photographs themselves should provide most of the visual impact.
 
-## Gallery Interaction
+## Photography page
 
-Choose a dedicated-gallery model during composition using the supplied WebP collection. A curated image collection is not a prerequisite; the models below remain available.
-
-### Horizontal Exploration
-
-A horizontal sequence navigated by drag/scroll, with equivalent usable controls for other input methods.
-
-### Editorial Sequence
-
-Varied image sizes and placement create a paced photographic story.
-
-### Hybrid Gallery
-
-A curated sequence leads into a simpler index.
+The Phase 12 `/photography` page opens with a Photography title followed by "I don't just write code, I capture stories in camera too". All 140 supplied photos follow in a large masonry layout: four columns on desktop, three on tablet, and two on mobile. Photos are sorted by numeric filename and placed in the shortest available column, with ties resolved left to right. This keeps consecutive photos near each other with consistent gutters and no row-height gaps. Keyboard order stays numeric. Images retain original aspect ratios without cropping or stretching; below-fold images load lazily. Click, tap, or keyboard activation opens the shared homepage viewer. An info icon beside the centered page title reveals the user-supplied Android photography and no-colour-grading note on hover, focus, or click/tap. Escape and outside clicks dismiss it. This is the selected gallery direction.
 
 ## Image Viewing
 
-Homepage photographs open in a native fullscreen modal dialog with an uncropped image and a close button. GSAP moves the clicked photograph smoothly into the center while a subtle backdrop blur develops; closing reverses the movement and blur. Reduced motion presents the viewer immediately. Escape also closes it; focus returns to the triggering photo. Background content is inert and scrolling is locked while open. Follow [ASSETS.md](ASSETS.md) for accurate alt text and verified metadata.
+Homepage and gallery photographs open in a native fullscreen modal dialog with an uncropped image and a close button. The photograph's supplied location appears in a centered pill below the image when available; viewer sizing reserves room for the label. GSAP moves the clicked photograph smoothly into the center while a subtle backdrop blur develops; closing reverses the movement and blur. Reduced motion presents the viewer immediately. Clicking or tapping the blurred area outside the photograph also closes it, as does Escape; focus returns to the triggering photo. Background content is inert and scrolling is locked while open. Follow [ASSETS.md](ASSETS.md) for accurate alt text and verified metadata.
 
 # 13. Contact / Closing Scene
 
@@ -307,7 +295,7 @@ A full-viewport dark footer closes the homepage after Contact. Oversized Anku Si
 
 # 14. Cursor and Pointer Behavior
 
-A custom mouse cursor expands to show `View` over homepage photograph buttons, hiding the native pointer only during photograph hover. Links and other surfaces show the small dot alongside the native pointer without expansion. It remains visible in the fullscreen menu and photo viewer without intercepting input. Touch, keyboard navigation, reduced motion, forced colors, and form controls retain native interaction. [DESIGN_SYSTEM.md](DESIGN_SYSTEM.md) owns appearance; [MOTION.md](MOTION.md) owns response.
+A custom mouse cursor expands to show `View` over photograph buttons, hiding the native pointer only during photograph hover. Links and other surfaces show the small dot alongside the native pointer without expansion. It remains visible in the fullscreen menu and photo viewer without intercepting input. Touch, keyboard navigation, reduced motion, forced colors, and form controls retain native interaction. [DESIGN_SYSTEM.md](DESIGN_SYSTEM.md) owns appearance; [MOTION.md](MOTION.md) owns response.
 
 # 15. Microinteractions
 
@@ -380,5 +368,5 @@ Phase 2 is complete by user direction. The opening contains an island, ocean cur
 
 The document-load loader reveals the prepared hero; client-side return visits retain the direct dark-background dawn intro. Preserve native scrolling after loading, responsive framing, and the same graphics quality across devices. Suspend animation while navigation is open. Use the static fallback for reduced motion, Save-Data, or rendering failure.
 
-Phases 2 through 10 are complete by user direction. Phase 11 Work page is implemented and active; Phase 12 onward remain deferred. Current validation is tracked in [PROGRESS.md](PROGRESS.md).
+Phases 2 through 11 are complete by user direction. Phase 11 Work page is complete by user direction. Phase 12 Photography page is implemented and active; Phase 13 onward remain deferred. Current validation is tracked in [PROGRESS.md](PROGRESS.md).
 

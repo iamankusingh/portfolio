@@ -154,6 +154,10 @@ These are starting values.
 
 Do not treat all section headings as identical components if composition requires variation.
 
+## Standalone page titles
+
+About, Work, and Photography use a centered page-name h1 at the top, with matching Instrument Serif `text-h2` typography, spacing below the floating controls, and bottom spacing. A thin horizontal divider in the existing light border color sits below each title. Supporting introductions remain separate from the page title.
+
 ## 4.3 Typography Behavior
 
 Use intentional line breaks, tight display tracking, and wider metadata tracking where useful. Keep body copy sentence case and approximately 55–75 characters per line. Avoid tiny text, uppercase paragraphs, excessive display tracking, and too many weights.
@@ -276,7 +280,7 @@ The user-requested Phase 10 About constellation uses supplied WebP technology lo
 
 # 12. Cursor
 
-The desktop cursor is a small black dot with a soft white shadow alongside the native pointer, including over links. Only homepage photography triggers hide the native pointer and expand the dot into a larger black circle with white `View` text. The label stays centered and legible during expansion. Native cursors remain available for touch, reduced motion, forced colors, and form controls. Motion belongs in [MOTION.md](MOTION.md).
+The desktop cursor is a small black dot with a soft white shadow alongside the native pointer, including over links. Only photography triggers hide the native pointer and expand the dot into a larger black circle with white `View` text. The label stays centered and legible during expansion. Native cursors remain available for touch, reduced motion, forced colors, and form controls. Motion belongs in [MOTION.md](MOTION.md).
 
 # 13. Borders, Radius, and Surfaces
 

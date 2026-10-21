@@ -35,6 +35,8 @@ Keep both circular controls, fullscreen dialog, destinations, previews, and menu
 
 `WorkPage` owns the Phase 11 `/work` route, its gutters, sticky card layout, and GSAP ScrollTrigger depth transitions. `WorkContent` shares image and semantic details markup with homepage `SelectedWork`; both consume `works.ts`. CSS owns sticky positioning and GSAP owns the inner surface scale. Normal-flow fallbacks, keyboard focus recovery, and animation cleanup stay in the page. No dependencies are added.
 
+`PhotographyPage` renders all entries from the shared URL-resolved `photographCollection` in `photograph.ts`. The homepage filters the same collection by `displayInHome`. Both use `usePhotoViewer` for the existing native dialog and GSAP preview lifecycle. The page uses CSS grid masonry with measured row spans and shortest-column placement in numeric filename order. A cleaned-up ResizeObserver and resize listener recalculate placement from catalog dimensions; the page retains unbroken photo items and native lazy image loading without new dependencies.
+
 ## Styling
 
 Use Tailwind for ordinary styling. Keep fonts, design tokens, global rules, dialog transitions, and keyframes in `src/index.css`. See [DESIGN_SYSTEM.md](DESIGN_SYSTEM.md) and [CONVENTIONS.md](CONVENTIONS.md).

@@ -8,8 +8,8 @@ Map the confirmed initial pages and the deferred contact page. Dummy content is 
 |---|---|---|
 | `/` | Complete homepage journey in [EXPERIENCE.md](EXPERIENCE.md), including the contact finale. | Included initially |
 | `/about` | Two sections: personal profile with real portrait, name, location and disciplines; connected skills constellation. | Phase 10 complete by user direction; technical validation pending |
-| `/work` | Homepage work layout and data, with cards stacking during scroll. | Phase 11 implemented; active, validation pending |
-| `/photography` | Image-led gallery using `anku.webp` as the initial repeatable image. | Included initially |
+| `/work` | Homepage work layout and data, with cards stacking during scroll. | Phase 11 complete by user direction; technical validation pending |
+| `/photography` | All 140 supplied photos in a large responsive masonry layout, preserving source aspect ratios, with fullscreen previews. | Phase 12 implemented; active, validation pending |
 | `/lab` | Experiments and creative exploration, with demo entries allowed. | Included initially |
 | `/contact` | Separate contact page in a later iteration. | Required later; deferred |
 | `*` | Not-found handling, including unknown project slugs. | Included with routing |
@@ -22,7 +22,7 @@ Build included routes in their owning phases; do not add placeholder pages to th
 
 ## Current implementation
 
-The homepage renders Hero/Introduction, Selected Work, About, Capabilities, Photography, and Contact, followed by the night footer. Phases 2 through 10 are complete by user direction; technical validation and contact delivery remain pending. Homepage anchors include `/#introduction`, `/#selected-work`, `/#about`, `/#photography`, and `/#contact`. `/about` and `/work` are reachable through the menu and corresponding homepage links. Phase 11 Work page is active; Phase 12 onward remain deferred, and other unbuilt destinations use NotFound. Route focus, scroll restoration, and error boundaries remain.
+The homepage renders Hero/Introduction, Selected Work, About, Capabilities, Photography, and Contact, followed by the night footer. Phases 2 through 11 are complete by user direction; technical validation and contact delivery remain pending. Homepage anchors include `/#introduction`, `/#selected-work`, `/#about`, `/#photography`, and `/#contact`. `/about`, `/work`, and `/photography` are reachable through the menu and corresponding homepage links. Phase 12 Photography page is active; Phase 13 onward remain deferred, and other unbuilt destinations use NotFound. Route focus, scroll restoration, and error boundaries remain.
 
 ## Menu destinations
 

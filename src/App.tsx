@@ -4,6 +4,7 @@ import AppLayout from "./components/layout/AppLayout";
 import Home from "./pages/Home";
 import AboutPage from "./pages/AboutPage";
 import WorkPage from "./pages/WorkPage";
+import PhotographyPage from "./pages/PhotographyPage";
 import NotFound from "./pages/NotFound";
 import RouteError from "./pages/RouteError";
 
@@ -18,6 +19,7 @@ const router = createBrowserRouter([
           { index: true, element: <Home /> },
           { path: "about", element: <AboutPage /> },
           { path: "work", element: <WorkPage /> },
+          { path: "photography", element: <PhotographyPage /> },
           { path: "*", element: <NotFound /> },
         ],
       },

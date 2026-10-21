@@ -8,6 +8,7 @@ Create components when they have a clear responsibility; avoid speculative wrapp
 |---|---|
 | `AppLayout` | Persistent shell, main region, route focus, and scroll restoration |
 | `AboutPage` | Standalone `/about` route with a profile section and skills constellation; profile data from `src/data/anku.ts` |
+| `PhotographyPage` | Standalone `/photography` route with the complete catalog in a large, uncropped responsive masonry layout |
 | `WorkPage` | Standalone `/work` route with sticky overlapping cards, GSAP depth transitions, keyboard focus recovery, and normal-flow fallbacks |
 | `WorkContent` | Shared project image and semantic details for homepage Selected Work and the Work page, using `src/data/works.ts` |
 | `SkillsConstellation` | Responsive DOM skill nodes, decorative SVG connections, native button selection, and announced descriptions from `src/data/skills.ts` |
@@ -31,10 +32,12 @@ Create components when they have a clear responsibility; avoid speculative wrapp
 | `ShoreBoat` | Parked boat |
 | `Water` | Animated ocean and reflections |
 
+`usePhotoViewer` shares the native fullscreen photo dialog, GSAP transitions, reduced motion, and trigger focus restoration between the homepage and gallery.
+
 `useMediaQuery` tracks live media preferences. Keep trivial header controls in `Header.tsx`.
 
 ## Deferred
 
-Later phases may add project case studies, Lab, a dedicated photography gallery, and a standalone contact page. Share media/viewer/transition components only when needed. Do not add device-based graphics downgrades.
+Later phases may add project case studies, Lab and a standalone contact page. Share media/viewer/transition components only when needed. Do not add device-based graphics downgrades.
 
 See [CONVENTIONS.md](CONVENTIONS.md) for component practices and [PROGRESS.md](PROGRESS.md) for scope and acceptance.

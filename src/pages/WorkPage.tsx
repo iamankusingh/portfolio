@@ -74,14 +74,14 @@ export default function WorkPage() {
         aria-labelledby="work-title"
         className="bg-bg-light px-page pt-[calc(var(--navigation-top)+var(--navigation-control-size)+1rem)] pb-section-sm text-text-dark"
       >
-        <header className="mb-5 flex flex-wrap items-end justify-between gap-x-6 gap-y-2">
+        <header className="mb-8 text-center">
           <h1
             id="work-title"
-            className="font-display text-h2 leading-none tracking-tight"
+            className="border-b border-line-light pb-6 font-display text-h2 leading-none tracking-tight"
           >
-            All <span className="italic">work.</span>
+            Work
           </h1>
-          <p className="text-micro text-text-muted-light">
+          <p className="mt-3 text-micro text-text-muted-light">
             {String(works.length).padStart(2, "0")} works · Scroll to explore
           </p>
         </header>

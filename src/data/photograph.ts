@@ -1274,3 +1274,14 @@ export const photographs: Photograph[] = [
     displayInHome: false,
   },
 ];
+
+const images = import.meta.glob<string>("../assets/photographs/*.webp", {
+  eager: true,
+  query: "?url",
+  import: "default",
+});
+
+export const photographCollection = photographs.map((photo) => ({
+  ...photo,
+  source: images[`../assets/photographs/${photo.image}`],
+}));
