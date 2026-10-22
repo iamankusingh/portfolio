@@ -169,7 +169,7 @@ The content includes introduction, work and case studies, capabilities, personal
 
 All discussed homepage sections are included: hero, introduction, selected work, nature interlude, capabilities, portrait/about, Lab, photography, and contact finale. Include the About, Work, project-detail, Photography, and Lab pages in [ROUTES.md](ROUTES.md).
 
-Use generated personal content and dummy project/Lab data with available imagery for the initial build. A separate `/contact` page is required later; the homepage contact finale serves the initial version. Accessibility, performance, and SEO remain part of delivery.
+Use generated personal content and dummy project/Lab data with available imagery for the initial build. Phase 14 adds a separate `/contact` page with the shared homepage form and social links. Accessibility, performance, and SEO remain part of delivery.
 
 ### Currently Out of Scope
 
@@ -191,5 +191,5 @@ This file owns product intent, positioning, goals, audience, scope, and creative
 
 ## Current Status
 
-Phases 2 through 10 are complete by user direction. Contact delivery verification and technical validation remain pending with the user. The About profile and connected skills constellation are implemented; introductory copy is a labeled draft and location remains TBD. Phase 11 is active: a simple `/work` page reuses the homepage work layout and data with GSAP-assisted stacking on scroll. Phase 12 onward remain deferred.
+Phases 2 through 12 are complete by user direction. Phase 14 Contact is implemented with a matching page title, the shared homepage form, and existing social profile links below. Phase 13 and Phase 15 onward remain deferred. Technical and browser validation remain pending with the user, including contact delivery to the configured Google Apps Script deployment. Final About copy/location and photography curation remain pending.
 

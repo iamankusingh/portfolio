@@ -2,13 +2,13 @@
 
 ## Current Status
 
-Phases 2 through 11 are complete by user direction. The Phase 8 contact form submits to the configured Google Apps Script web app; deployed script compatibility and spreadsheet delivery await user validation. See [contact delivery](CONTACT_DELIVERY.md). Phase 9 implements a full-viewport dark night footer after Contact, with moonlit 3D water, identity, homepage links, authorship, and an explicit last-updated date. Footer content, rendering, and static fallback live in `Footer.tsx`. Validation remains pending with the user. Phase 10 About is complete by user direction; technical validation and final profile copy/location remain pending. Phase 11 Work is complete by user direction; technical validation remains pending. Phase 12 implements `/photography` with all 140 supplied photos in a large, uncropped responsive masonry layout and the shared homepage fullscreen viewer. User validation remains pending. Phase 13 onward remain deferred.
+Phases 2 through 12 are complete by user direction. Phase 14 Contact is implemented with a matching page title, the shared homepage form, and existing social profile links below. Phase 13 and Phase 15 onward remain deferred. Technical and browser validation remain pending with the user, including contact delivery to the configured Google Apps Script deployment. Final About copy/location and photography curation remain pending.
 
 Photography uses the 140 supplied WebP assets in `src/assets/photographs/`, cataloged in `src/data/photograph.ts`. A stable random selection of 25 entries has `displayInHome: true`; final curation remains with the user. The GSAP collage and reduced-motion grid preserve original aspect ratios. The original opening collage positions and staggered scrolling rows are restored by user direction, including edge-framed photographs. Collage images are enlarged uniformly while preserving their centers and original aspect ratios. Clicking a photograph opens a native fullscreen dialog with a GSAP transition from the clicked image to the center, a simultaneous subtle backdrop blur, and a reverse close transition. The uncropped image, close button, Escape support, and restored trigger focus remain; reduced motion opens immediately. Viewer smoothing now waits for image decode before handing off from the source, uses GSAP transforms for travel, and fades a fixed blur layer instead of tweening blur strength. The viewer locks only root scrolling so the sticky collage retains its position behind the blurred backdrop. The reported stutter and background-visibility fixes await browser validation. Numbered alt labels await descriptive curation. Completion records approved milestones, not unreported validation results.
 
 The homepage document-load loader is implemented with GSAP, resource-based progress, modal scroll/focus locking, reduced motion, resource-error fallbacks, and a bounded wait. Loader acceptance remains pending below.
 
-Current focus: Phase 12 `/photography` displays a Photography page title above the requested introductory line. All 140 photos are sorted numerically by filename and placed into the shortest available column: four columns on desktop, three on tablet, and two on mobile. Photos stack with consistent gutters instead of row-height gaps, retain original aspect ratios, and use native lazy loading. Visual placement advances from top to bottom, resolving equal-height spaces left to right; DOM and keyboard order remain numeric. Layout recalculates on resize using catalog dimensions. `usePhotoViewer` shares the homepage fullscreen preview, animation, reduced-motion behavior, scroll lock, and focus restoration. Source review is complete; lint/build and browser acceptance remain pending. No dependencies changed.
+Current focus: Phase 14 `/contact` uses the standard centered title and divider, followed by `ContactForm` and the four existing social destinations from shared data. The homepage reuses the same form, preserving validation, submission feedback, timeout, and cleanup. Navigation already targets `/contact`. Source review is complete; user lint/build, browser checks, and delivery acceptance remain pending. No dependencies changed.
 
 ## Phase Checklist
 
@@ -26,9 +26,9 @@ Current focus: Phase 12 `/photography` displays a Photography page title above t
 | 9 | Footer | Complete by user direction |
 | 10 | About Page | Complete by user direction; technical validation and final copy/location pending |
 | 11 | Work Page | Complete by user direction; technical validation pending |
-| 12 | Photography Page | Implemented; active, user validation pending |
+| 12 | Photography Page | Complete by user direction; technical validation pending |
 | 13 | Lab and experiments Page |
-| 14 | Contact Page |
+| 14 | Contact Page | Implemented; active, user validation pending |
 | 15 | Work index |
 | 16 | Route transitions |
 | 17 | Responsive and accessibility review |
@@ -37,6 +37,8 @@ Current focus: Phase 12 `/photography` displays a Photography page title above t
 | 20 | Final QA and launch |
 
 ## Pending Acceptance
+
+- [ ] Review `/contact` through menu/footer, direct load, and back/forward navigation. Check title alignment, mobile layout, keyboard focus, social destinations, required fields, optional company, sending/success/failure states, and spreadsheet delivery. Recheck the homepage after sharing `ContactForm`. Run `pnpm.cmd lint` and `pnpm.cmd build`; validation remains pending.
 
 - [ ] Check the standardized centered About, Work, and Photography page titles: matching top position, typography, horizontal dividers below titles, mobile/desktop alignment, and clearance from header controls. Current lint/build and browser validation remain pending with the user.
 
@@ -55,7 +57,7 @@ Current focus: Phase 12 `/photography` displays a Photography page title above t
 - [ ] Check the homepage loader in a fresh tab: black opening, centered uniform brightness, smooth percentage, white pause, corner-covering expansion, and fade into an already-rendered hero. Check mobile rotation/resize during expansion, keyboard focus and scroll locking, touch, replay on every reload, and no replay on client-side route changes (including entering Home from another initial route). Reload to replay; browser storage is no longer used.
 - [ ] Check loader recovery with throttled/failed models, textures, fonts, and logo requests; a stalled load must reveal the static landscape after the 15-second resource deadline plus exit animation. Check Escape, WebGL failure, Save-Data, reduced motion before/during loading, hidden-tab return, and StrictMode cleanup. Confirm lazy photographs, footer rendering, and other-page assets do not gate completion. Validation remains pending.
 
-- [ ] Header social icons are implemented for GitHub, Instagram, LinkedIn, and X, with staggered menu-open entry and reduced-motion support. Supply profile URLs to enable destinations; check repeated opening, mobile wrapping, keyboard access, and reduced motion. Current lint/build and browser validation remain pending with the user.
+- [ ] Header social icons are implemented for GitHub, Instagram, LinkedIn, and X, with staggered menu-open entry and reduced-motion support. Existing profile URLs are configured in `src/data/socials.ts`; verify destinations and check repeated opening, mobile wrapping, keyboard access, and reduced motion. Current lint/build and browser validation remain pending with the user.
 
 - [ ] Check LinkButton compass arrows: pointer entry, rapid direction changes, movement across the pivot, exit/return, keyboard activation, touch, and live reduced motion. Current lint/build and browser validation remain pending.
 
@@ -99,7 +101,7 @@ Earlier passing checks do not validate later edits. The user runs commands, serv
 
 Confirmed: pnpm, Manrope + Instrument Serif, existing palette, approved demo content, real portrait/photography, and shared high graphics quality. See [AGENTS.md](../AGENTS.md) for workflow and content rules.
 
-Pending: current validation, real project images/content, later-page compositions, public credits placement before launch, font license records, production asset optimization, metadata, and hosting. Original model licenses and attribution/adaptation records remain in place. Placeholder images support review without final assets; case-study links and Phase 13 onward remain deferred.
+Pending: current validation, real project images/content, later-page compositions, public credits placement before launch, font license records, production asset optimization, metadata, and hosting. Original model licenses and attribution/adaptation records remain in place. Placeholder images support review without final assets; case-study links, Phase 13, and Phase 15 onward remain deferred.
 
 ## Update Rule
 

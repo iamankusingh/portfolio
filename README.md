@@ -4,7 +4,7 @@ An interactive creative-technologist portfolio built around **Technology × Natu
 
 ## Current Status
 
-Phases 2 through 11 are complete by user direction. The Phase 8 contact form submits to the configured Google Apps Script web app; deployed script compatibility and spreadsheet delivery await user validation. See [contact delivery](docs/CONTACT_DELIVERY.md). Phase 9 implements a full-viewport dark night footer after Contact, with moonlit 3D water, identity, homepage links, authorship, and an explicit last-updated date. Footer content, rendering, and static fallback live in `Footer.tsx`. Validation remains pending with the user. Phase 10 About is complete by user direction; technical validation and final profile copy/location remain pending. Phase 11 Work is complete by user direction; technical validation remains pending. Phase 12 implements `/photography` with all 140 supplied photos in a large, uncropped responsive masonry layout and the shared homepage fullscreen viewer. User validation remains pending. Phase 13 onward remain deferred.
+Phases 2 through 12 are complete by user direction. Phase 14 Contact is implemented with a matching page title, the shared homepage form, and existing social profile links below. Phase 13 and Phase 15 onward remain deferred. Technical and browser validation remain pending with the user, including contact delivery to the configured Google Apps Script deployment. Final About copy/location and photography curation remain pending.
 
 
 ## Stack and Development

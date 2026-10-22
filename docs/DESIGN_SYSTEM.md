@@ -156,7 +156,7 @@ Do not treat all section headings as identical components if composition require
 
 ## Standalone page titles
 
-About, Work, and Photography use a centered page-name h1 at the top, with matching Instrument Serif `text-h2` typography, spacing below the floating controls, and bottom spacing. A thin horizontal divider in the existing light border color sits below each title. Supporting introductions remain separate from the page title.
+About, Work, Photography, and Contact use a centered page-name h1 at the top, with matching Instrument Serif `text-h2` typography, spacing below the floating controls, and bottom spacing. A thin horizontal divider in the existing light border color sits below each title. Supporting introductions remain separate from the page title.
 
 ## 4.3 Typography Behavior
 

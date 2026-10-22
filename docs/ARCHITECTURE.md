@@ -67,7 +67,9 @@ By explicit user direction, `Footer.tsx` contains all footer content, metadata, 
 
 ## Contact Delivery
 
-`Contact.tsx` posts URL-encoded fields directly to Google Apps Script using fetch, follows redirects, and requires explicit JSON success. Vite resolves `Web_app` or `Deployment_ID` from the existing environment and exposes only the public endpoint. No packages or app server are added. Pending state prevents concurrent requests; timeout and unmount abort the browser request. The deployed script contract and user verification are documented in [CONTACT_DELIVERY.md](CONTACT_DELIVERY.md).
+`ContactPage` provides the standard page title, shared form, and social links below. `src/data/socials.ts` holds the existing profile destinations and icons shared with the header.
+
+`ContactForm.tsx`, shared by the homepage `Contact` section and `ContactPage`, posts URL-encoded fields directly to Google Apps Script using fetch, follows redirects, and requires explicit JSON success. Vite resolves `Web_app` or `Deployment_ID` from the existing environment and exposes only the public endpoint. No packages or app server are added. Pending state prevents concurrent requests; timeout and unmount abort the browser request. The deployed script contract and user verification are documented in [CONTACT_DELIVERY.md](CONTACT_DELIVERY.md).
 
 ## Dependency Rules
 

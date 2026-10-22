@@ -58,7 +58,7 @@ Hover or focus may reveal project media for Work, a photograph for Photography, 
 
 The menu uses a full-viewport native modal dialog. Opening focuses Home; Tab/Shift+Tab stay within the modal, and Escape or the top-right close control dismisses it. Closing without navigation returns focus to the menu trigger. Route changes dismiss it and the route shell focuses the destination. The page behind the menu is inert and scroll-locked; short screens scroll inside the menu. The logo and close control remain available at the top.
 
-Numbered editorial links use two columns on desktop and one on smaller screens, without hover previews. GitHub, Instagram, LinkedIn, and X SVG icons sit alongside the menu's identity text, wrapping on small screens. They enter with a brief stagger each time the menu opens and appear immediately with reduced motion. Profile destinations remain disabled and labeled as pending until Anku supplies verified URLs.
+Numbered editorial links use two columns on desktop and one on smaller screens, without hover previews. GitHub, Instagram, LinkedIn, and X SVG icons sit alongside the menu's identity text, wrapping on small screens. They enter with a brief stagger each time the menu opens and appear immediately with reduced motion. Existing profile destinations are shared with the Contact page through `src/data/socials.ts`.
 
 ## Menu Exit and Page Transition
 
@@ -287,7 +287,7 @@ The nature environment can return here.
 
 A simple, full-viewport light editorial section follows Photography. Large Instrument Serif typography sits beside the form on desktop; mobile stacks the heading and fields. Use normal flow with a minimum viewport height so short screens, zoom, and a resized message box can extend the section. The form includes name, email, optional company, and message, visible labels, required/email field semantics, autocomplete, and keyboard focus indicated by a dark underline; idle underlines are faded and fields have no rectangular focus outline. The rounded accent action matches the existing controls.
 
-The form submits name, email, optional company, and message to the configured Google Apps Script web app. Native validation precedes sending; repeated submissions are blocked while pending. Confirmed success clears the fields and announces delivery. Errors or timeouts preserve the message and report that delivery could not be confirmed. See [CONTACT_DELIVERY.md](CONTACT_DELIVERY.md) for the deployment contract and pending verification. The navigation Contact link targets `/#contact`; the separate contact page remains deferred. The Phase 9 night footer follows the form.
+The form submits name, email, optional company, and message to the configured Google Apps Script web app. Native validation precedes sending; repeated submissions are blocked while pending. Confirmed success clears the fields and announces delivery. Errors or timeouts preserve the message and report that delivery could not be confirmed. See [CONTACT_DELIVERY.md](CONTACT_DELIVERY.md) for the deployment contract and pending verification. The navigation Contact link targets `/contact`. Phase 14 presents the matching centered page title and divider, the same contact form, then labeled GitHub, Instagram, LinkedIn, and X links. The homepage section remains available at `/#contact`. The Phase 9 night footer follows the form.
 
 ## Phase 9 night footer
 
