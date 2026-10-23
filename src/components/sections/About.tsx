@@ -62,7 +62,7 @@ export default function About() {
       id="about"
       aria-labelledby="about-title"
       tabIndex={-1}
-      className="bg-bg-light px-page py-section-lg text-text-dark"
+      className="bg-bg-light px-page pt-section-lg text-text-dark"
     >
       <div>
         <div className="mb-10 border-t border-line-light pt-5 sm:mb-16">

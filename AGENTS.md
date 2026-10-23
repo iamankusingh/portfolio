@@ -55,7 +55,7 @@ Before significant work:
 1. Read this file, [README.md](README.md), and [PROGRESS.md](docs/PROGRESS.md).
 2. Read the specialist documents relevant to the task, using the [documentation map](README.md#documentation-responsibilities).
 3. Inspect the current implementation and reuse its patterns.
-4. Stay within the requested scope. Phases 2, 3, and 4 are complete by user direction. Phase 5 About/portrait is complete by user direction. Phase 6 is complete by user direction. Phase 7 is complete by user direction. Phase 8 is complete by user direction. Phases 9 and 10 are complete by user direction. Phase 11 Work page is complete by user direction. Phase 12 Photography page is complete by user direction. Phase 14 Contact page is active; Phase 13 and Phase 15 onward remain deferred.
+4. Stay within the requested scope. Phases 2 through 12 are complete by user direction. Phase 13 is authorized for the Lab entry and Flowpaper wallpaper studio. Phase 14 Contact is implemented with acceptance pending. Other experiments and Phase 15 onward remain deferred.
 
 The specialist document owns its domain. If documents conflict, surface the conflict and update stale guidance when the evidence or an approved decision resolves it. Do not silently choose a new direction.
 
@@ -97,5 +97,5 @@ Keep [PROGRESS.md](docs/PROGRESS.md) current after meaningful planning or implem
 
 ## Current Status
 
-Phases 2 through 12 are complete by user direction. Phase 14 Contact is implemented with a matching page title, the shared homepage form, and existing social profile links below. Phase 13 and Phase 15 onward remain deferred. Technical and browser validation remain pending with the user, including contact delivery to the configured Google Apps Script deployment. Final About copy/location and photography curation remain pending.
+Phases 2 through 12 are complete by user direction. Phase 13 includes the Lab teaser immediately after About on the homepage and the Flowpaper fluid wallpaper studio directly at `/lab`, by user direction. Phase 14 Contact is implemented. Technical and browser validation remain pending with the user, including Flowpaper and contact delivery. Other experiments and Phase 15 onward remain deferred. Final About copy/location and photography curation remain pending.
 

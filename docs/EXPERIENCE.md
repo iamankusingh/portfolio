@@ -239,6 +239,12 @@ The Lab can be more playful than the main project section.
 
 Performance-heavy experiments should load only when needed.
 
+### Flowpaper
+
+The homepage Lab section immediately after About presents the introduction and Flowpaper card on the light editorial theme, with shared page gutters, a top divider, small Lab label, and large left-aligned heading matching About. Its link opens the studio directly at `/lab`, the only Lab route. The studio gives the canvas the full viewport, preserving the two-circle site header. A floating horizontal icon tray at the bottom contains Canvas, Colors, Fluid, Finish, Reset, Randomize, Playback, and Capture. Canvas, Colors, Fluid, and Finish open named configuration boxes above the tray and become crosses while open. Reset and Randomize run immediately; Pause/Play toggles immediately and changes its icon. Capture immediately takes a snapshot and opens its preview with Download PNG and Cancel; there is no recapture action inside the panel. Only one box opens at a time; Escape or an outside pointer press also closes it. The tray scrolls horizontally on narrow screens, and tall panels scroll within the available height. A first-visit modal introduces “Flowpaper. A little chaos. Something beautiful.” and explains painting, the tray, direct actions, capture/download, and keyboard controls. OK or Escape dismisses it; localStorage remembers dismissal in that browser. The canvas stays paused while the dialog is open. The workspace keeps captions/status text hidden, with accessible labels and keyboard instructions retained. Full screen is the default ratio and fills the stage, adapting to viewport resizing and rotation. Desktop, Mobile, and Square retain their fixed ratios. Aspect changes reshape existing artwork. Palette changes affect subsequent strokes; Reset clears ink, Randomize creates a new composition, and Randomize palette changes only paint colors.
+
+Drag or touch to inject ink; pointer capture retains a stroke outside the canvas. Touch drawing prevents page scrolling only on the canvas. Keyboard users can focus the canvas and paint with arrows or add ink with Enter/Space. Pause freezes motion but permits new marks. The Capture tray icon immediately creates an inline preview with texture included, a PNG download, and Cancel. Cancel dismisses the preview or pending capture and returns focus to the tray icon. Capture/preview freezes the flow until dismissed; Escape restores focus to the tray icon. Rendering failure offers a restart and a homepage link. Reduced motion starts paused, with explicit Play available.
+
 # 11. Photography Teaser on Homepage
 
 ## Role
@@ -350,7 +356,7 @@ The preferred order may change if the narrative improves:
 5. Capabilities — range of work.
 6. About / Portrait — the person behind the work.
 7. Lab — experiments.
-8. Photography — homepage collage; currently follows Capabilities, before Contact; Lab remains deferred.
+8. Photography — homepage collage; currently follows Capabilities, before Contact; the homepage Lab teaser sits immediately after About, with Flowpaper available at `/lab`.
 9. Contact: light editorial form.
 10. Footer: night sky and moonlit water.
 
@@ -368,5 +374,5 @@ Phase 2 is complete by user direction. The opening contains an island, ocean cur
 
 The document-load loader reveals the prepared hero; client-side return visits retain the direct dark-background dawn intro. Preserve native scrolling after loading, responsive framing, and the same graphics quality across devices. Suspend animation while navigation is open. Use the static fallback for reduced motion, Save-Data, or rendering failure.
 
-Phases 2 through 11 are complete by user direction. Phase 11 Work page is complete by user direction. Phase 12 Photography page is implemented and active; Phase 13 onward remain deferred. Current validation is tracked in [PROGRESS.md](PROGRESS.md).
+Phases 2 through 12 are complete by user direction. Phase 13 Lab/Flowpaper and Phase 14 Contact are implemented with user validation pending. Other experiments and Phase 15 onward remain deferred. Current validation is tracked in [PROGRESS.md](PROGRESS.md).
 

@@ -30,7 +30,7 @@ export default function AppLayout() {
         ref={mainRef}
         id="main-content"
         tabIndex={-1}
-        className="min-h-screen"
+        className={location.pathname === "/lab" ? "min-h-dvh" : "min-h-screen"}
       >
         <Outlet />
       </main>

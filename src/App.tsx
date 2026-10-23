@@ -22,6 +22,13 @@ const router = createBrowserRouter([
           { path: "work", element: <WorkPage /> },
           { path: "photography", element: <PhotographyPage /> },
           { path: "contact", element: <ContactPage /> },
+          {
+            path: "lab",
+            lazy: async () => {
+              const { default: Component } = await import("./pages/LabPage");
+              return { Component };
+            },
+          },
           { path: "*", element: <NotFound /> },
         ],
       },

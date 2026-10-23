@@ -2,13 +2,13 @@
 
 ## Current Status
 
-Phases 2 through 12 are complete by user direction. Phase 14 Contact is implemented with a matching page title, the shared homepage form, and existing social profile links below. Phase 13 and Phase 15 onward remain deferred. Technical and browser validation remain pending with the user, including contact delivery to the configured Google Apps Script deployment. Final About copy/location and photography curation remain pending.
+Phases 2 through 12 are complete by user direction. Phase 13 includes the homepage Lab teaser after About and Flowpaper directly at `/lab`, now implemented. Phase 14 Contact is implemented with acceptance pending. Other experiments and Phase 15 onward remain deferred. Technical and browser validation remain pending with the user, including Flowpaper and contact delivery. Final About copy/location and photography curation remain pending.
 
 Photography uses the 140 supplied WebP assets in `src/assets/photographs/`, cataloged in `src/data/photograph.ts`. A stable random selection of 25 entries has `displayInHome: true`; final curation remains with the user. The GSAP collage and reduced-motion grid preserve original aspect ratios. The original opening collage positions and staggered scrolling rows are restored by user direction, including edge-framed photographs. Collage images are enlarged uniformly while preserving their centers and original aspect ratios. Clicking a photograph opens a native fullscreen dialog with a GSAP transition from the clicked image to the center, a simultaneous subtle backdrop blur, and a reverse close transition. The uncropped image, close button, Escape support, and restored trigger focus remain; reduced motion opens immediately. Viewer smoothing now waits for image decode before handing off from the source, uses GSAP transforms for travel, and fades a fixed blur layer instead of tweening blur strength. The viewer locks only root scrolling so the sticky collage retains its position behind the blurred backdrop. The reported stutter and background-visibility fixes await browser validation. Numbered alt labels await descriptive curation. Completion records approved milestones, not unreported validation results.
 
 The homepage document-load loader is implemented with GSAP, resource-based progress, modal scroll/focus locking, reduced motion, resource-error fallbacks, and a bounded wait. Loader acceptance remains pending below.
 
-Current focus: Phase 14 `/contact` uses the standard centered title and divider, followed by `ContactForm` and the four existing social destinations from shared data. The homepage reuses the same form, preserving validation, submission feedback, timeout, and cleanup. Navigation already targets `/contact`. Source review is complete; user lint/build, browser checks, and delivery acceptance remain pending. No dependencies changed.
+Current focus: Flowpaper at `/lab` uses the renamed `LabPage.tsx`, a default Full screen ratio, and an icon tray with configuration panels and direct Reset/Randomize/Pause/Capture actions. Capture provides preview, download, and Cancel. A first-visit instruction dialog now introduces the title and controls; OK/Escape dismisses it, localStorage remembers dismissal, and a session-memory fallback handles unavailable storage. The dialog pauses the flow and restores focus on dismissal. The homepage Lab teaser remains after About with the light editorial treatment. The user approves the wallpaper output; new dialog behavior and current lint/build/browser validation remain pending. No dependencies changed.
 
 ## Phase Checklist
 
@@ -27,7 +27,7 @@ Current focus: Phase 14 `/contact` uses the standard centered title and divider,
 | 10 | About Page | Complete by user direction; technical validation and final copy/location pending |
 | 11 | Work Page | Complete by user direction; technical validation pending |
 | 12 | Photography Page | Complete by user direction; technical validation pending |
-| 13 | Lab and experiments Page |
+| 13 | Lab and experiments Page | Lab entry and Flowpaper implemented by user request; validation pending; other experiments deferred |
 | 14 | Contact Page | Implemented; active, user validation pending |
 | 15 | Work index |
 | 16 | Route transitions |
@@ -37,6 +37,10 @@ Current focus: Phase 14 `/contact` uses the standard centered title and divider,
 | 20 | Final QA and launch |
 
 ## Pending Acceptance
+
+- [ ] Check the first-visit Flowpaper instructions: title/copy, OK and Escape, keyboard focus, mobile scrolling, paused background, and dismissal persistence after reload or leaving/returning. Check blocked storage and reduced motion. Run current lint/build; validation remains with the user.
+
+- [ ] Run `pnpm.cmd lint` and `pnpm.cmd build`. Review the homepage Lab section immediately after About, its studio link, `/lab` via menu/direct load/back-forward, and site-header navigation. Check the icon tray at desktop/mobile widths, every panel and cross toggle, Escape/focus return, outside dismissal, horizontal tray scrolling, tall-panel scrolling, viewport rotation, and safe-area clearance. Check mouse/touch/keyboard painting, palette editing/cycling, all sliders and textures, pause/reset/randomize, aspect changes, mobile controls, zoom, and rotation. Verify all three fixed PNG sizes and viewport-matched Full screen PNGs, captured texture, inline preview Escape/close/focus return, closing or switching panels during capture, and downloads on desktop/mobile. Check reduced motion at load and live changes, hidden tab/menu/offscreen suspension, WebGL2 or float-rendering failure, context loss/restart, repeated navigation/StrictMode cleanup, and real-device fluid appearance/performance. No runtime validation has been performed for these edits.
 
 - [ ] Review `/contact` through menu/footer, direct load, and back/forward navigation. Check title alignment, mobile layout, keyboard focus, social destinations, required fields, optional company, sending/success/failure states, and spreadsheet delivery. Recheck the homepage after sharing `ContactForm`. Run `pnpm.cmd lint` and `pnpm.cmd build`; validation remains pending.
 
@@ -101,7 +105,7 @@ Earlier passing checks do not validate later edits. The user runs commands, serv
 
 Confirmed: pnpm, Manrope + Instrument Serif, existing palette, approved demo content, real portrait/photography, and shared high graphics quality. See [AGENTS.md](../AGENTS.md) for workflow and content rules.
 
-Pending: current validation, real project images/content, later-page compositions, public credits placement before launch, font license records, production asset optimization, metadata, and hosting. Original model licenses and attribution/adaptation records remain in place. Placeholder images support review without final assets; case-study links, Phase 13, and Phase 15 onward remain deferred.
+Pending: current validation, real project images/content, later-page compositions, public credits placement before launch, font license records, production asset optimization, metadata, and hosting. Original model licenses and attribution/adaptation records remain in place. Placeholder images support review without final assets; case-study links, other Lab experiments, and Phase 15 onward remain deferred.
 
 ## Update Rule
 

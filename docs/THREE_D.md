@@ -55,6 +55,10 @@ The approved closing scene is night rather than sunset. `Footer.tsx` owns a lazi
 
 Load on visibility and keep the scene area dark until its first completed frame; do not show the SVG during loading. Stop rendering offscreen, behind the menu, or in a hidden tab. Reduced motion, Save-Data, and rendering failure show an inline static night scene. Dispose geometry, materials, renderer, observers, and listeners on teardown. This self-contained footer is an explicit user-approved exception to the usual separate 3D component directory. Later scenes remain deferred.
 
+## Flowpaper 2D WebGL Experiment
+
+The user-requested Flowpaper studio is a separate, lazy-loaded 2D GPU simulation, not a 3D portfolio scene. Its shared quality budget is a 192-pixel longest-edge velocity grid, 768-pixel dye grid, and display capped at 1600 pixels / 2× pixel ratio. Fixed-format export sizes are 2560×1440, 1440×2560, and 2048×2048. The default Full screen format exports the captured viewport aspect with a 2560-pixel longest edge. No external models, textures, or shader libraries are used. Half-float render support is checked before allocation, and owned framebuffers, textures, programs, listeners, and observers are disposed on teardown or initialization failure. Rendering failure/context loss exposes a restart state; portfolio navigation remains usable. Runtime quality/performance acceptance is pending.
+
 ## Acceptance
 
 Current source is implemented; visual, accessibility, performance, and cleanup acceptance remain pending. Track checks in [PROGRESS.md](PROGRESS.md).

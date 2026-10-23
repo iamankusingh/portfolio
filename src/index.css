@@ -175,7 +175,8 @@ html:has(#site-navigation[open]),
 body:has(#site-navigation[open]),
 html:has(#homepage-loader[open]),
 body:has(#homepage-loader[open]),
-html:has(#photography-viewer[open]) {
+html:has(#photography-viewer[open]),
+html:has(#flowpaper-instructions[open]) {
   overflow: hidden;
 }
 
