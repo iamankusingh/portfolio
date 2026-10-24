@@ -12,19 +12,7 @@ Begin in a nature-inspired 3D world, then move into editorial content. Return to
 
 ## Narrative Arc
 
-The natural environment can evolve subtly through time.
-
-### Beginning — Dawn
-
-A quiet, low-light, atmospheric opening introduces the world.
-
-### Middle — Daylight
-
-The experience becomes brighter and more structured as projects and capabilities take priority.
-
-### Ending — Sunset
-
-A warmer, reflective landscape closes the journey. Keep the day-cycle metaphor subtle.
+The homepage progresses subtly from the existing bright morning Hero through faintly warm Work and unchanged daylight About. Lab introduces soft gray afternoon light; Capabilities retains its existing circle sequence. Photography has mainly white golden-hour surroundings with a smooth, diffuse primary-gold wash, followed by a slightly cooler dusk Contact section fading into the unchanged night footer. Atmosphere stays behind content and never tints photographs. Standalone routes retain their existing appearance.
 
 # 1. Global Header
 
@@ -255,7 +243,7 @@ The homepage should make it clear that photography is a meaningful part of Anku'
 
 Phase 7 follows Capabilities directly. The black capabilities viewport scrolls upward as a light photography section enters, already showing one centered photograph. Once the section fills the screen, a sticky stage holds while further native scrolling spreads photographs from the center into a spacious collage around a large Photography heading. The first photo moves with the spread. After the spread, the photographs travel upward through additional staggered rows while the Photography heading stays centered in the sticky viewport. The section releases at the end; reverse scrolling retraces both stages. Mobile uses a portrait composition; reduced motion shows all teaser images in a normal-flow grid.
 
-The homepage displays only entries with `displayInHome: true` from `src/data/photograph.ts`, which catalogs all 140 supplied WebP photographs. A one-time random selection enables 25 until final curation. Source dimensions preserve the original aspect ratio in both the GSAP collage and reduced-motion grid, without image cropping or stretching; the original collage positions and staggered scrolling rows are restored by user direction. Outer photographs may meet or extend beyond viewport edges as in the original composition; later rows enter from below and pass upward during scrolling. No visible preview caption is shown. A centered View all photographs button follows the homepage collage in normal flow and links to `/photography`, before Contact. It also follows the reduced-motion grid. The standalone photography route shows the full catalog with the same viewer.
+The homepage displays only entries with `displayInHome: true` from `src/data/photograph.ts`, which catalogs all 140 supplied WebP photographs. A one-time random selection enables 25 until final curation. Source dimensions preserve the original aspect ratio in both the GSAP collage and reduced-motion grid, without image cropping or stretching; the original collage positions and staggered scrolling rows are restored by user direction. Outer photographs may meet or extend beyond viewport edges as in the original composition; later rows enter from below and pass upward during scrolling. No visible preview caption is shown. A centered View all photographs button follows the homepage collage in normal flow and links to `/photography`, before Contact. It also follows the reduced-motion grid. The golden atmosphere spans the entire section, including the button area, without a separate background strip. The standalone photography route shows the full catalog with the same viewer.
 
 # 12. Photography Experience
 
@@ -291,7 +279,7 @@ The nature environment can return here.
 
 ## Phase 8 contact form
 
-A simple, full-viewport light editorial section follows Photography. Large Instrument Serif typography sits beside the form on desktop; mobile stacks the heading and fields. Use normal flow with a minimum viewport height so short screens, zoom, and a resized message box can extend the section. The form includes name, email, optional company, and message, visible labels, required/email field semantics, autocomplete, and keyboard focus indicated by a dark underline; idle underlines are faded and fields have no rectangular focus outline. The rounded accent action matches the existing controls.
+A simple, full-viewport dusk editorial section follows Photography. Large Instrument Serif typography sits beside the form on desktop; mobile stacks the heading and fields. Use normal flow with a minimum viewport height so short screens, zoom, and a resized message box can extend the section. The form includes name, email, optional company, and message, visible labels, required/email field semantics, autocomplete, and keyboard focus indicated by a contrasting underline; idle underlines are faded and fields have no rectangular focus outline. The rounded accent action matches the existing controls.
 
 The form submits name, email, optional company, and message to the configured Google Apps Script web app. Native validation precedes sending; repeated submissions are blocked while pending. Confirmed success clears the fields and announces delivery. Errors or timeouts preserve the message and report that delivery could not be confirmed. See [CONTACT_DELIVERY.md](CONTACT_DELIVERY.md) for the deployment contract and pending verification. The navigation Contact link targets `/contact`. Phase 14 presents the matching centered page title and divider, the same contact form, then labeled GitHub, Instagram, LinkedIn, and X links. The homepage section remains available at `/#contact`. The Phase 9 night footer follows the form.
 
@@ -357,7 +345,7 @@ The preferred order may change if the narrative improves:
 6. About / Portrait — the person behind the work.
 7. Lab — experiments.
 8. Photography — homepage collage; currently follows Capabilities, before Contact; the homepage Lab teaser sits immediately after About, with Flowpaper available at `/lab`.
-9. Contact: light editorial form.
+9. Contact: dusk editorial form.
 10. Footer: night sky and moonlit water.
 
 # Source-of-Truth Rules
@@ -374,5 +362,5 @@ Phase 2 is complete by user direction. The opening contains an island, ocean cur
 
 The document-load loader reveals the prepared hero; client-side return visits retain the direct dark-background dawn intro. Preserve native scrolling after loading, responsive framing, and the same graphics quality across devices. Suspend animation while navigation is open. Use the static fallback for reduced motion, Save-Data, or rendering failure.
 
-Phases 2 through 12 are complete by user direction. Phase 13 Lab/Flowpaper and Phase 14 Contact are implemented with user validation pending. Other experiments and Phase 15 onward remain deferred. Current validation is tracked in [PROGRESS.md](PROGRESS.md).
+Phases 2 through 14 are complete by user direction. Phase 15 homepage day-cycle atmosphere is implemented with acceptance pending. Other experiments and Phase 16 onward remain deferred. Current validation is tracked in [PROGRESS.md](PROGRESS.md).
 

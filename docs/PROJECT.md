@@ -191,5 +191,5 @@ This file owns product intent, positioning, goals, audience, scope, and creative
 
 ## Current Status
 
-Phases 2 through 12 are complete by user direction. Phase 14 Contact is implemented with a matching page title, the shared homepage form, and existing social profile links below. Phase 13 and Phase 15 onward remain deferred. Technical and browser validation remain pending with the user, including contact delivery to the configured Google Apps Script deployment. Final About copy/location and photography curation remain pending.
+Phases 2 through 14 are complete by user direction, including the Lab entry and Flowpaper at `/lab`. Phase 15 is active: subtle scroll-driven morning-to-day-to-evening atmosphere across the homepage, ending at the existing night footer. Other experiments and Phase 16 onward remain deferred. Technical and browser validation remain pending with the user, including Flowpaper and contact delivery. Final About copy/location and photography curation remain pending.
 

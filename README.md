@@ -4,7 +4,7 @@ An interactive creative-technologist portfolio built around **Technology × Natu
 
 ## Current Status
 
-Phases 2 through 12 are complete by user direction. Phase 13 includes a homepage Lab teaser immediately after About and Flowpaper at `/lab`: a WebGL2 fluid wallpaper studio with palette, motion, texture, and PNG export controls. Phase 14 Contact is implemented. Technical and browser validation remain pending with the user, including Flowpaper and contact delivery. Other experiments and Phase 15 onward remain deferred. Final About copy/location and photography curation remain pending.
+Phases 2 through 14 are complete by user direction, including the Lab entry and Flowpaper at `/lab`. Phase 15 is active: subtle scroll-driven morning-to-day-to-evening atmosphere across the homepage, ending at the existing night footer. Other experiments and Phase 16 onward remain deferred. Technical and browser validation remain pending with the user, including Flowpaper and contact delivery. Final About copy/location and photography curation remain pending.
 
 
 ## Stack and Development

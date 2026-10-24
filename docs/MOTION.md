@@ -255,3 +255,7 @@ User acceptance remains pending in [PROGRESS.md](PROGRESS.md).
 ## Footer motion
 
 Phase 9 uses gentle continuous water ripples in a fixed camera composition. Its local Three.js animation loop runs only while the water is visible, the tab is active, and the menu is closed. Reduced motion and Save-Data show a static night scene. There is no manual pause control by user direction. Footer text and links never depend on animation.
+
+## Homepage day-cycle atmosphere
+
+Phase 15 uses existing GSAP ScrollTrigger to gradually fade background-only gradient layers as Work, Lab, Photography, and Contact pass through the viewport. Only layer opacity is animated; section layout, photographs, and text are unaffected. Reverse scrolling retraces the lighting. Home owns and cleans up the triggers through GSAP matchMedia; reduced motion keeps static gradients, including live preference changes. Forced colors hides decorative light. No new scroll interception, pinning, or continuous animation loop is introduced.

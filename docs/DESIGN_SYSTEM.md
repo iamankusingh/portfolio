@@ -88,7 +88,7 @@ The strongest use of these colors should come from:
 
 ## 3.3 Day-Cycle Color Logic
 
-The natural environment may evolve through a restrained day cycle.
+Phase 15 uses a restrained homepage day cycle: preserve the bright morning Hero, add a faint yellow radial wash behind Work, retain About, and add a soft gray wash behind Lab. Capabilities is unchanged. Photography uses a mainly white surface with broad, softly feathered primary-gold and pale sun radial washes; Contact shifts slightly cooler and fades into the existing night footer. These local atmosphere treatments do not change global palette tokens or standalone routes. Keep photographs untinted, dark Photography text readable on its light surface, and warm-white Contact text, form fields, and focus indicators clear.
 
 ### Dawn
 

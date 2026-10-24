@@ -100,6 +100,7 @@ export default function SelectedWork() {
     <section
       ref={section}
       id="selected-work"
+      data-daylight="day"
       tabIndex={-1}
       aria-labelledby="selected-work-title"
       className="relative bg-bg-light text-text-dark"
@@ -111,8 +112,9 @@ export default function SelectedWork() {
     >
       <div
         ref={stage}
-        className={`px-page pt-[calc(var(--navigation-top)+var(--navigation-control-size)+1rem)] pb-5 ${pinned ? "sticky top-0 flex h-svh flex-col" : ""}`}
+        className={`isolate px-page pt-[calc(var(--navigation-top)+var(--navigation-control-size)+1rem)] pb-5 ${pinned ? "sticky top-0 flex h-svh flex-col" : "relative"}`}
       >
+        <div aria-hidden="true" data-daylight-glow className="daylight-glow" />
         <div className="mb-5 flex shrink-0 flex-wrap items-end justify-between gap-x-6 gap-y-2">
           <h2
             id="selected-work-title"

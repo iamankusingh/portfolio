@@ -84,8 +84,12 @@ export default function Photography() {
               const bounds = frame.getBoundingClientRect();
               button.tabIndex =
                 Number(gsap.getProperty(frame, "opacity")) > 0.5 &&
-                bounds.bottom > 0 && bounds.top < window.innerHeight &&
-                bounds.right > 0 && bounds.left < window.innerWidth ? 0 : -1;
+                bounds.bottom > 0 &&
+                bounds.top < window.innerHeight &&
+                bounds.right > 0 &&
+                bounds.left < window.innerWidth
+                  ? 0
+                  : -1;
             });
           },
           scrollTrigger: {
@@ -168,10 +172,12 @@ export default function Photography() {
   return (
     <section
       id="photography"
+      data-daylight="evening"
       aria-labelledby="photography-title"
       tabIndex={-1}
-      className="relative bg-bg-light text-text-dark"
+      className="relative isolate bg-bg-light text-text-dark"
     >
+      <div aria-hidden="true" data-daylight-glow className="daylight-glow" />
       <div
         ref={section}
         className="relative"
@@ -183,7 +189,7 @@ export default function Photography() {
           ref={stage}
           className={
             reducedMotion
-              ? "px-page py-section-md"
+              ? "relative isolate px-page py-section-md"
               : "sticky top-0 isolate h-dvh overflow-hidden"
           }
         >
@@ -229,19 +235,19 @@ export default function Photography() {
                     openPhoto(photo, event.currentTarget);
                   }}
                 >
-                <img
-                  src={photo.source}
-                  alt={photo.alt}
-                  // loading="lazy"
-                  decoding="async"
-                  width={photo.width}
-                  height={photo.height}
-                  className={
-                    reducedMotion
-                      ? "h-auto w-full"
-                      : "h-full w-full object-contain"
-                  }
-                />
+                  <img
+                    src={photo.source}
+                    alt={photo.alt}
+                    // loading="lazy"
+                    decoding="async"
+                    width={photo.width}
+                    height={photo.height}
+                    className={
+                      reducedMotion
+                        ? "h-auto w-full"
+                        : "h-full w-full object-contain"
+                    }
+                  />
                 </button>
               </li>
             ))}

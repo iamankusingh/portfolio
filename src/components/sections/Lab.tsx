@@ -5,10 +5,12 @@ export default function Lab() {
     <>
       <section
         id="lab"
+        data-daylight="afternoon"
         tabIndex={-1}
         aria-labelledby="lab-title"
-        className="bg-bg-light px-page py-section-lg text-text-dark scheme-light"
+        className="relative isolate bg-bg-light px-page py-section-lg text-text-dark scheme-light"
       >
+        <div aria-hidden="true" data-daylight-glow className="daylight-glow" />
         <div>
           <div className="mb-10 border-t border-line-light pt-5 sm:mb-16">
             <p className="text-small tracking-[0.16em] uppercase">Lab</p>

@@ -77,6 +77,67 @@
   --z-skip-link: 50;
 }
 
+/* Homepage atmosphere sits behind content; opacity is the only scroll tween. */
+.daylight-glow {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+[data-daylight="day"] .daylight-glow {
+  background: radial-gradient(ellipse at 72% 38%, rgb(245 200 75 / 11%), transparent 72%);
+}
+
+[data-daylight="afternoon"] .daylight-glow {
+  background: linear-gradient(180deg, transparent, rgb(116 127 139 / 13%) 45%, rgb(116 127 139 / 10%) 65%, transparent);
+}
+
+[data-daylight="evening"] {
+  background: #fffdf9;
+  color: var(--color-text-dark);
+  color-scheme: light;
+}
+
+[data-daylight="evening"] .daylight-glow {
+  background: radial-gradient(ellipse at 18% 65%, rgb(254 176 93 / 20%), rgb(254 176 93 / 7%) 35%, transparent 72%),
+    radial-gradient(ellipse at 85% 30%, rgb(245 200 75 / 12%), rgb(245 200 75 / 4%) 35%, transparent 70%);
+}
+
+[data-daylight="dusk"] {
+  --color-text-muted-light: #b8b9bc;
+  --color-line-light: rgb(244 242 236 / 24%);
+  background: linear-gradient(180deg, #20242b, #1b1e26 45%, #07090a);
+  color: var(--color-text-light);
+  color-scheme: dark;
+}
+
+[data-daylight="dusk"] .daylight-glow {
+  background: radial-gradient(ellipse at 72% 32%, rgb(147 126 156 / 9%), transparent 70%);
+}
+
+[data-daylight="dusk"] :is(input, textarea) {
+  color: inherit;
+}
+
+[data-daylight="dusk"] :is(input, textarea):focus {
+  border-color: var(--color-text-light);
+}
+
+[data-daylight="dusk"] button[type="submit"] {
+  color: var(--color-text-dark);
+}
+
+[data-daylight="dusk"] button[type="submit"]:focus-visible {
+  outline-color: var(--color-text-light);
+}
+
+@media (forced-colors: active) {
+  .daylight-glow {
+    display: none;
+  }
+}
+
 /* Hide the native pointer only over photographs with the View cursor label. */
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) and (forced-colors: none) {
   html.custom-cursor-active,

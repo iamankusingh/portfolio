@@ -2,13 +2,13 @@
 
 ## Current Status
 
-Phases 2 through 12 are complete by user direction. Phase 13 includes the homepage Lab teaser after About and Flowpaper directly at `/lab`, now implemented. Phase 14 Contact is implemented with acceptance pending. Other experiments and Phase 15 onward remain deferred. Technical and browser validation remain pending with the user, including Flowpaper and contact delivery. Final About copy/location and photography curation remain pending.
+Phases 2 through 14 are complete by user direction, including the Lab entry and Flowpaper at `/lab`. Phase 15 is active: subtle scroll-driven morning-to-day-to-evening atmosphere across the homepage, ending at the existing night footer. Other experiments and Phase 16 onward remain deferred. Technical and browser validation remain pending with the user, including Flowpaper and contact delivery. Final About copy/location and photography curation remain pending.
 
 Photography uses the 140 supplied WebP assets in `src/assets/photographs/`, cataloged in `src/data/photograph.ts`. A stable random selection of 25 entries has `displayInHome: true`; final curation remains with the user. The GSAP collage and reduced-motion grid preserve original aspect ratios. The original opening collage positions and staggered scrolling rows are restored by user direction, including edge-framed photographs. Collage images are enlarged uniformly while preserving their centers and original aspect ratios. Clicking a photograph opens a native fullscreen dialog with a GSAP transition from the clicked image to the center, a simultaneous subtle backdrop blur, and a reverse close transition. The uncropped image, close button, Escape support, and restored trigger focus remain; reduced motion opens immediately. Viewer smoothing now waits for image decode before handing off from the source, uses GSAP transforms for travel, and fades a fixed blur layer instead of tweening blur strength. The viewer locks only root scrolling so the sticky collage retains its position behind the blurred backdrop. The reported stutter and background-visibility fixes await browser validation. Numbered alt labels await descriptive curation. Completion records approved milestones, not unreported validation results.
 
 The homepage document-load loader is implemented with GSAP, resource-based progress, modal scroll/focus locking, reduced motion, resource-error fallbacks, and a bounded wait. Loader acceptance remains pending below.
 
-Current focus: Flowpaper at `/lab` uses the renamed `LabPage.tsx`, a default Full screen ratio, and an icon tray with configuration panels and direct Reset/Randomize/Pause/Capture actions. Capture provides preview, download, and Cancel. A first-visit instruction dialog now introduces the title and controls; OK/Escape dismisses it, localStorage remembers dismissal, and a session-memory fallback handles unavailable storage. The dialog pauses the flow and restores focus on dismissal. The homepage Lab teaser remains after About with the light editorial treatment. The user approves the wallpaper output; new dialog behavior and current lint/build/browser validation remain pending. No dependencies changed.
+Current focus: Phase 15 adds faint warm daylight to Work, soft gray afternoon light to Lab, a mainly white golden-hour surface with diffuse primary-gold light behind Photography, and cooler dusk around Contact fading into the existing night footer. Hero, About, and Capabilities remain unchanged. Background-only opacity follows scroll through existing GSAP ScrollTrigger; reduced motion uses static atmosphere. Photography shares one continuous golden background across the collage and its normal-flow gallery-link area; the button retains its original position and spacing. No dependencies changed. Visual acceptance and current lint/build remain pending.
 
 ## Phase Checklist
 
@@ -27,9 +27,9 @@ Current focus: Flowpaper at `/lab` uses the renamed `LabPage.tsx`, a default Ful
 | 10 | About Page | Complete by user direction; technical validation and final copy/location pending |
 | 11 | Work Page | Complete by user direction; technical validation pending |
 | 12 | Photography Page | Complete by user direction; technical validation pending |
-| 13 | Lab and experiments Page | Lab entry and Flowpaper implemented by user request; validation pending; other experiments deferred |
-| 14 | Contact Page | Implemented; active, user validation pending |
-| 15 | Work index |
+| 13 | Lab and experiments Page | Complete by user direction; technical validation pending; other experiments deferred |
+| 14 | Contact Page | Complete by user direction; technical and delivery validation pending |
+| 15 | Homepage day-cycle atmosphere | Implemented; active, user validation pending |
 | 16 | Route transitions |
 | 17 | Responsive and accessibility review |
 | 18 | Performance review |
@@ -37,6 +37,8 @@ Current focus: Flowpaper at `/lab` uses the renamed `LabPage.tsx`, a default Ful
 | 20 | Final QA and launch |
 
 ## Pending Acceptance
+
+- [ ] Phase 15: run `pnpm.cmd lint` and `pnpm.cmd build`; review gradual lighting forward/backward, direct anchors and restored scroll, desktop/mobile and rotation, reduced motion (including live changes), photography viewer, Contact fields/focus, and the dusk-to-footer boundary. Confirm the effect stays subtle and the approved Hero, About, and Capabilities treatments are preserved.
 
 - [ ] Check the first-visit Flowpaper instructions: title/copy, OK and Escape, keyboard focus, mobile scrolling, paused background, and dismissal persistence after reload or leaving/returning. Check blocked storage and reduced motion. Run current lint/build; validation remains with the user.
 
@@ -105,7 +107,7 @@ Earlier passing checks do not validate later edits. The user runs commands, serv
 
 Confirmed: pnpm, Manrope + Instrument Serif, existing palette, approved demo content, real portrait/photography, and shared high graphics quality. See [AGENTS.md](../AGENTS.md) for workflow and content rules.
 
-Pending: current validation, real project images/content, later-page compositions, public credits placement before launch, font license records, production asset optimization, metadata, and hosting. Original model licenses and attribution/adaptation records remain in place. Placeholder images support review without final assets; case-study links, other Lab experiments, and Phase 15 onward remain deferred.
+Pending: current validation, real project images/content, later-page compositions, public credits placement before launch, font license records, production asset optimization, metadata, and hosting. Original model licenses and attribution/adaptation records remain in place. Placeholder images support review without final assets; case-study links, other Lab experiments, and Phase 16 onward remain deferred.
 
 ## Update Rule
 
