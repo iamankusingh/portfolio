@@ -63,15 +63,53 @@ export default function useHomepageLoading() {
     (scene === "fallback" || models.completed === 4) &&
     (domCompleted === 4 || expired);
   useEffect(() => {
-    if (!visible || ready) return;
-    const timeout = window.setTimeout(() => {
-      console.warn(
-        "Homepage loading timed out; revealing the static landscape.",
-      );
-      setExpired(true);
-    }, MAX_WAIT_MS);
-    return () => window.clearTimeout(timeout);
-  }, [visible, ready]);
+    if (!visible || ready || expired) return;
+    // Assets keep loading in the background, but browsers may suspend the
+    // render frames that confirm readiness. Only charge foreground waiting.
+    let remaining = MAX_WAIT_MS;
+    let startedAt: number | null = null;
+    let timeout: number | undefined;
+    const pause = () => {
+      window.clearTimeout(timeout);
+      timeout = undefined;
+      if (startedAt !== null) {
+        remaining = Math.max(0, remaining - (performance.now() - startedAt));
+        startedAt = null;
+      }
+    };
+    const resume = () => {
+      if (document.hidden || !document.hasFocus() || startedAt !== null) return;
+      startedAt = performance.now();
+      timeout = window.setTimeout(() => {
+        // A visibility/focus event can still be queued behind this callback.
+        if (document.hidden || !document.hasFocus()) {
+          window.clearTimeout(timeout);
+          timeout = undefined;
+          startedAt = null;
+          return;
+        }
+        pause();
+        console.warn(
+          "Homepage loading timed out after foreground waiting; revealing the static landscape.",
+        );
+        setExpired(true);
+      }, remaining);
+    };
+    const syncVisibility = () => {
+      if (document.hidden || !document.hasFocus()) pause();
+      else resume();
+    };
+    document.addEventListener("visibilitychange", syncVisibility);
+    window.addEventListener("blur", pause);
+    window.addEventListener("focus", resume);
+    resume();
+    return () => {
+      pause();
+      document.removeEventListener("visibilitychange", syncVisibility);
+      window.removeEventListener("blur", pause);
+      window.removeEventListener("focus", resume);
+    };
+  }, [visible, ready, expired]);
 
   // Equal resource groups, not estimated bytes or timer-driven progress. The
   // final group resolves only after the scene (or its fallback) has committed.

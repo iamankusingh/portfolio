@@ -35,6 +35,8 @@ class MountainLoader extends GLTFLoader {
   }
 }
 
+useLoader.preload(MountainLoader, modelUrl);
+
 export default function MountainRange() {
   const model = useLoader(MountainLoader, modelUrl);
   const { mountains, center, bottom, width } = useMemo(() => {

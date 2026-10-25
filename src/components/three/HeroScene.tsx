@@ -24,6 +24,7 @@ import MountainRange from "./MountainRange";
 import ShoreBoat from "./ShoreBoat";
 
 type SceneProps = { progress: RefObject<number>; active: boolean };
+type TiltInput = RefObject<{ x: number; y: number }>;
 
 // Center of the house body (Object_4), after IslandModel's normalization and yaw.
 const HOUSE = new Vector3(2.65, 3.16, -8.8);
@@ -32,10 +33,12 @@ const CAMERA_RESPONSE = 10;
 
 function SceneMotion({
   progress,
+  tilt,
   active,
   onReady,
   onLost,
 }: SceneProps & {
+  tilt: TiltInput;
   onReady: () => void;
   onLost: () => void;
 }) {
@@ -135,7 +138,8 @@ function SceneMotion({
     const momentum = state.velocity + CAMERA_RESPONSE * offset;
     const decay = Math.exp(-CAMERA_RESPONSE * step);
     const nextJourney = destination + (offset + momentum * step) * decay;
-    state.velocity = (state.velocity - CAMERA_RESPONSE * momentum * step) * decay;
+    state.velocity =
+      (state.velocity - CAMERA_RESPONSE * momentum * step) * decay;
     state.journey = MathUtils.clamp(nextJourney, 0, 1);
     if (state.journey !== nextJourney) state.velocity = 0;
     if (
@@ -146,13 +150,19 @@ function SceneMotion({
       state.velocity = 0;
     }
     const journey = state.journey;
-    state.pointerX = MathUtils.damp(state.pointerX, state.x * 0.45, 3, step);
-    state.pointerY = MathUtils.damp(state.pointerY, state.y * 0.18, 3, step);
+    const inputX = MathUtils.clamp(state.x + tilt.current.x, -1, 1);
+    const inputY = MathUtils.clamp(state.y + tilt.current.y, -1, 1);
+    state.pointerX = MathUtils.damp(state.pointerX, inputX * 0.6, 3, step);
+    state.pointerY = MathUtils.damp(state.pointerY, inputY * 0.5, 3, step);
     travel.path.getPoint(journey, travel.position);
     camera.position.copy(travel.position);
     camera.position.x += state.pointerX * (1 - journey);
     camera.position.y -= state.pointerY * (1 - journey);
-    travel.target.lerpVectors(travel.openingTarget, travel.closingTarget, journey);
+    travel.target.lerpVectors(
+      travel.openingTarget,
+      travel.closingTarget,
+      journey,
+    );
     camera.lookAt(travel.target);
   });
   return null;
@@ -203,11 +213,13 @@ function DawnReveal({
 
 export default function HeroScene({
   progress,
+  tilt,
   active,
   onUnavailable,
   preparing,
   onReady: reportReady,
 }: SceneProps & {
+  tilt: TiltInput;
   onUnavailable: () => void;
   preparing: boolean;
   onReady: () => void;
@@ -266,6 +278,7 @@ export default function HeroScene({
           <Water active={active} sunPosition={sunPosition} />
           <SceneMotion
             progress={progress}
+            tilt={tilt}
             active={active}
             onReady={onReady}
             onLost={onLost}
@@ -275,4 +288,3 @@ export default function HeroScene({
     </div>
   );
 }
-

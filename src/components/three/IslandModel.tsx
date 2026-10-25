@@ -24,6 +24,9 @@ class IslandLoader extends GLTFLoader {
   }
 }
 
+// Start with the lazy scene import, even before a background canvas can render.
+useLoader.preload(IslandLoader, modelUrl);
+
 export default function IslandModel() {
   const model = useLoader(IslandLoader, modelUrl);
   const { island, scale, position } = useMemo(() => {

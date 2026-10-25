@@ -58,6 +58,8 @@ class CloudLoader extends GLTFLoader {
   }
 }
 
+useLoader.preload(CloudLoader, modelUrl);
+
 export default function Clouds({ active }: { active: boolean }) {
   const model = useLoader(CloudLoader, modelUrl);
   const groups = useRef<(Group | null)[]>([]);

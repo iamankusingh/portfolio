@@ -11,7 +11,7 @@ Use selective cinematic 3D to express **Technology × Nature × Human Experience
 - Eight large, closely grouped mountains beyond the ocean, with the sun behind them.
 - Fourteen clouds spread across the sky, moving right to left and recycling offscreen.
 - One boat parked beside the shore.
-- Soft lighting, fog, restrained pointer response, and native-scroll camera progression.
+- Soft lighting, fog, smooth mouse/phone-tilt response, and native-scroll camera progression. Phone tilt is automatic on HTTPS, with no tilt controls; browsers requiring permission request it on the first hero tap. Static preferences disable it.
 - Full-height scene coverage as mobile browser controls hide or return.
 - Text-free opening, followed by DOM introduction text during the camera approach to the house.
 
@@ -23,9 +23,9 @@ Use a bounded curved approach from the existing opening view toward the house. F
 
 ## Loading and Intro
 
-On every homepage document load or reload, initialize the hero behind the fullscreen loader, including when the restored scroll position is outside the hero. Private model managers report glTF, buffer, and texture completion; scene readiness requires a completed render. The dawn sequence runs behind the loader, whose white expansion fades into the prepared landscape. Do not show a different island during normal loading.
+On every homepage document load or reload, initialize the hero behind the fullscreen loader, including when the restored scroll position is outside the hero. Private model managers report glTF, buffer, and texture completion; scene readiness requires a completed render. The dawn sequence runs behind the loader, whose white expansion fades into the prepared landscape. Model downloads start on lazy scene import and remain active while hidden; the foreground timeout pauses during tab/window absence. Browsers may defer render frames until return. Do not show a different island during normal loading.
 
-On subsequent client-side navigation, retain the direct dark-background scene entry with rising sunlight and clearing fog. Reduced motion, Save-Data, resource/rendering failure, the loader's 15-second deadline, or Escape use the authored static landscape. Navigation and scrolling unlock when the loader closes. Loading orchestration belongs in [ARCHITECTURE.md](ARCHITECTURE.md#homepage-loading).
+On subsequent client-side navigation, retain the direct dark-background scene entry with rising sunlight and clearing fog. Reduced motion, Save-Data, resource/rendering failure, the loader's 15-second foreground deadline, or Escape use the authored static landscape. Navigation and scrolling unlock when the loader closes. Loading orchestration belongs in [ARCHITECTURE.md](ARCHITECTURE.md#homepage-loading).
 
 ## Shared High Quality
 
@@ -33,7 +33,7 @@ PCs, tablets, and smartphones use the same geometry, water detail, reflections, 
 
 ## Fallback Strategy
 
-Use the authored SVG landscape for reduced motion, Save-Data, or rendering failure. WebGL errors must not remove navigation or DOM content.
+Use the authored SVG landscape for reduced motion, Save-Data, or rendering failure. Label it as a simplified landscape. When it follows a failure, timeout, or loader skip, offer Reload interactive scene with copy explaining that it reloads the page; a document reload resets failed loader caches and scene boundaries. Preference-driven fallbacks explain reduced motion/data saving instead of offering a retry that would retain those settings. Keep the notice and button in accessible DOM outside the decorative scene. WebGL errors must not remove navigation or DOM content.
 
 ## Reduced Motion
 

@@ -11,6 +11,7 @@ import {
 import type { ErrorInfo, ReactNode } from "react";
 import { Link } from "react-router";
 import useMediaQuery from "../../hooks/useMediaQuery";
+import useHeroTilt from "../../hooks/useHeroTilt";
 import type { HeroReadiness } from "../three/heroLoading";
 import LandscapeFallback from "./LandscapeFallback";
 import Introduction from "./Introduction";
@@ -63,6 +64,7 @@ export default function Hero({ preparing, forceStatic, onReady }: HeroProps) {
   const onUnavailable = useCallback(() => setFailed(true), []);
   const onSceneReady = useCallback(() => onReady("ready"), [onReady]);
   const staticLandscape = reducedMotion || dataSaving || failed || forceStatic;
+  const tilt = useHeroTilt(active && !preparing && !staticLandscape, section);
 
   useEffect(() => {
     onReady(staticLandscape ? "fallback" : "pending");
@@ -79,7 +81,9 @@ export default function Hero({ preparing, forceStatic, onReady }: HeroProps) {
         !document.hidden &&
         !menu?.hasAttribute("open");
       setActive(canRender);
-      if (canRender) setRequested(true);
+      // Loading is independent of animation visibility. Keep the scene mounted
+      // so model and texture requests can finish while the tab is hidden.
+      if (visible || preparing) setRequested(true);
     };
     const observer = new IntersectionObserver(([entry]) => {
       visible = entry.isIntersecting;
@@ -93,6 +97,7 @@ export default function Hero({ preparing, forceStatic, onReady }: HeroProps) {
         attributeFilter: ["open"],
       });
     document.addEventListener("visibilitychange", sync);
+    sync();
     return () => {
       observer.disconnect();
       menuObserver.disconnect();
@@ -166,6 +171,7 @@ export default function Hero({ preparing, forceStatic, onReady }: HeroProps) {
                 <Suspense fallback={null}>
                   <HeroScene
                     progress={progress}
+                    tilt={tilt.input}
                     active={active}
                     preparing={preparing}
                     onReady={onSceneReady}
@@ -180,7 +186,29 @@ export default function Hero({ preparing, forceStatic, onReady }: HeroProps) {
         </div>
       </div>
 
-      <div className="h-svh" aria-hidden="true" />
+      {staticLandscape ? (
+        <div className="flex min-h-svh items-end justify-center px-page pt-28 pb-8">
+          <div className="max-w-md rounded-md bg-bg-dark/90 p-5 text-center text-text-light">
+            <p className="text-small font-medium">Simplified landscape</p>
+            <p className="mt-2 text-small text-text-light/80">
+              {reducedMotion || dataSaving
+                ? "This still illustration respects your reduced-motion or data-saving preference."
+                : "You’re viewing a still illustration. Reload the page to try the interactive scene again."}
+            </p>
+            {!reducedMotion && !dataSaving && (
+              <button
+                type="button"
+                onClick={() => window.location.reload()}
+                className="mt-4 min-h-12 cursor-pointer rounded-full bg-primary px-5 py-3 text-small font-medium text-text-dark focus-visible:outline-text-light focus-visible:outline-offset-4"
+              >
+                Reload interactive scene
+              </button>
+            )}
+          </div>
+        </div>
+      ) : (
+        <div className="h-svh" aria-hidden="true" />
+      )}
       {!staticLandscape && <div className="h-[60svh]" aria-hidden="true" />}
       <Introduction />
     </section>

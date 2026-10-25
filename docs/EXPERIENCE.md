@@ -68,7 +68,7 @@ Use the stylized landscape defined in [THREE_D.md](THREE_D.md), composed togethe
 
 ## Opening Moment
 
-Every homepage document load or reload begins with the approved black fullscreen loader: a centered circle brightens uniformly with actual resource progress, becomes white, expands, and fades into the prepared hero. A monospaced percentage sits beneath it. Background controls and scrolling are temporarily locked. Escape or a 15-second loading deadline reveals the static landscape; reduced motion uses a short fade without expansion. Client-side route changes use the direct dawn entry. See [MOTION.md](MOTION.md) for choreography and [ARCHITECTURE.md](ARCHITECTURE.md#homepage-loading) for resource scope.
+Every homepage document load or reload begins with the approved black fullscreen loader: a centered circle brightens uniformly with actual resource progress, becomes white, expands, and fades into the prepared hero. A monospaced percentage sits beneath it. Background controls and scrolling are temporarily locked. Escape or a 15-second foreground loading deadline reveals the static landscape; reduced motion uses a short fade without expansion. Client-side route changes use the direct dawn entry. See [MOTION.md](MOTION.md) for choreography and [ARCHITECTURE.md](ARCHITECTURE.md#homepage-loading) for resource scope.
 
 ## Hero Content
 

@@ -26,6 +26,8 @@ class BoatLoader extends GLTFLoader {
   }
 }
 
+useLoader.preload(BoatLoader, modelUrl);
+
 export default function ShoreBoat() {
   const model = useLoader(BoatLoader, modelUrl);
   const { boat, scale, position } = useMemo(() => {
