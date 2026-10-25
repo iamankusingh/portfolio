@@ -6,7 +6,8 @@ Create components when they have a clear responsibility; avoid speculative wrapp
 
 | Component | Responsibility |
 |---|---|
-| `AppLayout` | Persistent shell, main region, route focus, and scroll restoration |
+| `AppLayout` | Persistent header/cursor, smooth scrolling, and route transition boundary |
+| `RouteTransition` | Displayed route snapshot, synchronized CSS fades, main region/footer, focus, and deferred React Router scroll restoration |
 | `AboutPage` | Standalone `/about` route with a profile section and skills constellation; profile data from `src/data/anku.ts` |
 | `PhotographyPage` | Standalone `/photography` route with the complete catalog in a large, uncropped responsive masonry layout |
 | `WorkPage` | Standalone `/work` route with sticky overlapping cards, GSAP depth transitions, keyboard focus recovery, and normal-flow fallbacks |

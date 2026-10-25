@@ -4,7 +4,7 @@ An interactive creative-technologist portfolio built around **Technology × Natu
 
 ## Current Status
 
-Phases 2 through 14 are complete by user direction, including the Lab entry and Flowpaper at `/lab`. Phase 15 is active: subtle scroll-driven morning-to-day-to-evening atmosphere across the homepage, ending at the existing night footer. Other experiments and Phase 16 onward remain deferred. Technical and browser validation remain pending with the user, including Flowpaper and contact delivery. Final About copy/location and photography curation remain pending.
+Phases 2 through 15 are complete by user direction, including Flowpaper and the homepage day-cycle atmosphere. Phase 16 route fades are implemented; technical and browser acceptance remain pending with the user, especially Back/Forward without a destination flash. Other experiments and Phase 17 onward remain deferred. Flowpaper, contact delivery, final About copy/location, and photography curation still have pending acceptance.
 
 
 ## Stack and Development

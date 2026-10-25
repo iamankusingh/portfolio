@@ -28,8 +28,9 @@ type Panel = Exclude<TrayItem, "reset" | "randomize" | "playback">;
 type IconName = TrayItem | "play" | "close";
 
 const instructionsStorageKey = "flowpaper:instructions-dismissed";
-// Retain dismissal during this app session if browser storage is unavailable.
-let instructionsDismissed = false;
+const instructionsExpiryMs = 30 * 24 * 60 * 60 * 1000;
+// Use the same expiry in memory when browser storage is unavailable.
+let instructionsDismissedUntil = 0;
 
 const buttonClass =
   "inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-line-dark px-4 text-sm font-medium hover:border-text-muted-dark hover:bg-white/5 disabled:cursor-not-allowed disabled:opacity-40";
@@ -113,12 +114,15 @@ export default function LabPage() {
   } | null>(null);
   const [captureError, setCaptureError] = useState("");
   const [notice, setNotice] = useState("");
+  const [dontShowAgain, setDontShowAgain] = useState(false);
   const [showInstructions, setShowInstructions] = useState(() => {
-    if (instructionsDismissed) return false;
     try {
-      return localStorage.getItem(instructionsStorageKey) !== "true";
+      // The previous permanent "true" value is invalid, so existing users
+      // get to choose whether to remember dismissal under the new policy.
+      const expiresAt = Number(localStorage.getItem(instructionsStorageKey));
+      return !Number.isFinite(expiresAt) || expiresAt <= Date.now();
     } catch {
-      return true;
+      return instructionsDismissedUntil <= Date.now();
     }
   });
 
@@ -129,12 +133,21 @@ export default function LabPage() {
     return () => dialog?.close();
   }, [showInstructions]);
 
-  function dismissInstructions() {
-    instructionsDismissed = true;
+  function dismissInstructions(remember: boolean) {
+    instructionsDismissedUntil = remember
+      ? Date.now() + instructionsExpiryMs
+      : 0;
     try {
-      localStorage.setItem(instructionsStorageKey, "true");
+      if (remember) {
+        localStorage.setItem(
+          instructionsStorageKey,
+          String(instructionsDismissedUntil),
+        );
+      } else {
+        localStorage.removeItem(instructionsStorageKey);
+      }
     } catch {
-      // The session-memory flag still prevents repeated prompts during navigation.
+      // Only a checked preference is remembered in memory, with the same expiry.
     }
     instructionsRef.current?.close();
     setShowInstructions(false);
@@ -333,7 +346,7 @@ export default function LabPage() {
         aria-describedby="flowpaper-welcome-subtitle flowpaper-instructions-copy"
         onCancel={(event) => {
           event.preventDefault();
-          dismissInstructions();
+          dismissInstructions(false);
         }}
         className="fixed inset-0 m-auto max-h-[calc(100dvh-2rem)] w-[min(32rem,calc(100%-2rem))] overflow-y-auto overscroll-contain rounded-2xl border border-line-dark bg-surface-dark p-6 text-text-light shadow-2xl backdrop:bg-black/75 sm:p-8"
       >
@@ -361,10 +374,20 @@ export default function LabPage() {
             a panel.
           </p>
         </div>
+        <label className="mt-5 flex min-h-11 cursor-pointer items-center gap-3 text-sm">
+          <input
+            type="checkbox"
+            checked={dontShowAgain}
+            onChange={(event) => setDontShowAgain(event.target.checked)}
+            aria-describedby="flowpaper-remember-expiry"
+            className="size-4 accent-sun"
+          />
+          Don't show again
+        </label>
         <button
           type="button"
           autoFocus
-          onClick={dismissInstructions}
+          onClick={() => dismissInstructions(dontShowAgain)}
           className={`${buttonClass} mt-7 w-full border-sun bg-sun text-bg-deep hover:border-sun hover:bg-sun/90`}
         >
           OK

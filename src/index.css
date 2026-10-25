@@ -1,5 +1,45 @@
 @import "tailwindcss";
 
+.route-transition {
+  opacity: 1;
+  transition: opacity 300ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.route-transition[data-phase="fading-out"] {
+  opacity: 0;
+  transition-duration: 240ms;
+}
+
+.route-transition[data-phase="switching"] {
+  opacity: 0;
+  transition: none;
+}
+
+/* Native dialogs escape ancestor opacity in the browser's top layer. */
+.route-transition[data-phase="fading-out"] dialog,
+.route-transition[data-phase="fading-out"] dialog::backdrop {
+  opacity: 0 !important;
+  transition: opacity 240ms cubic-bezier(0.22, 1, 0.36, 1) !important;
+}
+
+.route-transition[data-phase="switching"] dialog,
+.route-transition[data-phase="switching"] dialog::backdrop {
+  opacity: 0 !important;
+  transition: none !important;
+}
+
+.route-transition[data-phase="fading-in"] dialog,
+.route-transition[data-phase="fading-in"] dialog::backdrop {
+  opacity: 1 !important;
+  transition: opacity 300ms cubic-bezier(0.22, 1, 0.36, 1) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .route-transition {
+    transition: none;
+  }
+}
+
 @font-face {
   font-family: "Manrope";
   src: url("./assets/fonts/Manrope/Manrope-VariableFont_wght.ttf")

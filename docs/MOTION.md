@@ -124,7 +124,7 @@ Optional desktop effects: **1.01–1.04** media scale, mild perspective, `VIEW` 
 
 ## 10.3 Opening a Project
 
-Selected media or a title may anchor the route transition as the current page recedes. Shared-layout techniques are optional; do not delay navigation solely for animation.
+Project navigation uses the shared short route fade. Additional shared-media transitions remain deferred.
 
 # Phase 6 circle interlude
 
@@ -184,7 +184,7 @@ Experiments may have distinct motion while retaining site navigation conventions
 
 # 18. Page Transitions
 
-Possible anchors include project media, color wipes, circular masks, typography, or environmental fades. Match the content, preserve orientation, and keep back/forward navigation normal.
+Phase 16 uses CSS opacity only: 240 ms out, an invisible route swap, then 300 ms in with soft easing. The displayed outlet, location, and restoration state remain fixed until exit completes, including POP navigation. Transition-end events advance the sequence; a CSS-derived watchdog handles missing events. Rapid navigation targets the latest committed router location. Native page dialogs share the fade; the header stays outside it. Same-path navigation and reduced motion are immediate, including live preference changes. Scroll restoration runs at the hidden swap, and focus follows the displayed page. Browser acceptance remains pending.
 
 # 19. Reduced Motion
 

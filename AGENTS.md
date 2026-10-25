@@ -55,7 +55,7 @@ Before significant work:
 1. Read this file, [README.md](README.md), and [PROGRESS.md](docs/PROGRESS.md).
 2. Read the specialist documents relevant to the task, using the [documentation map](README.md#documentation-responsibilities).
 3. Inspect the current implementation and reuse its patterns.
-4. Stay within the requested scope. Phases 2 through 14 are complete by user direction. Phase 15 is authorized for subtle homepage day-cycle lighting. Other experiments and Phase 16 onward remain deferred.
+4. Stay within the requested scope. Phases 2 through 15 are complete by user direction. Phase 16 is authorized for simple, synchronized route fades. Other experiments and Phase 17 onward remain deferred.
 
 The specialist document owns its domain. If documents conflict, surface the conflict and update stale guidance when the evidence or an approved decision resolves it. Do not silently choose a new direction.
 
@@ -97,5 +97,5 @@ Keep [PROGRESS.md](docs/PROGRESS.md) current after meaningful planning or implem
 
 ## Current Status
 
-Phases 2 through 14 are complete by user direction, including the Lab entry and Flowpaper at `/lab`. Phase 15 is active: subtle scroll-driven morning-to-day-to-evening atmosphere across the homepage, ending at the existing night footer. Other experiments and Phase 16 onward remain deferred. Technical and browser validation remain pending with the user, including Flowpaper and contact delivery. Final About copy/location and photography curation remain pending.
+Phases 2 through 15 are complete by user direction, including Flowpaper and the homepage day-cycle atmosphere. Phase 16 route fades are implemented; technical and browser acceptance remain pending with the user, especially Back/Forward without a destination flash. Other experiments and Phase 17 onward remain deferred. Flowpaper, contact delivery, final About copy/location, and photography curation still have pending acceptance.
 

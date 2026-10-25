@@ -2,13 +2,13 @@
 
 ## Current Status
 
-Phases 2 through 14 are complete by user direction, including the Lab entry and Flowpaper at `/lab`. Phase 15 is active: subtle scroll-driven morning-to-day-to-evening atmosphere across the homepage, ending at the existing night footer. Other experiments and Phase 16 onward remain deferred. Technical and browser validation remain pending with the user, including Flowpaper and contact delivery. Final About copy/location and photography curation remain pending.
+Phases 2 through 15 are complete by user direction, including Flowpaper and the homepage day-cycle atmosphere. Phase 16 route fades are implemented; technical and browser acceptance remain pending with the user, especially Back/Forward without a destination flash. Other experiments and Phase 17 onward remain deferred. Flowpaper, contact delivery, final About copy/location, and photography curation still have pending acceptance.
 
 Photography uses the 140 supplied WebP assets in `src/assets/photographs/`, cataloged in `src/data/photograph.ts`. A stable random selection of 25 entries has `displayInHome: true`; final curation remains with the user. The GSAP collage and reduced-motion grid preserve original aspect ratios. The original opening collage positions and staggered scrolling rows are restored by user direction, including edge-framed photographs. Collage images are enlarged uniformly while preserving their centers and original aspect ratios. Clicking a photograph opens a native fullscreen dialog with a GSAP transition from the clicked image to the center, a simultaneous subtle backdrop blur, and a reverse close transition. The uncropped image, close button, Escape support, and restored trigger focus remain; reduced motion opens immediately. Viewer smoothing now waits for image decode before handing off from the source, uses GSAP transforms for travel, and fades a fixed blur layer instead of tweening blur strength. The viewer locks only root scrolling so the sticky collage retains its position behind the blurred backdrop. The reported stutter and background-visibility fixes await browser validation. Numbered alt labels await descriptive curation. Completion records approved milestones, not unreported validation results.
 
 The homepage loader keeps model requests active in the background and counts only visible, focused waiting toward its fallback deadline. Model preloads use the existing cache independently of canvas frames; rendering resumes on return. The fallback is now explicitly labeled as a simplified illustration, with a page-reload action for failed, timed-out, or skipped loading; preference-driven fallbacks explain the active preference. The background-tab/window fix and fallback notice/reload action await user validation, alongside existing loader acceptance.
 
-Current focus: Phase 15 adds faint warm daylight to Work, soft gray afternoon light to Lab, a mainly white golden-hour surface with diffuse primary-gold light behind Photography, and cooler dusk around Contact fading into the existing night footer. Hero, About, and Capabilities remain unchanged. Background-only opacity follows scroll through existing GSAP ScrollTrigger; reduced motion uses static atmosphere. Photography shares one continuous golden background across the collage and its normal-flow gallery-link area; the button retains its original position and spacing. No dependencies changed. Visual acceptance and current lint/build remain pending.
+Current focus: Phase 16 holds the displayed route through a short fade-out, swaps content and restores scroll while invisible, then fades in. The header stays mounted. Same-path navigation and reduced motion are immediate. Rapid navigation selects the latest committed destination; native dialogs share the fade. React Router still owns restoration, with skipped history entries protected from incorrect scroll saves. No dependencies changed. Static review is complete; lint/build and browser acceptance remain pending.
 
 ## Phase Checklist
 
@@ -29,14 +29,18 @@ Current focus: Phase 15 adds faint warm daylight to Work, soft gray afternoon li
 | 12 | Photography Page | Complete by user direction; technical validation pending |
 | 13 | Lab and experiments Page | Complete by user direction; technical validation pending; other experiments deferred |
 | 14 | Contact Page | Complete by user direction; technical and delivery validation pending |
-| 15 | Homepage day-cycle atmosphere | Implemented; active, user validation pending |
-| 16 | Route transitions |
+| 15 | Homepage day-cycle atmosphere | Complete by user direction; technical validation pending |
+| 16 | Route transitions | Implemented; active, technical and browser acceptance pending |
 | 17 | Responsive and accessibility review |
 | 18 | Performance review |
 | 19 | SEO and metadata |
 | 20 | Final QA and launch |
 
 ## Pending Acceptance
+
+- [ ] Verify Flowpaper instructions: unchecked OK/Escape dismiss only this visit; checked “Don't show again” plus OK remembers dismissal for 30 days. Check reload/navigation, expiry, legacy permanent values, blocked storage, keyboard focus, and current lint/build. Source implementation reviewed; validation pending.
+
+- [ ] Phase 16: run `pnpm.cmd lint` and `pnpm.cmd build`. Check header/homepage links, Back, Forward, repeated and rapid navigation, same-path/hash links, direct refresh/deep URLs, unknown routes, cold `/lab` loading and import errors, open dialogs, and reduced motion at load and during a fade. Verify restored positions on long pages and skipped history entries, focus, and desktop/mobile scrolling. Most importantly, inspect Back/Forward frame by frame: the outgoing page must reach zero opacity before destination content appears. Confirm no stuck invisible page after interruptions, background tabs, or StrictMode cleanup. Browser results remain pending with the user.
 
 - [ ] Hero loading: reload and immediately switch tabs or windows for more than 15 seconds, then return and confirm the animated hero appears without another reload. Repeat with a homepage opened in a background tab, slow loading, several hide/focus cycles, and route changes. Confirm foreground stalls still time out, Escape works, and reduced motion/Save-Data/errors retain their fallback. Check the simplified-view notice and keyboard/touch reload button after failure, timeout, or skip; preference-driven views should explain the preference without a misleading retry. Run current `pnpm.cmd lint` and `pnpm.cmd build`; no runtime validation has been performed.
 
@@ -109,7 +113,7 @@ Earlier passing checks do not validate later edits. The user runs commands, serv
 
 Confirmed: pnpm, Manrope + Instrument Serif, existing palette, approved demo content, real portrait/photography, and shared high graphics quality. See [AGENTS.md](../AGENTS.md) for workflow and content rules.
 
-Pending: current validation, real project images/content, later-page compositions, public credits placement before launch, font license records, production asset optimization, metadata, and hosting. Original model licenses and attribution/adaptation records remain in place. Placeholder images support review without final assets; case-study links, other Lab experiments, and Phase 16 onward remain deferred.
+Pending: current validation, real project images/content, later-page compositions, public credits placement before launch, font license records, production asset optimization, metadata, and hosting. Original model licenses and attribution/adaptation records remain in place. Placeholder images support review without final assets; case-study links, other Lab experiments, and Phase 17 onward remain deferred.
 
 ## Update Rule
 
