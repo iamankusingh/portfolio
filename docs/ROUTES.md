@@ -12,6 +12,7 @@ Map the confirmed portfolio pages. Dummy content is authorized; lack of finished
 | `/photography` | All 140 supplied photos in a large responsive masonry layout, preserving source aspect ratios, with fullscreen previews. | Phase 12 complete by user direction; technical validation pending |
 | `/lab` | Flowpaper fluid wallpaper studio with PNG capture/download. | Phase 13 complete by user direction; lazy-loaded; validation pending |
 | `/contact` | Shared homepage form followed by social profile links. | Phase 14 complete by user direction; validation pending |
+| `/legal` | Hero model credits, photo reuse permission, terms, and privacy policy; content hardcoded in `LegalPage.tsx`. | Implemented by user request; validation pending |
 | `*` | Not-found handling, including unknown project slugs. | Included with routing |
 
 ## Navigation Notes
@@ -25,5 +26,7 @@ Build included routes in their owning phases; do not add placeholder pages to th
 The homepage renders Hero/Introduction, Selected Work, About, Lab teaser, Capabilities, Photography, and Contact, followed by the night footer. Phases 2 through 15 are complete by user direction; technical validation and contact delivery remain pending. Homepage anchors include `/#introduction`, `/#selected-work`, `/#about`, `/#lab`, `/#photography`, and `/#contact`. `/about`, `/work`, and `/photography` are reachable through the menu and corresponding homepage links. The Lab menu and homepage experiment card open Flowpaper directly at `/lab`. Studio return links target `/#lab`. Phase 14 Contact is complete by user direction. Phase 15 homepage day-cycle atmosphere is complete by user direction. Phase 16 route fades are implemented with acceptance pending. Other experiments and Phase 17 onward remain deferred; unbuilt destinations use NotFound. Route focus, scroll restoration, and error boundaries remain.
 
 ## Menu destinations
+
+A small Legal & credits link sits below the menu’s supporting details and in the homepage footer, targeting `/legal`.
 
 The menu retains Home, Work, About, Photography, Lab, and Contact. Contact targets `/contact`. Normal links dismiss the menu; modified clicks retain native behavior. The logo returns to `/`. Selected Work links to the implemented `/work` page.

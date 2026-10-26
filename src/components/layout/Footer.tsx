@@ -516,6 +516,9 @@ export default function Footer() {
           Last updated{" "}
           <time dateTime={lastUpdated.date}>{lastUpdated.label}</time>
         </p>
+        <Link to="/legal" className={linkClass}>
+          Legal & credits
+        </Link>
       </div>
     </footer>
   );

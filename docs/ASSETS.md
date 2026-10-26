@@ -51,7 +51,9 @@ Stored in `src/assets/3Dmodel/cloud/`, licensed **CC BY 4.0**. Repeated across t
 
 ## Preparation Rules
 
-Preserve original model files and each folder's `license.txt`. Visible scene credits are deferred at the user's request; restore public attribution in the eventual credits placement before launch. Sources and authors remain recorded above. Resolve binaries and textures through Vite URLs.
+Preserve original model files and each folder's `license.txt`. Public attribution appears first on `/legal`, with author, source, license, and adaptation details, linked from the menu and homepage footer. Sources and authors remain recorded above. Resolve binaries and textures through Vite URLs.
+
+By user direction, `/legal` permits reuse and adaptation of Anku’s photographs, including commercial use, with visible author credit and an online source link. Other assets retain their separate rights and licenses.
 
 Preserved adaptation notices: island scale and placement changed, embedded water omitted, custom water/lighting/intro added; cloud opacity, lighting response, scale, and placement changed and clouds repeated; mountain scale, rotation, and placement changed and copies repeated; boat scale, rotation, and shore placement changed.
 

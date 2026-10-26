@@ -344,4 +344,4 @@ The Phase 0 baseline is wired in `src/index.css` using Tailwind theme namespaces
 
 ## Hero and introduction composition
 
-Keep the faceted island and surrounding ocean dominant, with soft sky, distant mountains, and natural material colors. Preserve the global UI palette and floating header. The opening is text-free. During the house approach, introduce Anku with large Instrument Serif typography, a small Manrope role line, and a short description. Use a restrained dark directional shade for contrast, leaving the house visible beside or above the copy. Visible scene credits are deferred.
+Keep the faceted island and surrounding ocean dominant, with soft sky, distant mountains, and natural material colors. Preserve the global UI palette and floating header. The opening is text-free. During the house approach, introduce Anku with large Instrument Serif typography, a small Manrope role line, and a short description. Use a restrained dark directional shade for contrast, leaving the house visible beside or above the copy. Model credits are presented on `/legal`, accessible from the menu and homepage footer.

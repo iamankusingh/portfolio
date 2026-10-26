@@ -238,6 +238,14 @@ export default function Header() {
               </ul>
             </div>
           </div>
+          <Link
+            to="/legal"
+            onClick={handleLinkClick}
+            aria-current={location.pathname === "/legal" ? "page" : undefined}
+            className="mt-4 inline-flex min-h-11 w-fit items-center text-small text-text-muted-dark underline-offset-4 hover:text-sun hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sun aria-[current=page]:underline"
+          >
+            Legal & credits
+          </Link>
         </div>
       </dialog>
     </>

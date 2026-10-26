@@ -6,6 +6,7 @@ import AboutPage from "./pages/AboutPage";
 import WorkPage from "./pages/WorkPage";
 import PhotographyPage from "./pages/PhotographyPage";
 import ContactPage from "./pages/ContactPage";
+import LegalPage from "./pages/LegalPage";
 import NotFound from "./pages/NotFound";
 import RouteError from "./pages/RouteError";
 
@@ -22,6 +23,7 @@ const router = createBrowserRouter([
           { path: "work", element: <WorkPage /> },
           { path: "photography", element: <PhotographyPage /> },
           { path: "contact", element: <ContactPage /> },
+          { path: "legal", element: <LegalPage /> },
           {
             path: "lab",
             lazy: async () => {

@@ -238,7 +238,7 @@ export default function Photography() {
                   <img
                     src={photo.source}
                     alt={photo.alt}
-                    // loading="lazy"
+                    loading="lazy"
                     decoding="async"
                     width={photo.width}
                     height={photo.height}

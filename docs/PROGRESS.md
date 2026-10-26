@@ -38,6 +38,8 @@ Current focus: Phase 16 holds the displayed route through a short fade-out, swap
 
 ## Pending Acceptance
 
+- [ ] Review the user-requested `/legal` page, small menu link, and footer link on desktop/mobile, keyboard navigation, direct refresh, and Back/Forward. Model credits use the four bundled license records; photography reuse with credit, basic terms, and implementation-based privacy copy are hardcoded in the page. Confirm contact-record/provider retention details before launch; these remain explicitly unpublished. Run `pnpm.cmd lint` and `pnpm.cmd build`; static source review only, runtime validation pending.
+
 - [ ] Verify Flowpaper instructions: unchecked OK/Escape dismiss only this visit; checked “Don't show again” plus OK remembers dismissal for 30 days. Check reload/navigation, expiry, legacy permanent values, blocked storage, keyboard focus, and current lint/build. Source implementation reviewed; validation pending.
 
 - [ ] Phase 16: run `pnpm.cmd lint` and `pnpm.cmd build`. Check header/homepage links, Back, Forward, repeated and rapid navigation, same-path/hash links, direct refresh/deep URLs, unknown routes, cold `/lab` loading and import errors, open dialogs, and reduced motion at load and during a fade. Verify restored positions on long pages and skipped history entries, focus, and desktop/mobile scrolling. Most importantly, inspect Back/Forward frame by frame: the outgoing page must reach zero opacity before destination content appears. Confirm no stuck invisible page after interruptions, background tabs, or StrictMode cleanup. Browser results remain pending with the user.
@@ -113,7 +115,7 @@ Earlier passing checks do not validate later edits. The user runs commands, serv
 
 Confirmed: pnpm, Manrope + Instrument Serif, existing palette, approved demo content, real portrait/photography, and shared high graphics quality. See [AGENTS.md](../AGENTS.md) for workflow and content rules.
 
-Pending: current validation, real project images/content, later-page compositions, public credits placement before launch, font license records, production asset optimization, metadata, and hosting. Original model licenses and attribution/adaptation records remain in place. Placeholder images support review without final assets; case-study links, other Lab experiments, and Phase 17 onward remain deferred.
+Pending: current validation, real project images/content, later-page compositions, legal-page acceptance, font license records, production asset optimization, metadata, and hosting. Original model licenses and attribution/adaptation records remain in place. Placeholder images support review without final assets; case-study links, other Lab experiments, and Phase 17 onward remain deferred.
 
 ## Update Rule
 
