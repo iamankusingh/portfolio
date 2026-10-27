@@ -117,6 +117,8 @@ export default function Hero({ preparing, forceStatic, onReady }: HeroProps) {
     }
 
     let frame = 0;
+    let visible = true;
+    let previousOpacity = -1;
     const update = () => {
       frame = 0;
       const bounds = element.getBoundingClientRect();
@@ -125,22 +127,33 @@ export default function Hero({ preparing, forceStatic, onReady }: HeroProps) {
       progress.current = value;
       const reveal = Math.max(0, Math.min(1, (value - 0.5) / 0.35));
       const opacity = reveal * reveal * (3 - 2 * reveal);
-      element.style.setProperty("--intro-opacity", String(opacity));
-      element.style.setProperty("--intro-shade", String(opacity));
+      if (opacity !== previousOpacity) {
+        element.style.setProperty("--intro-opacity", String(opacity));
+        element.style.setProperty("--intro-shade", String(opacity));
+        previousOpacity = opacity;
+      }
     };
     const schedule = () => {
       if (!frame) frame = window.requestAnimationFrame(update);
     };
+    const onScroll = () => { if (visible) schedule(); };
+    const visibility = new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting;
+      // Synchronize endpoints on exit as well as restored positions on entry.
+      schedule();
+    });
+    visibility.observe(element);
     const resize = new ResizeObserver(schedule);
     resize.observe(element);
     resize.observe(stage);
-    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", schedule);
     update();
     return () => {
       window.cancelAnimationFrame(frame);
       resize.disconnect();
-      window.removeEventListener("scroll", schedule);
+      visibility.disconnect();
+      window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", schedule);
       element.style.removeProperty("--intro-opacity");
       element.style.removeProperty("--intro-shade");

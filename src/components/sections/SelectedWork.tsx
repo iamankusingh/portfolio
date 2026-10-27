@@ -65,6 +65,8 @@ export default function SelectedWork() {
     if (!element || !viewport) return;
 
     let frame = 0;
+    let visible = true;
+    let previousIndex = -1;
     const update = () => {
       frame = 0;
       const distance = Math.max(
@@ -75,23 +77,32 @@ export default function SelectedWork() {
         0,
         Math.min(1, -element.getBoundingClientRect().top / distance),
       );
-      setActiveworks(
-        Math.min(works.length - 1, Math.floor(progress * works.length)),
-      );
+      const nextIndex = Math.min(works.length - 1, Math.floor(progress * works.length));
+      if (nextIndex !== previousIndex) {
+        previousIndex = nextIndex;
+        setActiveworks(nextIndex);
+      }
     };
     const schedule = () => {
       if (!frame) frame = requestAnimationFrame(update);
     };
+    const onScroll = () => { if (visible) schedule(); };
+    const visibility = new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting;
+      schedule();
+    });
+    visibility.observe(element);
     const resize = new ResizeObserver(schedule);
     resize.observe(element);
     resize.observe(viewport);
-    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", schedule);
     schedule();
     return () => {
       cancelAnimationFrame(frame);
       resize.disconnect();
-      window.removeEventListener("scroll", schedule);
+      visibility.disconnect();
+      window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", schedule);
     };
   }, [pinned]);

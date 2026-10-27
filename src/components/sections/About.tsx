@@ -3,6 +3,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { anku } from "../../data/anku";
 import useMediaQuery from "../../hooks/useMediaQuery";
+import useNearbyImages from "../../hooks/useNearbyImages";
 import LinkButton from "../ui/LinkButton";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -13,6 +14,7 @@ export default function About() {
   const portraitFrame = useRef<HTMLDivElement>(null);
   const portrait = useRef<HTMLImageElement>(null);
   const reducedMotion = useMediaQuery("(prefers-reduced-motion: reduce)");
+  useNearbyImages(section);
 
   useLayoutEffect(() => {
     const element = section.current;

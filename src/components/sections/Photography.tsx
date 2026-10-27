@@ -3,6 +3,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { photographCollection } from "../../data/photograph";
 import useMediaQuery from "../../hooks/useMediaQuery";
+import useNearbyImages from "../../hooks/useNearbyImages";
 import usePhotoViewer from "../../hooks/usePhotoViewer";
 import LinkButton from "../ui/LinkButton";
 
@@ -44,6 +45,7 @@ export default function Photography() {
   const stage = useRef<HTMLDivElement>(null);
   const frames = useRef<(HTMLLIElement | null)[]>([]);
   const reducedMotion = useMediaQuery("(prefers-reduced-motion: reduce)");
+  useNearbyImages(section, reducedMotion);
 
   const field = useRef<HTMLUListElement>(null);
   const portraitLayout = useMediaQuery("(max-width: 639px)");
@@ -61,6 +63,26 @@ export default function Photography() {
     let previousWidth = 0;
     let previousHeight = 0;
     let timeline: gsap.core.Timeline | undefined;
+    const items = frames.current.flatMap((photo) => {
+      const button = photo?.querySelector("button");
+      return photo && button ? [{ photo, button, visible: false }] : [];
+    });
+    const updateFocus = () => {
+      for (const { photo, button, visible } of items) {
+        // GSAP owns inline opacity; reading it does not measure layout.
+        const opacity = Number.parseFloat(photo.style.opacity || "1");
+        const tabIndex = visible && opacity > 0.5 ? 0 : -1;
+        if (button.tabIndex !== tabIndex) button.tabIndex = tabIndex;
+      }
+    };
+    const visibility = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        const item = items.find(({ photo }) => photo === entry.target);
+        if (item) item.visible = entry.isIntersecting && entry.intersectionRatio > 0;
+      }
+      updateFocus();
+    }, { threshold: [0, 0.001] });
+    for (const { photo } of items) visibility.observe(photo);
     const refresh = () => {
       frame = 0;
       const width = viewport.clientWidth;
@@ -76,22 +98,7 @@ export default function Photography() {
         const layout = getPlacements(portraitLayout);
         const openingWidth = Math.min(width * 0.72, height * 0.8, 640);
         timeline = gsap.timeline({
-          onUpdate: () => {
-            // Keep keyboard navigation on the photographs currently in view.
-            frames.current.forEach((frame) => {
-              const button = frame?.querySelector("button");
-              if (!frame || !button) return;
-              const bounds = frame.getBoundingClientRect();
-              button.tabIndex =
-                Number(gsap.getProperty(frame, "opacity")) > 0.5 &&
-                bounds.bottom > 0 &&
-                bounds.top < window.innerHeight &&
-                bounds.right > 0 &&
-                bounds.left < window.innerWidth
-                  ? 0
-                  : -1;
-            });
-          },
+          onUpdate: updateFocus,
           scrollTrigger: {
             trigger: element,
             start: "top top",
@@ -163,6 +170,7 @@ export default function Photography() {
     return () => {
       cancelAnimationFrame(frame);
       resize.disconnect();
+      visibility.disconnect();
       context?.revert();
     };
   }, [reducedMotion, portraitLayout, travel]);

@@ -136,6 +136,10 @@ export default function Footer() {
     if (!element || reducedMotion || saveData) return;
     let disposed = false;
     let requested = false;
+    let nearby = false;
+    let unavailable = false;
+    let idle: number | undefined;
+    let prepareTimer: number | undefined;
     let visible = false;
     let frame = 0;
     let previousTime = 0;
@@ -144,6 +148,12 @@ export default function Footer() {
     const menu = document.getElementById("site-navigation");
     const canAnimate = () =>
       visible && !document.hidden && !menu?.hasAttribute("open");
+    const cancelPreparation = () => {
+      if (idle !== undefined) window.cancelIdleCallback(idle);
+      if (prepareTimer !== undefined) window.clearTimeout(prepareTimer);
+      idle = undefined;
+      prepareTimer = undefined;
+    };
     const stop = () => {
       cancelAnimationFrame(frame);
       frame = 0;
@@ -151,6 +161,8 @@ export default function Footer() {
     };
     const fail = (error: unknown) => {
       if (disposed) return;
+      unavailable = true;
+      cancelPreparation();
       console.error("The optional footer water is unavailable.", error);
       stop();
       render = undefined;
@@ -180,7 +192,7 @@ export default function Footer() {
         const renderer = new THREE.WebGLRenderer({ antialias: true });
         const cleanup: (() => void)[] = [() => renderer.dispose()];
         release = () => {
-          cleanup.reverse().forEach((dispose) => dispose());
+          while (cleanup.length) cleanup.pop()?.();
         };
         renderer.debug.onShaderError = () => {
           throw new Error("The moonlit water shader could not compile.");
@@ -377,6 +389,10 @@ export default function Footer() {
         resize.observe(element);
         resizeScene();
         cleanup.push(() => renderer.domElement.remove());
+        // Compile before entering the footer; the first real frame also warms
+        // the reflection target. Continuous rendering still requires visibility.
+        await renderer.compileAsync(scene, camera);
+        if (disposed || unavailable) return;
         render = (delta) => {
           starMaterial.uniforms.uTime.value += delta;
           if (water.material instanceof THREE.ShaderMaterial) {
@@ -388,14 +404,34 @@ export default function Footer() {
             element.appendChild(renderer.domElement);
           }
         };
+        if (!document.hidden && !menu?.hasAttribute("open")) render(0);
         sync();
       } catch (error) {
         fail(error);
       }
     };
     const sync = () => {
+      if (disposed || unavailable) return;
+      if (!nearby || document.hidden || menu?.hasAttribute("open")) {
+        cancelPreparation();
+      } else if (!requested && idle === undefined && prepareTimer === undefined) {
+        const prepare = () => {
+          idle = undefined;
+          prepareTimer = undefined;
+          if (!disposed && !requested && !document.hidden && !menu?.hasAttribute("open"))
+            void load();
+        };
+        if (typeof window.requestIdleCallback === "function") {
+          idle = window.requestIdleCallback(prepare, { timeout: 1200 });
+        } else {
+          prepareTimer = window.setTimeout(prepare, 100);
+        }
+      }
       if (canAnimate()) {
-        if (!requested) void load();
+        if (!requested) {
+          cancelPreparation();
+          void load();
+        }
         if (render && !frame) frame = requestAnimationFrame(tick);
       } else stop();
     };
@@ -403,6 +439,10 @@ export default function Footer() {
       visible = entry.isIntersecting;
       sync();
     });
+    const preparationObserver = new IntersectionObserver(([entry]) => {
+      nearby = entry.isIntersecting;
+      sync();
+    }, { rootMargin: "1600px 0px" });
     const menuObserver = new MutationObserver(sync);
     if (menu)
       menuObserver.observe(menu, {
@@ -410,11 +450,14 @@ export default function Footer() {
         attributeFilter: ["open"],
       });
     observer.observe(element);
+    preparationObserver.observe(element);
     document.addEventListener("visibilitychange", sync);
     return () => {
       disposed = true;
       stop();
+      cancelPreparation();
       observer.disconnect();
+      preparationObserver.disconnect();
       menuObserver.disconnect();
       document.removeEventListener("visibilitychange", sync);
       release?.();

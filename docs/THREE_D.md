@@ -53,7 +53,7 @@ The current implementation uses React Three Fiber and Three.js, including displa
 
 The approved closing scene is night rather than sunset. `Footer.tsx` owns a lazily imported Three.js scene, hero-style Gerstner water geometry, displaced-surface normals, fine ripples, Fresnel shading, subtle crest foam, and a planar reflection of the visible moon with silver specular highlights. Foreground-dense geometry and a multisampled reflection target exceed the hero resolution. It uses no external textures or post-processing. Geometry and the capped pixel ratio are shared across devices. All text and links remain DOM content.
 
-Load on visibility and keep the scene area dark until its first completed frame; do not show the SVG during loading. Stop rendering offscreen, behind the menu, or in a hidden tab. Reduced motion, Save-Data, and rendering failure show an inline static night scene. Dispose geometry, materials, renderer, observers, and listeners on teardown. This self-contained footer is an explicit user-approved exception to the usual separate 3D component directory. Later scenes remain deferred.
+Prepare when nearby using idle scheduling where available, compile shaders asynchronously, and warm one frame before entry. Keep the scene area dark until its first completed frame; do not show the SVG during loading. After the single preparation frame, stop rendering offscreen, behind the menu, or in a hidden tab. Reduced motion, Save-Data, and rendering failure show an inline static night scene. Dispose geometry, materials, renderer, observers, and listeners on teardown. This self-contained footer is an explicit user-approved exception to the usual separate 3D component directory. Later scenes remain deferred.
 
 ## Flowpaper 2D WebGL Experiment
 

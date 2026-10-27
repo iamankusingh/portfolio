@@ -67,6 +67,10 @@ Structured data flows through pages and components. Keep demo entries clearly id
 
 Load the scene lazily and coordinate its intro with readiness. Imported models share cached resources; clouds own fading material copies. Water owns its reflection resources. Clean up owned resources and event subscriptions. See [THREE_D.md](THREE_D.md) for scene behavior.
 
+## Nearby Image Preparation
+
+`useNearbyImages` starts the About portrait and homepage collage images before section entry, with at most two explicit decode requests at once. Native lazy loading still prioritizes visible images independently. Cleanup stops queued work; image errors release the queue. Originals remain unchanged, and browser decode residency is not guaranteed. Hero and Selected Work gate scroll measurements with visibility observers; collage focus eligibility combines observed intersections with inline opacity, avoiding per-frame bounds reads.
+
 ## Homepage Loading
 
 `Home` coordinates `useHomepageLoading`, the reusable GSAP `PageLoader`, and hero readiness. The hook tracks the three local font faces, decoded header logo, four model groups (including their buffers/textures through the existing private loading managers), and the first rendered scene frame. `heroLoading.ts` shares resource completion with the hook without eagerly importing Three.js. Progress represents completed resource groups, not downloaded bytes; no simulated progress timer is used. Lazy photographs, below-fold images, footer rendering, and other routes are excluded.
@@ -75,7 +79,7 @@ The native modal loader makes background controls inert and locks document scrol
 
 ## Footer Boundary
 
-By explicit user direction, `Footer.tsx` contains all footer content, metadata, shaders, scene lifecycle, and static fallback. `AppLayout` mounts it after the semantic main region on the homepage only. It dynamically imports the existing Three.js dependency on visibility; the hero retains React Three Fiber. No dependency changes are needed.
+By explicit user direction, `Footer.tsx` contains all footer content, metadata, shaders, scene lifecycle, and static fallback. `AppLayout` mounts it after the semantic main region on the homepage only. It dynamically imports the existing Three.js dependency when nearby, schedules preparation during idle time where available, compiles shaders asynchronously, and warms one frame before entry; the hero retains React Three Fiber. No dependency changes are needed.
 
 ## Contact Delivery
 

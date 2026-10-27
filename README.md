@@ -4,7 +4,7 @@ An interactive creative-technologist portfolio built around **Technology × Natu
 
 ## Current Status
 
-Phases 2 through 15 are complete by user direction, including Flowpaper and the homepage day-cycle atmosphere. Phase 16 route fades are implemented; technical and browser acceptance remain pending with the user, especially Back/Forward without a destination flash. Other experiments and Phase 17 onward remain deferred. Flowpaper, contact delivery, final About copy/location, and photography curation still have pending acceptance.
+Phases 2 through 17 are complete by user direction, including Contact, the homepage day-cycle atmosphere, route fades, and the responsive review. The user reports reviewing responsiveness across devices. Phase 18 is active: the static report and first code improvements are ready; technical validation and performance acceptance remain pending. Image resizing is deferred by user direction. Completion does not imply unreported lint/build or accessibility checks passed. Flowpaper, contact delivery, final About copy/location, and photography curation retain their separate pending acceptance. Other experiments and Phase 19 onward remain deferred.
 
 
 ## Stack and Development
@@ -45,5 +45,6 @@ Generated demo copy, fictional case studies, and repeated existing imagery are a
 | [CONVENTIONS.md](docs/CONVENTIONS.md) | Coding practices |
 | [ASSETS.md](docs/ASSETS.md) | Asset inventory, sources, licenses |
 | [PROGRESS.md](docs/PROGRESS.md) | Current milestones and pending work |
+| [PERFORMANCE_REVIEW.md](docs/PERFORMANCE_REVIEW.md) | Phase 18 findings, priorities, and measurement plan |
 
 Keep docs brief and current. Describe the resulting experience and necessary rules; avoid change logs, minor tuning history, repeated details, and implementation mathematics.

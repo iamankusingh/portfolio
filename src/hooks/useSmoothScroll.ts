@@ -23,6 +23,11 @@ export default function useSmoothScroll(locationKey: string) {
     let velocity = 0;
     let destination = window.scrollY;
     let direction = 0;
+    let maximum = ScrollToPlugin.max(window);
+    const measure = () => { maximum = ScrollToPlugin.max(window); };
+    const sizeObserver = new ResizeObserver(measure);
+    sizeObserver.observe(document.documentElement);
+    sizeObserver.observe(document.body);
     const menu = document.getElementById("site-navigation");
 
     function stop() {
@@ -42,7 +47,6 @@ export default function useSmoothScroll(locationKey: string) {
         return;
       }
 
-      const maximum = ScrollToPlugin.max(window);
       destination = gsap.utils.clamp(0, maximum, destination);
       const step = Math.min(deltaMilliseconds / 1000, 0.05);
       const offset = position - destination;
@@ -116,7 +120,8 @@ export default function useSmoothScroll(locationKey: string) {
       direction = nextDirection;
       // Bound the backlog during rapid wheel bursts; do not multiply trackpad
       // deltas, which already include the device's own momentum.
-      const maximum = ScrollToPlugin.max(window);
+      // Refresh at input boundaries, not on every animation frame.
+      measure();
       const pendingLimit = window.innerHeight * MAX_PENDING_VIEWPORTS;
       destination = gsap.utils.clamp(
         Math.max(0, position - pendingLimit),
@@ -157,6 +162,7 @@ export default function useSmoothScroll(locationKey: string) {
     return () => {
       stop();
       menuObserver.disconnect();
+      sizeObserver.disconnect();
       window.removeEventListener("wheel", onWheel);
       window.removeEventListener("keydown", stop, true);
       window.removeEventListener("pointerdown", stop, true);
@@ -175,7 +181,7 @@ function usesLocalScrolling(target: EventTarget | null) {
   if (!(target instanceof Element)) return false;
   if (
     target.closest(
-      "input, textarea, select, [contenteditable]:not([contenteditable='false']), dialog, [data-native-scroll]",
+      "select, input[type='number'], input[type='range'], [contenteditable]:not([contenteditable='false']), dialog, [data-native-scroll]",
     )
   )
     return true;

@@ -2,13 +2,13 @@
 
 ## Current Status
 
-Phases 2 through 15 are complete by user direction, including Flowpaper and the homepage day-cycle atmosphere. Phase 16 route fades are implemented; technical and browser acceptance remain pending with the user, especially Back/Forward without a destination flash. Other experiments and Phase 17 onward remain deferred. Flowpaper, contact delivery, final About copy/location, and photography curation still have pending acceptance.
+Phases 2 through 17 are complete by user direction, including Contact, the homepage day-cycle atmosphere, route fades, and the responsive review. The user reports reviewing responsiveness across devices. Phase 18 is active: the static report and first code improvements are ready; technical validation and performance acceptance remain pending. Image resizing is deferred by user direction. Completion does not imply unreported lint/build or accessibility checks passed. Flowpaper, contact delivery, final About copy/location, and photography curation retain their separate pending acceptance. Other experiments and Phase 19 onward remain deferred.
 
-Photography uses the 140 supplied WebP assets in `src/assets/photographs/`, cataloged in `src/data/photograph.ts`. A stable random selection of 25 entries has `displayInHome: true`; final curation remains with the user. The GSAP collage and reduced-motion grid preserve original aspect ratios. The original opening collage positions and staggered scrolling rows are restored by user direction, including edge-framed photographs. Collage images are enlarged uniformly while preserving their centers and original aspect ratios. Clicking a photograph opens a native fullscreen dialog with a GSAP transition from the clicked image to the center, a simultaneous subtle backdrop blur, and a reverse close transition. The uncropped image, close button, Escape support, and restored trigger focus remain; reduced motion opens immediately. Viewer smoothing now waits for image decode before handing off from the source, uses GSAP transforms for travel, and fades a fixed blur layer instead of tweening blur strength. The viewer locks only root scrolling so the sticky collage retains its position behind the blurred backdrop. The reported stutter and background-visibility fixes await browser validation. Numbered alt labels await descriptive curation. Completion records approved milestones, not unreported validation results.
+Photography uses the 140 supplied WebP assets in `src/assets/photographs/`, cataloged in `src/data/photograph.ts`. The current selection of 31 entries has `displayInHome: true`; final curation remains with the user. The GSAP collage and reduced-motion grid preserve original aspect ratios. The original opening collage positions and staggered scrolling rows are restored by user direction, including edge-framed photographs. Collage images are enlarged uniformly while preserving their centers and original aspect ratios. Clicking a photograph opens a native fullscreen dialog with a GSAP transition from the clicked image to the center, a simultaneous subtle backdrop blur, and a reverse close transition. The uncropped image, close button, Escape support, and restored trigger focus remain; reduced motion opens immediately. Viewer smoothing now waits for image decode before handing off from the source, uses GSAP transforms for travel, and fades a fixed blur layer instead of tweening blur strength. The viewer locks only root scrolling so the sticky collage retains its position behind the blurred backdrop. The reported stutter and background-visibility fixes await browser validation. Numbered alt labels await descriptive curation. Completion records approved milestones, not unreported validation results.
 
 The homepage loader keeps model requests active in the background and counts only visible, focused waiting toward its fallback deadline. Model preloads use the existing cache independently of canvas frames; rendering resumes on return. The fallback is now explicitly labeled as a simplified illustration, with a page-reload action for failed, timed-out, or skipped loading; preference-driven fallbacks explain the active preference. The background-tab/window fix and fallback notice/reload action await user validation, alongside existing loader acceptance.
 
-Current focus: Phase 16 holds the displayed route through a short fade-out, swaps content and restores scroll while invisible, then fades in. The header stays mounted. Same-path navigation and reduced motion are immediate. Rapid navigation selects the latest committed destination; native dialogs share the fade. React Router still owns restoration, with skipped history entries protected from incorrect scroll saves. No dependencies changed. Static review is complete; lint/build and browser acceptance remain pending.
+Current focus: Phase 18 code improvements. The About portrait and homepage photographs begin loading/decoding nearby in a bounded queue; collage keyboard visibility uses IntersectionObserver instead of per-frame layout reads. Hero and Selected Work suspend scroll measurements offscreen. Smooth scrolling continues over ordinary text fields, while overflowing textareas retain native scrolling; scroll limits are cached between input/resize updates. The footer prepares nearby during idle time, compiles shaders asynchronously, and warms one frame before entry. Images and graphics quality are unchanged. Static review only; lint/build and browser performance acceptance remain pending. See [PERFORMANCE_REVIEW.md](PERFORMANCE_REVIEW.md) for the baseline and measurement plan.
 
 ## Phase Checklist
 
@@ -28,15 +28,19 @@ Current focus: Phase 16 holds the displayed route through a short fade-out, swap
 | 11 | Work Page | Complete by user direction; technical validation pending |
 | 12 | Photography Page | Complete by user direction; technical validation pending |
 | 13 | Lab and experiments Page | Complete by user direction; technical validation pending; other experiments deferred |
-| 14 | Contact Page | Complete by user direction; technical and delivery validation pending |
-| 15 | Homepage day-cycle atmosphere | Complete by user direction; technical validation pending |
-| 16 | Route transitions | Implemented; active, technical and browser acceptance pending |
-| 17 | Responsive and accessibility review |
-| 18 | Performance review |
+| 14 | Contact Page | Complete by user direction; delivery acceptance tracked separately |
+| 15 | Homepage day-cycle atmosphere | Complete by user direction |
+| 16 | Route transitions | Complete by user direction |
+| 17 | Responsive and accessibility review | Complete by user direction; responsiveness reviewed across devices; accessibility results not supplied |
+| 18 | Performance review | Active; first code improvements implemented, validation pending |
 | 19 | SEO and metadata |
 | 20 | Final QA and launch |
 
 ## Pending Acceptance
+
+- [ ] Phase 18: run current lint/build and production preview. Recheck fast scrolling into About, first photo arrival and reverse collage travel, text-field hover scrolling and overflowing textarea scrolling, and first/repeated footer entry. Check keyboard photo access, reduced motion changes, restored scroll, route changes during loading, hidden tabs/menu, and scene failure. Images remain original size; code changes cannot eliminate their transfer/decode cost.
+
+Phases 14–17 are closed by user direction. Remaining checks below are specific unreported technical, accessibility, content, or delivery checks; they do not reopen those milestones. Responsiveness across devices is user-confirmed. Phase 18 measurements follow the performance report.
 
 - [ ] Review the user-requested `/legal` page, small menu link, and footer link on desktop/mobile, keyboard navigation, direct refresh, and Back/Forward. Model credits use the four bundled license records; photography reuse with credit, basic terms, and implementation-based privacy copy are hardcoded in the page. Confirm contact-record/provider retention details before launch; these remain explicitly unpublished. Run `pnpm.cmd lint` and `pnpm.cmd build`; static source review only, runtime validation pending.
 
@@ -93,7 +97,7 @@ Phase 7 is complete by user direction. Technical checks, final homepage selectio
 
 - [ ] Review Phase 8 after Photography: desktop/mobile and short-screen layouts, zoom, keyboard focus, faded field underlines that turn dark on focus without rectangular outlines, optional company, resizable message box, and Contact menu/`/#contact` navigation. Verify the deployed Apps Script contract and spreadsheet row creation using [CONTACT_DELIVERY.md](CONTACT_DELIVERY.md), including success, failure, timeout, and repeat-click behavior.
 
-- [ ] Review Phase 7: black capabilities exit, centered photo during entry, spread starting only at full-screen coverage, upward photo travel with a stationary heading, the 25 selected WebP photographs, reverse/fast scrolling, reload mid-section, mobile/short screens, orientation changes, header access, and live reduced motion. Curate `displayInHome` using `src/data/photograph.ts`; check original aspect ratios, image loading, spacing, alt text, and `/#photography`. Current lint/build and browser checks remain pending.
+- [ ] Review Phase 7: black capabilities exit, centered photo during entry, spread starting only at full-screen coverage, upward photo travel with a stationary heading, the 31 selected WebP photographs, reverse/fast scrolling, reload mid-section, mobile/short screens, orientation changes, header access, and live reduced motion. Curate `displayInHome` using `src/data/photograph.ts`; check original aspect ratios, image loading, spacing, alt text, and `/#photography`. Current lint/build and browser checks remain pending.
 
 - [ ] Review Phase 6 after About: early center appearance as it enters the viewport, GSAP forward/reverse progress and refresh cleanup, gradual three-circle orbit, merge, and edge-to-edge black expansion. Check reverse/fast scrolling, reload within the section, mobile/short screens, orientation changes, header/menu access, and live reduced motion (immediately readable paragraph without pinning). Check the white paragraph reveal, one-screen fit, keyboard access, and zoom overflow. Capability copy and line placement live in `src/components/sections/Capabilities.tsx`; check the staggered line layout across screen sizes.
 - [ ] Review the Phase 5 About section after Selected Work: portrait crop, draft personal copy, desktop/mobile layout, zoom, and `/#about` navigation. Content lives in `src/data/anku.ts`; the real portrait is `src/assets/anku.webp`.
@@ -108,14 +112,13 @@ Phase 7 is complete by user direction. Technical checks, final homepage selectio
 - [ ] Check scene loading, model textures, waterline, reflections, and cloud movement.
 - [ ] Check reduced motion, Save-Data, rendering failure, and inactive-scene suspension.
 - [ ] Profile performance and resource cleanup on desktop, tablet, and smartphone.
-
 Earlier passing checks do not validate later edits. The user runs commands, servers, browsers, and profiling.
 
 ## Decisions and Preparation
 
 Confirmed: pnpm, Manrope + Instrument Serif, existing palette, approved demo content, real portrait/photography, and shared high graphics quality. See [AGENTS.md](../AGENTS.md) for workflow and content rules.
 
-Pending: current validation, real project images/content, later-page compositions, legal-page acceptance, font license records, production asset optimization, metadata, and hosting. Original model licenses and attribution/adaptation records remain in place. Placeholder images support review without final assets; case-study links, other Lab experiments, and Phase 17 onward remain deferred.
+Pending: current validation, real project images/content, later-page compositions, legal-page acceptance, font license records, production asset optimization, metadata, and hosting. Original model licenses and attribution/adaptation records remain in place. Placeholder images support review without final assets; case-study links, other Lab experiments, and Phase 19 onward remain deferred.
 
 ## Update Rule
 
