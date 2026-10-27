@@ -69,7 +69,7 @@ Load the scene lazily and coordinate its intro with readiness. Imported models s
 
 ## Nearby Image Preparation
 
-`useNearbyImages` starts the About portrait and homepage collage images before section entry, with at most two explicit decode requests at once. Native lazy loading still prioritizes visible images independently. Cleanup stops queued work; image errors release the queue. Originals remain unchanged, and browser decode residency is not guaranteed. Hero and Selected Work gate scroll measurements with visibility observers; collage focus eligibility combines observed intersections with inline opacity, avoiding per-frame bounds reads.
+`useNearbyImages` starts the About portrait and homepage collage images before section entry, with at most two explicit decode requests at once. Native lazy loading still prioritizes visible images independently. Cleanup stops queued work; image errors release the queue. The same user-compressed image serves each thumbnail and fullscreen view; browser decode residency is not guaranteed. Hero and Selected Work gate scroll measurements with visibility observers; collage focus eligibility combines observed intersections with inline opacity, avoiding per-frame bounds reads.
 
 ## Homepage Loading
 

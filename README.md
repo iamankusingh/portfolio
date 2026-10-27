@@ -4,7 +4,7 @@ An interactive creative-technologist portfolio built around **Technology × Natu
 
 ## Current Status
 
-Phases 2 through 17 are complete by user direction, including Contact, the homepage day-cycle atmosphere, route fades, and the responsive review. The user reports reviewing responsiveness across devices. Phase 18 is active: the static report and first code improvements are ready; technical validation and performance acceptance remain pending. Image resizing is deferred by user direction. Completion does not imply unreported lint/build or accessibility checks passed. Flowpaper, contact delivery, final About copy/location, and photography curation retain their separate pending acceptance. Other experiments and Phase 19 onward remain deferred.
+Phases 2 through 17 are complete by user direction, including Contact, the homepage day-cycle atmosphere, route fades, and the responsive review. The user reports reviewing responsiveness across devices. Phase 18 is active: the static report and first code improvements are ready; technical validation and performance acceptance remain pending. User-compressed photographs are installed and catalog dimensions are synchronized; one image per photograph serves both gallery and fullscreen views. Completion does not imply unreported lint/build or accessibility checks passed. Flowpaper, contact delivery, final About copy/location, and photography curation retain their separate pending acceptance. Other experiments and Phase 19 onward remain deferred.
 
 
 ## Stack and Development

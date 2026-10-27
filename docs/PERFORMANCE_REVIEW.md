@@ -4,7 +4,7 @@ Baseline source and asset review: 26 October 2026. First code improvements imple
 
 ## Current Implementation
 
-Implemented nearby bounded image preparation for About and the homepage collage, observer-based collage focus visibility, offscreen scroll-measurement suspension, cached scroll limits between wheel/resize events, smooth page scrolling over ordinary form fields, and earlier footer setup with asynchronous shader compilation and one warm frame. Images, choreography, and graphics quality are unchanged. These changes target the user-reported symptoms; improvement is not yet measured. Image resizing remains deferred. Current lint/build and the targeted browser checks in PROGRESS.md are pending.
+Implemented nearby bounded image preparation for About and the homepage collage, observer-based collage focus visibility, offscreen scroll-measurement suspension, cached scroll limits between wheel/resize events, smooth page scrolling over ordinary form fields, and earlier footer setup with asynchronous shader compilation and one warm frame. Choreography and graphics quality are unchanged. The user has since replaced all 140 photographs with compressed files: 16.76 MB total and a maximum edge of 1200 px. Catalog dimensions match the new headers; gallery and fullscreen use the same files. These changes target the user-reported symptoms; improvement is not yet measured. Separate thumbnail files are not requested; the inventory and image-size recommendations below describe the earlier baseline. Current lint/build and the targeted browser checks in PROGRESS.md are pending.
 
 ## Assessment
 
