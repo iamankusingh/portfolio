@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#111827" />
+  <circle cx="1040" cy="118" r="270" fill="#1c2c40" />
+  <path d="M0 490 235 343l163 115 187-203 246 235 136-112 233 143v109H0Z" fill="#243f4b" />
+  <path d="m0 544 239-97 171 74 177-105 220 104 150-64 243 74v100H0Z" fill="#315c62" />
+  <circle cx="104" cy="104" r="42" fill="#667FFD" />
+  <path d="M21.09 22.02C21.09 23.58 20.68 24.89 19.86 25.95C19.04 27.01 17.73 27.54 15.93 27.54C14.13 27.54 12.8 27.03 11.94 26.01C11.08 24.99 10.65 23.76 10.65 22.32C10.65 20.04 11.79 18.25 14.07 16.95C16.35 15.65 20 15 25.02 15H33.24V18.6H31.47L36.93 32.4H38.91V36H31.2V32.4H32.97L32.34 30.72H24.48L23.85 32.4H25.65V36H17.94V32.4H19.89L25.32 18.6H25.02C21 18.6 18.22 18.88 16.68 19.44C15.16 20 14.4 20.96 14.4 22.32C14.4 23.4 14.91 23.94 15.93 23.94C16.87 23.94 17.34 23.3 17.34 22.02H21.09ZM28.41 20.28L25.71 27.42H31.08L28.41 20.28Z" fill="#FEB05D" transform="translate(62 62) scale(1.68)" />
+  <text x="104" y="266" fill="#f8fafc" font-family="Arial, Helvetica, sans-serif" font-size="74" font-weight="600" letter-spacing="-2">Anku Singh</text>
+  <text x="108" y="326" fill="#feb05d" font-family="Arial, Helvetica, sans-serif" font-size="25" letter-spacing="4">CREATIVE TECHNOLOGIST</text>
+  <text x="108" y="392" fill="#d2d9df" font-family="Arial, Helvetica, sans-serif" font-size="25">Technology × Nature × Human Experience</text>
+</svg>

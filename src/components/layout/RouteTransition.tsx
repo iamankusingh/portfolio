@@ -9,6 +9,7 @@ import {
 } from "react-router";
 import useMediaQuery from "../../hooks/useMediaQuery";
 import Footer from "./Footer";
+import PageMetadata from "./PageMetadata";
 
 type Phase = "idle" | "fading-out" | "switching" | "fading-in";
 
@@ -125,34 +126,39 @@ export default function RouteTransition() {
   }, [location, phase]);
 
   return (
-    // A cached outlet alone is insufficient: its descendants would still see
-    // the live location and ScrollRestoration would run against the old DOM.
-    // Keep this version-sensitive data-router adapter isolated here.
-    <LocationContext.Provider value={active.locationContext}>
-      <RouterStateContext.Provider value={active.routerState}>
-        <RouterDataContext.Provider value={active.routerData}>
-          <div
-            ref={surfaceRef}
-            className="route-transition"
-            data-phase={phase}
-            inert={phase === "switching"}
-          >
-            <main
-              ref={mainRef}
-              id="main-content"
-              tabIndex={-1}
-              className={
-                location.pathname === "/lab" ? "min-h-dvh" : "min-h-screen"
-              }
+    <>
+      <PageMetadata pathname={location.pathname} />
+      {/*
+        A cached outlet alone is insufficient: its descendants would still see
+        the live location and ScrollRestoration would run against the old DOM.
+        Keep this version-sensitive data-router adapter isolated here.
+      */}
+      <LocationContext.Provider value={active.locationContext}>
+        <RouterStateContext.Provider value={active.routerState}>
+          <RouterDataContext.Provider value={active.routerData}>
+            <div
+              ref={surfaceRef}
+              className="route-transition"
+              data-phase={phase}
+              inert={phase === "switching"}
             >
-              {active.outlet}
-            </main>
-            {location.pathname === "/" && <Footer />}
-          </div>
-          <DisplayedScrollRestoration locationKey={location.key} />
-        </RouterDataContext.Provider>
-      </RouterStateContext.Provider>
-    </LocationContext.Provider>
+              <main
+                ref={mainRef}
+                id="main-content"
+                tabIndex={-1}
+                className={
+                  location.pathname === "/lab" ? "min-h-dvh" : "min-h-screen"
+                }
+              >
+                {active.outlet}
+              </main>
+              {location.pathname === "/" && <Footer />}
+            </div>
+            <DisplayedScrollRestoration locationKey={location.key} />
+          </RouterDataContext.Provider>
+        </RouterStateContext.Provider>
+      </LocationContext.Provider>
+    </>
   );
 }
 

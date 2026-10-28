@@ -75,7 +75,6 @@ export default function PhotographyPage() {
 
   return (
     <>
-      <title>Photography by Anku Singh</title>
       <section
         aria-labelledby="photography-page-title"
         className="bg-bg-light px-page pt-[calc(var(--navigation-top)+var(--navigation-control-size)+1rem)] pb-section-md text-text-dark"

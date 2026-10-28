@@ -55,7 +55,6 @@ const headingClass = "mb-6 font-display text-h3 leading-tight";
 export default function LegalPage() {
   return (
     <>
-      <title>Legal & credits — Anku Singh</title>
       <section
         aria-labelledby="legal-page-title"
         className="min-h-svh bg-bg-light px-page pt-[calc(var(--navigation-top)+var(--navigation-control-size)+1rem)] pb-section-md text-text-dark scheme-light"

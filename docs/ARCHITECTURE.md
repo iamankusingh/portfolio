@@ -29,6 +29,8 @@ React Router data mode provides the route shell. `AppLayout` owns the persistent
 
 `RouteTransition` retains the outgoing outlet and its location/data snapshots until CSS fade-out completes. It swaps content and restores scroll at zero opacity before fading in. Same-path navigation and reduced motion are immediate. The existing data-router route configuration, lazy Lab import, and error boundaries are retained. Pending lazy navigation leaves the current route visible until React Router commits it. Rapid navigation uses the latest committed destination and cleans up transition listeners, watchdogs, and frames.
 
+`RouteTransition` also renders `PageMetadata` for its displayed path, keeping document title, description, canonical URL, and social preview tags aligned with the page during route fades. Route copy lives in `src/data/seo.ts`; the canonical origin is `https://iamankusingh.vercel.app`. `public/robots.txt` and `public/sitemap.xml` enumerate the public routes.
+
 The adapter uses React Router's exported `UNSAFE_` location/data contexts because a cached outlet alone does not defer descendant location reads or scroll restoration. Keep this version-sensitive integration confined to `RouteTransition.tsx` and recheck it on router upgrades. A restoration adapter preserves saved positions for history entries skipped before display; React Router remains the sole restoration owner. Native dialogs need explicit opacity rules because their top layer escapes ancestor opacity. Technical and browser acceptance are pending.
 
 Keep both circular controls, fullscreen dialog, destinations, previews, and menu state together in `Header.tsx`. Native dialog behavior handles modal focus and background inertness.

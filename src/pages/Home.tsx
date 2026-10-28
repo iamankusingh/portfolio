@@ -37,7 +37,6 @@ export default function Home() {
   }, []);
   return (
     <>
-      <title>Anku Singh — Creative Technologist</title>
       {loading.visible && (
         <PageLoader
           progress={loading.progress}

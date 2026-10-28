@@ -6,7 +6,6 @@ export default function AboutPage() {
 
   return (
     <>
-      <title>About — Anku Singh</title>
       <section
         aria-labelledby="about-page-title"
         className="bg-bg-light px-page pt-[calc(var(--navigation-top)+var(--navigation-control-size)+1rem)] pb-section-md text-text-dark"

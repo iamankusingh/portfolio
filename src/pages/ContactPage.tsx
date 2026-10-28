@@ -4,7 +4,6 @@ import { socials } from "../data/socials";
 export default function ContactPage() {
   return (
     <>
-      <title>Contact Anku Singh</title>
       <section
         aria-labelledby="contact-page-title"
         className="min-h-svh bg-bg-light px-page pt-[calc(var(--navigation-top)+var(--navigation-control-size)+1rem)] pb-section-md text-text-dark scheme-light"

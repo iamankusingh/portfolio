@@ -69,7 +69,6 @@ export default function WorkPage() {
 
   return (
     <>
-      <title>Work — Anku Singh</title>
       <section
         aria-labelledby="work-title"
         className="bg-bg-light px-page pt-[calc(var(--navigation-top)+var(--navigation-control-size)+1rem)] pb-section-sm text-text-dark"

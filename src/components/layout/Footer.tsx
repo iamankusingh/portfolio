@@ -553,7 +553,7 @@ export default function Footer() {
       <div className="relative z-10 -mx-page flex flex-wrap items-center justify-between gap-x-8 gap-y-3 bg-bg-deep px-page py-5 text-xs text-mist">
         <p>© {new Date().getFullYear()} {anku.name}</p>
         <p>
-          Designed & built by me, <Link to="/about">{anku.name}</Link>.
+          Designed & built by me (<Link to="/about">{anku.name}</Link>).
         </p>
         <p>
           Last updated{" "}

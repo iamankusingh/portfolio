@@ -338,7 +338,6 @@ export default function LabPage() {
 
   return (
     <>
-      <title>Flowpaper — Anku Singh Lab</title>
       <dialog
         ref={instructionsRef}
         id="flowpaper-instructions"
