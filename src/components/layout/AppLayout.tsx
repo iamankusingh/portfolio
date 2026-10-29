@@ -3,6 +3,7 @@ import useSmoothScroll from "../../hooks/useSmoothScroll";
 import CustomCursor from "../ui/CustomCursor";
 import Header from "./Header";
 import RouteTransition from "./RouteTransition";
+import { Analytics } from "@vercel/analytics/react"
 
 export default function AppLayout() {
   const location = useLocation();
@@ -11,6 +12,7 @@ export default function AppLayout() {
 
   return (
     <>
+      <Analytics />
       <CustomCursor />
       <Header />
       <RouteTransition />
